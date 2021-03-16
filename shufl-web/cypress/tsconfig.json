@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["../node_modules/cypress", "**/*.ts", "integration/home.spec.js"],
+  "compilerOptions": {
+    "sourceMap": false
+  }
+}

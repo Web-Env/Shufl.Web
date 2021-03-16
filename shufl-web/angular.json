@@ -66,9 +66,10 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "shufl-web:build"
+            "browserTarget": "shufl-web:build",
+            "extraWebpackConfig": "./cypress/coverage.webpack.js"
           },
           "configurations": {
             "production": {
@@ -105,7 +106,7 @@
             "tsConfig": [
               "tsconfig.app.json",
               "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "cypress/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -113,10 +114,35 @@
           }
         },
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@briebug/cypress-schematic:cypress",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "shufl-web:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shufl-web:serve:production"
+            }
+          }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
             "devServerTarget": "shufl-web:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "shufl-web:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "shufl-web:serve",
+            "watch": true,
+            "headless": false
           },
           "configurations": {
             "production": {
