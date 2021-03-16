@@ -96,8 +96,8 @@ export class AlbumComponent implements OnInit {
             url: receivedAlbumData.externalUrls.spotify,
             coverArtUrl: receivedAlbumData.images[0].url,
             releaseDate: receivedAlbumData.releaseDate,
-            tracks: tracks,
-            artists: artists
+            tracks,
+            artists
         };
 
         if (receivedGenres.length >= 3) {
@@ -120,7 +120,7 @@ export class AlbumComponent implements OnInit {
                 artist.id,
                 artist.name,
                 artist.externalUrls.spotify,
-                undefined
+                []
             ));
         });
 
