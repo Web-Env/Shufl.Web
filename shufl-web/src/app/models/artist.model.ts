@@ -16,7 +16,7 @@ export class Artist {
     ) {
         this.id = id;
         this.name = name;
-        this.followers = followers
+        this.followers = followers;
         this.url = url;
         this.albums = albums;
     }
