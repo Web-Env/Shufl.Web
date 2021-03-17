@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { ArtistConsts } from "src/app/consts/artist.consts";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArtistConsts } from 'src/app/consts/artist.consts';
 
-import { Album } from "src/app/models/album.model";
-import { Artist } from "src/app/models/artist.model";
-import { Track } from "src/app/models/track.model";
-import { DataService } from "src/app/services/data.service";
+import { Album } from 'src/app/models/album.model';
+import { Artist } from 'src/app/models/artist.model';
+import { Track } from 'src/app/models/track.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-album',
@@ -29,26 +30,27 @@ export class AlbumComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
+                private titleService: Title,
                 private dataService: DataService) { }
 
-    async ngOnInit(): Promise<void> {
+    ngOnInit(): void {
         var routeParams = this.route.snapshot.params;
         var isRequestingAlbum = this.isRequestingAlbum(this.router.url);
 
         if (routeParams && Object.keys(routeParams).length === 0 && routeParams.constructor === Object) {
             if (isRequestingAlbum) {
-                await this.fetchAsync('Album/RandomAlbum');
+                this.fetchAsync('Album/RandomAlbum');
             }
             else {
-                await this.fetchAsync('Track/RandomTrack');
+                this.fetchAsync('Track/RandomTrack');
             }
         }
         else {
             if (isRequestingAlbum) {
-                await this.fetchAsync(`Album/Album?albumId=${routeParams.albumId}`);
+                this.fetchAsync(`Album/Album?albumId=${routeParams.albumId}`);
             }
             else {
-                await this.fetchAsync(`Track/Track?trackId=${routeParams.trackId}`);
+                this.fetchAsync(`Track/Track?trackId=${routeParams.trackId}`);
             }
         }
     }
@@ -56,7 +58,7 @@ export class AlbumComponent implements OnInit {
     private isRequestingAlbum(url: string): boolean {
         var routes = url.match(/(\/[\w+-]+)/g);
         if (routes !== null && routes.length !== 0) {
-            if (routes[0] === "/track") {
+            if (routes[0] === '/track') {
                 return false;
             }
         }
@@ -66,11 +68,13 @@ export class AlbumComponent implements OnInit {
 
     private async fetchAsync(url: string): Promise<void> {
         this.dataLoaded = false;
+        this.titleService.setTitle('Shufl');
         
         this.albumData = this.mapReceivedDataToAlbum(
             await this.dataService.getAsync<Album>(url)
         );
 
+        this.titleService.setTitle(this.albumData.name);
         this.dataLoaded = true;
     }
 

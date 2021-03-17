@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute } from '@angular/router';
 
-import { Album } from "src/app/models/album.model";
-import { Artist } from "src/app/models/artist.model";
-import { DataService } from "src/app/services/data.service";
+import { Album } from 'src/app/models/album.model';
+import { Artist } from 'src/app/models/artist.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-artist',
@@ -23,6 +24,7 @@ export class ArtistComponent implements OnInit {
     dataLoaded: boolean = false;
 
     constructor(private route: ActivatedRoute,
+                private titleService: Title,
                 private dataService: DataService) { }
 
     ngOnInit(): void {
@@ -38,11 +40,13 @@ export class ArtistComponent implements OnInit {
 
     private async fetchAsync(url: string): Promise<void> {
         this.dataLoaded = false;
+        this.titleService.setTitle('Shufl');
         
         this.artistData = this.mapReceivedDataToArtist(
             await this.dataService.getAsync<Artist>(url)
         );
 
+        this.titleService.setTitle(this.artistData.name);
         this.dataLoaded = true;
     }
 
@@ -60,7 +64,7 @@ export class ArtistComponent implements OnInit {
         };
 
         if (receivedGenres.length == 0) {
-            this.genres = ["No Genres Listed"]
+            this.genres = ['No Genres Listed']
         }
         else if (receivedGenres.length >= 3) {
             this.genres = receivedGenres.splice(0, 2);
@@ -70,7 +74,7 @@ export class ArtistComponent implements OnInit {
         }
 
         this.artistImageUrl = 
-            receivedArtistData.images.length > 0 ? receivedArtistData.images[0].url : "assets/img/blank-user.png";
+            receivedArtistData.images.length > 0 ? receivedArtistData.images[0].url : 'assets/img/blank-user.png';
 
         return artist as Artist;
     }

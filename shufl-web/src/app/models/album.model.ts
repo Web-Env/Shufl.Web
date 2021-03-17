@@ -1,5 +1,5 @@
-import { Artist } from "./artist.model";
-import { Track } from "./track.model";
+import { Artist } from './artist.model';
+import { Track } from './track.model';
 
 export class Album {
     id!: string;

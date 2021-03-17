@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AlbumComponent } from "./components/album/album.component";
-import { ArtistComponent } from "./components/artist/artist.component";
-import { HomeComponent } from "./components/home/home.component";
-import { NotFoundComponent } from "./components/shared/not-found/not-found.component";
+import { AlbumComponent } from './components/album/album.component';
+import { ArtistComponent } from './components/artist/artist.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 const routes: Routes = [
     {path: '', component: HomeComponent, pathMatch: 'full'},

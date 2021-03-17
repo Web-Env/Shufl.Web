@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artist } from "src/app/models/artist.model";
+import { Artist } from 'src/app/models/artist.model';
 
 @Component({
     selector: '[app-track-list-item]',

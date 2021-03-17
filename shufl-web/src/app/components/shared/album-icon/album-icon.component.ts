@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Album } from "src/app/models/album.model";
+import { Album } from 'src/app/models/album.model';
 
 @Component({
     selector: '[app-album-icon]',
@@ -11,8 +11,5 @@ export class AlbumIconComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit(): void {
-        console.log (this.album)
-    }
-
+    ngOnInit(): void { }
 }

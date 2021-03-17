@@ -1,4 +1,4 @@
-import { Artist } from "./artist.model";
+import { Artist } from './artist.model';
 
 export class Track {
     id!: string;

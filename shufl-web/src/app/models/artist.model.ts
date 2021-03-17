@@ -1,4 +1,4 @@
-import { Album } from "./album.model";
+import { Album } from './album.model';
 
 export class Artist {
     id!: string;

@@ -4,6 +4,6 @@ context('Home Tests', () => {
     });
   
     it('should visit home page', () => {
-        cy.contains("Random Track")
+        cy.contains('Random Track')
     });
 });

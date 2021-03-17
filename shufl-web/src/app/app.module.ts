@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { AlbumComponent } from './components/album/album.component';
-import { AlbumIconComponent } from "./components/shared/album-icon/album-icon.component";
+import { AlbumIconComponent } from './components/shared/album-icon/album-icon.component';
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { ButtonComponent } from './components/shared/button/button.component';
@@ -16,7 +16,7 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
 
-import { genreFormatter } from "./pipes/genreFormatter.pipe";
+import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
 
 @NgModule({
