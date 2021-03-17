@@ -3,7 +3,7 @@ import { Album } from './album.model';
 export class Artist {
     id!: string;
     name!: string;
-    followers!: number
+    followers!: number;
     url!: string;
     albums!: Array<Album>;
     

@@ -63,8 +63,8 @@ export class ArtistComponent implements OnInit {
             albums
         };
 
-        if (receivedGenres.length == 0) {
-            this.genres = ['No Genres Listed']
+        if (receivedGenres.length === 0) {
+            this.genres = ['No Genres Listed'];
         }
         else if (receivedGenres.length >= 3) {
             this.genres = receivedGenres.splice(0, 2);
