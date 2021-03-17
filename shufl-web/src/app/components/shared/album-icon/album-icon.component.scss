@@ -1,0 +1,59 @@
+@import "src/assets/scss/variables/colours";
+
+.album-icon-container {
+    padding: 15px;
+
+    display: flex;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-background-colour-hover;
+    }
+
+    .album-art {
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .album-info {
+        width: calc(100% - 175px);
+
+        margin-left: 25px;
+
+        overflow: hidden;
+
+        .album-link {
+            max-width: 100%;
+
+            color: $tertiary-foreground-colour;
+
+            display: inline-block;
+
+            font-size: 1.5em;
+
+            text-decoration: none;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .artist-links {
+            height: 40px;
+            
+            position: relative;
+
+            overflow: hidden;
+
+            .artist-links-container {
+                width: 100%;
+                height: 50px;
+
+                position: absolute;
+            }
+        }
+    }
+}

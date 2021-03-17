@@ -37,10 +37,10 @@ export class AlbumComponent implements OnInit {
 
         if (routeParams && Object.keys(routeParams).length === 0 && routeParams.constructor === Object) {
             if (isRequestingAlbum) {
-                await this.fetchRandomAsync('Album/RandomAlbum');
+                await this.fetchAsync('Album/RandomAlbum');
             }
             else {
-                await this.fetchRandomAsync('Track/RandomTrack');
+                await this.fetchAsync('Track/RandomTrack');
             }
         }
         else {
@@ -62,16 +62,6 @@ export class AlbumComponent implements OnInit {
         }
         
         return true;
-    }
-
-    private async fetchRandomAsync(url: string): Promise<void> {
-        this.dataLoaded = false;
-
-        this.albumData = this.mapReceivedDataToAlbum(
-            await this.dataService.getAsync<Album>(url)
-        );
-
-        this.dataLoaded = true;
     }
 
     private async fetchAsync(url: string): Promise<void> {
@@ -101,10 +91,10 @@ export class AlbumComponent implements OnInit {
         };
 
         if (receivedGenres.length >= 3) {
-            this.genres = receivedData.genres.splice(0, 2);
+            this.genres = receivedGenres.splice(0, 2);
         }
         else {
-            this.genres = receivedData.genres;
+            this.genres = receivedGenres;
         }
 
         this.albumCoverArtUrl = album.coverArtUrl;
@@ -119,6 +109,7 @@ export class AlbumComponent implements OnInit {
             artists.push(new Artist (
                 artist.id,
                 artist.name,
+                artist.followers,
                 artist.externalUrls.spotify,
                 []
             ));

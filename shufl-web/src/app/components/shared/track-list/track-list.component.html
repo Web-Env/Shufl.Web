@@ -1,9 +1,9 @@
 <div class="track-list">
-    <app-track-list-item 
-    *ngFor="let track of tracks; let last = last" 
+    <div app-track-list-item 
+    *ngFor="let track of tracks" 
     [trackNumber]="track.trackNumber"
     [trackName]="track.name"
     [trackArtists]="track.artists"
     [trackDuration]="track.duration"
-    [trackUrl]="track.url"></app-track-list-item>
+    [trackUrl]="track.url"></div>
 </div>

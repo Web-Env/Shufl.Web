@@ -1,6 +1,6 @@
 .track-list {
-    .last-child {
-        * {
+    :last-child {
+        ::ng-deep .track {
             border-bottom: none;
         }
     }

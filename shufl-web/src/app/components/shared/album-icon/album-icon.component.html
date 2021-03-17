@@ -1,0 +1,12 @@
+<div class="album-icon-container">
+    <div class="album-art">
+        <img src="{{ album.coverArtUrl }}">
+    </div>
+    <div class="album-info">
+        <a class="album-link" href="album/{{ album.id }}">{{ album.name }}</a>
+        <div class="artist-links">
+            <div app-inline-artists-ticker class="artist-links-container" [artists]="album.artists"></div>
+        </div>
+        <p class="album-release-date">{{ album.releaseDate | date: 'yyyy' }}</p>
+    </div>
+</div>

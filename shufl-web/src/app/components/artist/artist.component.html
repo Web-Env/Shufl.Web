@@ -1,1 +1,20 @@
-<p>artist works!</p>
+<div class="card-container">
+    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+        <div class="artist-info-container">
+            <div class="artist-image">
+                <img src="{{ artistImageUrl }}" alt="{{ artistData.name }}">
+            </div>
+            <h2>{{ artistData.name }}</h2>
+            <div class="genres-container">
+                <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
+            </div>
+            <p>{{ artistData.followers | number }} followers</p>
+            <a class="button" href="{{ artistData.url }}" target="new"><img src="assets/img/spotify-logo.png"><p>Open</p></a>
+        </div>
+        <div class="artist-album-list-container">
+            <div app-album-icon class="artist-album" *ngFor="let album of artistData.albums" [album]="album"></div>
+        </div>
+    </div>
+</div>
+
+<app-loading-icon [hidden]="dataLoaded"></app-loading-icon>

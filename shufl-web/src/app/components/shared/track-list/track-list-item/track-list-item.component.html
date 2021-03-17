@@ -2,9 +2,7 @@
     <div class="track-number"><p>{{ trackNumber }}</p></div>
     <div class="track-name"><p>{{ trackName }}</p></div>
     <div class="artists-container">
-        <div class="artists-links-container">
-            <a *ngFor="let artist of trackArtists" class="artist-link" href="/artist/{{ artist.id }}">{{ artist.name }}</a>
-        </div>
+        <div app-inline-artists-ticker class="inline-artists-ticker" [artists]="trackArtists"></div>
     </div>
     <div class="track-duration"><p>{{ trackDuration | date: 'mm:ss' }}</p></div>
     <a class="button" href="{{ trackUrl }}" target="new"><img src="assets/img/spotify-logo.png"><p>Open</p></a>
