@@ -20,6 +20,8 @@ import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [
@@ -42,7 +44,8 @@ import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/na
     imports: [
         AppRoutingModule,
         BrowserModule,
-        HttpClientModule
+        HttpClientModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [],
     bootstrap: [AppComponent]

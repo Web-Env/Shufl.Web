@@ -7,5 +7,31 @@
         background-color: transparent;
 
         display: block;
+
+        .app-icon {
+            width: 250px;
+            height: 250px;
+            
+            background-image: url("../../../assets/img/logos/app/logo.png");
+            background-size: cover;
+
+            margin: auto;
+            margin-bottom: 30px;
+
+            display: none;
+        }
+    }
+}
+
+@media (min-width: 768px)  {
+    .card-container {
+        height: 600px;
+
+        top: calc(50% - 410px);
+        .card {
+            .app-icon {
+                display: block;
+            }
+        }
     }
 }
