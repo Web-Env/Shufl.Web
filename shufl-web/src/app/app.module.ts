@@ -18,6 +18,8 @@ import { TrackListItemComponent } from './components/shared/track-list/track-lis
 
 import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
+import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
+import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { InlineArtistsTickerComponent } from './components/shared/inline-artists
     HomeComponent,
     IconButtonComponent,
     LoadingIconComponent,
+    NavBarComponent,
+    NavBarItemComponent,
     NotFoundComponent,
     TrackListComponent,
     TrackListItemComponent,

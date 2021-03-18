@@ -3,9 +3,9 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
 
-import { Album } from 'src/app/models/album.model';
-import { Artist } from 'src/app/models/artist.model';
-import { Track } from 'src/app/models/track.model';
+import { Album } from 'src/app/models/download-models/album.model';
+import { Artist } from 'src/app/models/download-models/artist.model';
+import { Track } from 'src/app/models/download-models/track.model';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

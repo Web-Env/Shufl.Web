@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 
-import { Album } from 'src/app/models/album.model';
-import { Artist } from 'src/app/models/artist.model';
+import { Album } from 'src/app/models/download-models/album.model';
+import { Artist } from 'src/app/models/download-models/artist.model';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

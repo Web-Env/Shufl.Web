@@ -1,0 +1,50 @@
+@import "src/assets/scss/variables/dimensions";
+
+.app-stage {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    .stage {
+        width: 100%;
+        height: calc(100% - #{$nav-bar-height});
+
+        position: relative;
+    
+        overflow: auto;
+    }
+    
+    .nav-bar-container {
+        width: 100%;
+        height: $nav-bar-height;
+    }
+}
+
+@media (min-width: $nav-bar-tablet-breakpoint) {
+    .app-stage {
+        flex-direction: row-reverse;
+
+        .stage {
+            width: calc(100% - #{$nav-bar-width});
+            height: 100%;
+        }
+
+        .nav-bar-container {
+            width: $nav-bar-width;
+            height: 100%;
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .app-stage {
+        .stage {
+            width: calc(100% - #{$nav-bar-width-desktop});
+        }
+        .nav-bar-container {
+            width: $nav-bar-width-desktop;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Track } from 'src/app/models/track.model';
+import { Track } from 'src/app/models/download-models/track.model';
 
 @Component({
     selector: 'app-track-list',

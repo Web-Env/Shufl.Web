@@ -1,0 +1,21 @@
+@import "src/assets/scss/variables/colours";
+@import "src/assets/scss/variables/dimensions";
+
+.nav-bar {
+    width: 100%;
+    height: 100%;
+
+    background-color: $tertiary-background-colour;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+@media (min-width: $nav-bar-tablet-breakpoint) {
+    .nav-bar {
+        flex-direction: column;
+        justify-content: unset;
+    }
+}
