@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { Album } from 'src/app/models/download-models/album.model';
 
 @Component({
@@ -9,7 +10,12 @@ import { Album } from 'src/app/models/download-models/album.model';
 export class AlbumIconComponent implements OnInit {
     @Input() album!: Album
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit(): void { }
+
+    public albumIconClicked(): void {
+        this.router.navigate([`album/${this.album.id}`]);
+    } 
+
 }

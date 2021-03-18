@@ -6,7 +6,7 @@
             </div>
             <h2>{{ albumData.name }}</h2>
             <div class="artists-container">
-                <a *ngFor="let artist of albumData.artists" class="artist-link" href="/artist/{{ artist.id }}"
+                <a *ngFor="let artist of albumData.artists" class="artist-link" [routerLink]="['/artist', artist.id]"
                     [ngClass]="{'disabled': artist.id == VARIOUS_ARTISTS_CONST}">{{ artist.name }}</a>
             </div>
             <div class="genres-container">

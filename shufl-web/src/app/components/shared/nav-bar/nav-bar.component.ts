@@ -41,20 +41,32 @@ export class NavBarComponent implements OnInit {
     }
 
     private processRouteChange(url: string) {
-        if (url === '/' && !this.homeActive) {
-            this.resetActiveItems();
+        if (url === '/') {
+            if (!this.homeActive) {
+                this.resetActiveItems();
+            }
+
             this.homeActive = true;
         }
-        else if (this.isSearchUrl(url) && !this.searchActive) {
-            this.resetActiveItems();
+        else if (this.isSearchUrl(url)) {
+            if (!this.searchActive) {
+                this.resetActiveItems();
+            }
+
             this.searchActive = true;
         }
         else if (url === '/groups' && !this.groupsActive) {
-            this.resetActiveItems();
+            if (!this.groupsActive) {
+                this.resetActiveItems();
+            }
+
             this.groupsActive = true;
         }
-        else if (url === '/user' && !this.userActive) {
-            this.resetActiveItems();
+        else if (url === '/user') {
+            if (!this.userActive) {
+                this.resetActiveItems();
+            }
+
             this.userActive = true;
         }
         else {
@@ -66,7 +78,7 @@ export class NavBarComponent implements OnInit {
         var extractedUrl = url.match(/(\/[\w+-]+)/g);
         if (extractedUrl !== null && extractedUrl.length !== 0) {
             url = extractedUrl[0];
-
+            console.log(url)
             if (url === '/search' || url === '/artist' || url === '/album' || url === '/track') {
                 return true;
             }

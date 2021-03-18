@@ -17,6 +17,8 @@ $nav-bar-icon-margin-top: 8px;
             svg {
                 fill: $primary-foreground-colour;
 
+                overflow: visible;
+
                 path {
                     stroke: $primary-foreground-colour;
                     stroke-width: 30;
@@ -63,6 +65,8 @@ $nav-bar-icon-margin-top: 8px;
         margin-top: 0;
         padding: 5px 0;
 
+        position: relative;
+
         display: flex;
         align-items: center;
 
@@ -73,11 +77,18 @@ $nav-bar-icon-margin-top: 8px;
 
                 background-color: $secondary-foreground-colour;
 
+                position: absolute;
+
                 content: "";
             }
 
             .icon {
-                margin-left: 15px;
+                margin-left: 17px;
+                margin-right: 18px;
+
+                svg {
+                    transform: scale(0.95);
+                }
             }
 
             .title {

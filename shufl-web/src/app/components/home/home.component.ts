@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +9,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router,
+                private titleService: Title) { }
 
     ngOnInit(): void {
+        this.titleService.setTitle('Shufl');
     }
 
     public buttonClick(buttonPath: string) {
