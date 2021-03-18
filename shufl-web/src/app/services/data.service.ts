@@ -4,7 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { environment } from 'src/environments/environment';
 
 const httpOptions = {
-    headers: new HttpHeaders({ 
+    headers: new HttpHeaders({
         'Content-Type': 'application/json',
     })
 };
@@ -14,7 +14,7 @@ const httpOptions = {
 })
 export class DataService {
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) { }
 
     public getAsync<T>(endpoint: string, retry: boolean = false): Promise<T> {
         return new Promise((resolve, reject) => {
