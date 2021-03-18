@@ -1,13 +1,13 @@
-.card {
-    background-color: transparent;
-
-    left: 5%;
+.card-container {
     top: calc(50% - 100px);
-    right: 5%;
+    
+    .card {
+        background-color: transparent;
 
-    h2 {
-        font-size: 2em;
+        h2 {
+            font-size: 2em;
 
-        text-align: center;
+            text-align: center;
+        }
     }
 }

@@ -9,7 +9,9 @@
                 <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
             </div>
             <p>{{ artistData.followers | number }} followers</p>
-            <a class="button" href="{{ artistData.url }}" target="new"><img src="assets/img/spotify-logo.png"><p>Open</p></a>
+            <a class="button" href="{{ artistData.url }}" target="new"><img src="assets/img/spotify-logo.png">
+                <p>Open</p>
+            </a>
         </div>
         <div class="artist-album-list-container">
             <div app-album-icon class="artist-album" *ngFor="let album of artistData.albums" [album]="album"></div>

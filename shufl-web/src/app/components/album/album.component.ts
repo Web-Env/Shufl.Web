@@ -65,14 +65,14 @@ export class AlbumComponent implements OnInit {
                 return false;
             }
         }
-        
+
         return true;
     }
 
     private async fetchAsync(url: string): Promise<void> {
         this.dataLoaded = false;
         this.titleService.setTitle('Shufl');
-        
+
         this.albumData = this.mapReceivedDataToAlbum(
             await this.dataService.getAsync<Album>(url)
         );
@@ -113,7 +113,7 @@ export class AlbumComponent implements OnInit {
         var artists = new Array<Artist>();
 
         receivedArtists.forEach((artist: any) => {
-            artists.push(new Artist (
+            artists.push(new Artist(
                 artist.id,
                 artist.name,
                 artist.followers,

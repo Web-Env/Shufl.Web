@@ -22,29 +22,29 @@ import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
 
 @NgModule({
-  declarations: [
-    AlbumComponent,
-    AlbumIconComponent,
-    AppComponent,
-    ArtistComponent,
-    ButtonComponent,
-    HomeComponent,
-    IconButtonComponent,
-    LoadingIconComponent,
-    NavBarComponent,
-    NavBarItemComponent,
-    NotFoundComponent,
-    TrackListComponent,
-    TrackListItemComponent,
-    genreFormatter,
-    InlineArtistsTickerComponent
-  ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AlbumComponent,
+        AlbumIconComponent,
+        AppComponent,
+        ArtistComponent,
+        ButtonComponent,
+        HomeComponent,
+        IconButtonComponent,
+        LoadingIconComponent,
+        NavBarComponent,
+        NavBarItemComponent,
+        NotFoundComponent,
+        TrackListComponent,
+        TrackListItemComponent,
+        genreFormatter,
+        InlineArtistsTickerComponent
+    ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        HttpClientModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,13 +6,16 @@
             </div>
             <h2>{{ albumData.name }}</h2>
             <div class="artists-container">
-                <a *ngFor="let artist of albumData.artists" class="artist-link" href="/artist/{{ artist.id }}" [ngClass]="{'disabled': artist.id == VARIOUS_ARTISTS_CONST}">{{ artist.name }}</a>
+                <a *ngFor="let artist of albumData.artists" class="artist-link" href="/artist/{{ artist.id }}"
+                    [ngClass]="{'disabled': artist.id == VARIOUS_ARTISTS_CONST}">{{ artist.name }}</a>
             </div>
             <div class="genres-container">
                 <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
             </div>
             <p>{{ albumData.releaseDate | date: 'MMMM yyyy' }}</p>
-            <a class="button" href="{{ albumData.url }}" target="new"><img src="assets/img/spotify-logo.png"><p>Open</p></a>
+            <a class="button" href="{{ albumData.url }}" target="new"><img src="assets/img/spotify-logo.png">
+                <p>Open</p>
+            </a>
         </div>
         <div class="track-list-container">
             <app-track-list [tracks]="albumData.tracks"></app-track-list>

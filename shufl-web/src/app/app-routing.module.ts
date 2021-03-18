@@ -7,19 +7,19 @@ import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent, pathMatch: 'full'},
-    {path: 'album', component: AlbumComponent},
-    {path: 'album/:albumId', component: AlbumComponent},
-    {path: 'artist', component: ArtistComponent},
-    {path: 'artist/:artistId', component: ArtistComponent},
-    {path: 'track', component: AlbumComponent},
-    {path: 'track/:trackId', component: AlbumComponent},
-    {path: '404', component: NotFoundComponent},
-    {path: '**', redirectTo: '404'}
+    { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'album', component: AlbumComponent },
+    { path: 'album/:albumId', component: AlbumComponent },
+    { path: 'artist', component: ArtistComponent },
+    { path: 'artist/:artistId', component: ArtistComponent },
+    { path: 'track', component: AlbumComponent },
+    { path: 'track/:trackId', component: AlbumComponent },
+    { path: '404', component: NotFoundComponent },
+    { path: '**', redirectTo: '404' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

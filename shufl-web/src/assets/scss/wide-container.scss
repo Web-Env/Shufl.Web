@@ -25,7 +25,12 @@
 
 @media (min-width: 1920px) {
     .card-container {
+        top: 2%;
         left: 25%;
         right: 25%;
+
+        .card {
+            margin-bottom: 2%;
+        }
     }
 }
