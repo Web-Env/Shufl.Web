@@ -1,0 +1,31 @@
+.card-container {
+    top: 5%;
+}
+
+@media (min-width: 765px) and (max-width: 1024px) {
+    .card-container {
+        left: 15%;
+        right: 15%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .card-container {
+        left: 17.5%;
+        right: 17.5%;
+    }
+}
+
+@media (min-width: 1365px) and (max-width: 1920px) {
+    .card-container {
+        left: 20%;
+        right: 20%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .card-container {
+        left: 25%;
+        right: 25%;
+    }
+}

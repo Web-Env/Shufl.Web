@@ -11,7 +11,10 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
     selector: 'app-album',
     templateUrl: './album.component.html',
-    styleUrls: ['./album.component.scss']
+    styleUrls: [
+        './album.component.scss',
+        '../../../assets/scss/wide-container.scss'
+    ]
 })
 export class AlbumComponent implements OnInit {
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;

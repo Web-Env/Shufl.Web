@@ -9,7 +9,10 @@ import { DataService } from 'src/app/services/data.service';
 @Component({
     selector: 'app-artist',
     templateUrl: './artist.component.html',
-    styleUrls: ['./artist.component.scss']
+    styleUrls: [
+        './artist.component.scss',
+        '../../../assets/scss/wide-container.scss'
+    ]
 })
 export class ArtistComponent implements OnInit {
     genres: string[] = [];
