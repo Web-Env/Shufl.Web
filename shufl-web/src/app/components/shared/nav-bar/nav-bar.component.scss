@@ -11,11 +11,24 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-around;
+
+    .app-icon {
+        display: none;
+    }
 }
 
 @media (min-width: $nav-bar-tablet-breakpoint) {
     .nav-bar {
         flex-direction: column;
         justify-content: unset;
+
+        .app-icon {
+            width: 60%;
+
+            margin: 25px auto;
+            padding-top: 60%;
+
+            display: block;
+        }
     }
 }

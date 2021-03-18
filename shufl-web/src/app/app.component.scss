@@ -1,3 +1,4 @@
+@import "src/assets/scss/variables/colours";
 @import "src/assets/scss/variables/dimensions";
 
 .app-stage {
@@ -10,6 +11,12 @@
     .stage {
         width: 100%;
         height: calc(100% - #{$nav-bar-height});
+
+        background-image: radial-gradient(
+            circle,
+            $background-gradient-primary-colour 0%,
+            $background-gradient-secondary-colour 75%
+        );
 
         position: relative;
 

@@ -7,17 +7,17 @@ html {
 
 body {
     height: 100%;
-
-    background-image: radial-gradient(
-        circle,
-        $background-gradient-primary-colour 0%,
-        $background-gradient-secondary-colour 75%
-    );
+    
     color: $primary-foreground-colour;
 
     margin: 0;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    .app-icon {
+        background-image: url("assets/img/logos/app/logo.png");
+        background-size: cover;
+    }
 
     .button {
         color: $primary-foreground-colour;
