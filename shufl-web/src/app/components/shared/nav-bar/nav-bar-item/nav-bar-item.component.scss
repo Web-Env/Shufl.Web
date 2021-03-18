@@ -51,8 +51,8 @@ $nav-bar-icon-margin-top: 8px;
     .title {
         color: $tertiary-foreground-colour;
 
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -61,7 +61,7 @@ $nav-bar-icon-margin-top: 8px;
         height: 40px;
 
         margin-top: 0;
-        padding: 5px 0px;
+        padding: 5px 0;
 
         display: flex;
         align-items: center;
