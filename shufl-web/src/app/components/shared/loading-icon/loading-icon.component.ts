@@ -17,7 +17,7 @@ export class LoadingIconComponent implements OnInit {
 
     private setupLoadingServiceListener(): void {
         this.loadingService.stateEvent.subscribe((state) => {
-            this.visible = state
+            this.visible = state;
         });
     }
 
