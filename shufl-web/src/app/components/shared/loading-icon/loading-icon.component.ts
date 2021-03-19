@@ -7,7 +7,7 @@ import { LoadingService } from "src/app/services/loading.service";
     styleUrls: ['./loading-icon.component.scss']
 })
 export class LoadingIconComponent implements OnInit {
-    visible: boolean = true;
+    visible: boolean = false;
 
     constructor(private loadingService: LoadingService) { }
 

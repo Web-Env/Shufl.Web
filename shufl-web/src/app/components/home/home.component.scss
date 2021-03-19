@@ -20,11 +20,12 @@
     }
 }
 
-@media (min-width: 768px)  {
+@media (min-width: 768px) and (min-height: 769px) {
     .card-container {
         height: 600px;
 
         top: calc(50% - 410px);
+
         .card {
             .app-icon {
                 display: block;
