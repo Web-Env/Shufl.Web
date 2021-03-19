@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -11,16 +12,18 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { ButtonComponent } from './components/shared/button/button.component';
 import { HomeComponent } from './components/home/home.component';
 import { IconButtonComponent } from './components/shared/icon-button/icon-button.component';
+import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
 import { LoadingIconComponent } from './components/shared/loading-icon/loading-icon.component';
+import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
+import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
 
 import { genreFormatter } from './pipes/genreFormatter.pipe';
-import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
-import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
-import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+
+import { LoadingService } from "./services/loading.service";
+
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -32,14 +35,15 @@ import { environment } from '../environments/environment';
         ButtonComponent,
         HomeComponent,
         IconButtonComponent,
+        InlineArtistsTickerComponent,
         LoadingIconComponent,
         NavBarComponent,
         NavBarItemComponent,
         NotFoundComponent,
         TrackListComponent,
         TrackListItemComponent,
-        genreFormatter,
-        InlineArtistsTickerComponent
+
+        genreFormatter
     ],
     imports: [
         AppRoutingModule,
@@ -47,7 +51,9 @@ import { environment } from '../environments/environment';
         HttpClientModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
-    providers: [],
+    providers: [
+        LoadingService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
