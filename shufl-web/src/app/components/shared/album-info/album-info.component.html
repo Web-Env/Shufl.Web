@@ -10,7 +10,7 @@
     <div class="genres-container">
         <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
     </div>
-    <p>{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
+    <p class="release-date">{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
     <a class="button" href="{{ album.url }}" target="new"><img src="assets/img/logos/spotify-logo.png">
         <p>Open</p>
     </a>
