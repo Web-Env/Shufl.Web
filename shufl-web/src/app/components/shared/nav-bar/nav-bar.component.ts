@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
     searchItem: NavBarItem = new NavBarItem('search', 'Search', '');
     searchActive: boolean = false;
 
-    groupsItem: NavBarItem = new NavBarItem('groups', 'Groups', '');
+    groupsItem: NavBarItem = new NavBarItem('groups', 'Groups', 'group/woebtouh');
     groupsActive: boolean = false;
 
     userItem: NavBarItem = new NavBarItem('user', 'Account', '');
@@ -55,7 +55,7 @@ export class NavBarComponent implements OnInit {
 
             this.searchActive = true;
         }
-        else if (url === '/groups' && !this.groupsActive) {
+        else if (this.isGroupsUrl(url)) {
             if (!this.groupsActive) {
                 this.resetActiveItems();
             }
@@ -79,6 +79,18 @@ export class NavBarComponent implements OnInit {
         if (extractedUrl !== null && extractedUrl.length !== 0) {
             url = extractedUrl[0];
             if (url === '/search' || url === '/artist' || url === '/album' || url === '/track') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private isGroupsUrl(url: string): boolean {
+        var extractedUrl = url.match(/(\/[\w+-]+)/g);
+        if (extractedUrl !== null && extractedUrl.length !== 0) {
+            url = extractedUrl[0];
+            if (url === '/groups' || url === '/group') {
                 return true;
             }
         }

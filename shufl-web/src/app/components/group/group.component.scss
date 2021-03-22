@@ -1,0 +1,15 @@
+@import "src/assets/scss/variables/colours";
+
+.card-container {
+    .card {
+        .group-info-container {
+            p {
+                color: $tertiary-foreground-colour;
+            }
+
+            a {
+                color: $primary-foreground-colour;
+            }
+        }
+    }
+}

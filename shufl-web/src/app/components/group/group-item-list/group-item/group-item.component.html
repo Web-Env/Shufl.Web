@@ -1,0 +1,12 @@
+<div class="group-item-container" (click)="groupItemClicked()">
+    <p class="group-item-added-date">{{ groupItemData.createdOn | date: 'EEEE dd MMMM yyyy'}}</p>
+    <div class="group-item-data-container">
+        <div class="album-container">
+            <div app-album-icon [album]="groupItemData.album" [enabled]="false"></div>
+        </div>
+        <div class="rating-container">
+            <app-group-item-rating [rating]="groupItemData.rating"></app-group-item-rating>
+        </div>
+    </div>
+    <div class="open-icon"></div>
+</div>

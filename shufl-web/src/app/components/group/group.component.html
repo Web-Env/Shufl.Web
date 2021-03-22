@@ -1,0 +1,12 @@
+<div class="card-container">
+    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+        <div class="group-info-container">
+            <h1>{{ groupData.groupName }}</h1>
+            <p>Created by <a [routerLink]="['/user', groupData.createdBy.username]">{{ groupData.createdBy.name }}</a></p>
+            <p>{{ groupData.members }} members</p>
+        </div>
+        <div class="group-item-list-container">
+            <app-group-item-list [groupId]="groupData.id"></app-group-item-list>
+        </div>
+    </div>
+</div>

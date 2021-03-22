@@ -1,0 +1,11 @@
+@import "src/assets/scss/variables/colours";
+
+.group-item-info-container {
+    border-bottom: 2px solid $tertiary-foreground-colour;
+
+    .overall-rating-container {
+        width: 60%;
+
+        margin: auto;
+    }
+}

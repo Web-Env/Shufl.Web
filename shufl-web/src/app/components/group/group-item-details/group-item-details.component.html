@@ -1,0 +1,15 @@
+<div class="card-container">
+    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+        <div class="group-item-info-container">
+            <div class="album-container">
+                <app-album-info [album]="album" [genres]="genres" [linkDisabled]="false"></app-album-info>
+            </div>
+            <div class="overall-rating-container">
+                <app-group-item-rating [rating]="overallRating"></app-group-item-rating>
+            </div>
+        </div>
+        <div class="group-ratings-container">
+            <app-group-item-user-rating-list></app-group-item-user-rating-list>
+        </div>
+    </div>
+</div>

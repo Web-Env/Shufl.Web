@@ -35,7 +35,9 @@ export class ArtistComponent implements OnInit {
     ngOnInit(): void {
         var routeParams = this.route.snapshot.params;
 
-        if (routeParams && Object.keys(routeParams).length === 0 && routeParams.constructor === Object) {
+        if (routeParams && Object.keys(routeParams).length === 0 && 
+            routeParams.constructor === Object && 
+            routeParams.artistId !== null) {
             this.fetchAsync('Artist/RandomArtist');
         }
         else {

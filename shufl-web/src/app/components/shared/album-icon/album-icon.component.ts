@@ -9,13 +9,16 @@ import { Album } from 'src/app/models/download-models/album.model';
 })
 export class AlbumIconComponent implements OnInit {
     @Input() album!: Album
+    @Input() enabled: boolean = true;
 
     constructor(private router: Router) { }
 
     ngOnInit(): void { }
 
     public albumIconClicked(): void {
-        this.router.navigate([`album/${this.album.id}`]);
+        if (this.enabled) {
+            this.router.navigate([`album/${this.album.id}`]);
+        }
     } 
 
 }

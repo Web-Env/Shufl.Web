@@ -1,0 +1,57 @@
+@import "src/assets/scss/variables/colours";
+
+$group-item-container-padding: 0;
+
+$date-header-padding-left: 15px;
+$date-header-padding-top: 10px;
+$date-header-height: calc(18px + #{$date-header-padding-top});
+
+$group-item-data-container-height: 185px;
+
+$group-item-container-height: calc(
+    #{$date-header-height} +
+    #{$group-item-data-container-height});
+
+
+.group-item-container {
+    height: $group-item-container-height;
+
+    padding: $group-item-container-padding;
+    
+    border-bottom: 2px solid $tertiary-foreground-colour;
+
+    display: flex;
+    flex-direction: column;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-background-colour-hover;
+    }
+
+    .group-item-added-date {
+        height: $date-header-height;
+
+        color: $tertiary-foreground-colour;
+        
+        padding: $date-header-padding-top 0 0 $date-header-padding-left;
+
+        font-size: 1.2em;
+    }
+
+    .group-item-data-container {
+        display: flex;
+
+        .album-container,
+        .rating-container {
+            width: 50%;
+        }
+    }
+}

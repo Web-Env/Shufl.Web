@@ -1,0 +1,26 @@
+@import "src/assets/scss/variables/colours";
+
+.album-info-container {
+    .album-name {
+        width: fit-content;
+
+        color: $primary-foreground-colour;
+
+        margin: 20px auto;
+
+        display: block;
+
+        font-size: 1.5em;
+        text-align: center;
+
+        &:not(.disabled) {
+            cursor: pointer;
+        }
+
+        &.disabled {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
