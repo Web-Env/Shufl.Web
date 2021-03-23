@@ -7,9 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AlbumComponent } from './components/album/album.component';
 import { AlbumIconComponent } from './components/shared/album-icon/album-icon.component';
+import { AlbumInfoComponent } from './components/shared/album-info/album-info.component';
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { ButtonComponent } from './components/shared/button/button.component';
+import { GroupComponent } from './components/group/group.component';
+import { GroupItemComponent } from './components/group/group-item-list/group-item/group-item.component';
+import { GroupItemDetailsComponent } from './components/group/group-item-details/group-item-details.component';
+import { GroupItemListComponent } from './components/group/group-item-list/group-item-list.component';
+import { GroupItemRatingComponent } from './components/shared/group-item-rating/group-item-rating.component';
+import { GroupItemUserRatingComponent } from './components/group/group-item-details/group-item-user-rating-list/group-item-user-rating/group-item-user-rating.component';
+import { GroupItemUserRatingListComponent } from './components/group/group-item-details/group-item-user-rating-list/group-item-user-rating-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { IconButtonComponent } from './components/shared/icon-button/icon-button.component';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
@@ -26,14 +34,24 @@ import { LoadingService } from "./services/loading.service";
 
 import { environment } from '../environments/environment';
 import { RegisterComponent } from './components/shared/user/register/register.component';
+import { GroupsListComponent } from './components/groups-list/groups-list.component';
+import { GroupsListItemComponent } from './components/groups-list/groups-list-item/groups-list-item.component';
 
 @NgModule({
     declarations: [
         AlbumComponent,
         AlbumIconComponent,
+        AlbumInfoComponent,
         AppComponent,
         ArtistComponent,
         ButtonComponent,
+        GroupComponent,
+        GroupItemComponent,
+        GroupItemDetailsComponent,
+        GroupItemListComponent,
+        GroupItemRatingComponent,
+        GroupItemUserRatingComponent,
+        GroupItemUserRatingListComponent,
         HomeComponent,
         IconButtonComponent,
         InlineArtistsTickerComponent,
@@ -47,6 +65,9 @@ import { RegisterComponent } from './components/shared/user/register/register.co
         genreFormatter,
 
         RegisterComponent
+        GroupsListComponent,
+
+        GroupsListItemComponent
     ],
     imports: [
         AppRoutingModule,

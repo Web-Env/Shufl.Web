@@ -1,0 +1,9 @@
+.group-item-user-rating-list-container {
+    display: flex;
+    flex-direction: row;
+
+    .ratings-left,
+    .ratings-right {
+        width: 50%;
+    }
+}

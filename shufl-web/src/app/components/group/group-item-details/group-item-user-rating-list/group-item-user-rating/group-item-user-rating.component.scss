@@ -1,0 +1,21 @@
+@import "src/assets/scss/variables/colours";
+
+.group-item-user-rating-container {
+    background-color: $tertiary-background-colour;
+
+    padding: 15px;
+
+    border-radius: 5px;
+
+    &.left {
+        margin: 15px 7.5px 0 15px;
+    }
+
+    &.right {
+        margin: 15px 15px 0 7.5px;
+    }
+
+    .rating-comment {
+        margin-bottom: 5px;
+    }
+}

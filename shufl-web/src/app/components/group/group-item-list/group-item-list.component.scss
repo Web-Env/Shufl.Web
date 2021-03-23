@@ -1,0 +1,7 @@
+.group-item-list {
+    :last-child {
+        ::ng-deep .group-item-container {
+            border-bottom: none;
+        }
+    }
+}

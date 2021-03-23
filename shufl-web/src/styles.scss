@@ -14,9 +14,17 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
+    p {
+        margin: 0;
+    }
+
     .app-icon {
         background-image: url("assets/img/logos/app/logo.png");
         background-size: cover;
+
+        &.white {
+            background-image: url("assets/img/logos/app/logo-white.png");
+        }
     }
 
     .button {
@@ -56,6 +64,16 @@ body {
             background-color: $primary-background-colour;
 
             border-radius: $primary-border-radius;
+
+            a {
+                color: $tertiary-foreground-colour;
+
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
 
             .album-info-container,
             .artist-info-container {

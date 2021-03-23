@@ -13,7 +13,6 @@ import { LoadingService } from "src/app/services/loading.service";
     selector: 'app-album',
     templateUrl: './album.component.html',
     styleUrls: [
-        './album.component.scss',
         '../../../assets/scss/wide-container.scss'
     ]
 })

@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
+import { GroupComponent } from "./components/group/group.component";
+import { GroupItemDetailsComponent } from "./components/group/group-item-details/group-item-details.component";
+import { GroupsListComponent } from "./components/groups-list/groups-list.component";
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { RegisterComponent } from "./components/shared/user/register/register.component";
@@ -13,6 +16,9 @@ const routes: Routes = [
     { path: 'album/:albumId', component: AlbumComponent },
     { path: 'artist', component: ArtistComponent },
     { path: 'artist/:artistId', component: ArtistComponent },
+    { path: 'group/:groupId', component: GroupComponent},
+    { path: 'group/:groupId/:groupItemId', component: GroupItemDetailsComponent},
+    { path: 'groups', component: GroupsListComponent},
     { path: 'track', component: AlbumComponent },
     { path: 'track/:trackId', component: AlbumComponent },
     { path: 'register', component: RegisterComponent },
