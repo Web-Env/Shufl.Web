@@ -8,16 +8,13 @@ $date-header-height: calc(18px + #{$date-header-padding-top});
 
 $group-item-data-container-height: 185px;
 
-$group-item-container-height: calc(
-    #{$date-header-height} +
-    #{$group-item-data-container-height});
-
+$group-item-container-height: calc(#{$date-header-height} + #{$group-item-data-container-height});
 
 .group-item-container {
     height: $group-item-container-height;
 
     padding: $group-item-container-padding;
-    
+
     border-bottom: 2px solid $tertiary-foreground-colour;
 
     display: flex;
@@ -40,7 +37,7 @@ $group-item-container-height: calc(
         height: $date-header-height;
 
         color: $tertiary-foreground-colour;
-        
+
         padding: $date-header-padding-top 0 0 $date-header-padding-left;
 
         font-size: 1.2em;

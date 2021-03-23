@@ -90,7 +90,7 @@ export class GroupItemUserRatingListComponent implements OnInit {
     }
 
     private splitRatings(ratings: Rating[]) {
-        for (var i=0; i < ratings.length; i+=2) {
+        for (let i=0; i < ratings.length; i+=2) {
             this.ratingsLeft.push(ratings[i]);
             ratings[i + 1] != null && this.ratingsRight.push(ratings[i + 1]);
         }
