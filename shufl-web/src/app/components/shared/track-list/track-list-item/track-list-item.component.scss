@@ -1,13 +1,14 @@
 @import "src/assets/scss/variables/colours";
+@import "src/assets/scss/variables/dimensions";
 
 .track {
-    height: 45px;
+    height: $list-item-height;
 
-    padding: 5px;
+    padding: $list-item-padding;
 
     display: flex;
 
-    border-bottom: 1px solid $tertiary-foreground-colour;
+    border-bottom: $list-item-border-bottom;
 
     cursor: pointer;
 

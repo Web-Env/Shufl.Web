@@ -1,0 +1,7 @@
+<div class="card-container">
+    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+        <div class="groups-list-container">
+            <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
+        </div>
+    </div>
+</div>

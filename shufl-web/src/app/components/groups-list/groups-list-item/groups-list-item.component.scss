@@ -1,0 +1,44 @@
+@import "src/assets/scss/variables/colours";
+@import "src/assets/scss/variables/dimensions";
+
+.groups-list-item-container {
+    height: $list-item-height;
+
+    padding: $list-item-padding;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: $list-item-border-bottom;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-background-colour-hover;
+    }
+
+    .group-link-container {
+        width: 60%;
+
+        .group-link {
+            width: fit-content;
+            height: fit-content;
+    
+            color: $primary-foreground-colour;
+    
+            display: block;
+    
+            font-size: 1.25em;
+        }
+    }
+
+    .user-link-container {
+        width: 20%;
+    }
+
+    .members-count {
+        width: 20%;
+
+        color: $tertiary-foreground-colour;
+    }
+}

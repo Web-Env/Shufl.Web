@@ -1,0 +1,9 @@
+<div class="groups-list-item-container" (click)="groupClicked()">
+    <div class="group-link-container">
+        <a class="group-link" [routerLink]="['/group', group.id]">{{ group.name }}</a>
+    </div>
+    <div class="user-link-container">
+        <a class="user-link" [routerLink]="['/user', group.createdBy.username]">{{ group.createdBy.name }}</a>
+    </div>
+    <p class="members-count">{{ group.members }} Members</p>
+</div>

@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
     searchItem: NavBarItem = new NavBarItem('search', 'Search', '');
     searchActive: boolean = false;
 
-    groupsItem: NavBarItem = new NavBarItem('groups', 'Groups', 'group/woebtouh');
+    groupsItem: NavBarItem = new NavBarItem('groups', 'Groups', 'groups');
     groupsActive: boolean = false;
 
     userItem: NavBarItem = new NavBarItem('user', 'Account', '');

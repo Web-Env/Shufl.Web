@@ -21,6 +21,10 @@ body {
     .app-icon {
         background-image: url("assets/img/logos/app/logo.png");
         background-size: cover;
+
+        &.white {
+            background-image: url("assets/img/logos/app/logo-white.png");
+        }
     }
 
     .button {

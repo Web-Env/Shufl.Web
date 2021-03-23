@@ -33,6 +33,8 @@ import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { LoadingService } from "./services/loading.service";
 
 import { environment } from '../environments/environment';
+import { GroupsListComponent } from './components/groups-list/groups-list.component';
+import { GroupsListItemComponent } from './components/groups-list/groups-list-item/groups-list-item.component';
 
 @NgModule({
     declarations: [
@@ -59,7 +61,11 @@ import { environment } from '../environments/environment';
         TrackListComponent,
         TrackListItemComponent,
 
-        genreFormatter
+        genreFormatter,
+
+        GroupsListComponent,
+
+        GroupsListItemComponent
     ],
     imports: [
         AppRoutingModule,
