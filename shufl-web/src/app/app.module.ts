@@ -25,6 +25,7 @@ import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { LoadingService } from "./services/loading.service";
 
 import { environment } from '../environments/environment';
+import { RegisterComponent } from './components/shared/user/register/register.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,9 @@ import { environment } from '../environments/environment';
         TrackListComponent,
         TrackListItemComponent,
 
-        genreFormatter
+        genreFormatter,
+
+        RegisterComponent
     ],
     imports: [
         AppRoutingModule,
