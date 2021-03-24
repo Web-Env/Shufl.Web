@@ -1,0 +1,19 @@
+.button {
+    width: 100%;
+
+    margin-bottom: 0;
+
+    &.loading {
+        .text {
+            display: none;
+        }
+    
+        .loading-icon {
+            width: 2em;
+            height: 2em;
+    
+            margin: auto;
+            padding: 2px;
+        }
+    }
+}

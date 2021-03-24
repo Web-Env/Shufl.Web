@@ -4,14 +4,18 @@ $background-gradient-secondary-colour: #8413e0;
 $primary-background-colour: #393e46;
 $primary-background-colour-hover: darken($primary-background-colour, 5%);
 
+$primary-foreground-colour: #d9d9da;
+
 $secondary-foreground-colour: #355c7d;
 $secondary-foreground-colour-hover: darken($secondary-foreground-colour, 10%);
 
 $tertiary-background-colour: #2c3035;
 $tertiary-background-colour-hover: darken($tertiary-background-colour, 5%);
 
-$primary-foreground-colour: #d9d9da;
-
 $tertiary-foreground-colour: #adadad;
+
+$primary-positive-colour: #357d3e;
+
+$primary-negative-colour: #a52e1d;
 
 $nav-bar-foreground-colour-active: #459deb;

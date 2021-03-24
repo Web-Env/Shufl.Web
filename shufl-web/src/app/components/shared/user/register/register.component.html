@@ -1,3 +1,80 @@
-<div class="register-card-container">
-    
+<div class="register-card">
+    <div class="register-form-container">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
+            <div class="form-group" [ngClass]="{'active': emailActive, 'populated': emailPopulated}">
+                <div class="input-container">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" #email="ngModel" name="email" required minlength="4" 
+                        (focus)="changeInputState(email, true)"
+                        [ngClass]="{'hasError': !email.valid && email.touched}"
+                        (blur)="changeInputState(email, false)" ngModel>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !email.valid && email.touched}">Email must be longer than four characters</small>
+            </div>
+
+            <div class="form-group" [ngClass]="{'active': firstNameActive, 'populated': firstNamePopulated}">
+                <div class="input-container">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" id="first-name" #firstName="ngModel" name="first-name" required
+                        [ngClass]="{'hasError': !firstName.valid && firstName.touched}"
+                        (focus)="changeInputState(firstName, true)"
+                        (blur)="changeInputState(firstName, false)" ngModel>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !firstName.valid && firstName.touched}">First Name cannot be empty</small>
+            </div>
+
+            <div class="form-group" [ngClass]="{'active': lastNameActive, 'populated': lastNamePopulated}">
+                <div class="input-container">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name" #lastName="ngModel" name="last-name" required
+                        [ngClass]="{'hasError': !lastName.valid && lastName.touched}"
+                        (focus)="changeInputState(lastName, true)"
+                        (blur)="changeInputState(lastName, false)" ngModel>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !lastName.valid && lastName.touched}">Last Name cannot be empty</small>
+            </div>
+
+            <div class="form-group" [ngClass]="{'active': usernameActive, 'populated': usernamePopulated}">
+                <div class="input-container">
+                    <label for="username">Username</label>
+                    <div class="status-input">
+                        <input type="text" class="form-control" id="username" #username="ngModel" name="username" autocomplete="off" required
+                            [ngClass]="{'hasError': (!usernameUnique && username.touched) || (!username.valid && username.touched)}"
+                            (focus)="changeInputState(username, true)"
+                            (blur)="changeInputState(username, false)"
+                            (ngModelChange)="usernameChanged(username.value)" ngModel>
+                        <div class="status-container">
+                            <app-status-checker [isHighContrast]="true"></app-status-checker>
+                        </div>
+                    </div>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !username.valid && username.touched}">Username cannot be empty</small>
+            </div>
+
+            <div class="form-group" [ngClass]="{'active': passwordActive, 'populated': passwordPopulated}">
+                <div class="input-container">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" id="password" #password="ngModel" name="password" type="password" required minlength="8"
+                        [ngClass]="{'hasError': !password.valid && password.touched}"
+                        (focus)="changeInputState(password, true)"
+                        (blur)="changeInputState(password, false)" ngModel>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !password.valid && password.touched}">Password must be at least 8 characters</small>
+            </div>
+
+            <div class="form-group" [ngClass]="{'active': confirmPasswordActive, 'populated': confirmPasswordPopulated}">
+                <div class="input-container">
+                    <label for="last-name">Confirm Password</label>
+                    <input type="text" class="form-control" id="confirm-password" #confirmPassword="ngModel" name="confirm-password" type="password" required
+                        [ngClass]="{'hasError': !passwordsMatch && confirmPassword.touched}"
+                        (focus)="changeInputState(confirmPassword, true)"
+                        (blur)="changeInputState(confirmPassword, false)" ngModel>
+                </div>
+                <small class="warning-label" [ngClass]="{'visible': !passwordsMatch && email.touched}">Passwords Must Match</small>
+            </div>
+
+            <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading"></app-loading-button>
+        </form>
+        <p class="form-error">{{ errorMessage }}</p>
+    </div>
 </div>

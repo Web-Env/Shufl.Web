@@ -1,0 +1,5 @@
+<div class="status-checker-container">
+    <div class="status-icon loading-icon" [ngClass]="{'primary-foreground': isHighContrast, 'visible': isLoading}"></div>
+    <div class="status-icon check-icon" [ngClass]="{'visible': isPositive}"></div>
+    <div class="status-icon x-icon" [ngClass]="{'visible': isNegative}"></div>
+</div>

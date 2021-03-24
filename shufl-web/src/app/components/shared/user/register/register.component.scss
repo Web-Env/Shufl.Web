@@ -1,0 +1,31 @@
+@import "src/assets/scss/variables/colours";
+
+.register-card {
+    background-color: $tertiary-background-colour;
+
+    padding: 10px 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    overflow-y: auto;
+
+    z-index: 1;
+
+    .register-form-container {
+        width: 90%;
+        height: fit-content;
+
+        margin: auto;
+        padding: 10px 0;
+
+        .form-title {
+            color: $secondary-foreground-colour;
+
+            text-align: center;
+        }
+    }
+}

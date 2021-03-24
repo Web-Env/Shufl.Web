@@ -1,0 +1,21 @@
+@import "src/assets/scss/variables/dimensions";
+
+$status-icon-padding: 10px;
+
+.status-checker-container {
+    width: $status-checker-dimensions;
+    height: $status-checker-dimensions;
+
+    padding: $status-icon-padding;
+
+    .status-icon {
+        width: calc(100% - (#{$status-icon-padding} / 2));
+        height: calc(100% - (#{$status-icon-padding} / 2));
+
+        display: none;
+
+        &.visible {
+            display: block;
+        }
+    }
+}

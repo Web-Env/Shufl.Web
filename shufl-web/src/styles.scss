@@ -27,6 +27,28 @@ body {
         }
     }
 
+    .loading-icon,
+    .check-icon,
+    .x-icon {
+        background-size: contain;
+    }
+
+    .loading-icon {
+        background-image: url("assets/svg/loading.svg");
+
+        &.primary-foreground {
+            background-image: url("assets/svg/loading-primary-foreground.svg");
+        }
+    }
+
+    .check-icon {
+        background-image: url("assets/svg/check.svg");
+    }
+
+    .x-icon {
+        background-image: url("assets/svg/x.svg");
+    }
+
     .button {
         color: $primary-foreground-colour;
         background-image: linear-gradient(
