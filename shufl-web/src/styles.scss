@@ -148,9 +148,13 @@ body {
                     }
 
                     .genre-label {
-                        margin-top: 15px;
-                        margin-bottom: 0;
+                        margin: 10px 0 5px 0;
                     }
+                }
+
+                .followers,
+                .release-date {
+                    margin: 5px 0 10px 0;
                 }
 
                 .button {

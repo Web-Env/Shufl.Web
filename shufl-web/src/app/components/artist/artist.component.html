@@ -8,7 +8,7 @@
             <div class="genres-container">
                 <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
             </div>
-            <p>{{ artistData.followers | number }} followers</p>
+            <p class="followers">{{ artistData.followers | number }} followers</p>
             <a class="button" href="{{ artistData.url }}" target="new"><img src="assets/img/logos/spotify-logo.png">
                 <p>Open</p>
             </a>
