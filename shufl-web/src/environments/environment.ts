@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'https://localhost/Shufl.API'
+    apiUrl: 'https://localhost:44322'
 };
 
 /*

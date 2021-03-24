@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from "src/app/services/data.service";
 
 @Component({
     selector: 'app-status-checker',
@@ -12,29 +13,33 @@ export class StatusCheckerComponent implements OnInit {
     isPositive: boolean = false;
     isNegative: boolean = false;
 
-    reservedInputs: string[] = [
-        'adambod',
-        'adam_bod',
-        'ivanyoo',
-        'munglord'
-    ];
-
     constructor() { }
 
     ngOnInit(): void {
     }
 
-    public verifyInput(input: string): boolean {
+    public async verifyInputAsync(input: string, verificationUrl: string, dataService: DataService): Promise<boolean> {
         this.isPositive = false;
         this.isNegative = false;
         this.isLoading = true;
 
-        let inputNotAvailable: boolean = this.reservedInputs.includes(input.toLowerCase());
-        inputNotAvailable ? this.isNegative = true : this.isPositive = true;
+        let response = await dataService.getAsync<boolean>(`${verificationUrl}${input}`);
 
+        response ? this.setPositive() : this.setNegative();
         
+        return response;
+    }
+
+    public setPositive(): void {
         this.isLoading = false;
-        return !inputNotAvailable;
+        this.isNegative = false;
+        this.isPositive = true;
+    }
+
+    public setNegative(): void {
+        this.isLoading = false;
+        this.isPositive = false;
+        this.isNegative = true;
     }
 
 }

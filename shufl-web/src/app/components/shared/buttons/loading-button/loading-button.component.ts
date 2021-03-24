@@ -11,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LoadingButtonComponent implements OnInit {
     @Input() buttonText!: string;
     @Input() isLoading!: boolean;
+    @Input() isDisabled!: boolean;
 
     constructor() { }
 

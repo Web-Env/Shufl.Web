@@ -1,45 +1,42 @@
 <div class="register-card">
     <div class="register-form-container">
-        <form #registerForm="ngForm" (ngSubmit)="register(registerForm.value)">
-            <div class="form-group" [ngClass]="{'active': emailActive, 'populated': emailPopulated}">
+        <form #registerForm="ngForm" (ngSubmit)="registerAsync(registerForm.value)">
+            <div class="form-group" [ngClass]="{'active': emailActive, 'populated': emailPopulated, 'has-error': (!email.valid && email.touched) || !emailUnique}">
                 <div class="input-container">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" #email="ngModel" name="email" required minlength="4" 
+                    <input type="email" class="form-control" id="email" #email="ngModel" name="email" required minlength="4" 
                         (focus)="changeInputState(email, true)"
-                        [ngClass]="{'hasError': !email.valid && email.touched}"
-                        (blur)="changeInputState(email, false)" ngModel>
+                        (blur)="changeInputState(email, false)"
+                        (ngModelChange)="emailChanged(email.value)" ngModel email>
                 </div>
-                <small class="warning-label" [ngClass]="{'visible': !email.valid && email.touched}">Email must be longer than four characters</small>
+                <small class="warning-label" [ngClass]="{'visible': !email.valid && email.touched}">{{ emailErrorMessage }}</small>
             </div>
 
-            <div class="form-group" [ngClass]="{'active': firstNameActive, 'populated': firstNamePopulated}">
+            <div class="form-group" [ngClass]="{'active': firstNameActive, 'populated': firstNamePopulated, 'has-error': !firstName.valid && firstName.touched}">
                 <div class="input-container">
                     <label for="first-name">First Name</label>
-                    <input type="text" class="form-control" id="first-name" #firstName="ngModel" name="first-name" required
-                        [ngClass]="{'hasError': !firstName.valid && firstName.touched}"
+                    <input type="text" class="form-control" id="first-name" #firstName="ngModel" name="first-name" required pattern="[a-zA-Z'-]+"
                         (focus)="changeInputState(firstName, true)"
                         (blur)="changeInputState(firstName, false)" ngModel>
                 </div>
                 <small class="warning-label" [ngClass]="{'visible': !firstName.valid && firstName.touched}">First Name cannot be empty</small>
             </div>
 
-            <div class="form-group" [ngClass]="{'active': lastNameActive, 'populated': lastNamePopulated}">
+            <div class="form-group" [ngClass]="{'active': lastNameActive, 'populated': lastNamePopulated, 'has-error': !lastName.valid && lastName.touched}">
                 <div class="input-container">
                     <label for="last-name">Last Name</label>
-                    <input type="text" class="form-control" id="last-name" #lastName="ngModel" name="last-name" required
-                        [ngClass]="{'hasError': !lastName.valid && lastName.touched}"
+                    <input type="text" class="form-control" id="last-name" #lastName="ngModel" name="last-name" required pattern="[a-zA-Z'-]+"
                         (focus)="changeInputState(lastName, true)"
                         (blur)="changeInputState(lastName, false)" ngModel>
                 </div>
                 <small class="warning-label" [ngClass]="{'visible': !lastName.valid && lastName.touched}">Last Name cannot be empty</small>
             </div>
 
-            <div class="form-group" [ngClass]="{'active': usernameActive, 'populated': usernamePopulated}">
+            <div class="form-group" [ngClass]="{'active': usernameActive, 'populated': usernamePopulated, 'has-error': (!usernameUnique && username.touched) || (!username.valid && username.touched)}">
                 <div class="input-container">
                     <label for="username">Username</label>
                     <div class="status-input">
-                        <input type="text" class="form-control" id="username" #username="ngModel" name="username" autocomplete="off" required
-                            [ngClass]="{'hasError': (!usernameUnique && username.touched) || (!username.valid && username.touched)}"
+                        <input type="text" class="form-control" id="username" #username="ngModel" name="username" autocomplete="off" required minlength="4" maxlength="20" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
                             (focus)="changeInputState(username, true)"
                             (blur)="changeInputState(username, false)"
                             (ngModelChange)="usernameChanged(username.value)" ngModel>
@@ -48,33 +45,33 @@
                         </div>
                     </div>
                 </div>
-                <small class="warning-label" [ngClass]="{'visible': !username.valid && username.touched}">Username cannot be empty</small>
+                <small class="warning-label" [ngClass]="{'visible': !username.valid && username.touched}">{{ usernameErrorMessage }}</small>
             </div>
 
-            <div class="form-group" [ngClass]="{'active': passwordActive, 'populated': passwordPopulated}">
+            <div class="form-group" [ngClass]="{'active': passwordActive, 'populated': passwordPopulated, 'has-error': !password.valid && password.touched}">
                 <div class="input-container">
                     <label for="password">Password</label>
                     <input type="text" class="form-control" id="password" #password="ngModel" name="password" type="password" required minlength="8"
-                        [ngClass]="{'hasError': !password.valid && password.touched}"
                         (focus)="changeInputState(password, true)"
-                        (blur)="changeInputState(password, false)" ngModel>
+                        (blur)="changeInputState(password, false)"
+                        (ngModelChange)="checkPasswordsMatch(password)" ngModel>
                 </div>
                 <small class="warning-label" [ngClass]="{'visible': !password.valid && password.touched}">Password must be at least 8 characters</small>
             </div>
 
-            <div class="form-group" [ngClass]="{'active': confirmPasswordActive, 'populated': confirmPasswordPopulated}">
+            <div class="form-group" [ngClass]="{'active': confirmPasswordActive, 'populated': confirmPasswordPopulated, 'has-error': !passwordsMatch && confirmPassword.touched}">
                 <div class="input-container">
                     <label for="last-name">Confirm Password</label>
                     <input type="text" class="form-control" id="confirm-password" #confirmPassword="ngModel" name="confirm-password" type="password" required
-                        [ngClass]="{'hasError': !passwordsMatch && confirmPassword.touched}"
                         (focus)="changeInputState(confirmPassword, true)"
-                        (blur)="changeInputState(confirmPassword, false)" ngModel>
+                        (blur)="changeInputState(confirmPassword, false)"
+                        (ngModelChange)="checkPasswordsMatch(confirmPassword)" ngModel>
                 </div>
-                <small class="warning-label" [ngClass]="{'visible': !passwordsMatch && email.touched}">Passwords Must Match</small>
+                <small class="warning-label" [ngClass]="{'visible': !passwordsMatch && email.touched}">Passwords must match</small>
             </div>
 
-            <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading"></app-loading-button>
+            <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading" [isDisabled]="!registerForm.valid || !passwordsMatch || !usernameUnique"></app-loading-button>
         </form>
-        <p class="form-error">{{ errorMessage }}</p>
+        <p class="form-error" [ngClass]="{'visible': formErrorMessageVisible}">An unexpected error has occurred, please try again</p>
     </div>
 </div>
