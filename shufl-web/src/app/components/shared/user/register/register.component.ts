@@ -119,7 +119,7 @@ export class RegisterComponent implements OnInit {
                 this.usernamePopulated = username !== '';
                 this.usernameUnique = this.statusCheckerComponent.verifyInput(username);
             }
-        }, 250)
+        }, 500)
     }
 
     register(data: any) {
