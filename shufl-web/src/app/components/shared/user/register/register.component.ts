@@ -84,7 +84,9 @@ export class RegisterComponent implements OnInit {
         if (input.name === 'email') {
             this.emailActive = active;
             this.emailPopulated = input.value !== '';
-            if (!this.emailPopulated) this.emailErrorMessage = this.defaultEmailErrorMessage;
+            if (!this.emailPopulated) {
+                this.emailErrorMessage = this.defaultEmailErrorMessage;
+            }
         }
         else if (input.name === 'first-name') {
             this.firstNameActive = active;
@@ -97,7 +99,9 @@ export class RegisterComponent implements OnInit {
         else if (input.name === 'username') {
             this.usernameActive = active;
             this.usernamePopulated = input.value !== '';
-            if (!this.usernamePopulated) this.usernameErrorMessage = this.defaultUsernameErrorMessage;
+            if (!this.usernamePopulated) {
+                this.usernameErrorMessage = this.defaultUsernameErrorMessage;
+            }
         }
         else if (input.name === 'password') {
             this.passwordActive = active;
@@ -111,7 +115,9 @@ export class RegisterComponent implements OnInit {
 
     public emailChanged(email: string): void {
         if (email === '') {
-            if (this.emailErrorMessage !== this.defaultEmailErrorMessage) this.emailErrorMessage = this.defaultEmailErrorMessage;
+            if (this.emailErrorMessage !== this.defaultEmailErrorMessage) {
+                this.emailErrorMessage = this.defaultEmailErrorMessage;
+            }
         }
         else {
             this.emailErrorMessage = 'Email Invalid';
@@ -167,7 +173,7 @@ export class RegisterComponent implements OnInit {
     }
 
     public checkPasswordsMatch(passwordInput: NgModel): void {
-        passwordInput.name == 'password' ? this.password = passwordInput.value : this.confirmPassword = passwordInput.value;
+        passwordInput.name === 'password' ? this.password = passwordInput.value : this.confirmPassword = passwordInput.value;
         
         if (this.password === this.confirmPassword) {
             this.registerForm.controls['confirmPassword'].setErrors(null);
@@ -192,7 +198,7 @@ export class RegisterComponent implements OnInit {
                 formData['last-name'],
                 formData['username'],
                 hashedPassword
-            )
+            );
 
             try {
                 await this.dataService.postAsync("User/Register", userUploadModel);
