@@ -18,6 +18,16 @@ body {
         margin: 0;
     }
 
+    a {
+        color: $tertiary-foreground-colour;
+
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
     .app-icon {
         background-image: url("assets/img/logos/app/logo.png");
         background-size: cover;
@@ -86,16 +96,6 @@ body {
             background-color: $primary-background-colour;
 
             border-radius: $primary-border-radius;
-
-            a {
-                color: $tertiary-foreground-colour;
-
-                text-decoration: none;
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
 
             .album-info-container,
             .artist-info-container {

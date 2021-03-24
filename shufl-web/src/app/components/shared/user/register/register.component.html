@@ -1,4 +1,4 @@
-<div class="register-card">
+<div class="register-card" #registerCard>
     <div class="register-form-container">
         <form #registerForm="ngForm" (ngSubmit)="registerAsync(registerForm.value)">
             <div class="form-group" [ngClass]="{'active': emailActive, 'populated': emailPopulated, 'has-error': (!email.valid && email.touched) || !emailUnique}">
@@ -70,8 +70,9 @@
                 <small class="warning-label" [ngClass]="{'visible': !passwordsMatch && email.touched}">Passwords must match</small>
             </div>
 
-            <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading" [isDisabled]="!registerForm.valid || !passwordsMatch || !usernameUnique"></app-loading-button>
+            <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading" [isDisabled]="!registerForm.valid || !passwordsMatch || !usernameUnique || isCheckingUsername"></app-loading-button>
         </form>
         <p class="form-error" [ngClass]="{'visible': formErrorMessageVisible}">An unexpected error has occurred, please try again</p>
+        <a class="login-link" [routerLink]="['login']">Alreay have an Account? Login</a>
     </div>
 </div>

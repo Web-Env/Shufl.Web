@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from "@angular/common/http";
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import * as shajs from 'sha.js';
 import { User } from "src/app/models/upload-models/user.model";
@@ -17,6 +17,8 @@ import { StatusCheckerComponent } from "../../status-checker/status-checker.comp
 export class RegisterComponent implements OnInit {
     @ViewChild(StatusCheckerComponent)
     private statusCheckerComponent!: StatusCheckerComponent;
+    @ViewChild('registerCard')
+    private registerCard!: ElementRef;
 
     defaultEmailErrorMessage: string = 'Email cannot be empty';
     emailErrorMessage: string = this.defaultEmailErrorMessage;
@@ -178,7 +180,8 @@ export class RegisterComponent implements OnInit {
     }
 
     public async registerAsync(formData: any) {
-        if (!this.isLoading) {
+        if (!this.isLoading && !this.isCheckingUsername) {
+            this.formErrorMessageVisible = false;
             this.isLoading = true;
 
             var hashedPassword = shajs('sha256').update(formData['password']).digest('hex');
@@ -197,13 +200,17 @@ export class RegisterComponent implements OnInit {
             catch(err) {
                 if (err instanceof HttpErrorResponse) {
                     if (err.error.errorType !== null && err.error.errorType !== '') {
-                        console.log(err.error.errorType)
                         if (err.error.errorType === 'EmailAlreadyRegisteredException') {
                             this.emailErrorMessage = 'Email already registered';
                             this.emailUnique = false;
+                            this.registerCard.nativeElement.scrollTop = 0;
                         }
                         else if (err.error.errorType === 'EmailAlreadyRegisteredException') {
                             await this.checkUsernameUniqueAsync(userUploadModel.Username);
+                            this.registerCard.nativeElement.scrollTop = 0;
+                        }
+                        else {
+                            this.formErrorMessageVisible = true;
                         }
                     }
                 }
