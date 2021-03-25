@@ -73,6 +73,6 @@
             <app-loading-button [buttonText]="'Register'" [isLoading]="isLoading" [isDisabled]="!registerForm.valid || !passwordsMatch || !usernameUnique || isCheckingUsername"></app-loading-button>
         </form>
         <p class="form-error" [ngClass]="{'visible': formErrorMessageVisible}">An unexpected error has occurred, please try again</p>
-        <a class="login-link" [routerLink]="['login']">Alreay have an Account? Login</a>
+        <a class="login-link" [routerLink]="['/login']">Alreay have an Account? Login</a>
     </div>
 </div>

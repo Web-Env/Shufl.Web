@@ -2,17 +2,17 @@ import { IUploadModel } from "./upload-model.interface";
 
 export class User implements IUploadModel {
     Email!: string;
-    FirstName!: number;
+    FirstName!: string;
     LastName!: string;
     Username!: string;
-    Password!: number;
+    Password!: string;
 
     constructor(
         email: string,
-        firstName: number,
+        firstName: string,
         lastName: string,
         username: string,
-        password: number
+        password: string
     ) {
         this.Email = email;
         this.FirstName = firstName;

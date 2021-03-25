@@ -1,6 +1,7 @@
-@import "src/assets/scss/variables/colours";
+@import "variables/colours";
+@import "form";
 
-.register-card {
+.user-form-card {
     background-color: $tertiary-background-colour;
 
     padding: 10px 0;
@@ -15,7 +16,7 @@
 
     z-index: 1;
 
-    .register-form-container {
+    .user-form-container {
         width: 90%;
         height: fit-content;
 
@@ -26,14 +27,19 @@
     .form-error {
         color: $primary-negative-colour;
 
+        padding: 15px 15px 0 15px;
+
         display: none;
+
+        font-size: 16pt;
+        text-align: center;
 
         &.visible {
             display: block;
         }
     }
 
-    .login-link {
+    .form-link {
         width: 100%;
 
         margin-top: 15px;
@@ -45,8 +51,8 @@
 }
 
 @media (min-width: 1920px) and (max-width: 2560px) {
-    .register-card {
-        .register-form-container {
+    .user-form-card {
+        .user-form-container {
             width: 50%;
 
             margin-top: 40px;
@@ -55,8 +61,8 @@
 }
 
 @media (min-width: 2560px) {
-    .register-card {
-        .register-form-container {
+    .user-form-card {
+        .user-form-container {
             width: 40%;
 
             margin-top: 50px;

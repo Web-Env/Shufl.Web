@@ -7,8 +7,11 @@ import { GroupComponent } from "./components/group/group.component";
 import { GroupItemDetailsComponent } from "./components/group/group-item-details/group-item-details.component";
 import { GroupsListComponent } from "./components/groups-list/groups-list.component";
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from "./components/shared/user/login/login.component";
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { RegisterComponent } from "./components/shared/user/register/register.component";
+
+import { AuthGuardService } from "./services/auth/auth-guard.service";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -16,9 +19,10 @@ const routes: Routes = [
     { path: 'album/:albumId', component: AlbumComponent },
     { path: 'artist', component: ArtistComponent },
     { path: 'artist/:artistId', component: ArtistComponent },
-    { path: 'group/:groupId', component: GroupComponent},
-    { path: 'group/:groupId/:groupItemId', component: GroupItemDetailsComponent},
-    { path: 'groups', component: GroupsListComponent},
+    { path: 'login', component: LoginComponent },
+    { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
+    { path: 'group/:groupId/:groupItemId', component: GroupItemDetailsComponent, canActivate: [AuthGuardService]},
+    { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},
     { path: 'track', component: AlbumComponent },
     { path: 'track/:trackId', component: AlbumComponent },
     { path: 'register', component: RegisterComponent },

@@ -1,8 +1,11 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import * as shajs from 'sha.js';
+import { AuthRequest } from "src/app/models/upload-models/auth-request.model";
 import { User } from "src/app/models/upload-models/user.model";
+import { AuthService } from "src/app/services/auth/auth.service";
 import { DataService } from "src/app/services/data.service";
 import { StatusCheckerComponent } from "../../status-checker/status-checker.component";
 
@@ -56,11 +59,22 @@ export class RegisterComponent implements OnInit {
     isCheckingUsername: boolean = false;
 
     constructor(private formBuilder: FormBuilder,
+                private router: Router,
+                private authService: AuthService,
                 private dataService: DataService) {
         this.buildForm();
     }
 
-    ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
+        var token = localStorage.getItem('Token');
+        if (token != null && token != '') {
+            var tokenIsValid = await this.authService.checkTokenValidAsync();
+
+            if (tokenIsValid) {
+                this.router.navigate(['']);
+            }
+        }
+
         this.registerForm.setValue({
             firstName: '',
             lastName: '',
@@ -185,7 +199,7 @@ export class RegisterComponent implements OnInit {
         }
     }
 
-    public async registerAsync(formData: any) {
+    public async registerAsync(formData: any): Promise<void> {
         if (!this.isLoading && !this.isCheckingUsername) {
             this.formErrorMessageVisible = false;
             this.isLoading = true;
@@ -201,7 +215,14 @@ export class RegisterComponent implements OnInit {
             );
 
             try {
-                await this.dataService.postAsync("User/Register", userUploadModel);
+                await this.dataService.postWithoutResponseAsync("User/Register", userUploadModel);
+
+                var authRequestModel = new AuthRequest(
+                    userUploadModel.Email,
+                    userUploadModel.Password
+                );
+
+                await this.authService.loginAsync(authRequestModel);
             }
             catch(err) {
                 if (err instanceof HttpErrorResponse) {
