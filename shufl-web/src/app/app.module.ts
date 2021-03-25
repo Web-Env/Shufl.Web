@@ -42,9 +42,11 @@ import { LoadingService } from "./services/loading.service";
 import { environment } from '../environments/environment';
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
+import { AccountComponent } from './components/user/account/account.component';
 
 @NgModule({
     declarations: [
+        AccountComponent,
         AlbumComponent,
         AlbumIconComponent,
         AlbumInfoComponent,

@@ -1,0 +1,7 @@
+<div class="card-container">
+    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+        <h1>{{ userDisplayName }}</h1>
+
+        <app-button [buttonText]="'Log Out'" (click)="logout()"></app-button>
+    </div>
+</div>

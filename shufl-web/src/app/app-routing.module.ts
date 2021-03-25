@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AccountComponent } from "./components/user/account/account.component";
 import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { GroupComponent } from "./components/group/group.component";
@@ -15,6 +16,7 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
     { path: 'album', component: AlbumComponent },
     { path: 'album/:albumId', component: AlbumComponent },
     { path: 'artist', component: ArtistComponent },

@@ -69,17 +69,17 @@ export class AuthService {
 
     public logout(): void {
         this.purgeLocalStorage();
-        this.router.navigate(['/home']);
+        this.router.navigate(['']);
     }
 
     private purgeLocalStorage(): void {
-        localStorage.removeItem('username');
-        localStorage.removeItem('displayName');
-        localStorage.removeItem('firstName');
-        localStorage.removeItem('lastName');
-        localStorage.removeItem('pictureUrl');
-        localStorage.removeItem('spotifyMarket');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('token');
+        localStorage.removeItem('Username');
+        localStorage.removeItem('DisplayName');
+        localStorage.removeItem('FirstName');
+        localStorage.removeItem('LastName');
+        localStorage.removeItem('PictureUrl');
+        localStorage.removeItem('SpotifyMarket');
+        localStorage.removeItem('UserId');
+        localStorage.removeItem('Token');
     }
 }
