@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         var token = localStorage.getItem('Token');
-        if (token != null && token != '') {
+        if (token !== null && token !== '') {
             var tokenIsValid = await this.authService.checkTokenValidAsync();
 
             if (tokenIsValid) {
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
         var authRequestModel = new AuthRequest(
             formData['email'],
             hashedPassword
-        )
+        );
 
         try {
             await this.authService.loginAsync(authRequestModel);

@@ -15,7 +15,7 @@ export class AuthService {
 
     public async isLoggedInAsync(): Promise<boolean> {
         var token = localStorage.getItem('Token');
-        if (token != null && token != '') {            
+        if (token !== null && token !== '') {            
             return true;
         }
 
