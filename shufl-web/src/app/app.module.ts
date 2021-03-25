@@ -34,6 +34,7 @@ import { RegisterComponent } from './components/shared/user/register/register.co
 import { StatusCheckerComponent } from './components/shared/status-checker/status-checker.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
+import { VerifyComponent } from './components/shared/user/verify/verify.component';
 
 import { genreFormatter } from './pipes/genreFormatter.pipe';
 
@@ -75,6 +76,7 @@ import { AccountComponent } from './components/user/account/account.component';
         StatusCheckerComponent,
         TrackListComponent,
         TrackListItemComponent,
+        VerifyComponent,
 
         genreFormatter
     ],

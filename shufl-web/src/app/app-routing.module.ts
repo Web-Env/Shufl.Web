@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from "./components/shared/user/login/login.component";
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { RegisterComponent } from "./components/shared/user/register/register.component";
+import { VerifyComponent } from "./components/shared/user/verify/verify.component";
 
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 
@@ -25,9 +26,10 @@ const routes: Routes = [
     { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
     { path: 'group/:groupId/:groupItemId', component: GroupItemDetailsComponent, canActivate: [AuthGuardService]},
     { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},
+    { path: 'register', component: RegisterComponent },
     { path: 'track', component: AlbumComponent },
     { path: 'track/:trackId', component: AlbumComponent },
-    { path: 'register', component: RegisterComponent },
+    { path: 'verify/:token', component: VerifyComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '404' }
 ];

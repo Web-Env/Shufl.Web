@@ -1,0 +1,15 @@
+@import "src/assets/scss/variables/colours";
+
+h1 {
+    width: 100%;
+
+    margin: auto;
+    
+    display: none;
+
+    text-align: center;
+
+    &.visible {
+        display: block;
+    }
+}
