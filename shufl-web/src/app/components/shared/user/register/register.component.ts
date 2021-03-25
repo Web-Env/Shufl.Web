@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         var token = localStorage.getItem('Token');
-        if (token != null && token != '') {
+        if (token !== null && token !== '') {
             var tokenIsValid = await this.authService.checkTokenValidAsync();
 
             if (tokenIsValid) {
