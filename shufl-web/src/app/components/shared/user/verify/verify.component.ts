@@ -19,7 +19,7 @@ export class VerifyComponent implements OnInit {
 
         if (routeParams && Object.keys(routeParams).length !== 0 && 
             routeParams.constructor === Object && 
-            routeParams.token !== null) {
+            (routeParams.token !== null && routeParams.token !== '')) {
                 try {
                     await this.dataService.postWithoutResponseAsync(`User/Verify?verificationIdentifier=${routeParams.token}`, {});
                     this.isLoaded = true;

@@ -51,7 +51,6 @@ export class AuthService {
                 localStorage.setItem('LastName', authResponse.lastName);
                 localStorage.setItem('PictureUrl', authResponse.pictureUrl);
                 localStorage.setItem('SpotifyMarket', authResponse.spotifyMarket);
-                localStorage.setItem('UserId', authResponse.userId);
                 localStorage.setItem('Token', authResponse.token);
             }
 
@@ -72,14 +71,13 @@ export class AuthService {
         this.router.navigate(['']);
     }
 
-    private purgeLocalStorage(): void {
+    public purgeLocalStorage(): void {
         localStorage.removeItem('Username');
         localStorage.removeItem('DisplayName');
         localStorage.removeItem('FirstName');
         localStorage.removeItem('LastName');
         localStorage.removeItem('PictureUrl');
         localStorage.removeItem('SpotifyMarket');
-        localStorage.removeItem('UserId');
         localStorage.removeItem('Token');
     }
 }

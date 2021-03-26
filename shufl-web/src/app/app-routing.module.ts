@@ -10,6 +10,7 @@ import { GroupsListComponent } from "./components/groups-list/groups-list.compon
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from "./components/shared/user/login/login.component";
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { PasswordResetComponent } from "./components/shared/user/password-reset/password-reset.component";
 import { RegisterComponent } from "./components/shared/user/register/register.component";
 import { VerifyComponent } from "./components/shared/user/verify/verify.component";
 
@@ -18,6 +19,8 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
+    { path: 'account/password-reset', component: PasswordResetComponent },
+    { path: 'account/password-reset?token=:token', component: PasswordResetComponent },
     { path: 'account/verify/:token', component: VerifyComponent },
     { path: 'album', component: AlbumComponent },
     { path: 'album/:albumId', component: AlbumComponent },

@@ -6,6 +6,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { AccountComponent } from './components/user/account/account.component';
 import { AlbumComponent } from './components/album/album.component';
 import { AlbumIconComponent } from './components/shared/album-icon/album-icon.component';
 import { AlbumInfoComponent } from './components/shared/album-info/album-info.component';
@@ -30,6 +31,7 @@ import { LoginComponent } from './components/shared/user/login/login.component';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
+import { PasswordResetComponent } from './components/shared/user/password-reset/password-reset.component';
 import { RegisterComponent } from './components/shared/user/register/register.component';
 import { StatusCheckerComponent } from './components/shared/status-checker/status-checker.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
@@ -38,12 +40,11 @@ import { VerifyComponent } from './components/shared/user/verify/verify.componen
 
 import { genreFormatter } from './pipes/genreFormatter.pipe';
 
-import { LoadingService } from "./services/loading.service";
-
 import { environment } from '../environments/environment';
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
-import { AccountComponent } from './components/user/account/account.component';
+import { LoadingService } from "./services/loading.service";
+import { UrlHelperService } from "./services/helpers/url-helper.service";
 
 @NgModule({
     declarations: [
@@ -72,6 +73,7 @@ import { AccountComponent } from './components/user/account/account.component';
         NavBarComponent,
         NavBarItemComponent,
         NotFoundComponent,
+        PasswordResetComponent,
         RegisterComponent,
         StatusCheckerComponent,
         TrackListComponent,
@@ -91,7 +93,8 @@ import { AccountComponent } from './components/user/account/account.component';
     providers: [
         AuthGuardService,
         AuthService,
-        LoadingService
+        LoadingService,
+        UrlHelperService
     ],
     bootstrap: [AppComponent]
 })

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Album } from 'src/app/models/download-models/album.model';
 import { Artist } from 'src/app/models/download-models/artist.model';
 import { DataService } from 'src/app/services/data.service';
+import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { LoadingService } from "src/app/services/loading.service";
 
 @Component({
@@ -30,18 +31,17 @@ export class ArtistComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private titleService: Title,
                 private dataService: DataService,
-                private loadingService: LoadingService) { }
+                private loadingService: LoadingService,
+                private urlHelperService: UrlHelperService) { }
 
     ngOnInit(): void {
         var routeParams = this.route.snapshot.params;
 
-        if (routeParams && Object.keys(routeParams).length === 0 && 
-            routeParams.constructor === Object && 
-            routeParams.artistId !== null) {
-            this.fetchAsync('Artist/RandomArtist');
+        if (this.urlHelperService.isRouteParamObjectValid(routeParams) &&  this.urlHelperService.isRouteParamValid(routeParams.artistId)) {
+            this.fetchAsync(`Artist/Artist?artistId=${routeParams.artistId}`);
         }
         else {
-            this.fetchAsync(`Artist/Artist?artistId=${routeParams.artistId}`);
+            this.fetchAsync('Artist/RandomArtist');
         }
     }
 

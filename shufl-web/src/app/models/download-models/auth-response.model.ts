@@ -5,7 +5,6 @@ export class AuthResponse {
     lastName!: string;
     pictureUrl!: string;
     spotifyMarket!: string;
-    userId!: string;
     token!: string;
 
     constructor() {}

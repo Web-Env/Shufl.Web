@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
 
     password: string = "";
     confirmPassword: string = "";
-    passwordsMatch = false;
+    passwordsMatch: boolean = false;
     passwordActive: boolean = false;
     passwordPopulated: boolean = false;
 
@@ -76,9 +76,10 @@ export class RegisterComponent implements OnInit {
         }
 
         this.registerForm.setValue({
+            email: '',
             firstName: '',
             lastName: '',
-            email: '',
+            username: '',
             password: '',
             confirmPassword: ''
         });
@@ -86,9 +87,10 @@ export class RegisterComponent implements OnInit {
 
     public buildForm(): void {
         this.registerForm = this.formBuilder.group({
-            firstName: ['', [Validators.required, Validators.minLength(1)]],
-            lastName: ['', [Validators.required, Validators.minLength(1)]],
-            email: ['', [Validators.required, Validators.minLength(4)]],
+            email: ['', [Validators.required]],
+            firstName: ['', [Validators.required]],
+            lastName: ['', [Validators.required]],
+            username: ['', [Validators.required, Validators.minLength(4)]],
             password: ['', [Validators.required, Validators.minLength(8)]],
             confirmPassword: ['', [Validators.required, Validators.minLength(8)]]
         });

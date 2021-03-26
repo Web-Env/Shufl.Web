@@ -62,7 +62,7 @@ export class NavBarComponent implements OnInit {
 
             this.groupsActive = true;
         }
-        else if (url === '/user') {
+        else if (this.isUserUrl(url)) {
             if (!this.userActive) {
                 this.resetActiveItems();
             }
@@ -91,6 +91,18 @@ export class NavBarComponent implements OnInit {
         if (extractedUrl !== null && extractedUrl.length !== 0) {
             url = extractedUrl[0];
             if (url === '/groups' || url === '/group') {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private isUserUrl(url: string): boolean {
+        var extractedUrl = url.match(/(\/[\w+-]+)/g);
+        if (extractedUrl !== null && extractedUrl.length !== 0) {
+            url = extractedUrl[0];
+            if (url === '/user' || url === '/account') {
                 return true;
             }
         }

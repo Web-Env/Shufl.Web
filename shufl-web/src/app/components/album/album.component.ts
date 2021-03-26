@@ -7,6 +7,7 @@ import { Album } from 'src/app/models/download-models/album.model';
 import { Artist } from 'src/app/models/download-models/artist.model';
 import { Track } from 'src/app/models/download-models/track.model';
 import { DataService } from 'src/app/services/data.service';
+import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { LoadingService } from "src/app/services/loading.service";
 
 @Component({
@@ -35,26 +36,27 @@ export class AlbumComponent implements OnInit {
                 private router: Router,
                 private titleService: Title,
                 private dataService: DataService,
-                private loadingService: LoadingService) { }
+                private loadingService: LoadingService,
+                private urlHelperService: UrlHelperService) { }
 
     ngOnInit(): void {
         var routeParams = this.route.snapshot.params;
         var isRequestingAlbum = this.isRequestingAlbum(this.router.url);
 
-        if (routeParams && Object.keys(routeParams).length === 0 && routeParams.constructor === Object) {
-            if (isRequestingAlbum) {
-                this.fetchAsync('Album/RandomAlbum');
-            }
-            else {
-                this.fetchAsync('Track/RandomTrack');
-            }
-        }
-        else {
+        if (this.urlHelperService.isRouteParamObjectValid(routeParams) && (this.urlHelperService.isRouteParamValid(routeParams.albumId) || this.urlHelperService.isRouteParamValid(routeParams.trackId))) {
             if (isRequestingAlbum) {
                 this.fetchAsync(`Album/Album?albumId=${routeParams.albumId}`);
             }
             else {
                 this.fetchAsync(`Track/Track?trackId=${routeParams.trackId}`);
+            }
+        }
+        else {
+            if (isRequestingAlbum) {
+                this.fetchAsync('Album/RandomAlbum');
+            }
+            else {
+                this.fetchAsync('Track/RandomTrack');
             }
         }
     }
