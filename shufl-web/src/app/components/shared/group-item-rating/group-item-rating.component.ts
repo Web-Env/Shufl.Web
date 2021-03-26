@@ -8,6 +8,7 @@ import { Rating } from "src/app/models/download-models/rating.model";
 })
 export class GroupItemRatingComponent implements OnInit {
     @Input() rating!: Rating;
+    @Input() embedded: boolean = false;
 
     constructor() { }
 

@@ -18,27 +18,57 @@
     }
 
     .group-link-container {
-        width: 60%;
+        // width: 60%;
+        width: 100%;
 
         .group-link {
-            width: fit-content;
-            height: fit-content;
-
             color: $primary-foreground-colour;
 
             display: block;
 
             font-size: 1.25em;
+
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 
     .user-link-container {
-        width: 20%;
+        display: none;
     }
 
     .members-count {
-        width: 20%;
-
         color: $tertiary-foreground-colour;
+
+        display: none;
+    }
+}
+
+@media (min-width: 730px) {
+    .groups-list-item-container {
+        .group-link-container {
+            width: 80%;
+        }
+        
+        .members-count {
+            width: 20%;
+
+            display: block;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .groups-list-item-container {
+        .group-link-container {
+            width: 60%;
+        }
+        
+        .user-link-container {
+            width: 20%;
+
+            display: block;
+        }
     }
 }

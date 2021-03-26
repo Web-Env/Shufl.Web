@@ -4,8 +4,27 @@
     border-bottom: 2px solid $tertiary-foreground-colour;
 
     .overall-rating-container {
-        width: 60%;
-
         margin: auto;
+    }
+}
+
+@media (min-width: 1024px) {
+    .group-item-info-container {
+        .overall-rating-container {
+            width: 80%;
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .card-container.group-item-details-card-container {
+        left: 20%;
+        right: 20%;
+    }
+
+    .group-item-info-container {
+        .overall-rating-container {
+            width: 50%;
+        }
     }
 }

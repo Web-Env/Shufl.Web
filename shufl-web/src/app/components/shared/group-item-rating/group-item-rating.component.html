@@ -1,4 +1,4 @@
-<div class="rating-container">
+<div class="rating-container" [ngClass]="{'embedded': embedded}">
     <p class="overall-rating">Overall: {{ rating.overallRating }}/10</p>
     <div class="category-ratings-container">
         <div class="category-rating">
