@@ -1,15 +1,16 @@
 @import "src/assets/scss/variables/colours";
 
-h1 {
-    width: 100%;
+$loading-icon-dimensions: 150px;
 
-    margin: auto;
+.loading-icon {
+    width: $loading-icon-dimensions;
+    height: $loading-icon-dimensions;
 
-    display: none;
+    position: absolute;
+    top: calc(50% - (#{$loading-icon-dimensions} / 2));
+    left: calc(50% - (#{$loading-icon-dimensions} / 2));
 
-    text-align: center;
-
-    &.visible {
-        display: block;
+    &:not(.visible) {
+        display: none;
     }
 }

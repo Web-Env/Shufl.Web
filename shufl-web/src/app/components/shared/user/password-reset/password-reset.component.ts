@@ -153,7 +153,7 @@ export class PasswordResetComponent implements OnInit {
                 var email = formData['email'];
                 var passwordResetRequest = new PasswordResetRequest(email);
 
-                await this.dataService.postWithoutResponseAsync(`User/ForgotPassword/New`, passwordResetRequest);
+                await this.dataService.postWithoutResponseAsync('User/ForgotPassword/New', passwordResetRequest);
 
                 this.resetRequestSentSuccessfully = true;
             }

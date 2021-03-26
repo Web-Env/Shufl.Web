@@ -21,6 +21,7 @@ const routes: Routes = [
     { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
     { path: 'account/password-reset', component: PasswordResetComponent },
     { path: 'account/password-reset?token=:token', component: PasswordResetComponent },
+    { path: 'account/verify', component: VerifyComponent },
     { path: 'account/verify/:token', component: VerifyComponent },
     { path: 'album', component: AlbumComponent },
     { path: 'album/:albumId', component: AlbumComponent },
