@@ -25,26 +25,26 @@
 
         .form-error {
             color: $primary-negative-colour;
-    
+
             padding: 15px 15px 0 15px;
-    
+
             display: none;
-    
+
             font-size: 16pt;
             text-align: center;
-    
+
             &.visible {
                 display: block;
             }
         }
-    
+
         .form-link {
             width: fit-content;
-    
-            margin: 15px auto 0px auto;
-    
+
+            margin: 15px auto 0 auto;
+
             display: block;
-    
+
             text-align: center;
         }
 
@@ -58,7 +58,7 @@
 
             h2 {
                 color: $primary-foreground-colour;
-                
+
                 text-align: center;
             }
         }
