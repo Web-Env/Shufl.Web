@@ -13,7 +13,13 @@
     }
 
     .rating-comment {
-        margin-bottom: 5px;
+        line-height: 1.5em;
+    }
+
+    .user-link {
+        margin-top: 15px;
+
+        display: block;
     }
 }
 
@@ -22,7 +28,7 @@
         &.left {
             margin: 15px 7.5px 0 15px;
         }
-    
+
         &.right {
             margin: 15px 15px 0 7.5px;
         }
