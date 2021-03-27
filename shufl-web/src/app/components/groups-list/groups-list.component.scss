@@ -1,7 +1,44 @@
-.groups-list-container {
-    :last-child {
-        ::ng-deep .groups-list-item-container {
-            border-bottom: none;
+@import "src/assets/scss/variables/colours";
+
+.card-container {
+    .card {
+        .user-info-container {
+            h1 {
+                margin-bottom: 7.5px;
+            }
+
+            .user-info {
+                margin: 0 7.5px;
+
+                p {
+                    color: $tertiary-foreground-colour;
+                }
+            }
+
+            .action-button-container {
+                width: 100%;
+
+                margin-top: 15px;
+            }
+
+            .divider {
+                width: 100%;
+                height: 2px;
+
+                margin: 15px auto 0 auto;
+            }
+        }
+        
+        .groups-list-container {
+            min-height: 50px;
+
+            position: relative;
+
+            :last-child {
+                ::ng-deep .groups-list-item-container {
+                    border-bottom: none;
+                }
+            }
         }
     }
 }

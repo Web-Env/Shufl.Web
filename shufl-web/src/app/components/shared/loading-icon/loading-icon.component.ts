@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoadingService } from "src/app/services/loading.service";
 
 @Component({
@@ -7,6 +7,9 @@ import { LoadingService } from "src/app/services/loading.service";
     styleUrls: ['./loading-icon.component.scss']
 })
 export class LoadingIconComponent implements OnInit {
+    @Input() isLoading: boolean = false;
+    @Input() isEmbedded: boolean = false;
+    @Input() dimensions: number = 200;
     visible: boolean = false;
 
     constructor(private loadingService: LoadingService) { }

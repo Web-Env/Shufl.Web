@@ -3,17 +3,23 @@
     height: 200px;
 
     position: absolute;
-    left: calc(50% - 100px);
-    top: calc(50% - 100px);
     z-index: 0;
 
     opacity: 0;
 
-    -webkit-transition: opacity 0.25s ease-in-out;
-    -moz-transition: opacity 0.25s ease-in-out;
-    transition: opacity 0.25s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+
+    &.embedded {
+        display: none;
+    }
 
     &.visible {
         opacity: 1;
+
+        &.embedded {
+            display: block;
+        }
     }
 }

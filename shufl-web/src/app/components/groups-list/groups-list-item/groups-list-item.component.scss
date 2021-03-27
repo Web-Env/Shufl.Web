@@ -11,6 +11,8 @@
 
     border-bottom: $list-item-border-bottom;
 
+    z-index: 1;
+
     cursor: pointer;
 
     &:hover {
@@ -18,10 +20,11 @@
     }
 
     .group-link-container {
-        // width: 60%;
         width: 100%;
 
         .group-link {
+            width: fit-content;
+
             color: $primary-foreground-colour;
 
             display: block;
@@ -42,6 +45,8 @@
         color: $tertiary-foreground-colour;
 
         display: none;
+
+        text-align: right;
     }
 }
 

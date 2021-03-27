@@ -85,6 +85,10 @@ body {
         }
     }
 
+    .divider {
+        background-color: $tertiary-foreground-colour;
+    }
+
     .card-container {
         position: absolute;
         left: 5%;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from "src/app/models/download-models/group.model";
+import { DataService } from "src/app/services/data.service";
 
 @Component({
     selector: 'app-groups-list',
@@ -9,23 +11,23 @@ import { Component, OnInit } from '@angular/core';
     ]
 })
 export class GroupsListComponent implements OnInit {
-    dataLoaded: boolean = false;
-    groups: any[] = [
-        {
-            name: "The Culture Smorgasbord",
-            id: "sdsdgoenlksvnipe3",
-            createdBy: {
-                name: "Adam BOD",
-                username: "Adam_BOD"
-            },
-            members: 7
-        }
-    ];
+    isLoading: boolean = true;
+    groups: Group[] = [];
 
-    constructor() { }
+    constructor(private dataService: DataService) { }
 
     ngOnInit(): void {
-        this.dataLoaded = true;
+        this.getUsersGroupsAsync();
+    }
+
+    public async getUsersGroupsAsync(): Promise<void> {
+        let userGroups = await this.dataService.getArrayAsync('Group/GetAll', Group);
+        this.isLoading = false;
+        this.groups = userGroups;
+    }
+
+    public createNewGroupClicked(): void {
+
     }
 
 }

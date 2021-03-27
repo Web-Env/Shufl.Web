@@ -1,6 +1,17 @@
 <div class="card-container">
-    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+    <div class="card loaded">
+        <div class="user-info-container">
+            <h1>Your Groups</h1>
+            <div class="user-info">
+                <p>Here you can find all of the public and private groups you are a member of or you can create a group yourself.</p>
+            </div>
+            <div class="action-button-container">
+                <app-button [buttonText]="'Create a Group'" (click)="createNewGroupClicked()"></app-button>
+            </div>
+            <div class="divider"></div>
+        </div>
         <div class="groups-list-container">
+            <app-loading-icon [isLoading]="isLoading" [isEmbedded]="true" [dimensions]="50"></app-loading-icon>
             <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
         </div>
     </div>
