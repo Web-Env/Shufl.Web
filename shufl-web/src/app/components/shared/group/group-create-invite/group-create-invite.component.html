@@ -1,0 +1,14 @@
+<div class="group-create-invite-modal">
+    <app-loading-icon [dimensions]="100" *ngIf="isLoading"></app-loading-icon>
+    <div class="invite-link-container" *ngIf="!isLoading && inviteLinkCreatedSuccessfully">
+        <div class="form-group active populated">
+            <div class="input-container">
+                <label for="inviteLinkInput">Invite</label>
+                <input type="text" class="form-control" disabled #inviteLinkInput>
+                <div class="icon" [ngClass]="{'clipboard-icon': showClipboard, 'check-icon': !showClipboard}" (click)="copyInviteLink()"></div>
+            </div>
+        </div>
+        <p>You can share this invite link with people to allow them to join the group. The link will expire in 7 days.</p>
+    </div>
+    <h2 class="invite-error" *ngIf="!isLoading && !inviteLinkCreatedSuccessfully">There was an error generating an invite link</h2>
+</div>

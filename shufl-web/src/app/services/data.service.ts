@@ -15,9 +15,21 @@ export class DataService {
     private createHttpOptions(): Object {
         let httpOptions = {
             headers: new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('Token')}`
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('Token')}`
             })
+        };
+
+        return httpOptions;
+    }
+
+    private createStringHttpOptions(): Object {
+        let httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('Token')}`
+            }),
+            responseType: 'text'
         };
 
         return httpOptions;
@@ -100,14 +112,35 @@ export class DataService {
         });
     }
 
-    public async postWithoutResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<boolean> {
+    public async postWithoutBodyAsync(endpoint: string, retry: boolean = false): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let url = `${environment.apiUrl}/${endpoint}`;
+
+            this.httpClient.post(url, null, this.createStringHttpOptions())
+                .subscribe(
+                    (data) => {
+                        resolve(data);
+                    },
+                    async (err) => {
+                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
+                            resolve(await this.postWithoutBodyAsync(endpoint, true));
+                        }
+                        else {
+                            reject(err);
+                        }
+                    }
+                );
+        });
+    }
+
+    public async postWithoutResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<void> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
             this.httpClient.post(url, uploadModel, this.createHttpOptions())
                 .subscribe(
                     (_) => {
-                        resolve(true);
+                        resolve();
                     },
                     async (err) => {
                         if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
@@ -121,18 +154,18 @@ export class DataService {
         });
     }
 
-    public async postWithoutBodyOrResponseAsync(endpoint: string, retry: boolean = false): Promise<boolean> {
+    public async postWithoutBodyOrResponseAsync(endpoint: string, retry: boolean = false): Promise<void> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
             this.httpClient.post(url, null, this.createHttpOptions())
                 .subscribe(
                     (_) => {
-                        resolve(true);
+                        resolve();
                     },
                     async (err) => {
                         if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postWithoutResponseAsync(endpoint, true));
+                            resolve(await this.postWithoutBodyOrResponseAsync(endpoint, true));
                         }
                         else {
                             reject(err);

@@ -10,7 +10,7 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
     templateUrl: './group-invite.component.html',
     styleUrls: [
         './group-invite.component.scss',
-        '../../../../assets/scss/user-form.scss'
+        '../../../../../assets/scss/user-form.scss'
     ]
 })
 export class GroupInviteComponent implements OnInit {

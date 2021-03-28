@@ -1,5 +1,5 @@
 <div class="group-item-list-container">
-    <div class="group-item-list" *mgIf="groupSuggestions != null">
+    <div class="group-item-list" *ngIf="groupSuggestions != null">
         <div app-group-item 
         *ngFor="let groupSuggestion of groupSuggestions" 
         [groupSuggestion]="groupSuggestion"></div>

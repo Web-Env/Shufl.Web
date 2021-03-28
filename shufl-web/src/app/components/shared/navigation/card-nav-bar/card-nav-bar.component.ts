@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router";
 
 @Component({
@@ -8,6 +8,9 @@ import { Router } from "@angular/router";
 })
 export class CardNavBarComponent implements OnInit {
     @Input() closeVisible: boolean = false;
+    @Input() inviteVisible: boolean = false;
+
+    @Output() inviteClicked: EventEmitter<null> = new EventEmitter();
 
     constructor(private router: Router) { }
 
@@ -20,6 +23,10 @@ export class CardNavBarComponent implements OnInit {
 
     public closeCard(): void {
         this.router.navigate(['']);
+    }
+
+    public inviteButtonClicked(): void {
+        this.inviteClicked.emit();
     }
 
 }

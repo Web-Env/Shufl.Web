@@ -1,0 +1,30 @@
+@import "src/assets/scss/variables/colours";
+
+$clipboard-icon-dimensions: 25px;
+
+.group-create-invite-modal {
+    .invite-link-container {
+        .form-group {
+            .input-container {
+                input {
+                    width: calc(90% - #{$clipboard-icon-dimensions});
+                }
+                
+                .icon {
+                    width: $clipboard-icon-dimensions;
+                    height: $clipboard-icon-dimensions;
+
+                    position: absolute;
+                    top: calc(50% - 5px);
+                    right: 5px;
+
+                    cursor: pointer;
+                }
+            }
+        }
+
+        p {
+            color: $tertiary-foreground-colour;
+        }
+    }
+}

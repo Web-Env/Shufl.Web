@@ -1,5 +1,7 @@
 @import "src/assets/scss/variables/colours";
 @import "src/assets/scss/variables/dimensions";
+@import '~@angular/material/theming';
+@include mat-core();
 
 html {
     height: 100%;
@@ -37,9 +39,7 @@ body {
         }
     }
 
-    .loading-icon,
-    .check-icon,
-    .x-icon {
+    .icon {
         background-size: contain;
     }
 
@@ -57,6 +57,10 @@ body {
 
     .x-icon {
         background-image: url("assets/svg/x.svg");
+    }
+
+    .clipboard-icon {
+        background-image: url("assets/svg/clipboard.svg");
     }
 
     .invite-icon {
@@ -91,5 +95,32 @@ body {
 
     .divider {
         background-color: $tertiary-foreground-colour;
+    }
+
+    .cdk-overlay-dark-backdrop {
+        background: rgba(0, 0, 0, 0.85) !important;
+    }
+
+    mat-dialog-container {
+        background-color: $primary-background-colour !important;
+    }
+}
+
+@media (min-width: 1920px) {
+    body {
+        .cdk-overlay-container {
+            left: 375px;
+            right: 0;
+
+            .cdk-global-overlay-wrapper {
+                width: calc(100% - #{$nav-bar-width-desktop}) !important;
+
+                .cdk-overlay-pane {
+                    position: absolute !important;
+                    top: 150px;
+                    margin: 0 auto;
+                }
+            }
+        }
     }
 }

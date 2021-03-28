@@ -1,7 +1,7 @@
 @import "src/assets/scss/variables/colours";
 
 .card-nav-bar-container {
-    padding: 5px 15px;
+    padding: 0 0 10px 0;
 
     display: flex;
     justify-content: space-between;
@@ -24,6 +24,12 @@
         svg {
             width: 35px;
             height: 35px;
+
+            path {
+                -webkit-transition: all 0.1s ease-in-out;
+                -moz-transition: all 0.1s ease-in-out;
+                transition: all 0.1s ease-in-out;
+            }
         }
     }
 }
