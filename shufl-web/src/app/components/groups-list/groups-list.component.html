@@ -11,7 +11,10 @@
             <div class="divider"></div>
         </div>
         <div class="groups-list-container">
-            <app-loading-icon [isLoading]="isLoading" [isEmbedded]="true" [dimensions]="50"></app-loading-icon>
+            <app-loading-icon [isLoading]="isLoading" [dimensions]="50"></app-loading-icon>
+            <div class="negative-message" *ngIf="groups.length === 0 && !isLoading">
+                <h2>You are not a member of any groups</h2>
+            </div>
             <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
         </div>
     </div>

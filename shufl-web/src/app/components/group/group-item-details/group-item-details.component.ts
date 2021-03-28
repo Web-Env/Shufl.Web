@@ -8,7 +8,7 @@ import { Rating } from "src/app/models/download-models/rating.model";
     templateUrl: './group-item-details.component.html',
     styleUrls: [
         './group-item-details.component.scss',
-        '../../../../assets/scss/wide-container.scss'
+        '../../../../assets/scss/music-details.scss'
     ]
 })
 export class GroupItemDetailsComponent implements OnInit {

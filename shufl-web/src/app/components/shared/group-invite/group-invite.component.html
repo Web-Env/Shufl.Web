@@ -1,0 +1,25 @@
+<div class="user-form-card">
+    <app-card-nav-bar [closeVisible]="true"></app-card-nav-bar>
+    <div class="user-form-container">
+        <div class="message-container positive-message" *ngIf="verificationRequestSentSuccessfully && isValidInvite">
+            <div class="invite-icon icon"></div>
+            <h2>You have been invited to join {{ group.name }}</h2>
+            <p>{{ group.members.length }} members</p>
+            <div class="invite-action-buttons-container">
+                <div class="accept-button action-button">
+                    <app-loading-button [buttonText]="'Accept'" [isLoading]="acceptRequestIsLoading" (click)="acceptInvitationAsync()"></app-loading-button>
+                </div>
+                
+                <div class="decline-button action-button">
+                    <app-loading-button [buttonText]="'Decline'" (click)="declineInvitation()"></app-loading-button>
+                </div>
+            </div>
+        </div>
+        <div class="message-container positive-message" *ngIf="verificationRequestSentSuccessfully && !isValidInvite">
+            <div class="x-icon icon"></div>
+            <h2>{{ inviteErrorMessage }}</h2>
+            <app-button [buttonText]="'View your Groups'" (click)="redirectToGroups()" *ngIf="groupsButtonVisible"></app-button>
+        </div>
+    </div>
+    <app-loading-icon [isLoading]="!verificationRequestSentSuccessfully"></app-loading-icon>
+</div>

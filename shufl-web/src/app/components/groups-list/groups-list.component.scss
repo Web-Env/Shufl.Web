@@ -39,6 +39,22 @@
                     border-bottom: none;
                 }
             }
+
+            .negative-message {
+                width: 100%;
+                height: 150px;
+
+                display: flex;
+                align-items: center;
+
+                h2 {
+                    width: 100%;
+
+                    color: $tertiary-foreground-colour;
+
+                    text-align: center;
+                }
+            }
         }
     }
 }

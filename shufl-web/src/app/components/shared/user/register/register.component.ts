@@ -14,7 +14,8 @@ import { StatusCheckerComponent } from "../../status-checker/status-checker.comp
     templateUrl: './register.component.html',
     styleUrls: [
         './register.component.scss',
-        '../../../../../assets/scss/form.scss'
+        '../../../../../assets/scss/form.scss',
+        '../../../../../assets/scss/user-form.scss'
     ]
 })
 export class RegisterComponent implements OnInit {

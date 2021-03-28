@@ -5,21 +5,9 @@
     position: absolute;
     z-index: 0;
 
-    opacity: 0;
-
-    -webkit-transition: all 0.1s ease-in-out;
-    -moz-transition: all 0.1s ease-in-out;
-    transition: all 0.1s ease-in-out;
-
-    &.embedded {
-        display: none;
-    }
+    display: none;
 
     &.visible {
-        opacity: 1;
-
-        &.embedded {
-            display: block;
-        }
+        display: block;
     }
 }

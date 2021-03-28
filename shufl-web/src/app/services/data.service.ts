@@ -77,6 +77,29 @@ export class DataService {
         });
     }
 
+    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T ;}, retry: boolean = false): Promise<T> {
+        return new Promise((resolve, reject) => {
+            let url = `${environment.apiUrl}/${endpoint}`;
+
+            this.httpClient.post(url, uploadModel, this.createHttpOptions())
+                .subscribe(
+                    (data) => {
+                        var mappedData = new type();
+                        Object.assign(mappedData, data);
+                        resolve(mappedData as T);
+                    },
+                    async (err) => {
+                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
+                            resolve(await this.postAsync(endpoint, uploadModel, type, true));
+                        }
+                        else {
+                            reject(err);
+                        }
+                    }
+                );
+        });
+    }
+
     public async postWithoutResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<boolean> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
@@ -98,20 +121,18 @@ export class DataService {
         });
     }
 
-    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T ;}, retry: boolean = false): Promise<T> {
+    public async postWithoutBodyOrResponseAsync(endpoint: string, retry: boolean = false): Promise<boolean> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
-            this.httpClient.post(url, uploadModel, this.createHttpOptions())
+            this.httpClient.post(url, null, this.createHttpOptions())
                 .subscribe(
-                    (data) => {
-                        var mappedData = new type();
-                        Object.assign(mappedData, data);
-                        resolve(mappedData as T);
+                    (_) => {
+                        resolve(true);
                     },
                     async (err) => {
                         if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postAsync(endpoint, uploadModel, type, true));
+                            resolve(await this.postWithoutResponseAsync(endpoint, true));
                         }
                         else {
                             reject(err);

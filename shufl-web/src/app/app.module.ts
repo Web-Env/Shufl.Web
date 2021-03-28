@@ -28,14 +28,15 @@ import { InlineArtistsTickerComponent } from './components/shared/inline-artists
 import { LoadingButtonComponent } from './components/shared/buttons/loading-button/loading-button.component';
 import { LoadingIconComponent } from './components/shared/loading-icon/loading-icon.component';
 import { LoginComponent } from './components/shared/user/login/login.component';
-import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
-import { NavBarItemComponent } from './components/shared/nav-bar/nav-bar-item/nav-bar-item.component';
+import { NavBarComponent } from './components/shared/navigation/nav-bar/nav-bar.component';
+import { NavBarItemComponent } from './components/shared/navigation/nav-bar/nav-bar-item/nav-bar-item.component';
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { PasswordResetComponent } from './components/shared/user/password-reset/password-reset.component';
 import { RegisterComponent } from './components/shared/user/register/register.component';
 import { StatusCheckerComponent } from './components/shared/status-checker/status-checker.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
+import { UserIconComponent } from "./components/shared/user/user-icon/user-icon.component";
 import { VerifyComponent } from './components/shared/user/verify/verify.component';
 
 import { genreFormatter } from './pipes/genreFormatter.pipe';
@@ -45,6 +46,8 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { LoadingService } from "./services/loading.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
+import { GroupInviteComponent } from './components/shared/group-invite/group-invite.component';
+import { CardNavBarComponent } from './components/shared/navigation/card-nav-bar/card-nav-bar.component';
 
 @NgModule({
     declarations: [
@@ -78,9 +81,14 @@ import { UrlHelperService } from "./services/helpers/url-helper.service";
         StatusCheckerComponent,
         TrackListComponent,
         TrackListItemComponent,
+        UserIconComponent,
         VerifyComponent,
 
-        genreFormatter
+        genreFormatter,
+
+        GroupInviteComponent,
+
+        CardNavBarComponent
     ],
     imports: [
         AppRoutingModule,

@@ -14,7 +14,7 @@ import { LoadingService } from "src/app/services/loading.service";
     selector: 'app-album',
     templateUrl: './album.component.html',
     styleUrls: [
-        '../../../assets/scss/wide-container.scss'
+        '../../../assets/scss/music-details.scss'
     ]
 })
 export class AlbumComponent implements OnInit {

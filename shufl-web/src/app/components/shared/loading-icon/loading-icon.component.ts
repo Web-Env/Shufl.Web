@@ -8,7 +8,6 @@ import { LoadingService } from "src/app/services/loading.service";
 })
 export class LoadingIconComponent implements OnInit {
     @Input() isLoading: boolean = false;
-    @Input() isEmbedded: boolean = false;
     @Input() dimensions: number = 200;
     visible: boolean = false;
 

@@ -1,0 +1,28 @@
+@import "src/assets/scss/variables/colours.scss";
+
+.user-form-card {
+    .user-form-container {
+        .positive-message {
+            z-index: 1;
+
+            p {
+                color: $tertiary-foreground-colour;
+
+                margin: 0 0 10px 0;
+
+                text-align: center;
+            }
+
+            .invite-action-buttons-container {
+                display: flex;
+                justify-content: space-between;
+
+                .action-button {
+                    width: 50%;
+
+                    padding: 15px;
+                }
+            }
+        }
+    }
+}

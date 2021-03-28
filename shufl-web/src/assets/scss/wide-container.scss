@@ -1,9 +1,19 @@
+@import "variables/colours";
+@import "variables/dimensions";
+
 .card-container {
-    top: 5%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
 
     .card {
+        background-color: $primary-background-colour;
+
         padding: 15px;
         margin-bottom: 5%;
+
+        border-radius: $primary-border-radius;
 
         position: relative;
 

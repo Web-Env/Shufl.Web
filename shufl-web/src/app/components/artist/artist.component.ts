@@ -13,7 +13,7 @@ import { LoadingService } from "src/app/services/loading.service";
     templateUrl: './artist.component.html',
     styleUrls: [
         './artist.component.scss',
-        '../../../assets/scss/wide-container.scss'
+        '../../../assets/scss/music-details.scss'
     ]
 })
 export class ArtistComponent implements OnInit {

@@ -1,4 +1,5 @@
 <div class="user-form-card">
+    <app-card-nav-bar [closeVisible]="true"></app-card-nav-bar>
     <div class="user-form-container">
         <form #loginForm="ngForm" (ngSubmit)="loginAsync(loginForm.value)">
             <div class="form-group" [ngClass]="{'active': emailActive, 'populated': emailPopulated, 'has-error': (!email.valid && email.touched)}">

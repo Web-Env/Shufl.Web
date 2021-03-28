@@ -7,7 +7,7 @@ import { Album } from "src/app/models/download-models/album.model";
     templateUrl: './album-info.component.html',
     styleUrls: [
         './album-info.component.scss',
-        '../../../../assets/scss/wide-container.scss'
+        '../../../../assets/scss/music-details.scss'
     ]
 })
 export class AlbumInfoComponent implements OnInit {
