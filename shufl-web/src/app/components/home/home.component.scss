@@ -1,4 +1,4 @@
-.card-container {
+.card-container.home-card-container {
     height: 320px;
 
     top: calc(50% - 160px);
@@ -7,6 +7,8 @@
         background-color: transparent;
 
         display: block;
+
+        opacity: 1;
 
         .app-icon {
             width: 250px;
@@ -21,7 +23,7 @@
 }
 
 @media (min-width: 768px) and (min-height: 769px) {
-    .card-container {
+    .card-container.home-card-container {
         height: 600px;
 
         top: calc(50% - 410px);
@@ -31,5 +33,47 @@
                 display: block;
             }
         }
+    }
+}
+
+@media (min-width: 475px) and (max-width: 765px) {
+    .card-container.home-card-container {
+        left: 10%;
+        right: 10%;
+    }
+}
+
+@media (min-width: 765px) and (max-width: 1024px) {
+    .card-container.home-card-container {
+        left: 20%;
+        right: 20%;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+    .card-container.home-card-container {
+        left: 30%;
+        right: 30%;
+    }
+}
+
+@media (min-width: 1365px) and (max-width: 1920px) {
+    .card-container.home-card-container {
+        left: 35%;
+        right: 35%;
+    }
+}
+
+@media (min-width: 1920px) and (max-width: 2560px) {
+    .card-container.home-card-container {
+        left: 38%;
+        right: 38%;
+    }
+}
+
+@media (min-width: 2560px) {
+    .card-container {
+        left: 42%;
+        right: 42%;
     }
 }
