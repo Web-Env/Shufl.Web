@@ -1,0 +1,8 @@
+<div class="group-suggestion-user-rating-list-container">
+    <div class="ratings-left">
+        <app-group-suggestion-user-rating *ngFor="let rating of ratingsLeft" [rating]="rating" [position]="'left'"></app-group-suggestion-user-rating>
+    </div>
+    <div class="ratings-right">
+        <app-group-suggestion-user-rating *ngFor="let rating of ratingsRight" [rating]="rating" [position]="'right'"></app-group-suggestion-user-rating>
+    </div>
+</div>

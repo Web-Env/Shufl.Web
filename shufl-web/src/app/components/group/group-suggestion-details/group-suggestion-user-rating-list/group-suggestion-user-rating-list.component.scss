@@ -1,4 +1,4 @@
-.group-item-user-rating-list-container {
+.group-suggestion-user-rating-list-container {
     display: flex;
     flex-direction: column;
 
@@ -9,7 +9,7 @@
 }
 
 @media (min-width: 1920px) {
-    .group-item-user-rating-list-container {
+    .group-suggestion-user-rating-list-container {
         flex-direction: row;
 
         .ratings-left,

@@ -1,6 +1,6 @@
 @import "src/assets/scss/variables/colours";
 
-.group-item-user-rating-container {
+.group-suggestion-user-rating-container {
     background-color: $tertiary-background-colour;
 
     padding: 15px;
@@ -24,7 +24,7 @@
 }
 
 @media (min-width: 765px) {
-    .group-item-user-rating-container {
+    .group-suggestion-user-rating-container {
         &.left {
             margin: 15px 7.5px 0 15px;
         }

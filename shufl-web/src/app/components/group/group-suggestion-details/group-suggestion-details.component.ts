@@ -4,14 +4,14 @@ import { Artist } from "src/app/models/download-models/artist.model";
 import { Rating } from "src/app/models/download-models/rating.model";
 
 @Component({
-    selector: 'app-group-item-details',
-    templateUrl: './group-item-details.component.html',
+    selector: 'app-group-suggestion-details',
+    templateUrl: './group-suggestion-details.component.html',
     styleUrls: [
-        './group-item-details.component.scss',
+        './group-suggestion-details.component.scss',
         '../../../../assets/scss/music-details.scss'
     ]
 })
-export class GroupItemDetailsComponent implements OnInit {
+export class GroupSuggestionDetailsComponent implements OnInit {
     dataLoaded: boolean = false;
 
     album: Album = new Album(

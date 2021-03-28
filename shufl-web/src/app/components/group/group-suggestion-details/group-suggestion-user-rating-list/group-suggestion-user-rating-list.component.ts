@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Rating } from "src/app/models/download-models/rating.model";
 
 @Component({
-    selector: 'app-group-item-user-rating-list',
-    templateUrl: './group-item-user-rating-list.component.html',
-    styleUrls: ['./group-item-user-rating-list.component.scss']
+    selector: 'app-group-suggestion-user-rating-list',
+    templateUrl: './group-suggestion-user-rating-list.component.html',
+    styleUrls: ['./group-suggestion-user-rating-list.component.scss']
 })
-export class GroupItemUserRatingListComponent implements OnInit {
+export class GroupSuggestionUserRatingListComponent implements OnInit {
     ratingsLeft: Rating[] = [];
     ratingsRight: Rating[] = [];
 
