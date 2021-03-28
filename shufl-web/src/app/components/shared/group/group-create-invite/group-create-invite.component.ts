@@ -10,7 +10,7 @@ import { environment } from "src/environments/environment";
         '../../../../../assets/scss/form.scss'
     ]
 })
-export class GroupCreateInviteComponent implements OnInit, AfterViewInit {
+export class GroupCreateInviteComponent implements OnInit {
     @ViewChild('inviteLinkInput') set content(content: ElementRef) {
         if(content) {
             this.inviteLinkInput = content;
@@ -29,11 +29,7 @@ export class GroupCreateInviteComponent implements OnInit, AfterViewInit {
     constructor(private dataService: DataService) { }
 
     ngOnInit(): void {
-    }
-
-    async ngAfterViewInit(): Promise<void> {
-        await this.createGroupInvite();
-        
+        this.createGroupInvite();
     }
 
     public async createGroupInvite(): Promise<void> {

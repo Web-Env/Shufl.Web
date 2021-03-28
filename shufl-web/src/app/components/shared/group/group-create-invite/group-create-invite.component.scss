@@ -27,4 +27,10 @@ $clipboard-icon-dimensions: 25px;
             color: $tertiary-foreground-colour;
         }
     }
+
+    .invite-error {
+        color: $primary-negative-colour;
+
+        text-align: center;
+    }
 }

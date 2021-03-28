@@ -20,9 +20,9 @@ import { GroupComponent } from './components/group/group.component';
 import { GroupAddAlbumComponent } from './components/shared/group/group-add-album/group-add-album.component';
 import { GroupCreateInviteComponent } from './components/shared/group/group-create-invite/group-create-invite.component';
 import { GroupInviteComponent } from './components/shared/group/group-invite/group-invite.component';
-import { GroupItemComponent } from './components/group/group-item-list/group-item/group-item.component';
+import { GroupSuggestionComponent } from './components/group/group-suggestion-list/group-suggestion/group-suggestion.component';
 import { GroupItemDetailsComponent } from './components/group/group-item-details/group-item-details.component';
-import { GroupItemListComponent } from './components/group/group-item-list/group-item-list.component';
+import { GroupSuggestionListComponent } from './components/group/group-suggestion-list/group-suggestion-list.component';
 import { GroupItemRatingComponent } from './components/shared/group/group-item-rating/group-item-rating.component';
 import { GroupItemUserRatingComponent } from './components/group/group-item-details/group-item-user-rating-list/group-item-user-rating/group-item-user-rating.component';
 import { GroupItemUserRatingListComponent } from './components/group/group-item-details/group-item-user-rating-list/group-item-user-rating-list.component';
@@ -66,9 +66,9 @@ import { UrlHelperService } from "./services/helpers/url-helper.service";
         GroupAddAlbumComponent,
         GroupCreateInviteComponent,
         GroupInviteComponent,
-        GroupItemComponent,
+        GroupSuggestionComponent,
         GroupItemDetailsComponent,
-        GroupItemListComponent,
+        GroupSuggestionListComponent,
         GroupItemRatingComponent,
         GroupItemUserRatingComponent,
         GroupItemUserRatingListComponent,

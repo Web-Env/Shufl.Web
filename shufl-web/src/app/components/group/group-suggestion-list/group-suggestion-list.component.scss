@@ -1,0 +1,28 @@
+@import "src/assets/scss/variables/colours";
+
+.group-suggestion-list-container {
+    min-height: 355px;
+
+    .group-suggestion-list {
+        :last-child {
+            ::ng-deep .group-suggestion-container {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .no-group-suggestions-message {
+        width: 100%;
+        height: 355px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        p {
+            color: $tertiary-foreground-colour;
+
+            font-size: 1.75em;
+        }
+    }
+}

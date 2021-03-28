@@ -6,11 +6,11 @@ import { Rating } from "src/app/models/download-models/rating.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
-    selector: 'app-group-item-list',
-    templateUrl: './group-item-list.component.html',
-    styleUrls: ['./group-item-list.component.scss']
+    selector: 'app-group-suggestion-list',
+    templateUrl: './group-suggestion-list.component.html',
+    styleUrls: ['./group-suggestion-list.component.scss']
 })
-export class GroupItemListComponent implements OnInit {
+export class GroupSuggestionListComponent implements OnInit {
     @Input() groupId!: string;
     groupSuggestions!: Array<GroupSuggestion>;
     isLoading: boolean = true;
@@ -24,7 +24,15 @@ export class GroupItemListComponent implements OnInit {
     }
 
     private async getGroupSuggestions(groupIdentifier: string): Promise<void> {
-        this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestion>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}`, GroupSuggestion);
+        try {
+            this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestion>(`GroupSuggestion/Get?groupIdentifier=${groupIdentifier}`, GroupSuggestion);
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            this.isLoading = false;
+        }
     }
 
 }
