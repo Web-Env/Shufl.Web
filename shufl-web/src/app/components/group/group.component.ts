@@ -58,7 +58,9 @@ export class GroupComponent implements OnInit {
         dialogConfig.closeOnNavigation = true;
         
 
-        this.dialog.open(GroupCreateInviteComponent, dialogConfig);
+        let dialogRef = this.dialog.open(GroupCreateInviteComponent, dialogConfig);
+        let instance = dialogRef.componentInstance;
+        instance.groupIdentifier = this.groupId;
     }
 
 }

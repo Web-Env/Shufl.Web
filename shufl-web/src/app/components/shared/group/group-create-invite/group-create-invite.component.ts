@@ -38,7 +38,6 @@ export class GroupCreateInviteComponent implements OnInit, AfterViewInit {
 
     public async createGroupInvite(): Promise<void> {
         try {
-            this.groupIdentifier = 'AN42PX17YRUYVR3NHHKHM8AE';
             var inviteLinkIdentifier = await this.dataService.postWithoutBodyAsync(`GroupInvite/Create?groupIdentifier=${this.groupIdentifier}`);
             this.inviteLink = `${environment.environmentUrl}/groups/join/${inviteLinkIdentifier}`;
 
