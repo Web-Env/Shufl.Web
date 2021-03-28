@@ -1,13 +1,6 @@
 .loading-icon-container {
-    width: 200px;
-    height: 200px;
-
     position: absolute;
     z-index: 0;
 
-    display: none;
-
-    &.visible {
-        display: block;
-    }
+    display: block;
 }

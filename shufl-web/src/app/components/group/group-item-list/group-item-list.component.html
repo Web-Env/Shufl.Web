@@ -1,5 +1,8 @@
-<div class="group-item-list">
-    <div app-group-item 
-        *ngFor="let groupItem of groupItems" 
-        [groupItemData]="groupItem"></div>
+<div class="group-item-list-container">
+    <div class="group-item-list" *mgIf="groupSuggestions != null">
+        <div app-group-item 
+        *ngFor="let groupSuggestion of groupSuggestions" 
+        [groupSuggestion]="groupSuggestion"></div>
+    </div>
+    <app-loading-icon *ngIf="isLoading" [dimensions]="75"></app-loading-icon>
 </div>

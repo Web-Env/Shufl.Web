@@ -1,12 +1,15 @@
 <div class="card-container">
-    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+    <div class="card">
+        <app-card-nav-bar [closeVisible]="false"></app-card-nav-bar>
         <div class="group-info-container">
-            <h1>{{ groupData.groupName }}</h1>
-            <p>Created by <a [routerLink]="['/user', groupData.createdBy.username]">{{ groupData.createdBy.name }}</a></p>
-            <p>{{ groupData.members }} members</p>
+            <app-loading-icon [dimensions]="50" *ngIf="isLoading"></app-loading-icon>
+            <div class="group-info" *ngIf="!isLoading && group != null">
+                <h1>{{ group.name }}</h1>
+                <a [routerLink]="['/user', group.createdBy.username]">{{ group.createdBy.displayName }}</a>
+                <p>{{ group.members.length }} members</p>
+                <div class="divider"></div>
+            </div>
         </div>
-        <div class="group-item-list-container">
-            <app-group-item-list [groupId]="groupData.id"></app-group-item-list>
-        </div>
+        <app-group-item-list [groupId]="groupId" *ngIf="groupId != null"></app-group-item-list>
     </div>
 </div>

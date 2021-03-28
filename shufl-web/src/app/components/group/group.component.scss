@@ -3,12 +3,38 @@
 .card-container {
     .card {
         .group-info-container {
-            p {
-                color: $tertiary-foreground-colour;
-            }
+            min-height: 95px;
 
-            a {
-                color: $primary-foreground-colour;
+            .group-info {
+                * {
+                    text-align: center;
+                }
+
+                h1 {
+                    margin-top: 0;
+                    margin-bottom: 10px;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                p,
+                a {
+                    color: $tertiary-foreground-colour;
+                }
+
+                a {
+                    width: fit-content;
+
+                    margin: 5px auto;
+
+                    display: block;
+                }
+
+                .divider {
+                    height: 2px;
+                }
             }
         }
     }

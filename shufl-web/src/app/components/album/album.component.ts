@@ -8,7 +8,6 @@ import { Artist } from 'src/app/models/download-models/artist.model';
 import { Track } from 'src/app/models/download-models/track.model';
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
-import { LoadingService } from "src/app/services/loading.service";
 
 @Component({
     selector: 'app-album',
@@ -36,7 +35,6 @@ export class AlbumComponent implements OnInit {
                 private router: Router,
                 private titleService: Title,
                 private dataService: DataService,
-                private loadingService: LoadingService,
                 private urlHelperService: UrlHelperService) { }
 
     ngOnInit(): void {
@@ -73,7 +71,6 @@ export class AlbumComponent implements OnInit {
     }
 
     private async fetchAsync(url: string): Promise<void> {
-        this.loadingService.emitstateEvent(true);
         this.dataLoaded = false;
         this.titleService.setTitle('Shufl');
 
@@ -82,7 +79,6 @@ export class AlbumComponent implements OnInit {
         );
 
         this.titleService.setTitle(this.albumData.name);
-        this.loadingService.emitstateEvent(false);
         this.dataLoaded = true;
     }
 

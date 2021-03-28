@@ -1,7 +1,11 @@
-.group-item-list {
-    :last-child {
-        ::ng-deep .group-item-container {
-            border-bottom: none;
+.group-item-list-container {
+    min-height: 355px;
+
+    .group-item-list {
+        :last-child {
+            ::ng-deep .group-item-container {
+                border-bottom: none;
+            }
         }
     }
 }

@@ -13,7 +13,9 @@ import { AlbumInfoComponent } from './components/shared/album-info/album-info.co
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { ButtonComponent } from './components/shared/buttons/button/button.component';
+import { CardNavBarComponent } from './components/shared/navigation/card-nav-bar/card-nav-bar.component';
 import { GroupComponent } from './components/group/group.component';
+import { GroupInviteComponent } from './components/shared/group-invite/group-invite.component';
 import { GroupItemComponent } from './components/group/group-item-list/group-item/group-item.component';
 import { GroupItemDetailsComponent } from './components/group/group-item-details/group-item-details.component';
 import { GroupItemListComponent } from './components/group/group-item-list/group-item-list.component';
@@ -44,10 +46,7 @@ import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { environment } from '../environments/environment';
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
-import { LoadingService } from "./services/loading.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
-import { GroupInviteComponent } from './components/shared/group-invite/group-invite.component';
-import { CardNavBarComponent } from './components/shared/navigation/card-nav-bar/card-nav-bar.component';
 
 @NgModule({
     declarations: [
@@ -101,7 +100,6 @@ import { CardNavBarComponent } from './components/shared/navigation/card-nav-bar
     providers: [
         AuthGuardService,
         AuthService,
-        LoadingService,
         UrlHelperService
     ],
     bootstrap: [AppComponent]

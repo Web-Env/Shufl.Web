@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from "@angular/router";
     styleUrls: ['./group-item.component.scss']
 })
 export class GroupItemComponent implements OnInit {
-    @Input() groupItemData!: any;
+    @Input() groupSuggestion!: any;
 
     constructor(private router: Router,
         private activatedRoute: ActivatedRoute) { }
@@ -16,7 +16,7 @@ export class GroupItemComponent implements OnInit {
     }
 
     groupItemClicked(): void {
-        this.router.navigate([`./${this.groupItemData.id}`],
+        this.router.navigate([`./${this.groupSuggestion.id}`],
             { relativeTo: this.activatedRoute });
     }
 
