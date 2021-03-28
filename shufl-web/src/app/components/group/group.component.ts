@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Group } from "src/app/models/download-models/group.model";
 import { DataService } from "src/app/services/data.service";
@@ -19,6 +20,7 @@ export class GroupComponent implements OnInit {
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
+                private titleService: Title,
                 private urlHelperService: UrlHelperService,
                 private dataService: DataService) { }
 
@@ -38,6 +40,7 @@ export class GroupComponent implements OnInit {
     private async getGroupInfoAsync(groupIdentifier: string): Promise<void> {
         this.group = await this.dataService.getAsync<Group>(`Group/Get?groupIdentifier=${groupIdentifier}`);
         
+        this.titleService.setTitle(this.group.name);
         this.isLoading = false;
     }
 

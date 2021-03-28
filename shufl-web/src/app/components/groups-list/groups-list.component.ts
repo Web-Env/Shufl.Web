@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from "@angular/platform-browser";
 import { Group } from "src/app/models/download-models/group.model";
 import { DataService } from "src/app/services/data.service";
 
@@ -14,9 +15,11 @@ export class GroupsListComponent implements OnInit {
     isLoading: boolean = true;
     groups: Group[] = [];
 
-    constructor(private dataService: DataService) { }
+    constructor(private titleService: Title,
+                private dataService: DataService) { }
 
     ngOnInit(): void {
+        this.titleService.setTitle('Your Groups');
         this.getUsersGroupsAsync();
     }
 
