@@ -35,7 +35,7 @@ export class DataService {
         return httpOptions;
     }
 
-    public async getAsync<T>(endpoint: string, type: { new(): T ;} | undefined = undefined, retry: boolean = false): Promise<T> {
+    public async getAsync<T>(endpoint: string, type: { new(): T; } | null = null, retry: boolean = false): Promise<T> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -43,7 +43,7 @@ export class DataService {
                 .subscribe(
                     (data) => {
                         if (type != null) {
-                            var mappedObject = this.mapJsonToObject<T>(data, type)
+                            var mappedObject = this.mapJsonToObject<T>(data, type);
                             resolve(mappedObject as T);
                         }
                         else {
@@ -62,7 +62,7 @@ export class DataService {
         });
     }
 
-    public async getArrayAsync<T>(endpoint: string, type: { new(): T ;}, retry: boolean = false): Promise<Array<T>> {
+    public async getArrayAsync<T>(endpoint: string, type: { new(): T; }, retry: boolean = false): Promise<Array<T>> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -89,7 +89,7 @@ export class DataService {
         });
     }
 
-    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T ;}, retry: boolean = false): Promise<T> {
+    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T; }, retry: boolean = false): Promise<T> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -175,17 +175,17 @@ export class DataService {
         });
     }
 
-    private mapJsonToObject<T>(jsonObject: any, type: { new(): T ;}): T {
+    private mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
         var mappedData = new type();
         Object.assign(mappedData, jsonObject);
 
         return mappedData as T;
     }
 
-    private mapJsonArrayToObjectArray<T>(jsonArray: any[], type: { new(): T ;}): Array<T> {
+    private mapJsonArrayToObjectArray<T>(jsonArray: any[], type: { new(): T; }): Array<T> {
         let objectArray: Array<T> = [];
 
-        jsonArray.forEach(jsonObject => {
+        jsonArray.forEach((jsonObject) => {
             objectArray.push(this.mapJsonToObject<T>(jsonObject, type));
         });
 

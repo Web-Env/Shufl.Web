@@ -55,7 +55,6 @@ export class GroupInviteComponent implements OnInit {
                         this.groupsButtonVisible = true;
                     }
                     else if (err.error.errorType === 'InvalidTokenException') {
-                        console.log (err)
                         this.inviteErrorMessage = err.error.errorMessage;
                     }
                 }
@@ -67,14 +66,13 @@ export class GroupInviteComponent implements OnInit {
     }
 
     public async acceptInvitationAsync(): Promise<void> {
-        console.log ("click")
         try {
             this.acceptRequestIsLoading = true;
             await this.dataService.postWithoutBodyOrResponseAsync(`GroupInvite/Join?groupInviteIdentifier=${this.inviteToken}`);
             this.router.navigate([`/group/${this.group.identifier}`]);
         }
         catch (err) {
-            console.log (err)
+            console.log (err);
             this.inviteErrorMessage = "There has been an error joining this group, please try again";
             this.isValidInvite = false;
         }
