@@ -39,9 +39,8 @@ export class GroupsListComponent implements OnInit {
         dialogConfig.autoFocus = true;
         dialogConfig.width = '90%';
         dialogConfig.maxWidth = "800px";
-        dialogConfig.height = '220px';
+        dialogConfig.height = 'fit-content';
         dialogConfig.closeOnNavigation = true;
-        
 
         this.dialog.open(GroupCreateComponent, dialogConfig);
     }

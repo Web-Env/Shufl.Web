@@ -172,6 +172,21 @@ $input-border-width: 2px;
     }
 }
 
+.form-error {
+    color: $primary-negative-colour;
+
+    padding: 15px 15px 0 15px;
+
+    display: none;
+
+    font-size: 16pt;
+    text-align: center;
+
+    &.visible {
+        display: block;
+    }
+}
+
 @media (min-width: 1920px) {
     .form-group {
         .input-container {

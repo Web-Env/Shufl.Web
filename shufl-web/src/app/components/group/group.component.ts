@@ -54,7 +54,7 @@ export class GroupComponent implements OnInit {
         dialogConfig.autoFocus = true;
         dialogConfig.width = '90%';
         dialogConfig.maxWidth = "800px";
-        dialogConfig.height = '195px';
+        dialogConfig.height = 'fit-content';
         dialogConfig.closeOnNavigation = true;
         
 
