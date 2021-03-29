@@ -175,6 +175,27 @@ export class DataService {
         });
     }
 
+    public async postWithStringResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let url = `${environment.apiUrl}/${endpoint}`;
+
+            this.httpClient.post(url, uploadModel, this.createStringHttpOptions())
+                .subscribe(
+                    (data) => {
+                        resolve(data);
+                    },
+                    async (err) => {
+                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
+                            resolve(await this.postWithoutBodyAsync(endpoint, true));
+                        }
+                        else {
+                            reject(err);
+                        }
+                    }
+                );
+        });
+    }
+
     private mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
         var mappedData = new type();
         Object.assign(mappedData, jsonObject);

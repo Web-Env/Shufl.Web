@@ -1,13 +1,13 @@
 <div class="group-create-modal">
-    <form #createGroupForm="ngForm" (ngSubmit)="createGroupAsync(createGroupForm.value)"></form>
+    <form #createGroupForm="ngForm" (ngSubmit)="createGroupAsync(createGroupForm.value)">
         <div class="form-group" [ngClass]="{'active': groupNameActive, 'populated': groupNamePopulated, 'has-error': (!groupName.valid && groupName.touched)}">
             <div class="input-container">
                 <label for="groupNameInput">Group Name</label>
-                <input type="text" class="form-control" #groupName="ngModel" maxlength="150"
-                    (focus)="changeInputState(email, true)"
-                    (blur)="changeInputState(email, false)" required ngModel groupName>
-                <small class="warning-label" [ngClass]="{'visible': !groupName.valid && groupName.touched}">Group Name cannot be blank</small>
+                <input type="text" class="form-control" name="groupName" #groupName="ngModel" maxlength="150" autocomplete="off"
+                    (focus)="changeInputState(groupName, true)"
+                    (blur)="changeInputState(groupName, false)" required ngModel groupName>
             </div>
+            <small class="warning-label" [ngClass]="{'visible': !groupName.valid && groupName.touched}">Group Name cannot be blank</small>
         </div>
 
         <app-loading-button [buttonText]="'Create Group'" [isLoading]="isLoading" [isDisabled]="!createGroupForm.valid"></app-loading-button>

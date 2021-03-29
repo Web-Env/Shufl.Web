@@ -12,8 +12,8 @@
         </div>
         <div class="groups-list-container">
             <app-loading-icon [dimensions]="50" *ngIf="isLoading"></app-loading-icon>
-            <div class="negative-message" *ngIf="groups.length === 0 && !isLoading">
-                <h2>You are not a member of any groups</h2>
+            <div class="no-groups-message" *ngIf="groups.length === 0 && !isLoading">
+                <p>You are not a member of any groups</p>
             </div>
             <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
         </div>

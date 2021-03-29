@@ -7,7 +7,7 @@ import { environment } from "src/environments/environment";
     templateUrl: './group-create-invite.component.html',
     styleUrls: [
         './group-create-invite.component.scss',
-        '../../../../../assets/scss/form.scss'
+        '../../../../../../assets/scss/form.scss'
     ]
 })
 export class GroupCreateInviteComponent implements OnInit {

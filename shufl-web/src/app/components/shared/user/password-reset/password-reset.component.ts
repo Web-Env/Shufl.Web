@@ -158,7 +158,7 @@ export class PasswordResetComponent implements OnInit {
                 this.resetRequestSentSuccessfully = true;
             }
             catch (err) {
-                console.log(err)
+                console.log(err);
                 this.resetRequestSentSuccessfully = false;
                 this.formErrorMessageVisible = true;
             }
