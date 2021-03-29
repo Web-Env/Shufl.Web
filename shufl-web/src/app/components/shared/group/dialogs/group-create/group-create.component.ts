@@ -57,7 +57,7 @@ export class GroupCreateComponent implements OnInit {
                 var newGroup = new Group(
                     createGroupFormData['groupName'],
                     true
-                )
+                );
     
                 var groupIdentifier = await this.dataService.postWithStringResponseAsync('Group/Create', newGroup);
 
