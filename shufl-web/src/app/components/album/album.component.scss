@@ -1,0 +1,43 @@
+.card-container {
+    .card {
+        opacity: 0;
+    }
+
+    &.modal {
+        position: unset;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        .card {
+            padding: 0;
+            margin: 0;
+
+            .album-info-container {
+                .album-cover {
+                    img {
+                        width: 175px;
+                        height: 175px;
+                    }
+                }
+
+                .artists-container {
+                    .artist-link {
+                        pointer-events: none;
+                    }
+                }
+            }
+    
+            .action-buttons-container {
+                height: 140px;
+    
+                margin: 10px 10px;
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+    }
+}

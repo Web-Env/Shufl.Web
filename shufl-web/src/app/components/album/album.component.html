@@ -1,5 +1,5 @@
-<div class="card-container">
-    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
+<div class="card-container" [ngClass]="{'modal': isModal}">
+    <div class="card" [ngClass]="{'loaded': !isLoading}">
         <div class="album-info-container">
             <div class="album-cover">
                 <img src="{{ albumCoverArtUrl }}" alt="{{ albumData.name }}">
@@ -13,12 +13,20 @@
                 <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
             </div>
             <p class="release-date">{{ albumData.releaseDate | date: 'MMMM yyyy' }}</p>
-            <a class="button" href="{{ albumData.url }}" target="new"><img src="assets/img/logos/spotify-logo.png">
+            <p *ngIf="isModal">{{ albumData.tracks.length }} Tracks</p>
+            <a class="button" href="{{ albumData.url }}" target="new" *ngIf="!isModal">
+                <img src="assets/img/logos/spotify-logo.png">
                 <p>Open</p>
             </a>
         </div>
+        <div class="action-buttons-container" *ngIf="isModal && !isLoading">
+            <app-loading-button [buttonText]="'Add'" [isLoading]="addingAlbumToGroup" (click)="addToGroupAsync()"></app-loading-button>
+            <app-loading-button [buttonText]="'New Suggestion'" [isLoading]="isLoading" (click)="fetchAsync('Album/RandomAlbum')"></app-loading-button>
+            <p class="form-error" *ngIf="errorVisible && !isLoading && !addingAlbumToGroup && !addedAlbumToGroupSuccessfully">There was an error adding this album to the group</p>
+        </div>
         <div class="track-list-container">
-            <app-track-list [tracks]="albumData.tracks"></app-track-list>
+            <app-track-list [tracks]="albumData.tracks" *ngIf="!isModal"></app-track-list>
         </div>
     </div>
+    <app-loading-icon [dimensions]="200" *ngIf="isLoading"></app-loading-icon>
 </div>

@@ -7,6 +7,9 @@
                 <h1>{{ group.name }}</h1>
                 <a [routerLink]="['/user', group.createdBy.username]">{{ group.createdBy.displayName }}</a>
                 <p>{{ group.members.length }} members</p>
+                <div class="action-button-container">
+                    <app-button [buttonText]="'Add a New Album'" (click)="addNewAlbumClicked()"></app-button>
+                </div>
                 <div class="divider"></div>
             </div>
         </div>

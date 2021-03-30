@@ -4,7 +4,7 @@
             *ngFor="let groupSuggestion of groupSuggestions" 
             [groupSuggestion]="groupSuggestion"></div>
     </div>
-    <div class="no-group-suggestions-message" *ngIf="!isLoading && groupSuggestions.length === 0">
+    <div class="no-group-suggestions-message" *ngIf="!isLoading && groupSuggestions?.length === 0">
         <p>No Group Suggestions</p>
     </div>
     <app-loading-icon *ngIf="isLoading" [dimensions]="75"></app-loading-icon>

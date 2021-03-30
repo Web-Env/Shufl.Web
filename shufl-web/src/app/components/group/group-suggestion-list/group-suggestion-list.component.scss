@@ -3,6 +3,8 @@
 .group-suggestion-list-container {
     min-height: 355px;
 
+    position: relative;
+
     .group-suggestion-list {
         :last-child {
             ::ng-deep .group-suggestion-container {
