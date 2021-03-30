@@ -19,7 +19,7 @@
                 <p>Open</p>
             </a>
         </div>
-        <div class="action-buttons-container" *ngIf="isModal && !isLoading">
+        <div class="action-buttons-container" [ngClass]="{'visible': !isLoading}" *ngIf="isModal">
             <app-loading-button [buttonText]="'Add'" [isLoading]="addingAlbumToGroup" (click)="addToGroupAsync()"></app-loading-button>
             <app-loading-button [buttonText]="'New Suggestion'" [isLoading]="isLoading" (click)="fetchAsync('Album/RandomAlbum')"></app-loading-button>
             <p class="form-error" *ngIf="errorVisible && !isLoading && !addingAlbumToGroup && !addedAlbumToGroupSuccessfully">There was an error adding this album to the group</p>

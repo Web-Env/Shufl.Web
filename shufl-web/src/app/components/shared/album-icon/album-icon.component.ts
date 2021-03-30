@@ -8,7 +8,7 @@ import { Album } from 'src/app/models/download-models/album.model';
     styleUrls: ['./album-icon.component.scss']
 })
 export class AlbumIconComponent implements OnInit {
-    @Input() album!: Album
+    @Input() album!: any//Album;
     @Input() enabled: boolean = true;
 
     constructor(private router: Router) { }

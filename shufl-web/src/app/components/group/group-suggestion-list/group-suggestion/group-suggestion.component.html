@@ -5,7 +5,7 @@
             <div app-album-icon [album]="groupSuggestion.album" [enabled]="false"></div>
         </div>
         <div class="rating-container">
-            <app-group-suggestion-rating [rating]="groupSuggestion.rating"></app-group-suggestion-rating>
+            <app-group-suggestion-rating [rating]="overallRating" *ngIf="overallRatingCalculated"></app-group-suggestion-rating>
         </div>
     </div>
     <div class="open-icon"></div>

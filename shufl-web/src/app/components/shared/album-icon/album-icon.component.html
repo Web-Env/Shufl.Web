@@ -1,6 +1,6 @@
 <div class="album-icon-container" (click)="albumIconClicked()">
     <div class="album-art">
-        <img src="{{ album.coverArtUrl }}">
+        <img src="https://i.scdn.co/image/{{ album.albumImages[0]?.uri }}"><!-- https://i.scdn.co/image/ -->
     </div>
     <div class="album-info">
         <a class="album-link" [routerLink]="['/album', album.id]">{{ album.name }}</a>
