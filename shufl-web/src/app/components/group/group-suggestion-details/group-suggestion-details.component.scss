@@ -3,17 +3,17 @@
 .card-container {
     .card {
         min-height: 500px;
-        
+
         .group-suggestion-info-container {
             border-bottom: 2px solid $tertiary-foreground-colour;
-        
+
             .overall-rating-container {
                 margin: auto;
             }
-        
+
             .rate-button-container {
                 width: 100%;
-        
+
                 margin: auto;
             }
         }
@@ -36,13 +36,13 @@
     .card-container.group-suggestion-details-card-container {
         left: 20%;
         right: 20%;
-        
+
         .card {
             .group-suggestion-info-container {
                 .overall-rating-container {
                     width: 50%;
                 }
-    
+
                 .rate-button-container {
                     width: 70%;
                 }

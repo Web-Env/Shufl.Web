@@ -90,24 +90,24 @@ export class GroupSuggestionDetailsComponent implements OnInit {
     }
     
     private calculateOverallRating(ratings: GroupSuggestionRating[]): Rating {
-        if (this.groupSuggestion.groupSuggestionRatings != null && this.groupSuggestion.groupSuggestionRatings.length != 0) {
-            var overallRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.overallRating);
+        if (this.groupSuggestion.groupSuggestionRatings != null && this.groupSuggestion.groupSuggestionRatings.length !== 0) {
+            var overallRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.overallRating);
             var overallTotal = overallRatings.reduce((sum, current) => sum + current);
             var overAllRating = this.averageAndRoundToDecimal(overallTotal, overallRatings.length);
 
-            var lyricsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.lyricsRating);
+            var lyricsRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.lyricsRating);
             var lyricsTotal = lyricsRatings.reduce((sum, current) => sum + current);
             var lyricsRating = this.averageAndRoundToDecimal(lyricsTotal, lyricsRatings.length);
 
-            var vocalsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.vocalsRating);
+            var vocalsRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.vocalsRating);
             var vocalsTotal = vocalsRatings.reduce((sum, current) => sum + current);
             var vocalsRating = this.averageAndRoundToDecimal(vocalsTotal, vocalsRatings.length);
 
-            var instrumentalsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.instrumentalsRating);
+            var instrumentalsRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.instrumentalsRating);
             var instrumentalsTotal = instrumentalsRatings.reduce((sum, current) => sum + current);
             var instrumentalsRating = this.averageAndRoundToDecimal(instrumentalsTotal, instrumentalsRatings.length);
 
-            var compositionRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.compositionRating);
+            var compositionRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.compositionRating);
             var compositionTotal = compositionRatings.reduce((sum, current) => sum + current);
             var compositionRating = this.averageAndRoundToDecimal(compositionTotal, compositionRatings.length);
 

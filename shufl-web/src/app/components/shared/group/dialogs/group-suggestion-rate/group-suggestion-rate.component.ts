@@ -41,8 +41,7 @@ export class GroupSuggestionRateComponent implements OnInit {
     
     rateGroupSuggestionForm: FormGroup = new FormGroup({});
 
-    constructor(private router: Router,
-                private formBuilder: FormBuilder,
+    constructor(formBuilder: FormBuilder,
                 private dialogRef: MatDialogRef<GroupSuggestionRateComponent>,
                 private dataService: DataService) {
         this.rateGroupSuggestionForm = formBuilder.group({
@@ -54,19 +53,7 @@ export class GroupSuggestionRateComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        this.buildForm();
-
-        // this.rateGroupSuggestionForm.setValue({
-        //     overallRating: ''
-        // });
-    }
-
-    public buildForm(): void {
-        // this.rateGroupSuggestionForm = this.formBuilder.group({
-        //     overallRating: ['', [Validators.required, Validators.min(0), Validators.max(10)]],
-        // });
-    }
+    ngOnInit(): void {}
     
     public changeInputState(inputName: string, active: boolean): void {
         if (inputName === 'overallRating') {
@@ -88,13 +75,6 @@ export class GroupSuggestionRateComponent implements OnInit {
         else if (inputName === 'compositionRating') {
             this.compositionRatingActive = active;
             this.compositionRatingPopulated = this.rateGroupSuggestionForm.controls[inputName].value !== '';
-        }
-    }
-
-    public numberInputChanged(input: NgModel) {
-        console.log (input)
-        if (input.value < 0 || input.value > 10) {
-            console.log ("H")
         }
     }
     
@@ -119,8 +99,6 @@ export class GroupSuggestionRateComponent implements OnInit {
 
                 if (groupSuggestionRating != null) {
                     this.dialogRef.close({data: groupSuggestionRating});
-                    console.log (groupSuggestionRating)
-                    //this.router.navigate([`/group/${groupIdentifier}`]);
                 }
             }
             catch (err) {

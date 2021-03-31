@@ -1,6 +1,5 @@
 <div class="group-suggestion-rate-modal">
     <form [formGroup]="rateGroupSuggestionForm">
-        <!-- #rateGroupSuggestionForm="ngForm" (ngSubmit)="rateGroupSuggestionAsync(rateGroupSuggestionForm.value)" -->
         <div class="form-group" 
             [ngClass]="{'active': overallRatingActive, 'populated': overallRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['overallRating'].valid && rateGroupSuggestionForm.controls['overallRating'].touched)}">
             <div class="input-container">

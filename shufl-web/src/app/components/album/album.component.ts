@@ -96,14 +96,13 @@ export class AlbumComponent implements OnInit {
         if (!this.isModal) {
             this.titleService.setTitle(this.albumData.name);
         }
-        
+
         this.isLoading = false;
     }
 
     private mapReceivedDataToAlbum(receivedData: any): Album {
         var receivedGenres = receivedData.genres;
         var receivedAlbumData = receivedData.album;
-        console.log (receivedAlbumData)
         var tracks = this.mapReceivedTracks(receivedAlbumData.tracks.items);
         var artists = this.mapReceivedArtists(receivedAlbumData.artists);
 
@@ -163,26 +162,29 @@ export class AlbumComponent implements OnInit {
     }
 
     public async addToGroupAsync(): Promise<void> {
-        try {
-            this.addingAlbumToGroup = true;
+        if (!this.addingAlbumToGroup) {
+            try {
+                this.addingAlbumToGroup = true;
 
-            var newGroupSuggestion = new GroupSuggestion(
-                this.groupId,
-                this.albumData.id,
-                true
-            );
+                var newGroupSuggestion = new GroupSuggestion(
+                    this.groupId,
+                    this.albumData.id,
+                    true
+                );
 
-            console.log (newGroupSuggestion)
+                var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
 
-            var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
+                this.dialogRef.close();
+                this.router.navigate([`/group/${this.groupId}/${groupSuggestionIdentifier}`]);
 
-            this.dialogRef.close();
-            this.router.navigate([`/group/${this.groupId}/${groupSuggestionIdentifier}`]);
-
-            this.addedAlbumToGroupSuccessfully = true;
-        }
-        catch (err) {
-
+                this.addedAlbumToGroupSuccessfully = true;
+            }
+            catch (err) {
+                this.errorVisible = true;
+            }
+            finally {
+                this.addingAlbumToGroup = false;
+            }
         }
     }
 }
