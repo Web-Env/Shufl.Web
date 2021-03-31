@@ -1,23 +1,33 @@
 @import "src/assets/scss/variables/colours";
 
-.group-suggestion-info-container {
-    border-bottom: 2px solid $tertiary-foreground-colour;
-
-    .overall-rating-container {
-        margin: auto;
-    }
-
-    .rate-button-container {
-        width: 100%; //TO-DO: Investigate a neater size
-
-        margin: auto;
+.card-container {
+    .card {
+        min-height: 500px;
+        
+        .group-suggestion-info-container {
+            border-bottom: 2px solid $tertiary-foreground-colour;
+        
+            .overall-rating-container {
+                margin: auto;
+            }
+        
+            .rate-button-container {
+                width: 100%;
+        
+                margin: auto;
+            }
+        }
     }
 }
 
 @media (min-width: 1024px) {
-    .group-suggestion-info-container {
-        .overall-rating-container {
-            width: 80%;
+    .card-container {
+        .card {
+            .group-suggestion-info-container {
+                .overall-rating-container {
+                    width: 80%;
+                }
+            }
         }
     }
 }
@@ -26,11 +36,17 @@
     .card-container.group-suggestion-details-card-container {
         left: 20%;
         right: 20%;
-    }
-
-    .group-suggestion-info-container {
-        .overall-rating-container {
-            width: 50%;
+        
+        .card {
+            .group-suggestion-info-container {
+                .overall-rating-container {
+                    width: 50%;
+                }
+    
+                .rate-button-container {
+                    width: 70%;
+                }
+            }
         }
     }
 }

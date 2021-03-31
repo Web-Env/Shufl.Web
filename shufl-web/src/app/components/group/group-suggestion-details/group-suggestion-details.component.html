@@ -1,6 +1,7 @@
 <div class="card-container group-suggestion-details-card-container">
-    <div class="card" [ngClass]="{ 'loaded': !isLoading }">
-        <div class="group-suggestion-info-container">
+    <div class="card">
+        <app-card-nav-bar></app-card-nav-bar>
+        <div class="group-suggestion-info-container" *ngIf="!isLoading">
             <div class="album-container">
                 <app-album-info [album]="album" [genres]="genres" [linkDisabled]="false"></app-album-info>
             </div>
@@ -17,4 +18,5 @@
             <app-group-suggestion-user-rating-list [groupSuggestionRatings]="groupSuggestion.groupSuggestionRatings" *ngIf="groupSuggestion != null && groupSuggestion.groupSuggestionRatings != null"></app-group-suggestion-user-rating-list>
         </div>
     </div>
+    <app-loading-icon *ngIf="isLoading"></app-loading-icon>
 </div>
