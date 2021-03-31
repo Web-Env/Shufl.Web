@@ -1,0 +1,49 @@
+.group-suggestion-rate-modal {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        display: none;
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+
+    .form-group {
+        &.active,
+        &.populated {
+            .input-container {
+                &::after {
+                    width: fit-content;
+                    height: 25px;
+                    
+                    position: absolute;
+                    top: 34px;
+                    left: 35px;
+        
+                    font-size: 17pt;
+        
+                    content: "/10";
+                }
+            }
+        }
+    }
+
+    .secondary-form-groups-container {
+        display: flex;
+        flex-direction: row;
+        
+        .small-form-group-container {
+            width: 40%;
+
+            padding-right: 5px;
+        }
+        
+        .large-form-group-container {
+            width: 60%;
+
+            padding-left: 5px;
+        }
+    }
+}

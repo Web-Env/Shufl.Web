@@ -1,0 +1,68 @@
+<div class="group-suggestion-rate-modal">
+    <form [formGroup]="rateGroupSuggestionForm">
+        <!-- #rateGroupSuggestionForm="ngForm" (ngSubmit)="rateGroupSuggestionAsync(rateGroupSuggestionForm.value)" -->
+        <div class="form-group" 
+            [ngClass]="{'active': overallRatingActive, 'populated': overallRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['overallRating'].valid && rateGroupSuggestionForm.controls['overallRating'].touched)}">
+            <div class="input-container">
+                <label for="overallRating">Overall</label>
+                <input type="number" class="form-control" formControlName="overallRating"
+                    (focus)="changeInputState('overallRating', true)"
+                    (blur)="changeInputState('overallRating', false)"
+                    pattern="\d+(\.\d{1})?">
+            </div>
+            <small class="warning-label" [ngClass]="{'visible': (!rateGroupSuggestionForm.controls['overallRating'].valid && rateGroupSuggestionForm.controls['overallRating'].touched)}">
+                {{ 
+                    rateGroupSuggestionForm.controls['overallRating'].value?.length === 0 || rateGroupSuggestionForm.controls['overallRating'].value == null ? 'Rating cannot be blank' : 'Rating cannot be greater than 10' }}
+            </small>
+        </div>
+        
+        <div class="secondary-form-groups-container">
+            <div class="small-form-group-container">
+                <div class="form-group" 
+                    [ngClass]="{'active': lyricsRatingActive, 'populated': lyricsRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['lyricsRating'].valid && rateGroupSuggestionForm.controls['lyricsRating'].touched)}">
+                    <div class="input-container">
+                        <label for="lyricsRating">Lyrics</label>
+                        <input type="number" class="form-control" formControlName="lyricsRating"
+                            (focus)="changeInputState('lyricsRating', true)"
+                            (blur)="changeInputState('lyricsRating', false)">
+                    </div>
+                </div>
+                
+                <div class="form-group" 
+                    [ngClass]="{'active': vocalsRatingActive, 'populated': vocalsRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['vocalsRating'].valid && rateGroupSuggestionForm.controls['vocalsRating'].touched)}">
+                    <div class="input-container">
+                        <label for="vocalsRating">Vocals</label>
+                        <input type="number" class="form-control" formControlName="vocalsRating"
+                            (focus)="changeInputState('vocalsRating', true)"
+                            (blur)="changeInputState('vocalsRating', false)">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="large-form-group-container">
+                <div class="form-group" 
+                    [ngClass]="{'active': instrumentalsRatingActive, 'populated': instrumentalsRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['instrumentalsRating'].valid && rateGroupSuggestionForm.controls['instrumentalsRating'].touched)}">
+                    <div class="input-container">
+                        <label for="instrumentalsRating">Instrumentals</label>
+                        <input type="number" class="form-control" formControlName="instrumentalsRating"
+                            (focus)="changeInputState('instrumentalsRating', true)"
+                            (blur)="changeInputState('instrumentalsRating', false)">
+                    </div>
+                </div>
+                
+                <div class="form-group" 
+                    [ngClass]="{'active': compositionRatingActive, 'populated': compositionRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['compositionRating'].valid && rateGroupSuggestionForm.controls['compositionRating'].touched)}">
+                    <div class="input-container">
+                        <label for="compositionRating">Composition</label>
+                        <input type="number" class="form-control" formControlName="compositionRating"
+                            (focus)="changeInputState('compositionRating', true)"
+                            (blur)="changeInputState('compositionRating', false)">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <app-loading-button [buttonText]="'Rate'" [isLoading]="isLoading" [isDisabled]="!rateGroupSuggestionForm.valid" (click)="rateGroupSuggestionAsync(rateGroupSuggestionForm.value)"></app-loading-button>
+    </form>
+    <p class="form-error" [ngClass]="{'visible': formErrorMessageVisible}">{{ formErrorMessage }}</p>
+</div>

@@ -196,14 +196,14 @@ export class DataService {
         });
     }
 
-    private mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
+    public mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
         var mappedData = new type();
         Object.assign(mappedData, jsonObject);
 
         return mappedData as T;
     }
 
-    private mapJsonArrayToObjectArray<T>(jsonArray: any[], type: { new(): T; }): Array<T> {
+    public mapJsonArrayToObjectArray<T>(jsonArray: any[], type: { new(): T; }): Array<T> {
         let objectArray: Array<T> = [];
 
         jsonArray.forEach((jsonObject) => {

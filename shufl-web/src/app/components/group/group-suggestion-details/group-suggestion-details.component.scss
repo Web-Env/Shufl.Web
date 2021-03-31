@@ -6,6 +6,12 @@
     .overall-rating-container {
         margin: auto;
     }
+
+    .rate-button-container {
+        width: 100%; //TO-DO: Investigate a neater size
+
+        margin: auto;
+    }
 }
 
 @media (min-width: 1024px) {

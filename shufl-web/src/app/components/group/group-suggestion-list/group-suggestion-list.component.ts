@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Album } from "src/app/models/download-models/album.model";
-import { Artist } from "src/app/models/download-models/artist.model";
 import { GroupSuggestion } from "src/app/models/download-models/group-suggestion.model";
-import { Rating } from "src/app/models/download-models/rating.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -25,7 +22,7 @@ export class GroupSuggestionListComponent implements OnInit {
 
     private async getGroupSuggestions(groupIdentifier: string): Promise<void> {
         try {
-            this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestion>(`GroupSuggestion/Get?groupIdentifier=${groupIdentifier}`, GroupSuggestion);
+            this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestion>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}`, GroupSuggestion);
         }
         catch (err) {
             console.log(err);

@@ -1,6 +1,6 @@
-<div class="album-info-container">
+<div class="album-info-container" *ngIf="album != null">
     <div class="album-cover">
-        <img src="{{ album.coverArtUrl }}" alt="{{ album.name }}">
+        <img src="https://i.scdn.co/image/{{ album.albumImages[1]?.uri }}" alt="{{ album.name }}">
     </div>
     <a class="album-name" [routerLink]="['/album', album.id]" [ngClass]="{'disabled': linkDisabled}">{{ album.name }}</a>
     <div class="artists-container">

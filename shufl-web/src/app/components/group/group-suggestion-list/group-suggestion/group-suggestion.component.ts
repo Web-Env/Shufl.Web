@@ -25,30 +25,49 @@ export class GroupSuggestionComponent implements OnInit {
 
     private calculateOverallRating(): void {
         if (this.groupSuggestion.groupSuggestionRatings != null && this.groupSuggestion.groupSuggestionRatings.length != 0) {
-            var ratingsCount = this.groupSuggestion.groupSuggestionRatings.length;
+            var overallRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.overallRating);
+            var overallTotal = overallRatings.reduce((sum, current) => sum + current);
+            var overAllRating = this.averageAndRoundToDecimal(overallTotal, overallRatings.length);
 
-            var overallTotal = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.overallRating).reduce((sum, current) => sum + current);
-            var lyricsTotal = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.lyricsRating).reduce((sum, current) => sum + current);
-            var vocalsTotal = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.vocalsRating).reduce((sum, current) => sum + current);
-            var instrumentalsTotal = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.instrumentalsRating).reduce((sum, current) => sum + current);
-            var compositionTotal = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.compositionRating).reduce((sum, current) => sum + current);
+            var lyricsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.lyricsRating);
+            var lyricsTotal = lyricsRatings.reduce((sum, current) => sum + current);
+            var lyricsRating = this.averageAndRoundToDecimal(lyricsTotal, lyricsRatings.length);
 
-            this.overallRating = new Rating(
+            var vocalsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.vocalsRating);
+            var vocalsTotal = vocalsRatings.reduce((sum, current) => sum + current);
+            var vocalsRating = this.averageAndRoundToDecimal(vocalsTotal, vocalsRatings.length);
+
+            var instrumentalsRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.instrumentalsRating);
+            var instrumentalsTotal = instrumentalsRatings.reduce((sum, current) => sum + current);
+            var instrumentalsRating = this.averageAndRoundToDecimal(instrumentalsTotal, instrumentalsRatings.length);
+
+            var compositionRatings = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.compositionRating);
+            var compositionTotal = compositionRatings.reduce((sum, current) => sum + current);
+            var compositionRating = this.averageAndRoundToDecimal(compositionTotal, compositionRatings.length);
+
+            let rating = new Rating(
                 "",
-                overallTotal / ratingsCount,
-                lyricsTotal / ratingsCount,
-                vocalsTotal / ratingsCount,
-                instrumentalsTotal / ratingsCount,
-                compositionTotal / ratingsCount,
+                overAllRating,
+                lyricsRating,
+                vocalsRating,
+                instrumentalsRating,
+                compositionRating,
                 "",
                 "",
                 ""
             );
 
+            rating.overallRatingsCount = overallRatings.length;
+            rating.lyricsRatingsCount = lyricsRatings.length;
+            rating.vocalsRatingsCount = vocalsRatings.length;
+            rating.instrumentalsRatingsCount = instrumentalsRatings.length;
+            rating.compositionRatingsCount = compositionRatings.length;
+
+            this.overallRating = rating;
             this.overallRatingCalculated = true;
         }
         else {
-            this.overallRating = new Rating(
+            let rating = new Rating(
                 "",
                 0,
                 0,
@@ -60,8 +79,19 @@ export class GroupSuggestionComponent implements OnInit {
                 ""
             );
 
+            rating.overallRatingsCount = 0;
+            rating.lyricsRatingsCount = 0;
+            rating.vocalsRatingsCount = 0;
+            rating.instrumentalsRatingsCount = 0;
+            rating.compositionRatingsCount = 0;
+
+            this.overallRating = rating;
             this.overallRatingCalculated = true;
         }
+    }
+
+    private averageAndRoundToDecimal(total: number, count: number) {
+        return Math.round((total / count) * 10) / 10;
     }
 
     public groupSuggestionClicked(): void {

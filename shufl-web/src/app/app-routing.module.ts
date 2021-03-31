@@ -30,7 +30,7 @@ const routes: Routes = [
     { path: 'artist/:artistId', component: ArtistComponent },
     { path: 'login', component: LoginComponent },
     { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
-    { path: 'group/:groupId/:groupItemId', component: GroupSuggestionDetailsComponent, canActivate: [AuthGuardService]},
+    { path: 'group/:groupId/:groupSuggestionId', component: GroupSuggestionDetailsComponent, canActivate: [AuthGuardService]},
     { path: 'groups/join/:token', component: GroupInviteComponent, canActivate: [AuthGuardService]},
     { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},
     { path: 'register', component: RegisterComponent },

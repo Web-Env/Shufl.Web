@@ -11,7 +11,7 @@ import { Album } from "src/app/models/download-models/album.model";
     ]
 })
 export class AlbumInfoComponent implements OnInit {
-    @Input() album!: Album;
+    @Input() album!: any;
     @Input() genres!: string[];
     @Input() linkDisabled!: boolean;
 

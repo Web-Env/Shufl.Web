@@ -52,6 +52,7 @@ import { environment } from '../environments/environment';
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
+import { GroupSuggestionRateComponent } from './components/shared/group/dialogs/group-suggestion-rate/group-suggestion-rate.component';
 
 @NgModule({
     declarations: [
@@ -94,7 +95,9 @@ import { UrlHelperService } from "./services/helpers/url-helper.service";
 
         genreFormatter,
 
-        GroupCreateComponent
+        GroupCreateComponent,
+
+        GroupSuggestionRateComponent
     ],
     imports: [
         AppRoutingModule,

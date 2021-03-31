@@ -13,6 +13,12 @@ $padding: 15px;
     align-items: center;
     justify-content: space-evenly;
 
+    &.embedded {
+        .rating-count {
+            display: none;
+        }
+    }
+
     .overall-rating {
         font-size: 1.5em;
 
@@ -34,7 +40,8 @@ $padding: 15px;
 
             display: flex;
 
-            p {
+            .rating-title,
+            .rating {
                 width: fit-content;
 
                 color: $tertiary-foreground-colour;
@@ -51,7 +58,7 @@ $padding: 15px;
 }
 
 @media (max-width: 765px) {
-    .rating-container.embedded {
+    .rating-container {
         .category-ratings-container {
             flex-direction: column;
 

@@ -1,5 +1,5 @@
 <div class="group-suggestion-user-rating-container {{ position }}">
-    <app-group-suggestion-rating [rating]="rating" [embedded]="true"></app-group-suggestion-rating>
+    <app-group-suggestion-rating [rating]="rating" [embedded]="true" *ngIf="rating != null"></app-group-suggestion-rating>
     <p class="rating-comment">{{ rating.comment }}</p>
     <a class="user-link" [routerLink]="['/user', rating.username]">{{ rating.displayName }}</a>
 </div>
