@@ -1,0 +1,10 @@
+<div class="search-results-container">
+    <h2>Albums</h2>
+    <div class="search-results" *ngIf="!isLoading && albums.length > 0">
+        <div app-album-icon *ngFor="let album of albums" [album]=album></div>
+    </div>
+
+    <div class="no-results-found-message" *ngIf="!isLoading && albums.length === 0">
+        <p>No Results Found</p>
+    </div>
+</div>

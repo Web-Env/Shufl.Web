@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit {
     homeItem: NavBarItem = new NavBarItem('home', 'Home', '');
     homeActive: boolean = false;
 
-    searchItem: NavBarItem = new NavBarItem('search', 'Search', '');
+    searchItem: NavBarItem = new NavBarItem('search', 'Search', 'search');
     searchActive: boolean = false;
 
     groupsItem: NavBarItem = new NavBarItem('groups', 'Groups', 'groups');

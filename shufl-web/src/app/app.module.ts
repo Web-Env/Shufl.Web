@@ -53,6 +53,10 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
 import { GroupSuggestionRateComponent } from './components/shared/group/dialogs/group-suggestion-rate/group-suggestion-rate.component';
+import { SearchComponent } from './components/search/search.component';
+import { ArtistSearchResultsContainerComponent } from './components/search/artist-search-results-container/artist-search-results-container.component';
+import { AlbumSearchResultsContainerComponent } from './components/search/album-search-results-container/album-search-results-container.component';
+import { TrackSearchResultsContainerComponent } from './components/search/track-search-results-container/track-search-results-container.component';
 
 @NgModule({
     declarations: [
@@ -97,7 +101,15 @@ import { GroupSuggestionRateComponent } from './components/shared/group/dialogs/
 
         GroupCreateComponent,
 
-        GroupSuggestionRateComponent
+        GroupSuggestionRateComponent,
+
+        SearchComponent,
+
+        ArtistSearchResultsContainerComponent,
+
+        AlbumSearchResultsContainerComponent,
+
+        TrackSearchResultsContainerComponent
     ],
     imports: [
         AppRoutingModule,

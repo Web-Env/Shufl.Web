@@ -16,6 +16,7 @@ import { RegisterComponent } from "./components/shared/user/register/register.co
 import { VerifyComponent } from "./components/shared/user/verify/verify.component";
 
 import { AuthGuardService } from "./services/auth/auth-guard.service";
+import { SearchComponent } from "./components/search/search.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: 'groups/join/:token', component: GroupInviteComponent, canActivate: [AuthGuardService]},
     { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},
     { path: 'register', component: RegisterComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'track', component: AlbumComponent },
     { path: 'track/:trackId', component: AlbumComponent },
     { path: '404', component: NotFoundComponent },
