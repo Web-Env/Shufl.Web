@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material/dialog";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
@@ -10,6 +10,8 @@ import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.m
 import { Track } from 'src/app/models/download-models/track.model';
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
+import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
+import { AuthService } from "src/app/services/auth/auth.service";
 
 @Component({
     selector: 'app-album',
@@ -21,6 +23,7 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 })
 export class AlbumComponent implements OnInit {
     isLoading: boolean = true;
+    isLoggedIn: boolean = false;
     isModal: boolean = false;
     groupId!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
@@ -35,11 +38,15 @@ export class AlbumComponent implements OnInit {
     constructor(private dialogRef: MatDialogRef<AlbumComponent>,
                 private route: ActivatedRoute,
                 private router: Router,
+                private dialog: MatDialog,
                 private titleService: Title,
+                private authService: AuthService,
                 private dataService: DataService,
                 private urlHelperService: UrlHelperService) { }
 
     ngOnInit(): void {
+        this.isLoggedIn = this.authService.isLoggedIn();
+
         if (!this.isModal && this.groupId == null) {
             var routeParams = this.route.snapshot.params;
             var isRequestingAlbum = this.isRequestingAlbum(this.router.url);
@@ -102,7 +109,7 @@ export class AlbumComponent implements OnInit {
             id: receivedAlbumData.id,
             name: receivedAlbumData.name,
             url: receivedAlbumData.externalUrls.spotify,
-            coverArtUrl: receivedAlbumData.images[0].url,
+            albumImages: receivedAlbumData.images,
             releaseDate: receivedAlbumData.releaseDate,
             tracks,
             artists
@@ -115,7 +122,7 @@ export class AlbumComponent implements OnInit {
             this.genres = receivedGenres;
         }
 
-        this.albumCoverArtUrl = album.coverArtUrl;
+        this.albumCoverArtUrl = receivedAlbumData.images[0].url;
 
         return album as Album;
     }
@@ -151,6 +158,23 @@ export class AlbumComponent implements OnInit {
         });
 
         return tracks;
+    }
+
+    public addClicked(): void {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '90%';
+        dialogConfig.maxWidth = "800px";
+        dialogConfig.minHeight = '200px';
+        dialogConfig.height = 'fit-content';
+        dialogConfig.closeOnNavigation = true;
+        
+
+        let dialogRef = this.dialog.open(AddToGroupComponent, dialogConfig);
+        let instance = dialogRef.componentInstance;
+        instance.album = this.albumData;
     }
 
     public async addToGroupAsync(): Promise<void> {

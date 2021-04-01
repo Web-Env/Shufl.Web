@@ -23,7 +23,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
     }
 
     public async checkLoggedInAsync(url: string | undefined): Promise<boolean> {
-        let isLoggedIn = await this.authService.isLoggedInAsync();
+        let isLoggedIn = this.authService.isLoggedIn();
         
         if (isLoggedIn) {
             return true;

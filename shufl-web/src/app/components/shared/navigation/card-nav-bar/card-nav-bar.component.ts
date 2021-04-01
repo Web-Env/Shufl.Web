@@ -9,8 +9,10 @@ import { Router } from "@angular/router";
 export class CardNavBarComponent implements OnInit {
     @Input() closeVisible: boolean = false;
     @Input() inviteVisible: boolean = false;
+    @Input() addVisible: boolean = false;
 
     @Output() inviteClicked: EventEmitter<null> = new EventEmitter();
+    @Output() addClicked: EventEmitter<null> = new EventEmitter();
 
     constructor(private router: Router) { }
 
@@ -27,6 +29,10 @@ export class CardNavBarComponent implements OnInit {
 
     public inviteButtonClicked(): void {
         this.inviteClicked.emit();
+    }
+
+    public addButtonClicked(): void {
+        this.addClicked.emit();
     }
 
 }

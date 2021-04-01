@@ -8,7 +8,8 @@ import { DataService } from "src/app/services/data.service";
     styleUrls: ['./album-search-results-container.component.scss']
 })
 export class AlbumSearchResultsContainerComponent implements OnInit {
-    isLoading: boolean = true;
+    isLoading: boolean = false;
+    noResults: boolean = false;
 
     albums: any[] = [];
 
@@ -18,8 +19,10 @@ export class AlbumSearchResultsContainerComponent implements OnInit {
     }
 
     public async searchAlbums(name: string): Promise<void> {
-        var receivedAlbums = await this.dataService.getArrayAsync<String>(`Album/Search?name=${name}`, String);
-        console.log (receivedAlbums);
+        this.isLoading = true;
+        this.albums = await this.dataService.getArrayAsync<Album>(`Album/Search?name=${name}`, Album);
+        this.noResults = this.albums.length === 0;
+        this.isLoading = false;
     }
 
 }

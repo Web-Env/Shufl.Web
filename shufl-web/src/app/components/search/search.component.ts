@@ -32,16 +32,17 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.searchForm.controls['search'].valueChanges.pipe(debounceTime(1500)).subscribe((searchTerm) => {
+        this.searchForm.controls['search'].valueChanges.pipe(debounceTime(1000)).subscribe((searchTerm) => {
             this.processSearchInput(searchTerm);
         });
     }
 
-    private processSearchInput(searchTerm: string): void {
+    private async processSearchInput(searchTerm: string): Promise<void> {
         this.searchTerm = searchTerm;
 
         this.isLoading = true;
-        this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm);
+        await this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm);
+        this.isLoading = false;
     }
 
     public changeInputState(active: boolean): void {

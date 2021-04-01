@@ -13,7 +13,7 @@ export class AuthService {
     constructor(private router: Router,
                 private dataService: DataService) { }
 
-    public async isLoggedInAsync(): Promise<boolean> {
+    public isLoggedIn(): boolean {
         var token = localStorage.getItem('Token');
         if (token !== null && token !== '') {            
             return true;

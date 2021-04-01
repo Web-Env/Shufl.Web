@@ -1,0 +1,58 @@
+@import "src/assets/scss/variables/colours";
+
+.add-to-group-modal {
+    p {
+        font-size: 1.5em;
+    }
+
+    .divider {
+        height: 2px;
+        margin: 15px 0;
+    }
+
+    .groups-list-container {
+        .groups-list {
+            max-height: 500px;
+            
+            overflow-y: auto;
+
+            .group {
+                height: 45px;
+
+                padding: 10px 5px;
+
+                display: flex;
+                flex-direction: row;
+
+                cursor: default;
+
+                &:hover {
+                    background-color: $primary-background-colour-hover;
+                }
+
+                p,
+                .button {
+                    padding-top: 10px;
+
+                    font-size: 1.5em;
+                }
+
+                p {
+                    width: 75%;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .button {
+                    width: 25%;
+
+                    margin-bottom: 0;
+
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

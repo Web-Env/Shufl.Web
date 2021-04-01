@@ -5,8 +5,8 @@ export class Album {
     id!: string;
     name!: string;
     url!: string;
-    coverArtUrl!: string;
     releaseDate!: string;
+    albumImages!: Array<any>;
     artists!: Array<Artist>;
     tracks!: Array<Track>;
 }

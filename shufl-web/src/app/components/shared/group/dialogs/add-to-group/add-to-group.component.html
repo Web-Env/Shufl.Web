@@ -1,0 +1,14 @@
+<div class="add-to-group-modal">
+    <p>Add this album to a group</p>
+    <div class="divider"></div>
+
+    <div class="groups-list-container">
+        <div class="groups-list" *ngIf="!isLoading">
+            <div class="group" *ngFor="let group of groups">
+                <p>{{ group.name }}</p>
+                <div class="button" (click)="addToGroupClickedAsync(group.identifier)">Add</div>
+            </div>
+        </div>
+        <app-loading-icon [dimensions]="75" *ngIf="isLoading"></app-loading-icon>
+    </div>
+</div>

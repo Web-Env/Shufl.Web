@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GroupAddAlbumComponent } from './group-add-album.component';
+import { AddToGroupComponent } from './add-to-group.component';
 
-describe('GroupAddAlbumComponent', () => {
-  let component: GroupAddAlbumComponent;
-  let fixture: ComponentFixture<GroupAddAlbumComponent>;
+describe('AddToGroupComponent', () => {
+  let component: AddToGroupComponent;
+  let fixture: ComponentFixture<AddToGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GroupAddAlbumComponent ]
+      declarations: [ AddToGroupComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GroupAddAlbumComponent);
+    fixture = TestBed.createComponent(AddToGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
