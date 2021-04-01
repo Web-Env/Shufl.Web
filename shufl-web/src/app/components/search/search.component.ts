@@ -32,7 +32,7 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.searchForm.controls['search'].valueChanges.pipe(debounceTime(1000)).subscribe((searchTerm) => {
+        this.searchForm.controls['search'].valueChanges.pipe(debounceTime(750)).subscribe((searchTerm) => {
             this.processSearchInput(searchTerm);
         });
     }
