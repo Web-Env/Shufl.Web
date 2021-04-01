@@ -25,15 +25,7 @@ export class AlbumComponent implements OnInit {
     groupId!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
     genres: string[] = [];
-    albumData: Album = new Album(
-        '',
-        '',
-        '',
-        '',
-        '',
-        [],
-        []
-    );
+    albumData!: Album;
     albumCoverArtUrl: string = '';
 
     addingAlbumToGroup: boolean = false;
@@ -90,7 +82,7 @@ export class AlbumComponent implements OnInit {
         this.titleService.setTitle('Shufl');
 
         this.albumData = this.mapReceivedDataToAlbum(
-            await this.dataService.getAsync<Album>(url)
+            await this.dataService.getAsync<Album>(url, Album)
         );
 
         if (!this.isModal) {
