@@ -85,20 +85,7 @@ export class ArtistComponent implements OnInit {
     }
 
     private mapReceivedAlbums(receivedAlbums: any): Array<Album> {
-        var albums = new Array<Album>();
-
-        receivedAlbums.forEach((album: any) => {
-            albums.push(new Album(
-                album.id,
-                album.name,
-                album.externalUrls.spotify,
-                album.images[album.images.length - 2].url,
-                album.releaseDate,
-                this.mapReceivedArtists(album.artists),
-                []
-            ));
-        });
-
+        var albums = this.dataService.mapJsonArrayToObjectArray<Album>(receivedAlbums, Album);
         return albums;
     }
 
