@@ -133,7 +133,8 @@ $input-border-width: 2px;
             user-select: none;
         }
 
-        input {
+        input,
+        textarea {
             width: 95%;
             height: 35px;
             max-height: 35px;

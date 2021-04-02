@@ -60,6 +60,16 @@
                 </div>
             </div>
         </div>
+                
+        <div class="form-group populated" 
+            [ngClass]="{'active': commentActive, 'has-error': (!rateGroupSuggestionForm.controls['comment'].valid && rateGroupSuggestionForm.controls['comment'].touched)}">
+            <div class="input-container comment">
+                <label for="comment">Comment</label>
+                <textarea class="form-control" formControlName="comment" [maxLength]="1500"
+                    (focus)="changeInputState('comment', true)"
+                    (blur)="changeInputState('comment', false)"></textarea>
+            </div>
+        </div>
 
         <app-loading-button [buttonText]="'Rate'" [isLoading]="isLoading" [isDisabled]="!rateGroupSuggestionForm.valid" (click)="rateGroupSuggestionAsync(rateGroupSuggestionForm.value)"></app-loading-button>
     </form>

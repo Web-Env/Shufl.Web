@@ -33,6 +33,8 @@ export class GroupSuggestionRateComponent implements OnInit {
     compositionRatingActive: boolean = false;
     compositionRatingPopulated: boolean = false;
 
+    commentActive: boolean = false;
+
     formErrorMessage: string = "";
     formErrorMessageVisible: boolean = false;
 
@@ -49,7 +51,8 @@ export class GroupSuggestionRateComponent implements OnInit {
             lyricsRating: ['', [Validators.min(0), Validators.max(10)]],
             vocalsRating: ['', [Validators.min(0), Validators.max(10)]],
             instrumentalsRating: ['', [Validators.min(0), Validators.max(10)]],
-            compositionRating: ['', [Validators.min(0), Validators.max(10)]]
+            compositionRating: ['', [Validators.min(0), Validators.max(10)]],
+            comment: ['', [Validators.max(1500)]]
         });
     }
 
@@ -76,6 +79,9 @@ export class GroupSuggestionRateComponent implements OnInit {
             this.compositionRatingActive = active;
             this.compositionRatingPopulated = this.rateGroupSuggestionForm.controls[inputName].value !== '';
         }
+        else if (inputName === 'comment') {
+            this.commentActive = active;
+        }
     }
     
     public async rateGroupSuggestionAsync(createGroupFormData: any): Promise<void> {
@@ -92,7 +98,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                     createGroupFormData['vocalsRating'],
                     createGroupFormData['instrumentalsRating'],
                     createGroupFormData['compositionRating'],
-                    ""
+                    createGroupFormData['comment']
                 );
     
                 var groupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRating>('GroupSuggestionRating/Create', newGroup, GroupSuggestionRating);
