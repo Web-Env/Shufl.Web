@@ -42,10 +42,17 @@ export class GroupComponent implements OnInit {
     }
 
     private async getGroupInfoAsync(groupIdentifier: string): Promise<void> {
-        this.group = await this.dataService.getAsync<GroupDownloadModel>(`Group/Get?groupIdentifier=${groupIdentifier}`, GroupDownloadModel);
-        
-        this.titleService.setTitle(this.group.name);
-        this.isLoading = false;
+        try {
+            this.group = await this.dataService.getAsync<GroupDownloadModel>(`Group/Get?groupIdentifier=${groupIdentifier}`, GroupDownloadModel);
+            
+            this.titleService.setTitle(this.group.name);
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            this.isLoading = false;
+        }
     }
 
     public invitePeopleClicked(): void {

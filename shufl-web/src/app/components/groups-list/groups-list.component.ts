@@ -15,7 +15,7 @@ import { GroupCreateComponent } from "../shared/group/dialogs/group-create/group
 })
 export class GroupsListComponent implements OnInit {
     isLoading: boolean = true;
-    groups: GroupDownloadModel[] = [];
+    groups!: GroupDownloadModel[];
 
     constructor(private titleService: Title,
                 private dialog: MatDialog,
@@ -27,9 +27,17 @@ export class GroupsListComponent implements OnInit {
     }
 
     public async getUsersGroupsAsync(): Promise<void> {
-        let userGroups = await this.dataService.getArrayAsync('Group/GetAll', GroupDownloadModel);
-        this.isLoading = false;
-        this.groups = userGroups;
+        try {
+            this.isLoading = true;
+
+            this.groups = await this.dataService.getArrayAsync('Group/GetAll', GroupDownloadModel);
+        }
+        catch (err) {
+            console.log(err);
+        }
+        finally {
+            this.isLoading = false;
+        }
     }
 
     public createNewGroupClicked(): void {

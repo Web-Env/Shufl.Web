@@ -1,7 +1,7 @@
 <div class="card-container group-suggestion-details-card-container">
     <div class="card">
         <app-card-nav-bar></app-card-nav-bar>
-        <div class="group-suggestion-info-container" *ngIf="!isLoading">
+        <div class="group-suggestion-info-container" *ngIf="!isLoading && album != null && genres != null">
             <div class="album-container">
                 <app-album-info [album]="album" [genres]="genres" [linkDisabled]="false"></app-album-info>
             </div>
@@ -15,7 +15,11 @@
             </div>
         </div>
         <div class="group-ratings-container">
-            <app-group-suggestion-user-rating-list [groupSuggestionRatings]="groupSuggestion.groupSuggestionRatings" *ngIf="groupSuggestion != null && groupSuggestion.groupSuggestionRatings != null"></app-group-suggestion-user-rating-list>
+            <app-group-suggestion-user-rating-list [groupSuggestionRatings]="groupSuggestion.groupSuggestionRatings" *ngIf="!isLoading && groupSuggestion != null && groupSuggestion.groupSuggestionRatings != null"></app-group-suggestion-user-rating-list>
+
+            <div class="error-message"  *ngIf="!isLoading && groupSuggestion == null">
+                <p>There has been an error processing your request, please try again</p>
+            </div>
         </div>
     </div>
     <app-loading-icon *ngIf="isLoading"></app-loading-icon>

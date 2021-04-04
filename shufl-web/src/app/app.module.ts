@@ -57,23 +57,29 @@ import { ArtistSearchResultsContainerComponent } from './components/search/artis
 import { AlbumSearchResultsContainerComponent } from './components/search/album-search-results-container/album-search-results-container.component';
 import { TrackSearchResultsContainerComponent } from './components/search/track-search-results-container/track-search-results-container.component';
 import { AddToGroupComponent } from './components/shared/group/dialogs/add-to-group/add-to-group.component';
+import { ToastrModule } from "ngx-toastr";
 
 @NgModule({
     declarations: [
         AccountComponent,
+        AddToGroupComponent,
         AlbumComponent,
         AlbumIconComponent,
         AlbumInfoComponent,
+        AlbumSearchResultsContainerComponent,
         AppComponent,
+        ArtistSearchResultsContainerComponent,
         ArtistComponent,
         ButtonComponent,
         CardNavBarComponent,
         GroupComponent,
+        GroupCreateComponent,
         GroupCreateInviteComponent,
         GroupInviteComponent,
         GroupSuggestionComponent,
         GroupSuggestionDetailsComponent,
         GroupSuggestionListComponent,
+        GroupSuggestionRateComponent,
         GroupSuggestionRatingComponent,
         GroupSuggestionUserRatingComponent,
         GroupSuggestionUserRatingListComponent,
@@ -90,27 +96,15 @@ import { AddToGroupComponent } from './components/shared/group/dialogs/add-to-gr
         NotFoundComponent,
         PasswordResetComponent,
         RegisterComponent,
+        SearchComponent,
         StatusCheckerComponent,
         TrackListComponent,
         TrackListItemComponent,
+        TrackSearchResultsContainerComponent,
         UserIconComponent,
         VerifyComponent,
 
-        genreFormatter,
-
-        GroupCreateComponent,
-
-        GroupSuggestionRateComponent,
-
-        SearchComponent,
-
-        ArtistSearchResultsContainerComponent,
-
-        AlbumSearchResultsContainerComponent,
-
-        TrackSearchResultsContainerComponent,
-
-        AddToGroupComponent
+        genreFormatter
     ],
     imports: [
         AppRoutingModule,
@@ -120,7 +114,11 @@ import { AddToGroupComponent } from './components/shared/group/dialogs/add-to-gr
         HttpClientModule,
         MatDialogModule,
         ReactiveFormsModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        ToastrModule.forRoot({
+            progressBar: true,
+            progressAnimation: 'increasing'
+        })
     ],
     providers: [
         AuthGuardService,

@@ -1,6 +1,6 @@
 <div class="card-container">
     <div class="card">
-        <app-card-nav-bar [inviteVisible]="true" (inviteClicked)="invitePeopleClicked()"></app-card-nav-bar>
+        <app-card-nav-bar [inviteVisible]="!isLoading && group != null" (inviteClicked)="invitePeopleClicked()"></app-card-nav-bar>
         <div class="group-info-container">
             <app-loading-icon [dimensions]="50" *ngIf="isLoading"></app-loading-icon>
             <div class="group-info" *ngIf="!isLoading && group != null">
@@ -13,6 +13,6 @@
                 <div class="divider"></div>
             </div>
         </div>
-        <app-group-suggestion-list [groupId]="groupId" *ngIf="groupId != null"></app-group-suggestion-list>
+        <app-group-suggestion-list [groupId]="groupId" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
     </div>
 </div>

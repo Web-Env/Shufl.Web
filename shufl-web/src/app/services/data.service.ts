@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 
 import { environment } from 'src/environments/environment';
 import { IUploadModel } from "../models/upload-models/upload-model.interface";
+import { ToastrService } from "ngx-toastr";
 
 
 @Injectable({
@@ -10,7 +11,8 @@ import { IUploadModel } from "../models/upload-models/upload-model.interface";
 })
 export class DataService {
 
-    constructor(private httpClient: HttpClient) { }
+    constructor(private httpClient: HttpClient,
+                private toastr: ToastrService) { }
 
     private createHttpOptions(): Object {
         let httpOptions = {
@@ -55,6 +57,7 @@ export class DataService {
                             resolve(await this.getAsync(endpoint, type, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -82,6 +85,7 @@ export class DataService {
                             resolve(await this.getArrayAsync(endpoint, type, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -105,6 +109,7 @@ export class DataService {
                             resolve(await this.postAsync(endpoint, uploadModel, type, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -126,6 +131,7 @@ export class DataService {
                             resolve(await this.postWithoutBodyAsync(endpoint, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -147,6 +153,7 @@ export class DataService {
                             resolve(await this.postWithoutResponseAsync(endpoint, uploadModel, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -168,6 +175,7 @@ export class DataService {
                             resolve(await this.postWithoutBodyOrResponseAsync(endpoint, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
@@ -189,6 +197,7 @@ export class DataService {
                             resolve(await this.postWithoutBodyAsync(endpoint, true));
                         }
                         else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
                             reject(err);
                         }
                     }
