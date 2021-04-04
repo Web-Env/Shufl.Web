@@ -73,3 +73,17 @@
         }
     }
 }
+
+@media(min-width: 1920px) {
+    .album-icon-container {
+        .album-art {
+            width: 150px;
+            height: 150px;
+    
+            img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+}
