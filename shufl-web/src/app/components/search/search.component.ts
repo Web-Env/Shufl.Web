@@ -40,11 +40,20 @@ export class SearchComponent implements OnInit {
     }
 
     private async processSearchInput(searchTerm: string): Promise<void> {
-        this.searchTerm = searchTerm;
+        if (!this.isLoading) {
+            try {
+                this.searchTerm = searchTerm;
 
-        this.isLoading = true;
-        await this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm);
-        this.isLoading = false;
+                this.isLoading = true;
+                await this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm);
+            }
+            catch (err) {
+                console.log (err);
+            }
+            finally {
+                this.isLoading = false;
+            }
+        }
     }
 
     public changeInputState(active: boolean): void {

@@ -17,15 +17,9 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 })
 export class ArtistComponent implements OnInit {
     genres: string[] = [];
-    artistData: Artist = new Artist(
-        '',
-        '',
-        0,
-        '',
-        []
-    );
+    artist: Artist = new Artist();
     artistImageUrl: string = '';
-    dataLoaded: boolean = false;
+    isLoading: boolean = true;
 
     constructor(private route: ActivatedRoute,
                 private titleService: Title,
@@ -44,64 +38,19 @@ export class ArtistComponent implements OnInit {
     }
 
     private async fetchAsync(url: string): Promise<void> {
-        this.dataLoaded = false;
-        this.titleService.setTitle('Shufl');
+        try {
+            this.isLoading = true;
+            this.titleService.setTitle('Shufl');
 
-        this.artistData = this.mapReceivedDataToArtist(
-            await this.dataService.getAsync<Artist>(url)
-        );
+            this.artist = await this.dataService.getAsync<Artist>(url, Artist);
 
-        this.titleService.setTitle(this.artistData.name);
-        this.dataLoaded = true;
-    }
-
-    private mapReceivedDataToArtist(receivedData: any): Artist {
-        var receivedArtistData = receivedData.artist;
-        var receivedGenres = receivedArtistData.genres;
-        var albums = this.mapReceivedAlbums(receivedData.albums);
-
-        var artist: Artist = {
-            id: receivedArtistData.id,
-            name: receivedArtistData.name,
-            followers: receivedArtistData.followers.total,
-            url: receivedArtistData.externalUrls.spotify,
-            albums
-        };
-
-        if (receivedGenres.length === 0) {
-            this.genres = ['No Genres Listed'];
+            this.titleService.setTitle(this.artist.name);
         }
-        else if (receivedGenres.length >= 3) {
-            this.genres = receivedGenres.splice(0, 2);
+        catch (err) {
+            console.log(err);
         }
-        else {
-            this.genres = receivedGenres;
+        finally {
+            this.isLoading = false;
         }
-
-        this.artistImageUrl =
-            receivedArtistData.images.length > 0 ? receivedArtistData.images[0].url : 'assets/img/blank-user.png';
-
-        return artist as Artist;
-    }
-
-    private mapReceivedAlbums(receivedAlbums: any): Array<Album> {
-        var albums = this.dataService.mapJsonArrayToObjectArray<Album>(receivedAlbums, Album);
-        return albums;
-    }
-
-    private mapReceivedArtists(receivedArtists: any): Array<Artist> {
-        var artists = new Array<Artist>();
-
-        receivedArtists.forEach((artist: any) => {
-            artists.push(new Artist(
-                artist.id,
-                artist.name,
-                artist.followers,
-                artist.externalUrls.spotify,
-                []
-            ));
-        });
-
-        return artists;
     }
 }

@@ -130,15 +130,15 @@ export class AlbumComponent implements OnInit {
     private mapReceivedArtists(receivedArtists: any): Array<Artist> {
         var artists = new Array<Artist>();
 
-        receivedArtists.forEach((artist: any) => {
-            artists.push(new Artist(
-                artist.id,
-                artist.name,
-                artist.followers,
-                artist.externalUrls.spotify,
-                []
-            ));
-        });
+        // receivedArtists.forEach((artist: any) => {
+        //     artists.push(new Artist(
+        //         artist.id,
+        //         artist.name,
+        //         artist.followers,
+        //         artist.externalUrls.spotify,
+        //         []
+        //     ));
+        // });
 
         return artists;
     }
