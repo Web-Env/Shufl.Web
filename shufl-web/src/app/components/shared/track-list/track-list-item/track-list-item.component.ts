@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Artist } from 'src/app/models/download-models/artist.model';
+import { Track } from "src/app/models/download-models/track.model";
 
 @Component({
     selector: '[app-track-list-item]',
@@ -7,11 +8,7 @@ import { Artist } from 'src/app/models/download-models/artist.model';
     styleUrls: ['./track-list-item.component.scss']
 })
 export class TrackListItemComponent implements OnInit {
-    @Input() trackNumber!: number;
-    @Input() trackName!: string;
-    @Input() trackArtists!: Array<Artist>;
-    @Input() trackDuration!: number;
-    @Input() trackUrl!: string
+    @Input() track!: Track;
 
     constructor() { }
 
