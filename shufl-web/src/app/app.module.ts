@@ -67,6 +67,8 @@ const rollbarConfig = {
     captureUnhandledRejections: true,
 };
 
+export const RollbarService = new InjectionToken<Rollbar>('rollbar');
+
 @Injectable()
 export class RollbarErrorHandler implements ErrorHandler {
     constructor(@Inject(RollbarService) private rollbar: Rollbar) { }
@@ -79,8 +81,6 @@ export class RollbarErrorHandler implements ErrorHandler {
 export function rollbarFactory() {
     return new Rollbar(rollbarConfig);
 }
-
-export const RollbarService = new InjectionToken<Rollbar>('rollbar');
 
 @NgModule({
     declarations: [
