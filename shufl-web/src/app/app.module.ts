@@ -1,10 +1,12 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, Inject, Injectable, InjectionToken, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+
+import * as Rollbar from 'rollbar';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -58,6 +60,27 @@ import { AlbumSearchResultsContainerComponent } from './components/search/album-
 import { TrackSearchResultsContainerComponent } from './components/search/track-search-results-container/track-search-results-container.component';
 import { AddToGroupComponent } from './components/shared/group/dialogs/add-to-group/add-to-group.component';
 import { ToastrModule } from "ngx-toastr";
+
+const rollbarConfig = {
+    accessToken: 'a169f2008c504693b8238085f24303da',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+};
+
+@Injectable()
+export class RollbarErrorHandler implements ErrorHandler {
+    constructor(@Inject(RollbarService) private rollbar: Rollbar) { }
+
+    handleError(err: any): void {
+        this.rollbar.error(err.originalError || err);
+    }
+}
+
+export function rollbarFactory() {
+    return new Rollbar(rollbarConfig);
+}
+
+export const RollbarService = new InjectionToken<Rollbar>('rollbar');
 
 @NgModule({
     declarations: [
@@ -127,7 +150,9 @@ import { ToastrModule } from "ngx-toastr";
         {
             provide: MatDialogRef,
             useValue: {}
-        }
+        },
+        { provide: ErrorHandler, useClass: RollbarErrorHandler },
+        { provide: RollbarService, useFactory: rollbarFactory }
     ],
     bootstrap: [AppComponent],
     entryComponents: [
