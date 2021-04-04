@@ -24,6 +24,8 @@
         "@angular/platform-browser-dynamic": "~11.1.2",
         "@angular/router": "~11.1.2",
         "@angular/service-worker": "~11.1.2",
+        "ngx-toastr": "^13.2.1",
+        "rollbar": "^2.21.1",
         "rxjs": "~6.6.0",
         "sha.js": "^2.4.11",
         "tslib": "^2.0.0",
