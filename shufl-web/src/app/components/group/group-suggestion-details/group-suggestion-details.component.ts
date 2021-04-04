@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Album } from "src/app/models/download-models/album.model";
-import { Artist } from "src/app/models/download-models/artist.model";
-import { GroupSuggestionRating } from "src/app/models/download-models/group-suggestion-rating.model";
-import { Rating } from "src/app/models/download-models/rating.model";
-import { GroupSuggestion } from "src/app/models/download-models/group-suggestion.model";
+import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
+import { ArtistDownloadModel } from "src/app/models/download-models/artist.model";
+import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
+import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
+import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
@@ -28,16 +28,16 @@ export class GroupSuggestionDetailsComponent implements OnInit {
 
     isLoading: boolean = true;
 
-    album!: Album;
+    album!: AlbumDownloadModel;
     
-    overallRating!: Rating;
+    overallRating!: RatingDownloadModel;
 
     genres: string[] = [
         "alt-rock",
         "indie-rock"
     ];
 
-    groupSuggestion!: GroupSuggestion;
+    groupSuggestion!: GroupSuggestionDownloadModel;
 
     groupId!: string;
     groupSuggestionId!: string;
@@ -71,11 +71,11 @@ export class GroupSuggestionDetailsComponent implements OnInit {
 
     private async getGroupSuggestionAsync(groupIdentifier: string, groupSuggestionIdentifier: string): Promise<void> {
         try {
-            this.groupSuggestion = await this.dataService.getAsync<GroupSuggestion>(
-                `GroupSuggestion/Get?groupIdentifier=${groupIdentifier}&groupSuggestionIdentifier=${groupSuggestionIdentifier}`, GroupSuggestion);
+            this.groupSuggestion = await this.dataService.getAsync<GroupSuggestionDownloadModel>(
+                `GroupSuggestion/Get?groupIdentifier=${groupIdentifier}&groupSuggestionIdentifier=${groupSuggestionIdentifier}`, GroupSuggestionDownloadModel);
 
-            this.groupSuggestion.groupSuggestionRatings = this.dataService.mapJsonArrayToObjectArray<GroupSuggestionRating>(
-                this.groupSuggestion.groupSuggestionRatings, GroupSuggestionRating
+            this.groupSuggestion.groupSuggestionRatings = this.dataService.mapJsonArrayToObjectArray<GroupSuggestionRatingDownloadModel>(
+                this.groupSuggestion.groupSuggestionRatings, GroupSuggestionRatingDownloadModel
             );
 
             this.album = this.groupSuggestion.album;//this.dataService.mapJsonToObject<Album>(this.groupSuggestion.album, Album);
@@ -89,7 +89,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
         }
     }
     
-    private calculateOverallRating(ratings: GroupSuggestionRating[]): Rating {
+    private calculateOverallRating(ratings: GroupSuggestionRatingDownloadModel[]): RatingDownloadModel {
         if (this.groupSuggestion.groupSuggestionRatings != null && this.groupSuggestion.groupSuggestionRatings.length !== 0) {
             var overallRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.overallRating);
             var overallTotal = overallRatings.reduce((sum, current) => sum + current);
@@ -111,7 +111,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
             var compositionTotal = compositionRatings.length > 0 ? compositionRatings.reduce((sum, current) => sum + current) : null;
             var compositionRating = compositionTotal != null ? this.averageAndRoundToDecimal(compositionTotal, compositionRatings?.length) : null;
 
-            let rating = new Rating(
+            let rating = new RatingDownloadModel(
                 "",
                 overAllRating,
                 lyricsRating,
@@ -132,7 +132,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
             return rating;
         }
         else {
-            let rating = new Rating(
+            let rating = new RatingDownloadModel(
                 "",
                 0,
                 0,
@@ -175,7 +175,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
         instance.afterClosed().subscribe((data) => {
             var groupSuggestionRating = data.data;
             
-            if (groupSuggestionRating != null && groupSuggestionRating instanceof GroupSuggestionRating) {
+            if (groupSuggestionRating != null && groupSuggestionRating instanceof GroupSuggestionRatingDownloadModel) {
                 this.groupSuggestion.groupSuggestionRatings.push(groupSuggestionRating);
 
                 this.groupSuggestionUserRatingListComponent.addNewRating(groupSuggestionRating);

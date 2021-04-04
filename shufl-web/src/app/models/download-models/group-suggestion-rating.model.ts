@@ -1,6 +1,6 @@
-import { User } from "./user.model";
+import { UserDownloadModel } from "./user.model";
 
-export class GroupSuggestionRating {
+export class GroupSuggestionRatingDownloadModel {
     id!: string;
     overallRating!: number;
     lyricsRating!: number | null;
@@ -9,7 +9,7 @@ export class GroupSuggestionRating {
     compositionRating!: number | null;
     comment!: string;
     createdOn!: string;
-    createdBy!: User;
+    createdBy!: UserDownloadModel;
     lastUpdatedOn!: string;
 
     constructor() {}

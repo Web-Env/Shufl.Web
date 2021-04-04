@@ -4,10 +4,10 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
 
-import { Album } from 'src/app/models/download-models/album.model';
-import { Artist } from 'src/app/models/download-models/artist.model';
+import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
+import { ArtistDownloadModel } from 'src/app/models/download-models/artist.model';
 import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.model";
-import { Track } from 'src/app/models/download-models/track.model';
+import { TrackDownloadModel } from 'src/app/models/download-models/track.model';
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
@@ -28,7 +28,7 @@ export class AlbumComponent implements OnInit {
     groupId!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
     genres: string[] = [];
-    album!: Album;
+    album!: AlbumDownloadModel;
     albumCoverArtUrl: string = '';
 
     addingAlbumToGroup: boolean = false;
@@ -89,7 +89,7 @@ export class AlbumComponent implements OnInit {
             this.isLoading = true;
             this.titleService.setTitle('Shufl');
 
-            this.album = await this.dataService.getAsync<Album>(url, Album);
+            this.album = await this.dataService.getAsync<AlbumDownloadModel>(url, AlbumDownloadModel);
 
             if (!this.isModal) {
                 this.titleService.setTitle(this.album.name);

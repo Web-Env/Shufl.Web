@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Rating } from "src/app/models/download-models/rating.model";
-import { GroupSuggestion } from "src/app/models/download-models/group-suggestion.model";
+import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
+import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 
 @Component({
     selector: '[app-group-suggestion]',
@@ -9,10 +9,10 @@ import { GroupSuggestion } from "src/app/models/download-models/group-suggestion
     styleUrls: ['./group-suggestion.component.scss']
 })
 export class GroupSuggestionComponent implements OnInit {
-    @Input() groupSuggestion!: GroupSuggestion;
+    @Input() groupSuggestion!: GroupSuggestionDownloadModel;
 
     overallRatingCalculated: boolean = false;
-    overallRating!: Rating;
+    overallRating!: RatingDownloadModel;
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute) { }
@@ -45,7 +45,7 @@ export class GroupSuggestionComponent implements OnInit {
             var compositionTotal = compositionRatings.length > 0 ? compositionRatings.reduce((sum, current) => sum + current) : null;
             var compositionRating = compositionTotal != null ? this.averageAndRoundToDecimal(compositionTotal, compositionRatings?.length) : null;
 
-            let rating = new Rating(
+            let rating = new RatingDownloadModel(
                 "",
                 overAllRating,
                 lyricsRating,
@@ -67,7 +67,7 @@ export class GroupSuggestionComponent implements OnInit {
             this.overallRatingCalculated = true;
         }
         else {
-            let rating = new Rating(
+            let rating = new RatingDownloadModel(
                 "",
                 0,
                 0,

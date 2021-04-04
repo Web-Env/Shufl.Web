@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupSuggestionRating } from "src/app/models/download-models/group-suggestion-rating.model";
-import { Rating } from "src/app/models/download-models/rating.model";
+import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
+import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
 
 @Component({
     selector: 'app-group-suggestion-user-rating',
@@ -8,10 +8,10 @@ import { Rating } from "src/app/models/download-models/rating.model";
     styleUrls: ['./group-suggestion-user-rating.component.scss']
 })
 export class GroupSuggestionUserRatingComponent implements OnInit {
-    @Input() groupSuggestionRating!: GroupSuggestionRating;
+    @Input() groupSuggestionRating!: GroupSuggestionRatingDownloadModel;
     @Input() position!: string;
 
-    rating!: Rating;
+    rating!: RatingDownloadModel;
 
     constructor() { }
 
@@ -22,7 +22,7 @@ export class GroupSuggestionUserRatingComponent implements OnInit {
     }
 
     private configureRating(): void {
-        this.rating = new Rating(
+        this.rating = new RatingDownloadModel(
             this.groupSuggestionRating.id,
             this.groupSuggestionRating.overallRating,
             this.groupSuggestionRating.lyricsRating,

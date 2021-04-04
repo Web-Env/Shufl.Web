@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 
-import { Album } from 'src/app/models/download-models/album.model';
-import { Artist } from 'src/app/models/download-models/artist.model';
+import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
+import { ArtistDownloadModel } from 'src/app/models/download-models/artist.model';
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 
@@ -17,7 +17,7 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 })
 export class ArtistComponent implements OnInit {
     genres: string[] = [];
-    artist: Artist = new Artist();
+    artist: ArtistDownloadModel = new ArtistDownloadModel();
     artistImageUrl: string = '';
     isLoading: boolean = true;
 
@@ -42,7 +42,7 @@ export class ArtistComponent implements OnInit {
             this.isLoading = true;
             this.titleService.setTitle('Shufl');
 
-            this.artist = await this.dataService.getAsync<Artist>(url, Artist);
+            this.artist = await this.dataService.getAsync<ArtistDownloadModel>(url, ArtistDownloadModel);
 
             this.titleService.setTitle(this.artist.name);
         }

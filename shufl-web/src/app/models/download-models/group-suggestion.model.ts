@@ -1,13 +1,13 @@
-import { Album } from "./album.model";
-import { GroupSuggestionRating } from "./group-suggestion-rating.model";
-import { User } from "./user.model";
+import { AlbumDownloadModel } from "./album.model";
+import { GroupSuggestionRatingDownloadModel } from "./group-suggestion-rating.model";
+import { UserDownloadModel } from "./user.model";
 
-export class GroupSuggestion {
+export class GroupSuggestionDownloadModel {
     identifier!: string;
     isRandom!: boolean;
-    album!: Album;
-    groupSuggestionRatings!: Array<GroupSuggestionRating>;
-    createdBy!: User;
+    album!: AlbumDownloadModel;
+    groupSuggestionRatings!: Array<GroupSuggestionRatingDownloadModel>;
+    createdBy!: UserDownloadModel;
     createdOn!: string;
 
     constructor() {}

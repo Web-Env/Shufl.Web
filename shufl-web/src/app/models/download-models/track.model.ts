@@ -1,9 +1,9 @@
-import { Artist } from './artist.model';
+import { ArtistDownloadModel } from './artist.model';
 
-export class Track {
+export class TrackDownloadModel {
     id!: string;
     trackNumber!: number;
     name!: string;
-    artists!: Array<Artist>;
+    artists!: Array<ArtistDownloadModel>;
     duration!: number;
 }

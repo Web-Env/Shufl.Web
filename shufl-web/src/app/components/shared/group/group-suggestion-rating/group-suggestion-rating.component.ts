@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Rating } from "src/app/models/download-models/rating.model";
+import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
 
 @Component({
     selector: 'app-group-suggestion-rating',
@@ -7,7 +7,7 @@ import { Rating } from "src/app/models/download-models/rating.model";
     styleUrls: ['./group-suggestion-rating.component.scss']
 })
 export class GroupSuggestionRatingComponent implements OnInit {
-    @Input() rating!: Rating;
+    @Input() rating!: RatingDownloadModel;
     @Input() embedded: boolean = false;
 
     overallRating!: string;
@@ -33,11 +33,11 @@ export class GroupSuggestionRatingComponent implements OnInit {
         }
     }
 
-    public updateRating(rating: Rating): void {
+    public updateRating(rating: RatingDownloadModel): void {
         this.configureRatings(rating);
     }
 
-    private configureRatings(rating: Rating): void {
+    private configureRatings(rating: RatingDownloadModel): void {
         if (rating.overallRatingsCount != null) {
             this.overallRating = this.configureRatingCountString(rating.overallRating, rating.overallRatingsCount);
             this.overallRatingsCount = rating.overallRatingsCount.toString();

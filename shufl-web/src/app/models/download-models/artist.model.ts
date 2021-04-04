@@ -1,12 +1,12 @@
-import { Album } from './album.model';
-import { ArtistGenre } from "./artist-genre.model";
+import { AlbumDownloadModel } from './album.model';
+import { ArtistGenreDownloadModel } from "./artist-genre.model";
 import { ImageDownloadModel } from "./image.model";
 
-export class Artist {
+export class ArtistDownloadModel {
     id!: string;
     name!: string;
     followers!: number;
-    artistGenres!: Array<ArtistGenre>;
+    artistGenres!: Array<ArtistGenreDownloadModel>;
     artistImages!: Array<ImageDownloadModel>;
-    albums!: Array<Album>;
+    albums!: Array<AlbumDownloadModel>;
 }
