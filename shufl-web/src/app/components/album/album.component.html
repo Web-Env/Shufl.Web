@@ -11,7 +11,7 @@
                     [ngClass]="{'disabled': artist.id == VARIOUS_ARTISTS_CONST}">{{ artist.name }}</a>
             </div>
             <div class="genres-container">
-                <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
+                <p *ngFor="let genre of genres" class="genre-label">{{ genre.name | genreFormatter }}</p>
             </div>
             <p class="release-date">{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
             <p *ngIf="isModal">{{ album.tracks.length }} Tracks</p>

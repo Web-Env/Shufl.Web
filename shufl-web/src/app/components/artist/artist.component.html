@@ -7,7 +7,7 @@
             </div>
             <h2>{{ artist.name }}</h2>
             <div class="genres-container">
-                <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
+                <p *ngFor="let genre of artist.artistGenres" class="genre-label">{{ genre.name | genreFormatter }}</p>
             </div>
             <p class="followers">{{ artist.followers | number }} followers</p>
             <a class="button" href="https://open.spotify.com/artist/{{ artist.id }}" target="new">

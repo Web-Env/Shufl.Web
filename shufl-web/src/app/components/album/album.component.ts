@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
 import { AuthService } from "src/app/services/auth/auth.service";
+import { ArtistGenreDownloadModel } from "src/app/models/download-models/artist-genre.model";
 
 @Component({
     selector: 'app-album',
@@ -25,7 +26,7 @@ export class AlbumComponent implements OnInit {
     isModal: boolean = false;
     groupId!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
-    genres: string[] = [];
+    genres: ArtistGenreDownloadModel[] = [];
     album!: AlbumDownloadModel;
     albumCoverArtUrl: string = '';
 
@@ -88,6 +89,8 @@ export class AlbumComponent implements OnInit {
             this.titleService.setTitle('Shufl');
 
             this.album = await this.dataService.getAsync<AlbumDownloadModel>(url, AlbumDownloadModel);
+            console.log (this.album)
+            this.genres = this.album.artists[0].artistGenres;
 
             if (!this.isModal) {
                 this.titleService.setTitle(this.album.name);

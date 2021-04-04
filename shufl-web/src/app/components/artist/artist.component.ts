@@ -3,6 +3,7 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 
 import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
+import { ArtistGenreDownloadModel } from "src/app/models/download-models/artist-genre.model";
 import { ArtistDownloadModel } from 'src/app/models/download-models/artist.model';
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
@@ -16,7 +17,7 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
     ]
 })
 export class ArtistComponent implements OnInit {
-    genres: string[] = [];
+    genres: ArtistGenreDownloadModel[] = [];
     artist: ArtistDownloadModel = new ArtistDownloadModel();
     artistImageUrl: string = '';
     isLoading: boolean = true;
