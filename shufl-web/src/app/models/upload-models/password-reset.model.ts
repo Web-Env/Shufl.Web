@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class PasswordReset implements IUploadModel {
+export class PasswordResetUploadModel implements IUploadModel {
     passwordResetToken!: string;
     newPassword!: string;
 

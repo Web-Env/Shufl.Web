@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Title } from "@angular/platform-browser";
-import { Group } from "src/app/models/download-models/group.model";
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
 import { DataService } from "src/app/services/data.service";
 import { GroupCreateComponent } from "../shared/group/dialogs/group-create/group-create.component";
 
@@ -15,7 +15,7 @@ import { GroupCreateComponent } from "../shared/group/dialogs/group-create/group
 })
 export class GroupsListComponent implements OnInit {
     isLoading: boolean = true;
-    groups: Group[] = [];
+    groups: GroupDownloadModel[] = [];
 
     constructor(private titleService: Title,
                 private dialog: MatDialog,
@@ -27,7 +27,7 @@ export class GroupsListComponent implements OnInit {
     }
 
     public async getUsersGroupsAsync(): Promise<void> {
-        let userGroups = await this.dataService.getArrayAsync('Group/GetAll', Group);
+        let userGroups = await this.dataService.getArrayAsync('Group/GetAll', GroupDownloadModel);
         this.isLoading = false;
         this.groups = userGroups;
     }

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Artist } from 'src/app/models/download-models/artist.model';
+import { ArtistDownloadModel } from 'src/app/models/download-models/artist.model';
 
 @Component({
     selector: '[app-inline-artists-ticker]',
@@ -7,7 +7,7 @@ import { Artist } from 'src/app/models/download-models/artist.model';
     styleUrls: ['./inline-artists-ticker.component.scss']
 })
 export class InlineArtistsTickerComponent implements OnInit {
-    @Input() artists!: Array<Artist>;
+    @Input() artists!: Array<ArtistDownloadModel>;
 
     constructor() { }
 

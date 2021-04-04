@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import * as shajs from 'sha.js';
-import { AuthRequest } from "src/app/models/upload-models/auth-request.model";
+import { AuthRequestUploadModel } from "src/app/models/upload-models/auth-request.model";
 
 import { AuthService } from "src/app/services/auth/auth.service";
 
@@ -91,7 +91,7 @@ export class LoginComponent implements OnInit {
 
             var hashedPassword = shajs('sha256').update(formData['password']).digest('hex');
 
-            var authRequestModel = new AuthRequest(
+            var authRequestModel = new AuthRequestUploadModel(
                 formData['email'],
                 hashedPassword
             );

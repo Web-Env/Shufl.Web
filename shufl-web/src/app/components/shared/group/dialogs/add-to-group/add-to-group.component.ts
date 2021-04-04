@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { Album } from "src/app/models/download-models/album.model";
-import { Group } from "src/app/models/download-models/group.model";
-import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.model";
+import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
+import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -13,8 +13,8 @@ import { DataService } from "src/app/services/data.service";
 })
 export class AddToGroupComponent implements OnInit {
     isLoading: boolean = true;
-    album!: Album;
-    groups!: Array<Group>;
+    album!: AlbumDownloadModel;
+    groups!: Array<GroupDownloadModel>;
 
     constructor(private dialogRef: MatDialogRef<AddToGroupComponent>,
                 private router: Router,
@@ -27,7 +27,7 @@ export class AddToGroupComponent implements OnInit {
     private async getUsersGroupsAsync(): Promise<void> {
         try {
             this.isLoading = true;
-            this.groups = await this.dataService.getArrayAsync<Group>('Group/GetAll', Group);
+            this.groups = await this.dataService.getArrayAsync<GroupDownloadModel>('Group/GetAll', GroupDownloadModel);
         }
         catch (err) {
             console.log(err);
@@ -41,7 +41,7 @@ export class AddToGroupComponent implements OnInit {
         try {
             this.isLoading = true;
 
-            var newGroupSuggestion = new GroupSuggestion(
+            var newGroupSuggestion = new GroupSuggestionUploadModel(
                 groupIdentifier,
                 this.album.id,
                 false

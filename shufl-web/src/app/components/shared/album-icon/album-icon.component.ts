@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { Album } from 'src/app/models/download-models/album.model';
+import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
 
 @Component({
     selector: '[app-album-icon]',
@@ -8,7 +8,7 @@ import { Album } from 'src/app/models/download-models/album.model';
     styleUrls: ['./album-icon.component.scss']
 })
 export class AlbumIconComponent implements OnInit {
-    @Input() album!: Album;
+    @Input() album!: AlbumDownloadModel;
     @Input() enabled: boolean = true;
 
     constructor(private router: Router) { }

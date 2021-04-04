@@ -1,20 +1,22 @@
 <div class="card-container">
-    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
-        <div class="artist-info-container">
+    <div class="card" [ngClass]="{ 'loaded': !isLoading }">
+        <app-loading-icon *ngIf="isLoading"></app-loading-icon>
+        <div class="artist-info-container" *ngIf="!isLoading">
             <div class="artist-image">
-                <img src="{{ artistImageUrl }}" alt="{{ artistData.name }}">
+                <img src="https://i.scdn.co/image/{{ artist.artistImages[0].uri }}" alt="{{ artist.name }}">
             </div>
-            <h2>{{ artistData.name }}</h2>
+            <h2>{{ artist.name }}</h2>
             <div class="genres-container">
-                <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
+                <p *ngFor="let genre of artist.artistGenres" class="genre-label">{{ genre.name | genreFormatter }}</p>
             </div>
-            <p class="followers">{{ artistData.followers | number }} followers</p>
-            <a class="button" href="{{ artistData.url }}" target="new"><img src="assets/img/logos/spotify-logo.png">
+            <p class="followers">{{ artist.followers | number }} followers</p>
+            <a class="button" href="https://open.spotify.com/artist/{{ artist.id }}" target="new">
+                <img src="assets/img/logos/spotify-logo.png">
                 <p>Open</p>
             </a>
         </div>
-        <div class="artist-album-list-container">
-            <div app-album-icon class="artist-album" *ngFor="let album of artistData.albums" [album]="album"></div>
+        <div class="artist-album-list-container" *ngIf="!isLoading">
+            <div app-album-icon class="artist-album" *ngFor="let album of artist.albums" [album]="album"></div>
         </div>
     </div>
 </div>

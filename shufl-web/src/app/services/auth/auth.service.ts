@@ -3,8 +3,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { DataService } from "../data.service";
-import { AuthRequest } from "src/app/models/upload-models/auth-request.model";
-import { AuthResponse } from "src/app/models/download-models/auth-response.model";
+import { AuthRequestUploadModel } from "src/app/models/upload-models/auth-request.model";
+import { AuthResponseDownloadModel } from "src/app/models/download-models/auth-response.model";
 
 @Injectable()
 export class AuthService {
@@ -39,11 +39,11 @@ export class AuthService {
         }
     }
 
-    public async loginAsync(authRequestModel: AuthRequest): Promise<void> {
+    public async loginAsync(authRequestModel: AuthRequestUploadModel): Promise<void> {
         let endpoint ='Auth/auth';
 
         try {
-            let authResponse: AuthResponse = await this.dataService.postAsync(endpoint, authRequestModel, AuthResponse);
+            let authResponse = await this.dataService.postAsync<AuthResponseDownloadModel>(endpoint, authRequestModel, AuthResponseDownloadModel);
             if (authResponse !== null) {
                 localStorage.setItem('Username', authResponse.username);
                 localStorage.setItem('DisplayName', authResponse.displayName);

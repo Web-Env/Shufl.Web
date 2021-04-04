@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from "src/app/models/download-models/album.model";
+import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -20,7 +20,7 @@ export class AlbumSearchResultsContainerComponent implements OnInit {
 
     public async searchAlbums(name: string): Promise<void> {
         this.isLoading = true;
-        this.albums = await this.dataService.getArrayAsync<Album>(`Album/Search?name=${name}`, Album);
+        this.albums = await this.dataService.getArrayAsync<AlbumDownloadModel>(`Album/Search?name=${name}`, AlbumDownloadModel);
         this.noResults = this.albums.length === 0;
         this.isLoading = false;
     }

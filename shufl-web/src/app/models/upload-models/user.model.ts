@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class User implements IUploadModel {
+export class UserUploadModel implements IUploadModel {
     Email!: string;
     FirstName!: string;
     LastName!: string;

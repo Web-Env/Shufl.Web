@@ -1,12 +1,10 @@
 import { IDownloadModel } from "./download-model.interface";
-import { User } from "./user.model";
+import { UserDownloadModel } from "./user.model";
 
-export class Group implements IDownloadModel {
+export class GroupDownloadModel implements IDownloadModel {
     name!: string;
     identifier!: string;
     isPrivate!: boolean;
-    createdBy!: User;
-    members!: Array<User>;
-
-    constructor() {}
+    createdBy!: UserDownloadModel;
+    members!: Array<UserDownloadModel>;
 }

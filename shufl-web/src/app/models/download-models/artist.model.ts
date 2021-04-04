@@ -1,23 +1,12 @@
-import { Album } from './album.model';
+import { AlbumDownloadModel } from './album.model';
+import { ArtistGenreDownloadModel } from "./artist-genre.model";
+import { ImageDownloadModel } from "./image.model";
 
-export class Artist {
+export class ArtistDownloadModel {
     id!: string;
     name!: string;
     followers!: number;
-    url!: string;
-    albums!: Array<Album>;
-    
-    constructor(
-        id: string,
-        name: string,
-        followers: number,
-        url: string,
-        albums: Array<Album>
-    ) {
-        this.id = id;
-        this.name = name;
-        this.followers = followers;
-        this.url = url;
-        this.albums = albums;
-    }
+    artistGenres!: Array<ArtistGenreDownloadModel>;
+    artistImages!: Array<ImageDownloadModel>;
+    albums!: Array<AlbumDownloadModel>;
 }

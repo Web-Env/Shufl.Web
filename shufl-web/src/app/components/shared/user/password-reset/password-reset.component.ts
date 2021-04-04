@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import * as shajs from 'sha.js';
-import { PasswordResetRequest } from "src/app/models/upload-models/password-reset-request.model";
-import { PasswordReset } from "src/app/models/upload-models/password-reset.model";
+import { PasswordResetRequestUploadModel } from "src/app/models/upload-models/password-reset-request.model";
+import { PasswordResetUploadModel } from "src/app/models/upload-models/password-reset.model";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { DataService } from "src/app/services/data.service";
 
@@ -151,7 +151,7 @@ export class PasswordResetComponent implements OnInit {
 
             try {
                 var email = formData['email'];
-                var passwordResetRequest = new PasswordResetRequest(email);
+                var passwordResetRequest = new PasswordResetRequestUploadModel(email);
 
                 await this.dataService.postWithoutResponseAsync('User/ForgotPassword/New', passwordResetRequest);
 
@@ -175,7 +175,7 @@ export class PasswordResetComponent implements OnInit {
 
             try {
                 var hashedPassword = shajs('sha256').update(formData['password']).digest('hex');
-                var passwordReset = new PasswordReset(
+                var passwordReset = new PasswordResetUploadModel(
                     this.passwordResetToken,
                     hashedPassword
                 );

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupSuggestionRating } from "src/app/models/download-models/group-suggestion-rating.model";
-import { Rating } from "src/app/models/download-models/rating.model";
+import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
+import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
 
 @Component({
     selector: 'app-group-suggestion-user-rating-list',
@@ -8,10 +8,10 @@ import { Rating } from "src/app/models/download-models/rating.model";
     styleUrls: ['./group-suggestion-user-rating-list.component.scss']
 })
 export class GroupSuggestionUserRatingListComponent implements OnInit {
-    ratingsLeft: GroupSuggestionRating[] = [];
-    ratingsRight: GroupSuggestionRating[] = [];
+    ratingsLeft: GroupSuggestionRatingDownloadModel[] = [];
+    ratingsRight: GroupSuggestionRatingDownloadModel[] = [];
 
-    @Input() groupSuggestionRatings!: GroupSuggestionRating[];
+    @Input() groupSuggestionRatings!: GroupSuggestionRatingDownloadModel[];
 
     constructor() { }
 
@@ -19,14 +19,14 @@ export class GroupSuggestionUserRatingListComponent implements OnInit {
         this.splitRatings(this.groupSuggestionRatings);
     }
 
-    private splitRatings(ratings: GroupSuggestionRating[]): void {
+    private splitRatings(ratings: GroupSuggestionRatingDownloadModel[]): void {
         for (let i=0; i < ratings.length; i+=2) {
             this.ratingsLeft.push(ratings[i]);
             ratings[i + 1] != null && this.ratingsRight.push(ratings[i + 1]);
         }
     }
 
-    public addNewRating(rating: GroupSuggestionRating): void {
+    public addNewRating(rating: GroupSuggestionRatingDownloadModel): void {
         if (this.ratingsLeft.length < this.ratingsRight.length) {
             this.ratingsLeft.push(rating);
         }

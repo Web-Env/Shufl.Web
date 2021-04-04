@@ -1,4 +1,4 @@
-export class Rating {
+export class RatingDownloadModel {
     id!: string;
     overallRating!: number;
     overallRatingsCount: number | undefined;

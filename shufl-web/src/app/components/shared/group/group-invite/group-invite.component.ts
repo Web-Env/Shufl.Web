@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { Group } from "src/app/models/download-models/group.model";
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
 import { DataService } from "src/app/services/data.service";
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 
@@ -17,7 +17,7 @@ export class GroupInviteComponent implements OnInit {
     inviteToken!: string;
     isValidInvite: boolean = false;
     verificationRequestSentSuccessfully: boolean = false;
-    group!: Group;
+    group!: GroupDownloadModel;
     acceptRequestIsLoading!: boolean;
     inviteErrorMessage!: string;
     groupsButtonVisible!: boolean;
@@ -42,7 +42,7 @@ export class GroupInviteComponent implements OnInit {
 
     private async validateInviteTokenAsync(token: string): Promise<void> {
         try {
-            this.group = await this.dataService.getAsync<Group>(`GroupInvite/Validate?groupInviteIdentifier=${token}`);
+            this.group = await this.dataService.getAsync<GroupDownloadModel>(`GroupInvite/Validate?groupInviteIdentifier=${token}`, GroupDownloadModel);
             this.isValidInvite = this.group != null;
         }
         catch (err) {

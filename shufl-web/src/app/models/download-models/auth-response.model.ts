@@ -1,4 +1,4 @@
-export class AuthResponse {
+export class AuthResponseDownloadModel {
     username!: string;
     displayName!: string;
     firstName!: string;
@@ -6,6 +6,4 @@ export class AuthResponse {
     pictureUrl!: string;
     spotifyMarket!: string;
     token!: string;
-
-    constructor() {}
 }

@@ -4,14 +4,13 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
 
-import { Album } from 'src/app/models/download-models/album.model';
-import { Artist } from 'src/app/models/download-models/artist.model';
-import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.model";
-import { Track } from 'src/app/models/download-models/track.model';
+import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
+import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
 import { AuthService } from "src/app/services/auth/auth.service";
+import { ArtistGenreDownloadModel } from "src/app/models/download-models/artist-genre.model";
 
 @Component({
     selector: 'app-album',
@@ -27,8 +26,8 @@ export class AlbumComponent implements OnInit {
     isModal: boolean = false;
     groupId!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
-    genres: string[] = [];
-    albumData!: Album;
+    genres: ArtistGenreDownloadModel[] = [];
+    album!: AlbumDownloadModel;
     albumCoverArtUrl: string = '';
 
     addingAlbumToGroup: boolean = false;
@@ -85,79 +84,23 @@ export class AlbumComponent implements OnInit {
     }
 
     public async fetchAsync(url: string): Promise<void> {
-        this.isLoading = true;
-        this.titleService.setTitle('Shufl');
+        try {
+            this.isLoading = true;
+            this.titleService.setTitle('Shufl');
 
-        this.albumData = this.mapReceivedDataToAlbum(
-            await this.dataService.getAsync<Album>(url, Album)
-        );
+            this.album = await this.dataService.getAsync<AlbumDownloadModel>(url, AlbumDownloadModel);
+            this.genres = this.album.artists[0].artistGenres;
 
-        if (!this.isModal) {
-            this.titleService.setTitle(this.albumData.name);
+            if (!this.isModal) {
+                this.titleService.setTitle(this.album.name);
+            }
         }
-
-        this.isLoading = false;
-    }
-
-    private mapReceivedDataToAlbum(receivedData: any): Album {
-        var receivedGenres = receivedData.genres;
-        var receivedAlbumData = receivedData.album;
-        var tracks = this.mapReceivedTracks(receivedAlbumData.tracks.items);
-        var artists = this.mapReceivedArtists(receivedAlbumData.artists);
-
-        var album: Album = {
-            id: receivedAlbumData.id,
-            name: receivedAlbumData.name,
-            url: receivedAlbumData.externalUrls.spotify,
-            albumImages: receivedAlbumData.images,
-            releaseDate: receivedAlbumData.releaseDate,
-            tracks,
-            artists
-        };
-
-        if (receivedGenres.length > 3) {
-            this.genres = receivedGenres.splice(0, 2);
+        catch (err) {
+            console.log(err);
         }
-        else {
-            this.genres = receivedGenres;
+        finally {
+            this.isLoading = false;
         }
-
-        this.albumCoverArtUrl = receivedAlbumData.images[0].url;
-
-        return album as Album;
-    }
-
-    private mapReceivedArtists(receivedArtists: any): Array<Artist> {
-        var artists = new Array<Artist>();
-
-        receivedArtists.forEach((artist: any) => {
-            artists.push(new Artist(
-                artist.id,
-                artist.name,
-                artist.followers,
-                artist.externalUrls.spotify,
-                []
-            ));
-        });
-
-        return artists;
-    }
-
-    private mapReceivedTracks(receivedTracks: any): Array<Track> {
-        var tracks = new Array<Track>();
-
-        receivedTracks.forEach((track: any) => {
-            tracks.push(new Track(
-                track.id,
-                track.trackNumber,
-                track.name,
-                this.mapReceivedArtists(track.artists),
-                track.durationMs,
-                track.externalUrls.spotify
-            ));
-        });
-
-        return tracks;
     }
 
     public addClicked(): void {
@@ -174,7 +117,7 @@ export class AlbumComponent implements OnInit {
 
         let dialogRef = this.dialog.open(AddToGroupComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
-        instance.album = this.albumData;
+        instance.album = this.album;
     }
 
     public async addToGroupAsync(): Promise<void> {
@@ -182,9 +125,9 @@ export class AlbumComponent implements OnInit {
             try {
                 this.addingAlbumToGroup = true;
 
-                var newGroupSuggestion = new GroupSuggestion(
+                var newGroupSuggestion = new GroupSuggestionUploadModel(
                     this.groupId,
-                    this.albumData.id,
+                    this.album.id,
                     true
                 );
 

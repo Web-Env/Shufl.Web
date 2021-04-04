@@ -3,19 +3,19 @@
         <app-card-nav-bar [addVisible]="isLoggedIn" (addClicked)="addClicked()" *ngIf="!isModal"></app-card-nav-bar>
         <div class="album-info-container" *ngIf="!isLoading">
             <div class="album-cover">
-                <img src="{{ albumCoverArtUrl }}" alt="{{ albumData.name }}">
+                <img src="https://i.scdn.co/image/{{ album.albumImages[0].uri }}" alt="{{ album.name }}">
             </div>
-            <h2>{{ albumData.name }}</h2>
+            <h2>{{ album.name }}</h2>
             <div class="artists-container">
-                <a *ngFor="let artist of albumData.artists" class="artist-link" [routerLink]="['/artist', artist.id]"
+                <a *ngFor="let artist of album.artists" class="artist-link" [routerLink]="['/artist', artist.id]"
                     [ngClass]="{'disabled': artist.id == VARIOUS_ARTISTS_CONST}">{{ artist.name }}</a>
             </div>
             <div class="genres-container">
-                <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
+                <p *ngFor="let genre of genres" class="genre-label">{{ genre.name | genreFormatter }}</p>
             </div>
-            <p class="release-date">{{ albumData.releaseDate | date: 'MMMM yyyy' }}</p>
-            <p *ngIf="isModal">{{ albumData.tracks.length }} Tracks</p>
-            <a class="button" href="{{ albumData.url }}" target="new" *ngIf="!isModal">
+            <p class="release-date">{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
+            <p *ngIf="isModal">{{ album.tracks.length }} Tracks</p>
+            <a class="button" href="https://open.spotify.com/album/{{ album.id }}" target="new" *ngIf="!isModal">
                 <img src="assets/img/logos/spotify-logo.png">
                 <p>Open</p>
             </a>
@@ -26,7 +26,7 @@
             <p class="form-error" *ngIf="errorVisible && !isLoading && !addingAlbumToGroup && !addedAlbumToGroupSuccessfully">There was an error adding this album to the group</p>
         </div>
         <div class="track-list-container" *ngIf="!isLoading">
-            <app-track-list [tracks]="albumData.tracks" *ngIf="!isModal"></app-track-list>
+            <app-track-list [tracks]="album.tracks" *ngIf="!isModal"></app-track-list>
         </div>
     </div>
     <app-loading-icon [dimensions]="200" *ngIf="isLoading"></app-loading-icon>

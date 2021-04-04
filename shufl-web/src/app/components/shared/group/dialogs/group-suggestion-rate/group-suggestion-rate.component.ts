@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { GroupSuggestionRating } from "src/app/models/download-models/group-suggestion-rating.model";
-import { GroupSuggestion } from "src/app/models/download-models/group-suggestion.model";
+import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
+import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 import { GroupSuggestionRatingUploadModel } from "src/app/models/upload-models/group-suggestion-rating.model";
 import { DataService } from "src/app/services/data.service";
 
@@ -101,7 +101,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                     createGroupFormData['comment']
                 );
     
-                var groupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRating>('GroupSuggestionRating/Create', newGroup, GroupSuggestionRating);
+                var groupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Create', newGroup, GroupSuggestionRatingDownloadModel);
 
                 if (groupSuggestionRating != null) {
                     this.dialogRef.close({data: groupSuggestionRating});

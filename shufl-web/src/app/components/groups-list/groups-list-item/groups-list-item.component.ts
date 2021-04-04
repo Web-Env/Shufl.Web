@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { Group } from "src/app/models/download-models/group.model";
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
 
 @Component({
     selector: '[app-groups-list-item]',
@@ -8,7 +8,7 @@ import { Group } from "src/app/models/download-models/group.model";
     styleUrls: ['./groups-list-item.component.scss']
 })
 export class GroupsListItemComponent implements OnInit {
-    @Input() group!: Group;
+    @Input() group!: GroupDownloadModel;
 
     constructor(private router: Router) { }
 

@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class PasswordResetRequest implements IUploadModel {
+export class PasswordResetRequestUploadModel implements IUploadModel {
     email!: string;
 
     constructor(

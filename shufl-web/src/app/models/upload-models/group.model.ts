@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class Group implements IUploadModel {
+export class GroupUploadModel implements IUploadModel {
     name!: string;
     isPrivate!: boolean;
 

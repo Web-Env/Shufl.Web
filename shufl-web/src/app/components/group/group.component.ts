@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Group } from "src/app/models/download-models/group.model";
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
 import { DataService } from "src/app/services/data.service";
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AlbumComponent } from "../album/album.component";
@@ -19,7 +19,7 @@ import { GroupCreateInviteComponent } from "../shared/group/dialogs/group-create
 export class GroupComponent implements OnInit {
     isLoading: boolean = true;
     groupId!: string;
-    group!: Group;
+    group!: GroupDownloadModel;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -42,7 +42,7 @@ export class GroupComponent implements OnInit {
     }
 
     private async getGroupInfoAsync(groupIdentifier: string): Promise<void> {
-        this.group = await this.dataService.getAsync<Group>(`Group/Get?groupIdentifier=${groupIdentifier}`);
+        this.group = await this.dataService.getAsync<GroupDownloadModel>(`Group/Get?groupIdentifier=${groupIdentifier}`, GroupDownloadModel);
         
         this.titleService.setTitle(this.group.name);
         this.isLoading = false;

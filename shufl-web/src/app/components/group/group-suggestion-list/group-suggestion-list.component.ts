@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupSuggestion } from "src/app/models/download-models/group-suggestion.model";
+import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -9,7 +9,7 @@ import { DataService } from "src/app/services/data.service";
 })
 export class GroupSuggestionListComponent implements OnInit {
     @Input() groupId!: string;
-    groupSuggestions!: Array<GroupSuggestion>;
+    groupSuggestions!: Array<GroupSuggestionDownloadModel>;
     isLoading: boolean = true;
 
     constructor(private dataService: DataService) { }
@@ -22,7 +22,7 @@ export class GroupSuggestionListComponent implements OnInit {
 
     private async getGroupSuggestions(groupIdentifier: string): Promise<void> {
         try {
-            this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestion>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}`, GroupSuggestion);
+            this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestionDownloadModel>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}`, GroupSuggestionDownloadModel);
         }
         catch (err) {
             console.log(err);
