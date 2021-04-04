@@ -18,7 +18,7 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 })
 export class ArtistComponent implements OnInit {
     genres: ArtistGenreDownloadModel[] = [];
-    artist: ArtistDownloadModel = new ArtistDownloadModel();
+    artist!: ArtistDownloadModel;
     artistImageUrl: string = '';
     isLoading: boolean = true;
 

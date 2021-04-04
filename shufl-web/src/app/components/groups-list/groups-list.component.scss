@@ -30,13 +30,15 @@
         }
 
         .groups-list-container {
-            min-height: 50px;
-
+            min-height: 75px;
+            
             position: relative;
 
-            :last-child {
-                ::ng-deep .groups-list-item-container {
-                    border-bottom: none;
+            .groups-list {
+                :last-child {
+                    ::ng-deep .groups-list-item-container {
+                        border-bottom: none;
+                    }
                 }
             }
 

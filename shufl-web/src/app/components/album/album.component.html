@@ -1,7 +1,7 @@
 <div class="card-container" [ngClass]="{'modal': isModal}">
     <div class="card" [ngClass]="{'loaded': !isLoading}">
-        <app-card-nav-bar [addVisible]="isLoggedIn" (addClicked)="addClicked()" *ngIf="!isModal"></app-card-nav-bar>
-        <div class="album-info-container" *ngIf="!isLoading">
+        <app-card-nav-bar [addVisible]="isLoggedIn && album != null" (addClicked)="addClicked()" *ngIf="!isModal && !isLoading"></app-card-nav-bar>
+        <div class="album-info-container" *ngIf="!isLoading && album != null">
             <div class="album-cover">
                 <img src="https://i.scdn.co/image/{{ album.albumImages[0].uri }}" alt="{{ album.name }}">
             </div>
@@ -20,13 +20,16 @@
                 <p>Open</p>
             </a>
         </div>
-        <div class="action-buttons-container" [ngClass]="{'visible': !isLoading}" *ngIf="isModal">
+        <div class="action-buttons-container" [ngClass]="{'visible': !isLoading && album != null}" *ngIf="isModal">
             <app-loading-button [buttonText]="'Add'" [isLoading]="addingAlbumToGroup" (click)="addToGroupAsync()"></app-loading-button>
             <app-loading-button [buttonText]="'New Suggestion'" [isLoading]="isLoading" (click)="fetchAsync('Album/RandomAlbum')"></app-loading-button>
             <p class="form-error" *ngIf="errorVisible && !isLoading && !addingAlbumToGroup && !addedAlbumToGroupSuccessfully">There was an error adding this album to the group</p>
         </div>
-        <div class="track-list-container" *ngIf="!isLoading">
+        <div class="track-list-container" *ngIf="!isLoading && album != null">
             <app-track-list [tracks]="album.tracks" *ngIf="!isModal"></app-track-list>
+        </div>
+        <div class="error-message" *ngIf="!isLoading && album == null">
+            <p>There has been an error processing your request, please try again</p>
         </div>
     </div>
     <app-loading-icon [dimensions]="200" *ngIf="isLoading"></app-loading-icon>

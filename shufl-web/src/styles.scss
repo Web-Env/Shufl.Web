@@ -1,6 +1,7 @@
 @import "src/assets/scss/variables/colours";
 @import "src/assets/scss/variables/dimensions";
 @import "~@angular/material/theming";
+@import '~ngx-toastr/toastr';
 @include mat-core();
 
 html {

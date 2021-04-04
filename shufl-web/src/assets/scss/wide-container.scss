@@ -27,6 +27,20 @@
     }
 }
 
+.error-message {
+    height: 250px;
+
+    display: flex;
+    align-items: center;
+
+    p {
+        color: $tertiary-foreground-colour;
+
+        font-size: 1.75em;
+        text-align: center;
+    }
+}
+
 @media (min-width: 765px) and (max-width: 1024px) {
     .card-container {
         left: 15%;

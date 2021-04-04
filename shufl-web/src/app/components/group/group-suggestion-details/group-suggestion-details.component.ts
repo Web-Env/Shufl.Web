@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
-import { ArtistDownloadModel } from "src/app/models/download-models/artist.model";
 import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
 import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
 import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
@@ -78,7 +77,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
                 this.groupSuggestion.groupSuggestionRatings, GroupSuggestionRatingDownloadModel
             );
 
-            this.album = this.groupSuggestion.album;//this.dataService.mapJsonToObject<Album>(this.groupSuggestion.album, Album);
+            this.album = this.groupSuggestion.album;
             this.overallRating = this.calculateOverallRating(this.groupSuggestion.groupSuggestionRatings);
         }
         catch (err) {

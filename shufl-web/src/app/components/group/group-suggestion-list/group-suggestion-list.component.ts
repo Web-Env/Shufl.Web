@@ -5,7 +5,10 @@ import { DataService } from "src/app/services/data.service";
 @Component({
     selector: 'app-group-suggestion-list',
     templateUrl: './group-suggestion-list.component.html',
-    styleUrls: ['./group-suggestion-list.component.scss']
+    styleUrls: [
+        './group-suggestion-list.component.scss',
+        '../../../../assets/scss/wide-container.scss'
+    ]
 })
 export class GroupSuggestionListComponent implements OnInit {
     @Input() groupId!: string;

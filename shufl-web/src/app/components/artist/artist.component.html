@@ -1,7 +1,8 @@
 <div class="card-container">
     <div class="card" [ngClass]="{ 'loaded': !isLoading }">
+        <app-card-nav-bar></app-card-nav-bar>
         <app-loading-icon *ngIf="isLoading"></app-loading-icon>
-        <div class="artist-info-container" *ngIf="!isLoading">
+        <div class="artist-info-container" *ngIf="!isLoading && artist != null">
             <div class="artist-image">
                 <img src="https://i.scdn.co/image/{{ artist.artistImages[0].uri }}" alt="{{ artist.name }}">
             </div>
@@ -15,8 +16,11 @@
                 <p>Open</p>
             </a>
         </div>
-        <div class="artist-album-list-container" *ngIf="!isLoading">
+        <div class="artist-album-list-container" *ngIf="!isLoading && artist != null">
             <div app-album-icon class="artist-album" *ngFor="let album of artist.albums" [album]="album"></div>
+        </div>
+        <div class="error-message" *ngIf="!isLoading && artist == null">
+            <p>There has been an error processing your request, please try again</p>
         </div>
     </div>
 </div>

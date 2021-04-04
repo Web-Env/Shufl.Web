@@ -12,10 +12,15 @@
         </div>
         <div class="groups-list-container">
             <app-loading-icon [dimensions]="50" *ngIf="isLoading"></app-loading-icon>
-            <div class="no-groups-message" *ngIf="groups.length === 0 && !isLoading">
+            <div class="no-groups-message" *ngIf="groups != null && groups.length === 0 && !isLoading">
                 <p>You are not a member of any groups</p>
             </div>
-            <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
+            <div class="error-message" *ngIf="!isLoading && groups == null">
+                <p>There has been an error processing your request, please try again</p>
+            </div>
+            <div class="groups-list" *ngIf="!isLoading && groups != null">
+                <div app-groups-list-item *ngFor="let group of groups" [group]="group"></div>
+            </div>
         </div>
     </div>
 </div>
