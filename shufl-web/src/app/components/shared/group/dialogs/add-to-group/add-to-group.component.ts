@@ -3,7 +3,7 @@ import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 import { GroupDownloadModel } from "src/app/models/download-models/group.model";
-import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.model";
+import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -41,7 +41,7 @@ export class AddToGroupComponent implements OnInit {
         try {
             this.isLoading = true;
 
-            var newGroupSuggestion = new GroupSuggestion(
+            var newGroupSuggestion = new GroupSuggestionUploadModel(
                 groupIdentifier,
                 this.album.id,
                 false

@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { DataService } from "../data.service";
-import { AuthRequest } from "src/app/models/upload-models/auth-request.model";
+import { AuthRequestUploadModel } from "src/app/models/upload-models/auth-request.model";
 import { AuthResponseDownloadModel } from "src/app/models/download-models/auth-response.model";
 
 @Injectable()
@@ -39,7 +39,7 @@ export class AuthService {
         }
     }
 
-    public async loginAsync(authRequestModel: AuthRequest): Promise<void> {
+    public async loginAsync(authRequestModel: AuthRequestUploadModel): Promise<void> {
         let endpoint ='Auth/auth';
 
         try {

@@ -5,9 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
 
 import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
-import { ArtistDownloadModel } from 'src/app/models/download-models/artist.model';
-import { GroupSuggestion } from "src/app/models/upload-models/group-suggestion.model";
-import { TrackDownloadModel } from 'src/app/models/download-models/track.model';
+import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
@@ -125,7 +123,7 @@ export class AlbumComponent implements OnInit {
             try {
                 this.addingAlbumToGroup = true;
 
-                var newGroupSuggestion = new GroupSuggestion(
+                var newGroupSuggestion = new GroupSuggestionUploadModel(
                     this.groupId,
                     this.album.id,
                     true

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
-import { Group } from "src/app/models/upload-models/group.model";
+import { GroupUploadModel } from "src/app/models/upload-models/group.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -54,7 +54,7 @@ export class GroupCreateComponent implements OnInit {
                 this.isLoading = true;
                 this.formErrorMessageVisible = false;
 
-                var newGroup = new Group(
+                var newGroup = new GroupUploadModel(
                     createGroupFormData['groupName'],
                     true
                 );

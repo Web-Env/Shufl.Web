@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class AuthRequest implements IUploadModel {
+export class AuthRequestUploadModel implements IUploadModel {
     Email!: string;
     Password!: string;
 

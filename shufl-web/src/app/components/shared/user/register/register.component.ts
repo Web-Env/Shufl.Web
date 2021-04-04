@@ -3,8 +3,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgModel, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import * as shajs from 'sha.js';
-import { AuthRequest } from "src/app/models/upload-models/auth-request.model";
-import { User } from "src/app/models/upload-models/user.model";
+import { AuthRequestUploadModel } from "src/app/models/upload-models/auth-request.model";
+import { UserUploadModel } from "src/app/models/upload-models/user.model";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { DataService } from "src/app/services/data.service";
 import { StatusCheckerComponent } from "../../status-checker/status-checker.component";
@@ -209,7 +209,7 @@ export class RegisterComponent implements OnInit {
 
             var hashedPassword = shajs('sha256').update(formData['password']).digest('hex');
 
-            var userUploadModel = new User(
+            var userUploadModel = new UserUploadModel(
                 formData['email'],
                 formData['first-name'],
                 formData['last-name'],
@@ -220,7 +220,7 @@ export class RegisterComponent implements OnInit {
             try {
                 await this.dataService.postWithoutResponseAsync("User/Register", userUploadModel);
 
-                var authRequestModel = new AuthRequest(
+                var authRequestModel = new AuthRequestUploadModel(
                     userUploadModel.Email,
                     userUploadModel.Password
                 );
