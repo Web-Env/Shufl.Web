@@ -89,7 +89,6 @@ export class AlbumComponent implements OnInit {
             this.titleService.setTitle('Shufl');
 
             this.album = await this.dataService.getAsync<AlbumDownloadModel>(url, AlbumDownloadModel);
-            console.log (this.album)
             this.genres = this.album.artists[0].artistGenres;
 
             if (!this.isModal) {
