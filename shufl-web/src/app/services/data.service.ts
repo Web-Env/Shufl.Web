@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 
 import { environment } from 'src/environments/environment';
 import { IUploadModel } from "../models/upload-models/upload-model.interface";
-import { ToastrService } from "ngx-toastr";
-
 
 @Injectable({
     providedIn: 'root'
@@ -12,6 +12,7 @@ import { ToastrService } from "ngx-toastr";
 export class DataService {
 
     constructor(private httpClient: HttpClient,
+                private router: Router,
                 private toastr: ToastrService) { }
 
     private createHttpOptions(): Object {
@@ -53,8 +54,14 @@ export class DataService {
                         }
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.getAsync(endpoint, type, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.getAsync(endpoint, type, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -81,8 +88,14 @@ export class DataService {
                         }
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.getArrayAsync(endpoint, type, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.getArrayAsync(endpoint, type, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -105,8 +118,14 @@ export class DataService {
                         resolve(mappedData as T);
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postAsync(endpoint, uploadModel, type, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.postAsync(endpoint, uploadModel, type, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -127,8 +146,14 @@ export class DataService {
                         resolve(data);
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postWithoutBodyAsync(endpoint, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.postWithoutBodyAsync(endpoint, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -149,8 +174,14 @@ export class DataService {
                         resolve();
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postWithoutResponseAsync(endpoint, uploadModel, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.postWithoutResponseAsync(endpoint, uploadModel, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -171,8 +202,14 @@ export class DataService {
                         resolve();
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postWithoutBodyOrResponseAsync(endpoint, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.postWithoutBodyOrResponseAsync(endpoint, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -193,8 +230,14 @@ export class DataService {
                         resolve(data);
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.postWithoutBodyAsync(endpoint, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.postWithStringResponseAsync(endpoint, uploadModel, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -215,8 +258,14 @@ export class DataService {
                         resolve(data);
                     },
                     async (err) => {
-                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
-                            resolve(await this.deleteAsync(endpoint, true));
+                        if (err instanceof HttpErrorResponse) {
+                            if (err.status === 500 && retry === false) {
+                                resolve(await this.deleteAsync(endpoint, true));
+                            }
+                            else {
+                                this.handleError(err);
+                                reject(err);
+                            }
                         }
                         else {
                             this.toastr.error('There has been an error processing your request', 'Error');
@@ -225,6 +274,28 @@ export class DataService {
                     }
                 );
         });
+    }
+
+    private handleError(error: HttpErrorResponse) {
+        if (error.status === 400) {
+            this.toastr.error('There has been an error processing your request', 'Error');
+        }
+        else if (error.status === 401) {
+            this.toastr.warning('You have been logged out', 'Warning');
+
+            localStorage.removeItem('Username');
+            localStorage.removeItem('DisplayName');
+            localStorage.removeItem('FirstName');
+            localStorage.removeItem('LastName');
+            localStorage.removeItem('PictureUrl');
+            localStorage.removeItem('SpotifyMarket');
+            localStorage.removeItem('Token');
+
+            this.router.navigate(['/login']);
+        }
+        else if (error.status === 403) {
+            this.toastr.warning('You are not allowed to perform this action', 'Warning');
+        }
     }
 
     public mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
