@@ -119,10 +119,10 @@ export class GroupSuggestionRateComponent implements OnInit {
                         createGroupFormData['comment']
                     );
         
-                    var groupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Create', newGroupSuggestionRating, GroupSuggestionRatingDownloadModel);
+                    var createdGroupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Create', newGroupSuggestionRating, GroupSuggestionRatingDownloadModel);
     
-                    if (groupSuggestionRating != null) {
-                        this.dialogRef.close({data: groupSuggestionRating});
+                    if (createdGroupSuggestionRating != null) {
+                        this.dialogRef.close({data: createdGroupSuggestionRating});
                     }
                 }
                 else {
@@ -138,10 +138,10 @@ export class GroupSuggestionRateComponent implements OnInit {
                     );
                     updateGroupSuggestionRating.groupSuggestionRatingId = this.groupSuggestionRating.id;
         
-                    var groupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Edit', updateGroupSuggestionRating, GroupSuggestionRatingDownloadModel);
+                    var updatedGroupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Edit', updateGroupSuggestionRating, GroupSuggestionRatingDownloadModel);
     
-                    if (groupSuggestionRating != null) {
-                        this.dialogRef.close({data: groupSuggestionRating});
+                    if (updatedGroupSuggestionRating != null) {
+                        this.dialogRef.close({data: updatedGroupSuggestionRating});
                     }
                 }
             }

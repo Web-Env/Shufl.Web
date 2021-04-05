@@ -13,7 +13,7 @@ export class GroupSuggestionRatingService {
     public sendRating(groupSuggestionRatingDownloadModel: GroupSuggestionRatingDownloadModel, isDelete: boolean): void {
         this.rating.next({
             data: groupSuggestionRatingDownloadModel,
-            isDelete: isDelete
+            isDelete
         });
     }
 }

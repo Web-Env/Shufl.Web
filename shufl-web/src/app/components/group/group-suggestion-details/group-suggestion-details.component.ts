@@ -99,7 +99,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
             this.overallRating = this.calculateOverallRating();
 
             var username = localStorage.getItem('Username');
-            this.userHasRatedSuggestion = this.groupSuggestion.groupSuggestionRatings.find(gsr => gsr.createdBy.username === username) != null;
+            this.userHasRatedSuggestion = this.groupSuggestion.groupSuggestionRatings.find((gsr) => gsr.createdBy.username === username) != null;
         }
         catch (err) {
             console.log(err);
@@ -218,7 +218,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
                         this.userHasRatedSuggestion = true;
                     }
                     else {
-                        var existingIndex = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.id).indexOf(groupSuggestionRating.id);
+                        var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
 
                         this.groupSuggestion.groupSuggestionRatings[existingIndex] = groupSuggestionRating;
                         this.groupSuggestionUserRatingListComponent.updateRating(groupSuggestionRating);
@@ -249,7 +249,7 @@ export class GroupSuggestionDetailsComponent implements OnInit {
                 if (data.isPositive) {
                     await this.removeRatingAsync(groupSuggestionRating.id);
 
-                    var existingIndex = this.groupSuggestion.groupSuggestionRatings.map(gsr => gsr.id).indexOf(groupSuggestionRating.id);
+                    var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
 
                     this.groupSuggestion.groupSuggestionRatings.splice(existingIndex, 1);
                     this.groupSuggestionUserRatingListComponent.removeRating(groupSuggestionRating.id);

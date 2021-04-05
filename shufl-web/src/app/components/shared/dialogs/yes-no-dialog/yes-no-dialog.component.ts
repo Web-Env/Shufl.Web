@@ -16,7 +16,7 @@ export class YesNoDialogComponent implements OnInit {
     }
 
     public buttonClicked(isPositive: boolean) {
-        this.dialogRef.close({isPositive: isPositive});
+        this.dialogRef.close({isPositive});
     }
 
 }

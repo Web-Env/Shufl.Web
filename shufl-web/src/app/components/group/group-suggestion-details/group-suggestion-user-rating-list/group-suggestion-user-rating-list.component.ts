@@ -38,26 +38,26 @@ export class GroupSuggestionUserRatingListComponent implements OnInit {
     }
 
     public updateRating(rating: GroupSuggestionRatingDownloadModel): void {
-        var ratingsLeftRatingIndex = this.ratingsLeft.map(gsr => gsr.id).indexOf(rating.id);
+        var ratingsLeftRatingIndex = this.ratingsLeft.map((gsr) => gsr.id).indexOf(rating.id);
 
         if (ratingsLeftRatingIndex > -1) {
             this.ratingsLeft[ratingsLeftRatingIndex] = rating;
         }
         else {
-            var ratingsRightRatingIndex = this.ratingsRight.map(gsr => gsr.id).indexOf(rating.id);
+            var ratingsRightRatingIndex = this.ratingsRight.map((gsr) => gsr.id).indexOf(rating.id);
 
             this.ratingsRight[ratingsRightRatingIndex] = rating;
         }
     }
 
     public removeRating(ratingId: string) {
-        var ratingsLeftRatingIndex = this.ratingsLeft.map(gsr => gsr.id).indexOf(ratingId);
+        var ratingsLeftRatingIndex = this.ratingsLeft.map((gsr) => gsr.id).indexOf(ratingId);
 
         if (ratingsLeftRatingIndex > -1) {
             this.ratingsLeft.splice(ratingsLeftRatingIndex, 1);
         }
         else {
-            var ratingsRightRatingIndex = this.ratingsRight.map(gsr => gsr.id).indexOf(ratingId);
+            var ratingsRightRatingIndex = this.ratingsRight.map((gsr) => gsr.id).indexOf(ratingId);
 
             this.ratingsRight.splice(ratingsRightRatingIndex, 1);
         }

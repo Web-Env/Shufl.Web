@@ -6,11 +6,7 @@ $positive-background-image: linear-gradient(
     $secondary-foreground-colour 50%
 );
 
-$negative-background-image: linear-gradient(
-    to left,
-    $primary-negative-colour 50%,
-    $primary-negative-colour-hover 50%
-);
+$negative-background-image: linear-gradient(to left, $primary-negative-colour 50%, $primary-negative-colour-hover 50%);
 
 .yes-no-modal {
     .modal-message {
