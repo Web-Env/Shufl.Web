@@ -13,6 +13,7 @@ export class RatingDownloadModel {
     comment!: string;
     username!: string;
     displayName!: string;
+    createdOn!: string;
 
     constructor(
         id: string,
@@ -23,7 +24,8 @@ export class RatingDownloadModel {
         compositionRating: number | null,
         comment: string,
         username: string,
-        displayName: string
+        displayName: string,
+        createdOn: string
     ) {
         this.id = id;
         this.overallRating = overallRating;
@@ -34,5 +36,6 @@ export class RatingDownloadModel {
         this.comment = comment;
         this.username = username;
         this.displayName = displayName;
+        this.createdOn = createdOn;
     }
 }

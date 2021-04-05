@@ -1,0 +1,53 @@
+@import "src/assets/scss/variables/colours";
+
+$positive-background-image: linear-gradient(
+    to left,
+    $secondary-foreground-colour-hover 50%,
+    $secondary-foreground-colour 50%
+);
+
+$negative-background-image: linear-gradient(
+    to left,
+    $primary-negative-colour 50%,
+    $primary-negative-colour-hover 50%
+);
+
+.yes-no-modal {
+    .modal-message {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .action-buttons-container {
+        margin-top: 15px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &.colours-inverted {
+            .positive-button {
+                background-image: $negative-background-image;
+            }
+
+            .negative-button {
+                background-image: $positive-background-image;
+            }
+        }
+
+        .button {
+            width: 40%;
+
+            padding: 10px;
+
+            p {
+                font-size: 1.75em;
+                text-align: center;
+            }
+        }
+
+        .negative-button {
+            background-image: $negative-background-image;
+        }
+    }
+}

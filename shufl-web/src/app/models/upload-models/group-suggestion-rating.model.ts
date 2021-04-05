@@ -3,6 +3,7 @@ import { IUploadModel } from "./upload-model.interface";
 export class GroupSuggestionRatingUploadModel implements IUploadModel {
     groupIdentifier!: string;
     groupSuggestionIdentifier!: string;
+    groupSuggestionRatingId!: string;
     overallRating!: number;
     lyricsRating!: number;
     vocalsRating!: number;

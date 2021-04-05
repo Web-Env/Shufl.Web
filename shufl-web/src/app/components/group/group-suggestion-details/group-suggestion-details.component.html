@@ -1,9 +1,9 @@
 <div class="card-container group-suggestion-details-card-container">
     <div class="card">
         <app-card-nav-bar></app-card-nav-bar>
-        <div class="group-suggestion-info-container" *ngIf="!isLoading && album != null && genres != null">
+        <div class="group-suggestion-info-container" *ngIf="!isLoading && album != null">
             <div class="album-container">
-                <app-album-info [album]="album" [genres]="genres" [linkDisabled]="false"></app-album-info>
+                <app-album-info [album]="album" [linkDisabled]="false"></app-album-info>
             </div>
 
             <div class="overall-rating-container">
@@ -11,11 +11,12 @@
             </div>
 
             <div class="rate-button-container">
-                <app-button [buttonText]="'Rate This'" (click)="rateButtonClicked()"></app-button>
+                <app-button [buttonText]="'Rate This'" (click)="rateButtonClicked()" *ngIf="!userHasRatedSuggestion"></app-button>
             </div>
         </div>
         <div class="group-ratings-container">
-            <app-group-suggestion-user-rating-list [groupSuggestionRatings]="groupSuggestion.groupSuggestionRatings" *ngIf="!isLoading && groupSuggestion != null && groupSuggestion.groupSuggestionRatings != null"></app-group-suggestion-user-rating-list>
+            <app-group-suggestion-user-rating-list [groupSuggestionRatings]="groupSuggestion.groupSuggestionRatings" 
+                *ngIf="!isLoading && groupSuggestion != null && groupSuggestion.groupSuggestionRatings != null"></app-group-suggestion-user-rating-list>
 
             <div class="error-message"  *ngIf="!isLoading && groupSuggestion == null">
                 <p>There has been an error processing your request, please try again</p>

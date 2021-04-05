@@ -1,0 +1,8 @@
+<div class="yes-no-modal">
+    <p class="modal-message">{{ modalMessage }}</p>
+
+    <div class="action-buttons-container" [ngClass]="{'colours-inverted': coloursInverted}">
+        <div class="button positive-button" (click)="buttonClicked(true)"><p>Yes</p></div>
+        <div class="button negative-button" (click)="buttonClicked(false)"><p>No</p></div>
+    </div>
+</div>

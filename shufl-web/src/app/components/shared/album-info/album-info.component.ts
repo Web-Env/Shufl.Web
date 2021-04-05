@@ -13,7 +13,8 @@ import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 export class AlbumInfoComponent implements OnInit {
     @Input() album!: AlbumDownloadModel;
     @Input() linkDisabled!: boolean;
-    @Input() genres!: string[];
+    
+    genres!: string[];
 
     albumCoverUrl!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;

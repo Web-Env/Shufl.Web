@@ -54,6 +54,7 @@ export class GroupSuggestionComponent implements OnInit {
                 compositionRating,
                 "",
                 "",
+                "",
                 ""
             );
 
@@ -74,6 +75,7 @@ export class GroupSuggestionComponent implements OnInit {
                 0,
                 0,
                 0,
+                "",
                 "",
                 "",
                 ""

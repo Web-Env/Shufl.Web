@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
 import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
+import { GroupSuggestionRatingService } from "src/app/services/group-suggestion-rating.service";
 
 @Component({
     selector: 'app-group-suggestion-user-rating',
@@ -11,9 +12,11 @@ export class GroupSuggestionUserRatingComponent implements OnInit {
     @Input() groupSuggestionRating!: GroupSuggestionRatingDownloadModel;
     @Input() position!: string;
 
+    userOwnsRating: boolean = false;
+
     rating!: RatingDownloadModel;
 
-    constructor() { }
+    constructor(private groupSuggestionRatingService: GroupSuggestionRatingService) { }
 
     ngOnInit(): void {
         if (this.groupSuggestionRating != null) {
@@ -31,8 +34,20 @@ export class GroupSuggestionUserRatingComponent implements OnInit {
             this.groupSuggestionRating.compositionRating,
             this.groupSuggestionRating.comment,
             this.groupSuggestionRating.createdBy.username,
-            this.groupSuggestionRating.createdBy.displayName
+            this.groupSuggestionRating.createdBy.displayName,
+            this.groupSuggestionRating.createdOn
         );
+
+        var username = localStorage.getItem('Username');
+        this.userOwnsRating = this.rating.username === username;
+    }
+
+    public editButtonClicked(): void {
+        this.groupSuggestionRatingService.sendRating(this.groupSuggestionRating, false);
+    }
+
+    public deleteButtonClicked(): void {
+        this.groupSuggestionRatingService.sendRating(this.groupSuggestionRating, true);
     }
 
 }

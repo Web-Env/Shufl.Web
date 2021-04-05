@@ -205,6 +205,28 @@ export class DataService {
         });
     }
 
+    public async deleteAsync(endpoint: string, retry: boolean = false): Promise<any> {
+        return new Promise((resolve, reject) => {
+            let url = `${environment.apiUrl}/${endpoint}`;
+
+            this.httpClient.delete(url, this.createStringHttpOptions())
+                .subscribe(
+                    (data) => {
+                        resolve(data);
+                    },
+                    async (err) => {
+                        if (err instanceof HttpErrorResponse && err.status === 500 && retry === false) {
+                            resolve(await this.deleteAsync(endpoint, true));
+                        }
+                        else {
+                            this.toastr.error('There has been an error processing your request', 'Error');
+                            reject(err);
+                        }
+                    }
+                );
+        });
+    }
+
     public mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {
         var mappedData = new type();
         Object.assign(mappedData, jsonObject);

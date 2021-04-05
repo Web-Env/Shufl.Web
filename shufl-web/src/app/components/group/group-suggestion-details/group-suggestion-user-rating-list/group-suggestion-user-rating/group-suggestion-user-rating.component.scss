@@ -15,12 +15,64 @@
     .rating-comment {
         font-size: 1.25em;
         line-height: 1.5em;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
-    .user-link {
+    .created-on {
+        color: $tertiary-foreground-colour;
+        
         margin-top: 15px;
+    }
 
-        display: block;
+    .links-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .user-link {
+            max-width: calc(100% - 85px);
+
+            margin-top: 5px;
+    
+            display: block;
+        }
+
+        .action-buttons-container {
+            width: 85px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            .icon {
+                width: 30px;
+                height: 30px;
+
+                cursor: pointer;
+
+                &:hover {
+                    &.edit-icon {
+                        path {
+                            stroke: $primary-foreground-colour;
+                            fill: $primary-foreground-colour;
+                        }
+                    }
+
+                    &.delete-icon {
+                        path {
+                            stroke: $primary-negative-colour-hover;
+                            fill: $primary-negative-colour-hover;
+                        }
+                    }
+                }
+
+                svg {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+        }
     }
 }
 

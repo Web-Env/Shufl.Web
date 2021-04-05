@@ -21,5 +21,6 @@ $tertiary-foreground-colour: #adadad;
 $primary-positive-colour: #357d3e;
 
 $primary-negative-colour: #a52e1d;
+$primary-negative-colour-hover: darken($primary-negative-colour, 5%);
 
 $nav-bar-foreground-colour-active: #459deb;
