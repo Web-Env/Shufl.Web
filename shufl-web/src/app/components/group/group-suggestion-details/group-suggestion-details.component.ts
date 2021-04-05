@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 
@@ -23,7 +23,7 @@ import { YesNoDialogComponent } from "../../shared/dialogs/yes-no-dialog/yes-no-
         '../../../../assets/scss/music-details.scss'
     ]
 })
-export class GroupSuggestionDetailsComponent implements OnInit {
+export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
     @ViewChild(GroupSuggestionUserRatingListComponent)
     private groupSuggestionUserRatingListComponent!: GroupSuggestionUserRatingListComponent;
     @ViewChild(GroupSuggestionRatingComponent)
@@ -45,6 +45,8 @@ export class GroupSuggestionDetailsComponent implements OnInit {
     userHasRatedSuggestion: boolean = false;
 
     groupSuggestionRatingSubscription!: Subscription;
+
+    dialogOpen: boolean = false;
 
     constructor(private route: ActivatedRoute,
                 private router: Router,
@@ -185,84 +187,98 @@ export class GroupSuggestionDetailsComponent implements OnInit {
     }
 
     public addOrUpdateRating(existingGroupSuggestionRating: GroupSuggestionRatingDownloadModel | null): void {
-        const dialogConfig = new MatDialogConfig();
+        if (!this.dialogOpen) {
+            const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.disableClose = false;
-        dialogConfig.autoFocus = true;
-        dialogConfig.width = '90%';
-        dialogConfig.maxWidth = "800px";
-        dialogConfig.height = 'fit-content';
-        dialogConfig.closeOnNavigation = true;
-
-        let instance = this.dialog.open(GroupSuggestionRateComponent, dialogConfig);
-
-        if (existingGroupSuggestionRating == null) {
-            instance.componentInstance.groupId = this.groupId;
-            instance.componentInstance.groupSuggestionId = this.groupSuggestionId;
-        }
-        else {
-            instance.componentInstance.groupSuggestionRating = existingGroupSuggestionRating;
-        }
-
-        instance.afterClosed().subscribe((data) => {
-            if (data != null) {
-                var groupSuggestionRating = data.data;
-            
-                if (groupSuggestionRating != null && groupSuggestionRating instanceof GroupSuggestionRatingDownloadModel) {
-                    if (existingGroupSuggestionRating == null) {
-                        this.groupSuggestion.groupSuggestionRatings.push(groupSuggestionRating);
-
-                        this.groupSuggestionUserRatingListComponent.addNewRating(groupSuggestionRating);
-                        this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
-
-                        this.userHasRatedSuggestion = true;
-                    }
-                    else {
-                        var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
-
-                        this.groupSuggestion.groupSuggestionRatings[existingIndex] = groupSuggestionRating;
-                        this.groupSuggestionUserRatingListComponent.updateRating(groupSuggestionRating);
-
-                        this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+            dialogConfig.disableClose = false;
+            dialogConfig.autoFocus = true;
+            dialogConfig.width = '90%';
+            dialogConfig.maxWidth = "800px";
+            dialogConfig.height = 'fit-content';
+            dialogConfig.closeOnNavigation = true;
+    
+            let instance = this.dialog.open(GroupSuggestionRateComponent, dialogConfig);
+            this.dialogOpen = true;
+    
+            if (existingGroupSuggestionRating == null) {
+                instance.componentInstance.groupId = this.groupId;
+                instance.componentInstance.groupSuggestionId = this.groupSuggestionId;
+            }
+            else {
+                instance.componentInstance.groupSuggestionRating = existingGroupSuggestionRating;
+            }
+    
+            instance.afterClosed().subscribe((data) => {
+                if (data != null) {
+                    var groupSuggestionRating = data.data;
+                
+                    if (groupSuggestionRating != null && groupSuggestionRating instanceof GroupSuggestionRatingDownloadModel) {
+                        if (existingGroupSuggestionRating == null) {
+                            this.groupSuggestion.groupSuggestionRatings.push(groupSuggestionRating);
+    
+                            this.groupSuggestionUserRatingListComponent.addNewRating(groupSuggestionRating);
+                            this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+    
+                            this.userHasRatedSuggestion = true;
+                        }
+                        else {
+                            var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
+    
+                            this.groupSuggestion.groupSuggestionRatings[existingIndex] = groupSuggestionRating;
+                            this.groupSuggestionUserRatingListComponent.updateRating(groupSuggestionRating);
+    
+                            this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+                        }
                     }
                 }
-            }
-        });
+
+                this.dialogOpen = false;
+            });
+        }
     }
 
     public deleteRating(groupSuggestionRating: GroupSuggestionRatingDownloadModel): void {
-        const dialogConfig = new MatDialogConfig();
+        if (!this.dialogOpen) {
+            const dialogConfig = new MatDialogConfig();
 
-        dialogConfig.disableClose = false;
-        dialogConfig.autoFocus = true;
-        dialogConfig.width = '90%';
-        dialogConfig.maxWidth = "800px";
-        dialogConfig.height = 'fit-content';
-        dialogConfig.closeOnNavigation = true;
+            dialogConfig.disableClose = false;
+            dialogConfig.autoFocus = true;
+            dialogConfig.width = '90%';
+            dialogConfig.maxWidth = "800px";
+            dialogConfig.height = 'fit-content';
+            dialogConfig.closeOnNavigation = true;
 
-        let instance = this.dialog.open(YesNoDialogComponent, dialogConfig);
-        instance.componentInstance.modalMessage = "Are you sure you want to delete your rating?";
-        instance.componentInstance.coloursInverted = true;
+            let instance = this.dialog.open(YesNoDialogComponent, dialogConfig);
+            instance.componentInstance.modalMessage = "Are you sure you want to delete your rating?";
+            instance.componentInstance.coloursInverted = true;
+            this.dialogOpen = true;
 
-        instance.afterClosed().subscribe(async (data) => {
-            if (data != null && data.isPositive != null) {
-                if (data.isPositive) {
-                    await this.removeRatingAsync(groupSuggestionRating.id);
+            instance.afterClosed().subscribe(async (data) => {
+                if (data != null && data.isPositive != null) {
+                    if (data.isPositive) {
+                        await this.removeRatingAsync(groupSuggestionRating.id);
 
-                    var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
+                        var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
 
-                    this.groupSuggestion.groupSuggestionRatings.splice(existingIndex, 1);
-                    this.groupSuggestionUserRatingListComponent.removeRating(groupSuggestionRating.id);
+                        this.groupSuggestion.groupSuggestionRatings.splice(existingIndex, 1);
+                        this.groupSuggestionUserRatingListComponent.removeRating(groupSuggestionRating.id);
 
-                    this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
-                    this.userHasRatedSuggestion = false;
+                        this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+                        this.userHasRatedSuggestion = false;
+                    }
                 }
-            }
-        });
+
+                this.dialogOpen = false;
+            });
+        }
     }
 
     public async removeRatingAsync(groupSuggestionRatingId: string): Promise<void> {
         await this.dataService.deleteAsync(`GroupSuggestionRating/Delete?groupSuggestionRatingId=${groupSuggestionRatingId}`);
+    }
+
+    ngOnDestroy(): void {
+        this.groupSuggestionRatingSubscription.unsubscribe();
     }
 
 }
