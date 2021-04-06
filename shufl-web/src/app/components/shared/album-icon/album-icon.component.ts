@@ -9,14 +9,14 @@ import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
 })
 export class AlbumIconComponent implements OnInit {
     @Input() album!: AlbumDownloadModel;
-    @Input() enabled: boolean = true;
+    @Input() disabled: boolean = false;
 
     constructor(private router: Router) { }
 
     ngOnInit(): void { }
 
     public albumIconClicked(): void {
-        if (this.enabled) {
+        if (!this.disabled) {
             this.router.navigate([`album/${this.album.id}`]);
         }
     } 

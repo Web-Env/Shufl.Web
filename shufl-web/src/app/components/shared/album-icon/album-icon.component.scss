@@ -28,6 +28,12 @@
 
         overflow: hidden;
 
+        &.disabled {
+            .album-link {
+                pointer-events: none;
+            }
+        }
+
         .album-link {
             max-width: 100%;
 

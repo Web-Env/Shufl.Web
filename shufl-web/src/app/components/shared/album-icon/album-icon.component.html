@@ -1,8 +1,8 @@
 <div class="album-icon-container" (click)="albumIconClicked()">
     <div class="album-art">
-        <img src="https://i.scdn.co/image/{{ album.albumImages[album.albumImages.length - 2]?.uri }}"><!-- https://i.scdn.co/image/ -->
+        <img src="https://i.scdn.co/image/{{ album.albumImages[album.albumImages.length - 2]?.uri }}">
     </div>
-    <div class="album-info">
+    <div class="album-info" [ngClass]="{'disabled': disabled}">
         <a class="album-link" [routerLink]="['/album', album.id]">{{ album.name }}</a>
         <div class="artist-links">
             <div app-inline-artists-ticker class="artist-links-container" [artists]="album.artists"></div>
