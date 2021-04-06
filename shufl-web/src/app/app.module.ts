@@ -67,7 +67,6 @@ const rollbarConfig = {
     accessToken: 'a169f2008c504693b8238085f24303da',
     captureUncaught: true,
     captureUnhandledRejections: true,
-    enabled: !isDevMode(),
     verbose: true
 };
 
