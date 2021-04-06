@@ -9,9 +9,10 @@ import { DataService } from "src/app/services/data.service";
 })
 export class AlbumSearchResultsContainerComponent implements OnInit {
     isLoading: boolean = false;
+    hasSearched: boolean = false;
     noResults: boolean = false;
 
-    albums: any[] = [];
+    albums: AlbumDownloadModel[] = [];
 
     constructor(private dataService: DataService) { }
 
@@ -20,7 +21,10 @@ export class AlbumSearchResultsContainerComponent implements OnInit {
 
     public async searchAlbums(name: string): Promise<void> {
         this.isLoading = true;
+
         this.albums = await this.dataService.getArrayAsync<AlbumDownloadModel>(`Album/Search?name=${name}`, AlbumDownloadModel);
+
+        this.hasSearched = true;
         this.noResults = this.albums.length === 0;
         this.isLoading = false;
     }

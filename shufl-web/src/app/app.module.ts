@@ -1,4 +1,4 @@
-import { ErrorHandler, Inject, Injectable, InjectionToken, NgModule } from '@angular/core';
+import { ErrorHandler, Inject, Injectable, InjectionToken, isDevMode, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
@@ -20,6 +20,7 @@ import { AlbumSearchResultsContainerComponent } from './components/search/album-
 import { AppComponent } from './app.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { ArtistSearchResultsContainerComponent } from './components/search/artist-search-results-container/artist-search-results-container.component';
+import { ArtistSearchResultComponent } from './components/search/artist-search-results-container/artist-search-result/artist-search-result.component';
 import { ButtonComponent } from './components/shared/buttons/button/button.component';
 import { CardNavBarComponent } from './components/shared/navigation/card-nav-bar/card-nav-bar.component';
 import { GroupComponent } from './components/group/group.component';
@@ -50,7 +51,6 @@ import { SearchComponent } from './components/search/search.component';
 import { StatusCheckerComponent } from './components/shared/status-checker/status-checker.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
-import { TrackSearchResultsContainerComponent } from './components/search/track-search-results-container/track-search-results-container.component';
 import { UserIconComponent } from "./components/shared/user/user-icon/user-icon.component";
 import { VerifyComponent } from './components/shared/user/verify/verify.component';
 import { YesNoDialogComponent } from './components/shared/dialogs/yes-no-dialog/yes-no-dialog.component';
@@ -67,6 +67,8 @@ const rollbarConfig = {
     accessToken: 'a169f2008c504693b8238085f24303da',
     captureUncaught: true,
     captureUnhandledRejections: true,
+    enabled: !isDevMode(),
+    verbose: true
 };
 
 export const RollbarService = new InjectionToken<Rollbar>('rollbar');
@@ -76,7 +78,12 @@ export class RollbarErrorHandler implements ErrorHandler {
     constructor(@Inject(RollbarService) private rollbar: Rollbar) { }
 
     handleError(err: any): void {
-        this.rollbar.error(err.originalError || err);
+        if (isDevMode()) {
+            console.error(err.originalError || err);
+        }
+        else {
+            this.rollbar.error(err.originalError || err);
+        }
     }
 }
 
@@ -94,6 +101,7 @@ export function rollbarFactory() {
         AlbumSearchResultsContainerComponent,
         AppComponent,
         ArtistSearchResultsContainerComponent,
+        ArtistSearchResultComponent,
         ArtistComponent,
         ButtonComponent,
         CardNavBarComponent,
@@ -125,7 +133,6 @@ export function rollbarFactory() {
         StatusCheckerComponent,
         TrackListComponent,
         TrackListItemComponent,
-        TrackSearchResultsContainerComponent,
         UserIconComponent,
         VerifyComponent,
         YesNoDialogComponent,

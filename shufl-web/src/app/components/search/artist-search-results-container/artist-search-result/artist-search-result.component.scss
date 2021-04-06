@@ -1,0 +1,39 @@
+@import "src/assets/scss/variables/colours";
+
+.artist-search-result-container {
+    padding: 15px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-background-colour-hover;
+    }
+
+    .artist-image-container {
+        width: 100px;
+        height: 100px;
+
+        margin: auto;
+
+        border-radius: 50%;
+
+        overflow: hidden;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .artist-name {
+        width: 100%;
+
+        margin-top: 10px;
+
+        font-size: 1.5em;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}

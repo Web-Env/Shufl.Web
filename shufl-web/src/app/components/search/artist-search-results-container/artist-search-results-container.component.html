@@ -1,1 +1,10 @@
-<p>artist-search-results-container works!</p>
+<div class="search-results-container" *ngIf="hasSearched">
+    <h2>Artists</h2>
+    <div class="search-results" *ngIf="!isLoading && artists.length > 0">
+        <div app-artist-search-result *ngFor="let artist of artists.slice(0, 6)" [artist]="artist"></div>
+    </div>
+
+    <div class="no-results-found-message" *ngIf="!isLoading && noResults">
+        <p>No Results Found</p>
+    </div>
+</div>

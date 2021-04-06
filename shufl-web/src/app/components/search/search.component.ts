@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { debounceTime } from 'rxjs/operators';
 import { AlbumSearchResultsContainerComponent } from "./album-search-results-container/album-search-results-container.component";
+import { ArtistSearchResultsContainerComponent } from "./artist-search-results-container/artist-search-results-container.component";
 
 @Component({
     selector: 'app-search',
@@ -15,6 +16,8 @@ import { AlbumSearchResultsContainerComponent } from "./album-search-results-con
 export class SearchComponent implements OnInit {
     @ViewChild(AlbumSearchResultsContainerComponent)
     private albumSearchResultsContainerComponent!: AlbumSearchResultsContainerComponent;
+    @ViewChild(ArtistSearchResultsContainerComponent)
+    private artistSearchResultsContainerComponent!: ArtistSearchResultsContainerComponent;
 
     isLoading: boolean = false;
     
@@ -45,7 +48,10 @@ export class SearchComponent implements OnInit {
                 this.searchTerm = searchTerm;
 
                 this.isLoading = true;
-                await this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm);
+                await Promise.all([
+                    this.albumSearchResultsContainerComponent.searchAlbums(this.searchTerm), 
+                    this.artistSearchResultsContainerComponent.searchArtists(this.searchTerm)
+                ]);
             }
             catch (err) {
                 console.log (err);

@@ -296,6 +296,9 @@ export class DataService {
         else if (error.status === 403) {
             this.toastr.warning('You are not allowed to perform this action', 'Warning');
         }
+        else {
+            this.toastr.error('There has been an error processing your request', 'Error');
+        }
     }
 
     public mapJsonToObject<T>(jsonObject: any, type: { new(): T; }): T {

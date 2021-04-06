@@ -1,4 +1,4 @@
-<div class="search-results-container">
+<div class="search-results-container" *ngIf="hasSearched">
     <h2>Albums</h2>
     <div class="search-results" *ngIf="!isLoading && albums.length > 0">
         <div app-album-icon *ngFor="let album of albums" [album]="album"></div>
