@@ -1,0 +1,14 @@
+@import "src/assets/scss/variables/colours";
+
+.search-results-container {
+    .no-results-found-message {
+        p {
+            color: $tertiary-foreground-colour;
+
+            padding: 20px 0;
+
+            font-size: 1.75em;
+            text-align: center;
+        }
+    }
+}

@@ -1,3 +1,5 @@
+@import "src/assets/scss/variables/colours";
+
 .search-results-container {
     .search-results {
         display: flex;
@@ -6,6 +8,17 @@
 
         div {
             width: 50%;
+        }
+    }
+
+    .no-results-found-message {
+        p {
+            color: $tertiary-foreground-colour;
+
+            padding: 20px 0;
+
+            font-size: 1.75em;
+            text-align: center;
         }
     }
 }
