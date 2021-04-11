@@ -29,7 +29,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild, CanLoad 
             return true;
         }
 
-        if (url !== undefined) {
+        if (url != null) {
             this.authService.redirectUrl = url;
         }
 

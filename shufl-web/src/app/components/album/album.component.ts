@@ -91,6 +91,10 @@ export class AlbumComponent implements OnInit {
             this.album = await this.dataService.getAsync<AlbumDownloadModel>(url, AlbumDownloadModel);
             this.genres = this.album.artists[0].artistGenres;
 
+            if (this.genres.length > 3) {
+                this.genres = this.genres.splice(0, 3);
+            }
+
             if (!this.isModal) {
                 this.titleService.setTitle(this.album.name);
             }

@@ -10,10 +10,7 @@ import { DataService } from "src/app/services/data.service";
 @Component({
     selector: 'app-password-reset',
     templateUrl: './password-reset.component.html',
-    styleUrls: [
-        './password-reset.component.scss',
-        '../../../../../assets/scss/user-form.scss'
-    ]
+    styleUrls: ['../../../../../assets/scss/user-form.scss']
 })
 export class PasswordResetComponent implements OnInit {
     passwordResetToken!: string;

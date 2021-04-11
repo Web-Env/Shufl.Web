@@ -8,10 +8,7 @@ import { DataService } from "src/app/services/data.service";
 @Component({
     selector: 'app-group-create',
     templateUrl: './group-create.component.html',
-    styleUrls: [
-        './group-create.component.scss',
-        '../../../../../../assets/scss/form.scss'
-    ]
+    styleUrls: ['../../../../../../assets/scss/form.scss']
 })
 export class GroupCreateComponent implements OnInit {
     isLoading: boolean = false;

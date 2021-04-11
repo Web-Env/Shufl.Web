@@ -13,7 +13,6 @@ import { StatusCheckerComponent } from "../../status-checker/status-checker.comp
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: [
-        './register.component.scss',
         '../../../../../assets/scss/form.scss',
         '../../../../../assets/scss/user-form.scss'
     ]

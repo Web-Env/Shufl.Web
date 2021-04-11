@@ -10,10 +10,7 @@ import { AuthService } from "src/app/services/auth/auth.service";
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: [
-        './login.component.scss',
-        '../../../../../assets/scss/user-form.scss'
-    ]
+    styleUrls: ['../../../../../assets/scss/user-form.scss']
 })
 export class LoginComponent implements OnInit {    
     defaultEmailErrorMessage: string = 'Email cannot be empty';

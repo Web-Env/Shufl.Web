@@ -11,6 +11,10 @@
     }
 
     .groups-list-container {
+        min-height: 100px;
+
+        position: relative;
+
         .groups-list {
             max-height: 500px;
 
