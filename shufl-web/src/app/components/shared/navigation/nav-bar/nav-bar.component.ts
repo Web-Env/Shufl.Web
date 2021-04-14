@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscriber } from 'rxjs/internal/Subscriber';
+import { environment } from 'src/environments/environment';
 
 import { NavBarItem } from 'src/app/models/view-models/nav-bar-item.model';
 
@@ -21,6 +22,8 @@ export class NavBarComponent implements OnInit {
 
     userItem: NavBarItem = new NavBarItem('user', 'Account', 'account');
     userActive: boolean = false;
+
+    appVersion: string = environment.version;
 
     routeChangeSubscriber: Subscriber<Event> = Subscriber.create(
         (ev) => {
