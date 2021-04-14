@@ -105,7 +105,9 @@ export class LoginComponent implements OnInit {
                 else {
                     this.formErrorMessage = "An unexpected error occured, please try again";
                 }
+                
                 this.formErrorMessageVisible = true;
+                throw err;
             }
             finally {
                 this.isLoading = false;

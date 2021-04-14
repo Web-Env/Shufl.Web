@@ -59,6 +59,8 @@ export class GroupInviteComponent implements OnInit {
                     }
                 }
             }
+
+            throw err;
         }
         finally {
             this.verificationRequestSentSuccessfully = true;
@@ -72,9 +74,9 @@ export class GroupInviteComponent implements OnInit {
             this.router.navigate([`/group/${this.group.identifier}`]);
         }
         catch (err) {
-            console.log (err);
             this.inviteErrorMessage = "There has been an error joining this group, please try again";
             this.isValidInvite = false;
+            throw err;
         }
         finally {
             this.acceptRequestIsLoading = false;

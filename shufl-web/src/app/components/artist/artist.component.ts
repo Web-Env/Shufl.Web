@@ -48,7 +48,7 @@ export class ArtistComponent implements OnInit {
             this.titleService.setTitle(this.artist.name);
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;

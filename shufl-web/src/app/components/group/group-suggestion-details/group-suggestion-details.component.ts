@@ -104,7 +104,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             this.userHasRatedSuggestion = this.groupSuggestion.groupSuggestionRatings.find((gsr) => gsr.createdBy.username === username) != null;
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;

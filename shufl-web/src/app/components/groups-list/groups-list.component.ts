@@ -33,7 +33,7 @@ export class GroupsListComponent implements OnInit {
             this.groups = await this.dataService.getArrayAsync('Group/GetAll', GroupDownloadModel);
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;

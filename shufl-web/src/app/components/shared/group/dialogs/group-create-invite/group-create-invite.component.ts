@@ -43,6 +43,7 @@ export class GroupCreateInviteComponent implements OnInit {
         }
         catch (err) {
             this.inviteLinkCreatedSuccessfully = false;
+            throw err;
         }
         finally {
             this.isLoading = false;

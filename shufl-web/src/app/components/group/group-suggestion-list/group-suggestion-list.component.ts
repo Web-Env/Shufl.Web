@@ -28,7 +28,7 @@ export class GroupSuggestionListComponent implements OnInit {
             this.groupSuggestions = await this.dataService.getArrayAsync<GroupSuggestionDownloadModel>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}`, GroupSuggestionDownloadModel);
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;

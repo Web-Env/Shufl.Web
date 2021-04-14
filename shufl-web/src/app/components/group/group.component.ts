@@ -48,7 +48,7 @@ export class GroupComponent implements OnInit {
             this.titleService.setTitle(this.group.name);
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;

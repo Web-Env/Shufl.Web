@@ -146,9 +146,9 @@ export class GroupSuggestionRateComponent implements OnInit {
                 }
             }
             catch (err) {
-                console.log(err);
                 this.formErrorMessage = 'An unexpected error occured, please try again';
                 this.formErrorMessageVisible = true;
+                throw err;
             }
             finally {
                 this.isLoading = false;

@@ -88,6 +88,7 @@ export class VerifyComponent implements OnInit {
         }
         catch (err) {
             this.verifiedSuccessfully = false;
+            throw err;
         }
         finally {
             this.verificationAttempted = true;
@@ -116,8 +117,10 @@ export class VerifyComponent implements OnInit {
                 else {
                     this.formErrorMessage = this.defaultFormErrorMessage;
                 }
+
                 this.verificationRequestSentSuccessfully = false;
                 this.formErrorMessageVisible = true;
+                throw err;
             }
             finally {
                 this.isLoading = false;

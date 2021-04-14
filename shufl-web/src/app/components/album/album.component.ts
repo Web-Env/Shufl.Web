@@ -100,7 +100,7 @@ export class AlbumComponent implements OnInit {
             }
         }
         catch (err) {
-            console.log(err);
+            throw err;
         }
         finally {
             this.isLoading = false;
@@ -144,6 +144,7 @@ export class AlbumComponent implements OnInit {
             }
             catch (err) {
                 this.errorVisible = true;
+                throw err;
             }
             finally {
                 this.addingAlbumToGroup = false;

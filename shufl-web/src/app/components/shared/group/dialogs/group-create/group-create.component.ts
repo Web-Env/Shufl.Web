@@ -64,9 +64,9 @@ export class GroupCreateComponent implements OnInit {
                 }
             }
             catch (err) {
-                console.log(err);
                 this.formErrorMessage = 'An unexpected error occured, please try again';
                 this.formErrorMessageVisible = true;
+                throw err;
             }
         }
     }

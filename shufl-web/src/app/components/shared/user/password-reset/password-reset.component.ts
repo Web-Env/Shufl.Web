@@ -93,6 +93,7 @@ export class PasswordResetComponent implements OnInit {
         }
         catch (err) {
             this.isResetTokenValid = false;
+            throw err;
         }
     }
 
@@ -155,9 +156,9 @@ export class PasswordResetComponent implements OnInit {
                 this.resetRequestSentSuccessfully = true;
             }
             catch (err) {
-                console.log(err);
                 this.resetRequestSentSuccessfully = false;
                 this.formErrorMessageVisible = true;
+                throw err;
             }
             finally {
                 this.isLoading = false;
@@ -195,6 +196,8 @@ export class PasswordResetComponent implements OnInit {
                 this.formErrorMessageVisible = true;
 
                 await this.checkResetTokenValidAsync(this.passwordResetToken);
+                
+                throw err;
             }
             finally {
                 this.isLoading = false;
