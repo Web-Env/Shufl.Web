@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "webenv-shufl"
+  },
+  "targets": {
+    "webenv-shufl": {
+      "hosting": {
+        "qa": [
+          "webenv-shufl-qa"
+        ],
+        "prod": [
+          "webenv-shufl"
+        ]
+      }
+    }
   }
 }
