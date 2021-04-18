@@ -7,6 +7,7 @@
                 <input type="number" class="form-control" formControlName="overallRating"
                     (focus)="changeInputState('overallRating', true)"
                     (blur)="changeInputState('overallRating', false)"
+                    (keypress)="validateRating($event)"
                     pattern="\d+(\.\d{1})?">
             </div>
             <small class="warning-label" [ngClass]="{'visible': (!rateGroupSuggestionForm.controls['overallRating'].valid && rateGroupSuggestionForm.controls['overallRating'].touched)}">
@@ -23,7 +24,9 @@
                         <label for="lyricsRating">Lyrics</label>
                         <input type="number" class="form-control" formControlName="lyricsRating"
                             (focus)="changeInputState('lyricsRating', true)"
-                            (blur)="changeInputState('lyricsRating', false)">
+                            (blur)="changeInputState('lyricsRating', false)"
+                            (keypress)="validateRating($event)"
+                            pattern="\d+(\.\d{1})?">
                     </div>
                 </div>
                 
@@ -33,7 +36,9 @@
                         <label for="vocalsRating">Vocals</label>
                         <input type="number" class="form-control" formControlName="vocalsRating"
                             (focus)="changeInputState('vocalsRating', true)"
-                            (blur)="changeInputState('vocalsRating', false)">
+                            (blur)="changeInputState('vocalsRating', false)"
+                            (keypress)="validateRating($event)"
+                            pattern="\d+(\.\d{1})?">
                     </div>
                 </div>
             </div>
@@ -45,7 +50,9 @@
                         <label for="instrumentalsRating">Instrumentals</label>
                         <input type="number" class="form-control" formControlName="instrumentalsRating"
                             (focus)="changeInputState('instrumentalsRating', true)"
-                            (blur)="changeInputState('instrumentalsRating', false)">
+                            (blur)="changeInputState('instrumentalsRating', false)"
+                            (keypress)="validateRating($event)"
+                            pattern="\d+(\.\d{1})?">
                     </div>
                 </div>
                 
@@ -55,7 +62,9 @@
                         <label for="compositionRating">Composition</label>
                         <input type="number" class="form-control" formControlName="compositionRating"
                             (focus)="changeInputState('compositionRating', true)"
-                            (blur)="changeInputState('compositionRating', false)">
+                            (blur)="changeInputState('compositionRating', false)"
+                            (keypress)="validateRating($event)"
+                            pattern="\d+(\.\d{1})?">
                     </div>
                 </div>
             </div>

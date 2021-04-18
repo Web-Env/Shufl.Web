@@ -100,6 +100,12 @@ export class GroupSuggestionRateComponent implements OnInit {
             this.commentActive = active;
         }
     }
+
+    public validateRating(event: any): void {
+        if (event.target.value.length >= 3 || parseInt(event.target.value) === 0 || parseInt(event.target.value) === 10) {
+            event.preventDefault();
+        }
+    }
     
     public async rateGroupSuggestionAsync(createGroupFormData: any): Promise<void> {
         if (!this.isLoading && this.rateGroupSuggestionForm.valid) {
