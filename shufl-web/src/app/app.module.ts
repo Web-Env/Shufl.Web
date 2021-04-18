@@ -62,6 +62,7 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
 import { GroupSuggestionRatingService } from "./services/group-suggestion-rating.service";
+import { SpotifyCallbackComponent } from './components/user/spotify-callback/spotify-callback.component';
 
 const rollbarConfig = {
     accessToken: 'a169f2008c504693b8238085f24303da',
@@ -136,7 +137,9 @@ export function rollbarFactory() {
         VerifyComponent,
         YesNoDialogComponent,
 
-        genreFormatter
+        genreFormatter,
+
+        SpotifyCallbackComponent
     ],
     imports: [
         AppRoutingModule,

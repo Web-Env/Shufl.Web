@@ -17,6 +17,7 @@ import { VerifyComponent } from "./components/shared/user/verify/verify.componen
 
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { SearchComponent } from "./components/search/search.component";
+import { SpotifyCallbackComponent } from "./components/user/spotify-callback/spotify-callback.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'album/:albumId', component: AlbumComponent },
     { path: 'artist', component: ArtistComponent },
     { path: 'artist/:artistId', component: ArtistComponent },
+    { path: 'callback', component: SpotifyCallbackComponent, canActivate: [AuthGuardService] },
     { path: 'login', component: LoginComponent },
     { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
     { path: 'group/:groupId/:groupSuggestionId', component: GroupSuggestionDetailsComponent, canActivate: [AuthGuardService]},
