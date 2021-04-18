@@ -49,7 +49,7 @@ export class AuthService {
                 localStorage.setItem('DisplayName', authResponse.displayName);
                 localStorage.setItem('FirstName', authResponse.firstName);
                 localStorage.setItem('LastName', authResponse.lastName);
-                localStorage.setItem('PictureUrl', authResponse.pictureUrl);
+                localStorage.setItem('SpotifyUsername', authResponse.spotifyUsername);
                 localStorage.setItem('SpotifyMarket', authResponse.spotifyMarket);
                 localStorage.setItem('Token', authResponse.token);
             }

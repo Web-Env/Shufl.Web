@@ -1,4 +1,5 @@
 import { ArtistDownloadModel } from './artist.model';
+import { ImageDownloadModel } from "./image.model";
 import { TrackDownloadModel } from './track.model';
 
 export class AlbumDownloadModel {
@@ -6,7 +7,7 @@ export class AlbumDownloadModel {
     name!: string;
     url!: string;
     releaseDate!: string;
-    albumImages!: Array<any>;
+    albumImages!: Array<ImageDownloadModel>;
     artists!: Array<ArtistDownloadModel>;
     tracks!: Array<TrackDownloadModel>;
 }

@@ -3,7 +3,7 @@ export class AuthResponseDownloadModel {
     displayName!: string;
     firstName!: string;
     lastName!: string;
-    pictureUrl!: string;
+    spotifyUsername!: string;
     spotifyMarket!: string;
     token!: string;
 }

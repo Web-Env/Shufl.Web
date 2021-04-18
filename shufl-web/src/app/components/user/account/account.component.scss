@@ -2,12 +2,103 @@
 
 .card-container {
     .card {
-        h1 {
-            width: 100%;
+        min-height: 300px;
 
-            color: $primary-foreground-colour;
+        position: relative;
 
-            text-align: center;
+        .user-data-container {
+            .user-icon-container {
+                width: 250px;
+                height: 250px;
+
+                margin: auto;
+
+                border-radius: 50%;
+
+                overflow: hidden;
+
+                .user-icon {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            h1 {
+                width: 100%;
+
+                color: $primary-foreground-colour;
+
+                text-align: center;
+            }
+
+            .logout-button-container {
+                width: 80%;
+
+                margin: auto;
+            }
+
+            .spotify-settings-container {
+                .spotify-settings-header {
+                    color: $tertiary-foreground-colour;
+
+                    font-size: 1.3em;
+                }
+
+                .link-spotify-button-container {
+                    width: 80%;
+
+                    margin: auto;
+                    margin-top: 10px;
+                }
+
+                .unlink-spotify-settings-container {
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        width: 100%;
+
+                        margin-bottom: 15px;
+
+                        font-size: 1.75em;
+                        text-align: center;
+                    }
+
+                    .unlink-spotify-button-container {
+                        width: 80%;
+
+                        margin: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .card-container {
+        .card {
+            .user-data-container {
+                .spotify-settings-container {
+                    .unlink-spotify-settings-container {
+                        flex-direction: row;
+                        justify-content: space-between;
+
+                        p {
+                            width: fit-content;
+                            height: fit-content;
+
+                            margin: auto 0;
+                        }
+
+                        .unlink-spotify-button-container {
+                            width: 50%;
+
+                            margin: unset;
+                        }
+                    }
+                }
+            }
         }
     }
 }

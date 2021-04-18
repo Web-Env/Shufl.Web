@@ -1,8 +1,33 @@
 <div class="card-container">
-    <div class="card" [ngClass]="{ 'loaded': dataLoaded }">
-        <h1>{{ userDisplayName }}</h1>
+    <div class="card">
+        <div class="user-data-container" *ngIf="user != null">
+            <div class="user-icon-container">
+                <img class="user-icon" src="https://i.scdn.co/image/{{ user.userImages[0].uri }}" *ngIf="user.userImages != null && user.userImages.length > 0">
+                <img class="user-icon" src="assets/img/blank-user.png" *ngIf="user.userImages == null || user.userImages.length === 0">
+            </div>
+    
+            <h1>{{ user.displayName }}</h1>
+    
+            <div class="logout-button-container">
+                <app-button [buttonText]="'Log Out'" (click)="logout()"></app-button>
+            </div>
+            
+            <div class="spotify-settings-container">
+                <p class="spotify-settings-header">Spotify</p>
+                <div class="link-spotify-button-container" *ngIf="user.spotifyUsername == null">
+                    <app-button [buttonText]="'Link Spotify'" (click)="linkSpotify()"></app-button>
+                </div>
 
-        <app-button [buttonText]="'Log Out'" (click)="logout()"></app-button>
-        <app-button [buttonText]="'Link Spotify'" (click)="linkSpotify()"></app-button>
+                <div class="unlink-spotify-settings-container" *ngIf="user.spotifyUsername != null">
+                    <p>{{ user.spotifyUsername }}</p>
+                    <div class="unlink-spotify-button-container">
+                        <app-button [buttonText]="'Unlink Spotify'" (click)="unlinkSpotifyAsync()"></app-button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <app-loading-icon *ngIf="isLoading"></app-loading-icon>
     </div>
 </div>
