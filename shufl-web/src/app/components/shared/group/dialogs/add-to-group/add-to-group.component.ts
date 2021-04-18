@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from "@angular/material/dialog";
 import { Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 import { GroupDownloadModel } from "src/app/models/download-models/group.model";
 import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
@@ -13,14 +14,19 @@ import { DataService } from "src/app/services/data.service";
 })
 export class AddToGroupComponent implements OnInit {
     isLoading: boolean = true;
+    isQueueLoading: boolean = false;
     album!: AlbumDownloadModel;
+    spotifyUsername!: string | null;
     groups!: Array<GroupDownloadModel>;
 
     constructor(private dialogRef: MatDialogRef<AddToGroupComponent>,
                 private router: Router,
+                private toastr: ToastrService,
                 private dataService: DataService) { }
 
     ngOnInit(): void {
+        this.spotifyUsername = localStorage.getItem('SpotifyUsername');
+
         this.getUsersGroupsAsync();
     }
 
@@ -34,6 +40,22 @@ export class AddToGroupComponent implements OnInit {
         }
         finally {
             this.isLoading = false;
+        }
+    }
+
+    public async addToQueueAsync(): Promise<void> {
+        try {
+            this.isQueueLoading = true;
+
+            await this.dataService.postWithoutBodyOrResponseAsync(`Spotify/QueueAlbum?albumId=${this.album.id}`);
+
+            this.toastr.success(`${this.album.name} has been added to your queue`, 'Added to Queue');
+        }
+        catch (err) {
+            throw err;
+        }
+        finally {
+            this.isQueueLoading = false;
         }
     }
 

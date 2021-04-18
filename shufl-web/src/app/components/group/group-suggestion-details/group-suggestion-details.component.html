@@ -1,6 +1,6 @@
 <div class="card-container group-suggestion-details-card-container">
     <div class="card">
-        <app-card-nav-bar></app-card-nav-bar>
+        <app-card-nav-bar [queueVisible]="spotifyUsername != null" (queueClicked)="queueAlbumAsync()"></app-card-nav-bar>
         <div class="group-suggestion-info-container" *ngIf="!isLoading && album != null">
             <div class="album-container">
                 <app-album-info [album]="album" [linkDisabled]="false"></app-album-info>

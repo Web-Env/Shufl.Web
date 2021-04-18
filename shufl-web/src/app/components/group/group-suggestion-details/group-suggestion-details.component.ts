@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
@@ -32,6 +33,8 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
     isLoading: boolean = true;
 
     album!: AlbumDownloadModel;
+
+    spotifyUsername!: string | null;
     
     overallRating!: RatingDownloadModel;
 
@@ -51,11 +54,14 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
     constructor(private route: ActivatedRoute,
                 private router: Router,
                 private dialog: MatDialog,
+                private toastr: ToastrService,
                 private dataService: DataService,
                 private urlHelperService: UrlHelperService,
                 private groupSuggestionRatingService: GroupSuggestionRatingService) { }
 
     ngOnInit(): void {
+        this.spotifyUsername = localStorage.getItem('SpotifyUsername');
+
         var routeParams = this.route.snapshot.params;
 
         if (this.urlHelperService.isRouteParamObjectValid(routeParams) && 
@@ -275,6 +281,20 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
 
     public async removeRatingAsync(groupSuggestionRatingId: string): Promise<void> {
         await this.dataService.deleteAsync(`GroupSuggestionRating/Delete?groupSuggestionRatingId=${groupSuggestionRatingId}`);
+    }
+    
+    public async queueAlbumAsync(): Promise<void> {
+        try {
+            this.toastr.info(`Queueing ${this.album.name}...`, 'Queueing Album');
+
+            await this.dataService.postWithoutBodyOrResponseAsync(`Spotify/QueueAlbum?albumId=${this.album.id}`);
+
+            this.toastr.clear();
+            this.toastr.success(`${this.album.name} has been added to your queue`, 'Added to Queue');
+        }
+        catch (err) {
+            throw err;
+        }
     }
 
     ngOnDestroy(): void {

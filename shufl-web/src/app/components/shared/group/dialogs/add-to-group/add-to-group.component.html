@@ -1,5 +1,11 @@
 <div class="add-to-group-modal">
-    <p>Add this album to a group</p>
+    <p>Add this album to a group {{ spotifyUsername != null ? 'or your Spotify queue' : '' }}</p>
+
+    <div class="queue-button-container" *ngIf="spotifyUsername != null">
+        <app-loading-icon [dimensions]="75" *ngIf="isQueueLoading"></app-loading-icon>
+        <app-icon-button [buttonText]="'Add to Queue'" [buttonIconSource]="'assets/img/button-icons/add-to-queue.png'" [height]="55" (click)="addToQueueAsync()" *ngIf="!isQueueLoading"></app-icon-button>
+    </div>
+
     <div class="divider"></div>
 
     <div class="groups-list-container">

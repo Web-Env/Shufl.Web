@@ -10,9 +10,11 @@ export class CardNavBarComponent implements OnInit {
     @Input() closeVisible: boolean = false;
     @Input() inviteVisible: boolean = false;
     @Input() addVisible: boolean = false;
+    @Input() queueVisible: boolean = false;
 
     @Output() inviteClicked: EventEmitter<null> = new EventEmitter();
     @Output() addClicked: EventEmitter<null> = new EventEmitter();
+    @Output() queueClicked: EventEmitter<null> = new EventEmitter();
 
     constructor(private router: Router) { }
 
@@ -33,6 +35,10 @@ export class CardNavBarComponent implements OnInit {
 
     public addButtonClicked(): void {
         this.addClicked.emit();
+    }
+
+    public queueButtonClicked(): void {
+        this.queueClicked.emit();
     }
 
 }

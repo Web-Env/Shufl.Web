@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class IconButtonComponent implements OnInit {
     @Input() buttonText!: string;
     @Input() buttonIconSource!: string;
+    @Input() height: number = 75;
 
     constructor() { }
 
