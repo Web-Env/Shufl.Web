@@ -48,6 +48,7 @@ import { NotFoundComponent } from './components/shared/not-found/not-found.compo
 import { PasswordResetComponent } from './components/shared/user/password-reset/password-reset.component';
 import { RegisterComponent } from './components/shared/user/register/register.component';
 import { SearchComponent } from './components/search/search.component';
+import { SpotifyCallbackComponent } from './components/user/spotify-callback/spotify-callback.component';
 import { StatusCheckerComponent } from './components/shared/status-checker/status-checker.component';
 import { TrackListComponent } from './components/shared/track-list/track-list.component';
 import { TrackListItemComponent } from './components/shared/track-list/track-list-item/track-list-item.component';
@@ -62,7 +63,6 @@ import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
 import { GroupSuggestionRatingService } from "./services/group-suggestion-rating.service";
-import { SpotifyCallbackComponent } from './components/user/spotify-callback/spotify-callback.component';
 
 const rollbarConfig = {
     accessToken: 'a169f2008c504693b8238085f24303da',
@@ -130,6 +130,7 @@ export function rollbarFactory() {
         PasswordResetComponent,
         RegisterComponent,
         SearchComponent,
+        SpotifyCallbackComponent,
         StatusCheckerComponent,
         TrackListComponent,
         TrackListItemComponent,
@@ -137,9 +138,7 @@ export function rollbarFactory() {
         VerifyComponent,
         YesNoDialogComponent,
 
-        genreFormatter,
-
-        SpotifyCallbackComponent
+        genreFormatter
     ],
     imports: [
         AppRoutingModule,
