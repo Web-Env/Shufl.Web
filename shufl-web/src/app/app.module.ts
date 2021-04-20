@@ -61,8 +61,9 @@ import { genreFormatter } from './pipes/genreFormatter.pipe';
 import { environment } from '../environments/environment';
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { AuthService } from "./services/auth/auth.service";
-import { UrlHelperService } from "./services/helpers/url-helper.service";
 import { GroupSuggestionRatingService } from "./services/group-suggestion-rating.service";
+import { ScrollBottomService } from "./services/scroll-bottom.service";
+import { UrlHelperService } from "./services/helpers/url-helper.service";
 
 const rollbarEnvironment = environment.environmentUrl === 'shufl-qa.webenv.io' ? 'qa' : 'prod';
 
@@ -161,6 +162,7 @@ export function rollbarFactory() {
         AuthGuardService,
         AuthService,
         GroupSuggestionRatingService,
+        ScrollBottomService,
         UrlHelperService,
         {
             provide: MatDialogRef,

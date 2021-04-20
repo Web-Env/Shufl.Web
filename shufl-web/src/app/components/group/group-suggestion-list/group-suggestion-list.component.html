@@ -1,5 +1,5 @@
 <div class="group-suggestion-list-container">
-    <div class="group-suggestion-list" *ngIf="!isLoading && groupSuggestions != null && groupSuggestions.length > 0">
+    <div class="group-suggestion-list" *ngIf="groupSuggestions != null && groupSuggestions.length > 0">
         <div app-group-suggestion
             *ngFor="let groupSuggestion of groupSuggestions" 
             [groupSuggestion]="groupSuggestion"></div>
@@ -10,5 +10,7 @@
     <div class="error-message" *ngIf="!isLoading && groupSuggestions == null">
         <p>There has been an error processing your request, please try again</p>
     </div>
-    <app-loading-icon *ngIf="isLoading" [dimensions]="75"></app-loading-icon>
+    <div class="loading-icon-container" *ngIf="isLoading">
+        <app-loading-icon [dimensions]="75"></app-loading-icon>
+    </div>
 </div>
