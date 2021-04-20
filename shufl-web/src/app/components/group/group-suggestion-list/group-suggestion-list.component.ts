@@ -41,7 +41,6 @@ export class GroupSuggestionListComponent implements OnInit {
     }
 
     private async getGroupSuggestions(groupIdentifier: string): Promise<void> {
-        console.log("Fetching")
         try {
             this.isLoading = true;
 
