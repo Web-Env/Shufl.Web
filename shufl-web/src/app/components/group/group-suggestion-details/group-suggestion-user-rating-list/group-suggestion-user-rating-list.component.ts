@@ -19,9 +19,17 @@ export class GroupSuggestionUserRatingListComponent implements OnInit {
     }
 
     private splitRatings(ratings: GroupSuggestionRatingDownloadModel[]): void {
-        for (let i=0; i < ratings.length; i+=2) {
-            this.ratingsLeft.push(ratings[i]);
-            ratings[i + 1] != null && this.ratingsRight.push(ratings[i + 1]);
+        let userAgent = navigator.userAgent;
+        
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(userAgent)) {
+            this.ratingsLeft = ratings.splice(0, ratings.length / 2);
+            this.ratingsRight = ratings;
+        }
+        else {
+            for (let i=0; i < ratings.length; i+=2) {
+                this.ratingsLeft.push(ratings[i]);
+                ratings[i + 1] != null && this.ratingsRight.push(ratings[i + 1]);
+            }
         }
     }
 
