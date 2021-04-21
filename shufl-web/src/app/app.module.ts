@@ -64,6 +64,8 @@ import { AuthService } from "./services/auth/auth.service";
 import { GroupSuggestionRatingService } from "./services/group-suggestion-rating.service";
 import { ScrollBottomService } from "./services/scroll-bottom.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
+import { GroupMembersComponent } from './components/shared/group/dialogs/group-members/group-members.component';
+import { GroupMemberComponent } from './components/shared/group/dialogs/group-members/group-member/group-member.component';
 
 const rollbarEnvironment = environment.environmentUrl === 'shufl-qa.webenv.io' ? 'qa' : 'prod';
 
@@ -142,7 +144,11 @@ export function rollbarFactory() {
         VerifyComponent,
         YesNoDialogComponent,
 
-        genreFormatter
+        genreFormatter,
+
+        GroupMembersComponent,
+
+        GroupMemberComponent
     ],
     imports: [
         AppRoutingModule,

@@ -6,7 +6,7 @@
             <div class="group-info" *ngIf="!isLoading && group != null">
                 <h1>{{ group.name }}</h1>
                 <a [routerLink]="['/user', group.createdBy.username]">{{ group.createdBy.displayName }}</a>
-                <p>{{ group.members.length }} members</p>
+                <a (click)="viewGroupMembers()">{{ group.members.length }} members</a>
                 <div class="action-button-container">
                     <app-button [buttonText]="'Add a New Album'" (click)="addNewAlbumClicked()"></app-button>
                 </div>

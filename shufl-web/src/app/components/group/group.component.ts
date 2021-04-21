@@ -7,6 +7,7 @@ import { DataService } from "src/app/services/data.service";
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AlbumComponent } from "../album/album.component";
 import { GroupCreateInviteComponent } from "../shared/group/dialogs/group-create-invite/group-create-invite.component";
+import { GroupMembersComponent } from "../shared/group/dialogs/group-members/group-members.component";
 
 @Component({
     selector: 'app-group',
@@ -72,6 +73,23 @@ export class GroupComponent implements OnInit {
         instance.groupIdentifier = this.groupId;
     }
 
+    public viewGroupMembers(): void {
+        const dialogConfig = new MatDialogConfig();
+
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = '90%';
+        dialogConfig.maxWidth = "800px";
+        dialogConfig.minHeight = '100px';
+        dialogConfig.height = 'fit-content';
+        dialogConfig.closeOnNavigation = true;
+        
+
+        let dialogRef = this.dialog.open(GroupMembersComponent, dialogConfig);
+        let instance = dialogRef.componentInstance;
+        instance.groupIdentifier = this.groupId;
+    }
+
     public addNewAlbumClicked(): void {
         const dialogConfig = new MatDialogConfig();
 
@@ -87,7 +105,7 @@ export class GroupComponent implements OnInit {
         let dialogRef = this.dialog.open(AlbumComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
         instance.isModal = true;
-        instance.groupId = this.groupId;
+        instance.groupIdentifier = this.groupId;
     }
 
 }

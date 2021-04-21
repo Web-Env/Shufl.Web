@@ -24,7 +24,7 @@ export class AlbumComponent implements OnInit {
     isLoading: boolean = true;
     isLoggedIn: boolean = false;
     isModal: boolean = false;
-    groupId!: string;
+    groupIdentifier!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
     genres: ArtistGenreDownloadModel[] = [];
     album!: AlbumDownloadModel;
@@ -46,7 +46,7 @@ export class AlbumComponent implements OnInit {
     ngOnInit(): void {
         this.isLoggedIn = this.authService.isLoggedIn();
 
-        if (!this.isModal && this.groupId == null) {
+        if (!this.isModal && this.groupIdentifier == null) {
             var routeParams = this.route.snapshot.params;
             var isRequestingAlbum = this.isRequestingAlbum(this.router.url);
 
@@ -130,7 +130,7 @@ export class AlbumComponent implements OnInit {
                 this.addingAlbumToGroup = true;
 
                 var newGroupSuggestion = new GroupSuggestionUploadModel(
-                    this.groupId,
+                    this.groupIdentifier,
                     this.album.id,
                     true
                 );
@@ -138,7 +138,7 @@ export class AlbumComponent implements OnInit {
                 var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
 
                 this.dialogRef.close();
-                this.router.navigate([`/group/${this.groupId}/${groupSuggestionIdentifier}`]);
+                this.router.navigate([`/group/${this.groupIdentifier}/${groupSuggestionIdentifier}`]);
 
                 this.addedAlbumToGroupSuccessfully = true;
             }
