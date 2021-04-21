@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from "rxjs";
 import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
@@ -12,7 +12,7 @@ import { ScrollBottomService } from "src/app/services/scroll-bottom.service";
         '../../../../assets/scss/wide-container.scss'
     ]
 })
-export class GroupSuggestionListComponent implements OnInit {
+export class GroupSuggestionListComponent implements OnInit, OnDestroy {
     @Input() groupId!: string;
     
     scrolledBottomSubscription!: Subscription; 
@@ -61,6 +61,10 @@ export class GroupSuggestionListComponent implements OnInit {
         finally {
             this.isLoading = false;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.scrolledBottomSubscription.unsubscribe();
     }
 
 }
