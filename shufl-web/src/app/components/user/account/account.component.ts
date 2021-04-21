@@ -32,8 +32,8 @@ export class AccountComponent implements OnInit {
             localStorage.setItem('DisplayName', this.user.displayName);
             localStorage.setItem('FirstName', this.user.firstName);
             localStorage.setItem('LastName', this.user.lastName);
-            localStorage.setItem('SpotifyUsername', this.user.spotifyUsername);
-            localStorage.setItem('SpotifyMarket', this.user.spotifyMarket);
+            this.user.spotifyUsername != null && localStorage.setItem('SpotifyUsername', this.user.spotifyUsername);
+            this.user.spotifyMarket != null && localStorage.setItem('SpotifyMarket', this.user.spotifyMarket);
         }
         catch (err) {
             throw err;
@@ -54,6 +54,9 @@ export class AccountComponent implements OnInit {
 
     public async unlinkSpotifyAsync(): Promise<void> {
         await this.dataService.deleteAsync('Spotify/UnlinkSpotify');
+        
+        localStorage.removeItem('SpotifyUsername');
+        localStorage.removeItem('SpotifyMarket');
 
         location.reload();
     }
