@@ -1,3 +1,7 @@
 <div class="group-members-container">
-    <app-loading-icon [dimensions]="75" *ngIf="isLoading"></app-loading-icon>
+    <h1>{{ group.name }}</h1>
+
+    <div class="group-members-list">
+        <app-group-member *ngFor="let groupMember of groupMembers" [groupMember]="groupMember"></app-group-member>
+    </div>
 </div>

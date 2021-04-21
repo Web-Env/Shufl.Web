@@ -1,0 +1,17 @@
+.group-member-container {
+    padding: 10px 0;
+
+    display: flex;
+    flex-direction: row;
+
+    p {
+        padding-left: 10px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        font-size: 1.5em;
+        line-height: 50px;
+    }
+}

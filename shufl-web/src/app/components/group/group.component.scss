@@ -23,17 +23,16 @@
                     white-space: nowrap;
                 }
 
-                p,
-                a {
-                    color: $tertiary-foreground-colour;
-                }
-
                 a {
                     width: fit-content;
+
+                    color: $tertiary-foreground-colour;
 
                     margin: 5px auto;
 
                     display: block;
+
+                    cursor: pointer;
                 }
 
                 .action-button-container {

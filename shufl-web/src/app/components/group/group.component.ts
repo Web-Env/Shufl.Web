@@ -87,7 +87,7 @@ export class GroupComponent implements OnInit {
 
         let dialogRef = this.dialog.open(GroupMembersComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
-        instance.groupIdentifier = this.groupId;
+        instance.group = this.group;
     }
 
     public addNewAlbumClicked(): void {

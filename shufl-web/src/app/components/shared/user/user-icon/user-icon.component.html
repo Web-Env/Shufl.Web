@@ -1,1 +1,10 @@
-<div class="user-icon"></div>
+<div class="user-icon" [ngClass]="{'enabled': enabled}">
+    <div class="user-icon-image-container">
+        <img src="https://i.scdn.co/image/{{ user.userImages[0].uri }}" *ngIf="user.userImages != null && user.userImages.length > 0">
+        <img class="user-icon" src="assets/img/blank-user.png" *ngIf="user.userImages == null || user.userImages.length === 0">
+    </div>
+
+    <div class="alt">
+        <p>{{ user.displayName }}</p>
+    </div>
+</div>

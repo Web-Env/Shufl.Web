@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupDownloadModel } from "src/app/models/download-models/group.model";
+import { UserDownloadModel } from "src/app/models/download-models/user.model";
 
 @Component({
     selector: 'app-group-members',
@@ -7,11 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupMembersComponent implements OnInit {
     isLoading: boolean = true;
-    groupIdentifier!: string;
+    group!: GroupDownloadModel;
+    groupMembers!: Array<UserDownloadModel>;
 
     constructor() { }
 
     ngOnInit(): void {
+        this.groupMembers = this.group.members;
     }
 
 }

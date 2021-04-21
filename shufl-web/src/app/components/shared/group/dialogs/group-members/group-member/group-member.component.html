@@ -1,1 +1,4 @@
-<p>group-member works!</p>
+<div class="group-member-container">
+    <app-user-icon [user]="groupMember" [enabled]="false"></app-user-icon>
+    <p>{{ groupMember.displayName }}</p>
+</div>
