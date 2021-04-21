@@ -38,7 +38,7 @@ export class DataService {
         return httpOptions;
     }
 
-    public async getAsync<T>(endpoint: string, type: { new(): T; } | null = null, retry: boolean = false): Promise<T> {
+    public async getAsync<T>(endpoint: string, type: { new(): T; } | null = null, blockToast: boolean = false): Promise<T> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -55,7 +55,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -67,7 +70,7 @@ export class DataService {
         });
     }
 
-    public async getArrayAsync<T>(endpoint: string, type: { new(): T; }, retry: boolean = false): Promise<Array<T>> {
+    public async getArrayAsync<T>(endpoint: string, type: { new(): T; }, blockToast: boolean = false): Promise<Array<T>> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -84,7 +87,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -96,7 +102,7 @@ export class DataService {
         });
     }
 
-    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T; }, retry: boolean = false): Promise<T> {
+    public async postAsync<T>(endpoint: string, uploadModel: IUploadModel, type: { new(): T; }, blockToast: boolean = false): Promise<T> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -109,7 +115,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -121,7 +130,7 @@ export class DataService {
         });
     }
 
-    public async postWithoutBodyAsync(endpoint: string, retry: boolean = false): Promise<any> {
+    public async postWithoutBodyAsync(endpoint: string, blockToast: boolean = false): Promise<any> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -132,7 +141,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -144,7 +156,7 @@ export class DataService {
         });
     }
 
-    public async postWithoutResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<void> {
+    public async postWithoutResponseAsync(endpoint: string, uploadModel: IUploadModel, blockToast: boolean = false): Promise<void> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -155,7 +167,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -167,7 +182,7 @@ export class DataService {
         });
     }
 
-    public async postWithoutBodyOrResponseAsync(endpoint: string, retry: boolean = false): Promise<void> {
+    public async postWithoutBodyOrResponseAsync(endpoint: string, blockToast: boolean = false): Promise<void> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -178,7 +193,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -190,7 +208,7 @@ export class DataService {
         });
     }
 
-    public async postWithStringResponseAsync(endpoint: string, uploadModel: IUploadModel, retry: boolean = false): Promise<any> {
+    public async postWithStringResponseAsync(endpoint: string, uploadModel: IUploadModel, blockToast: boolean = false): Promise<any> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -201,7 +219,10 @@ export class DataService {
                     },
                     (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -213,7 +234,7 @@ export class DataService {
         });
     }
 
-    public async deleteAsync(endpoint: string, retry: boolean = false): Promise<any> {
+    public async deleteAsync(endpoint: string, blockToast: boolean = false): Promise<any> {
         return new Promise((resolve, reject) => {
             let url = `${environment.apiUrl}/${endpoint}`;
 
@@ -224,7 +245,10 @@ export class DataService {
                     },
                     async (err) => {
                         if (err instanceof HttpErrorResponse) {
-                            this.handleError(err);
+                            if (!blockToast) {
+                                this.handleError(err);
+                            }
+                            
                             reject(err);
                         }
                         else {
@@ -236,7 +260,7 @@ export class DataService {
         });
     }
 
-    private handleError(error: HttpErrorResponse) {
+    public handleError(error: HttpErrorResponse) {
         if (error.status === 400) {
             this.toastr.error('There has been an error processing your request', 'Error');
         }

@@ -15,6 +15,7 @@ import { GroupSuggestionUserRatingListComponent } from "./group-suggestion-user-
 import { GroupSuggestionRatingComponent } from "../../shared/group/group-suggestion-rating/group-suggestion-rating.component";
 import { GroupSuggestionRatingService } from "src/app/services/group-suggestion-rating.service";
 import { YesNoDialogComponent } from "../../shared/dialogs/yes-no-dialog/yes-no-dialog.component";
+import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
     selector: 'app-group-suggestion-details',
@@ -287,12 +288,27 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
         try {
             this.toastr.info(`Queueing ${this.album.name}...`, 'Queueing Album');
 
-            await this.dataService.postWithoutBodyOrResponseAsync(`Spotify/QueueAlbum?albumId=${this.album.id}`);
+            await this.dataService.postWithoutBodyOrResponseAsync(`Spotify/QueueAlbum?albumId=${this.album.id}`, true);
 
             this.toastr.clear();
             this.toastr.success(`${this.album.name} has been added to your queue`, 'Added to Queue');
         }
         catch (err) {
+            if (err instanceof HttpErrorResponse) {
+                if (err.status === 400) {
+                    if (err.error.errorType != null && err.error.errorType === 'SpotifyNoActiveDevicesException') {
+                        this.toastr.clear();
+                        this.toastr.warning('There are no active devices to add this album to the queue', 'Error Queueing Album');
+                    }
+                    else {
+                        this.dataService.handleError(err);
+                    }
+                }
+                else {
+                    this.dataService.handleError(err);
+                }
+            }
+
             throw err;
         }
     }
