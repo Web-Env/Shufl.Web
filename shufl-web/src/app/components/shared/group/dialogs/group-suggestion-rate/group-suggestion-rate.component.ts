@@ -52,7 +52,7 @@ export class GroupSuggestionRateComponent implements OnInit {
             vocalsRating: ['', [Validators.min(0), Validators.max(10)]],
             instrumentalsRating: ['', [Validators.min(0), Validators.max(10)]],
             compositionRating: ['', [Validators.min(0), Validators.max(10)]],
-            comment: ['', [Validators.max(1500)]]
+            comment: ['', [Validators.maxLength(1500)]]
         });
     }
 
