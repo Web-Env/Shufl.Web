@@ -70,6 +70,14 @@
                     }
                 }
             }
+
+            .version-container {
+                p {
+                    color: $tertiary-foreground-colour;
+
+                    text-align: center;
+                }
+            }
         }
     }
 }

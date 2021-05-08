@@ -16,6 +16,8 @@ export class AccountComponent implements OnInit {
     isLoading: boolean = true;
     user!: UserDownloadModel;
     userDisplayName!: string | null;
+    
+    appVersion: string = environment.version;
 
     constructor(private authService: AuthService,
                 private dataService:DataService) { }
