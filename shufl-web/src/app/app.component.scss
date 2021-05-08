@@ -29,7 +29,7 @@
     }
 }
 
-@supports(padding:max(0px)) {
+@supports (padding:max(0)) {
     .app-stage {
         .nav-bar-container {
             height: calc($nav-bar-height + env(safe-area-inset-bottom));
