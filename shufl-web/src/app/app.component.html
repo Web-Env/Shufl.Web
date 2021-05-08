@@ -2,7 +2,7 @@
     <div class="stage" #stage>
         <router-outlet></router-outlet>
     </div>
-    <div class="nav-bar-container">
+    <div class="nav-bar-container" [ngClass]="{'is-app': isApp}">
         <app-nav-bar></app-nav-bar>
     </div>
 </div>

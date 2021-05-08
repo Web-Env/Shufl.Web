@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ScrollBottomService } from "./services/scroll-bottom.service";
 
 @Component({
@@ -6,14 +6,25 @@ import { ScrollBottomService } from "./services/scroll-bottom.service";
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnInit {
     @ViewChild('stage') stage!: ElementRef;
 
     title = 'Shufl';
 
     scrolledToBottom: boolean = false;
+    isApp: boolean = false;
 
     constructor(private scrollBottomService: ScrollBottomService) { }
+
+    ngOnInit(): void {
+        let isIos = () => {
+            const userAgent = window.navigator.userAgent.toLowerCase();
+            return /iphone|ipad|ipod/.test(userAgent);
+        };
+        let isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator['standalone']);
+          
+        this.isApp = isIos() && isInStandaloneMode();
+    }
 
     ngAfterViewInit(): void {
         this.stage.nativeElement.addEventListener('scroll', this.processScrollChange, true);
