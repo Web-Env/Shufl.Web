@@ -29,6 +29,14 @@
     }
 }
 
+@supports(padding:max(0px)) {
+    .app-stage {
+        .nav-bar-container {
+            height: calc($nav-bar-height + env(safe-area-inset-bottom));
+        }
+    }
+}
+
 @media (min-width: $nav-bar-tablet-breakpoint) {
     .app-stage {
         flex-direction: row-reverse;
