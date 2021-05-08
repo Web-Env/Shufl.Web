@@ -10,7 +10,7 @@ $list-item-height: 45px;
 $list-item-padding: 5px;
 $list-item-border-bottom: 1px solid $tertiary-foreground-colour;
 
-$nav-bar-height: calc(60px + env(safe-area-inset-bottom));
+$nav-bar-height: 60px;
 $nav-bar-width: 20%;
 $nav-bar-width-desktop: 375px;
 $nav-bar-tablet-breakpoint: 1025px;
