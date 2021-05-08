@@ -32,7 +32,7 @@
 @supports (-webkit-touch-callout: none) {
     .app-stage {
         .nav-bar-container.is-app {
-            height: calc($nav-bar-height + 20px);
+            height: calc(#{$nav-bar-height} + 25px);
         }
     }
 }
