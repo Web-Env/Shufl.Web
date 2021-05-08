@@ -29,9 +29,9 @@
     }
 }
 
-@supports (padding:max(0)) {
+@supports (-webkit-touch-callout: none) {
     .app-stage {
-        .nav-bar-container {
+        .nav-bar-container.is-app {
             height: calc($nav-bar-height + env(safe-area-inset-bottom));
         }
     }
