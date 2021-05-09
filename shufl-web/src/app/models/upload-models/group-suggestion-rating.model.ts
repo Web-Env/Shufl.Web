@@ -8,7 +8,7 @@ export class GroupSuggestionRatingUploadModel implements IUploadModel {
     lyricsRating!: number;
     vocalsRating!: number;
     instrumentalsRating!: number;
-    compositionRating!: number;
+    structureRating!: number;
     comment!: string;
 
     constructor(
@@ -18,7 +18,7 @@ export class GroupSuggestionRatingUploadModel implements IUploadModel {
         lyricsRating: number,
         vocalsRating: number,
         instrumentalsRating: number,
-        compositionRating: number,
+        structureRating: number,
         comment: string
     ) {
         this.groupIdentifier = groupIdentifier;
@@ -27,7 +27,7 @@ export class GroupSuggestionRatingUploadModel implements IUploadModel {
         this.lyricsRating = lyricsRating;
         this.vocalsRating = vocalsRating;
         this.instrumentalsRating = instrumentalsRating;
-        this.compositionRating = compositionRating;
+        this.structureRating = structureRating;
         this.comment = comment;
     }
 }

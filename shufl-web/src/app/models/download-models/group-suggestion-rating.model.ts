@@ -6,7 +6,7 @@ export class GroupSuggestionRatingDownloadModel {
     lyricsRating!: number | null;
     vocalsRating!: number | null;
     instrumentalsRating!: number | null;
-    compositionRating!: number | null;
+    structureRating!: number | null;
     comment!: string;
     createdOn!: string;
     createdBy!: UserDownloadModel;

@@ -31,7 +31,7 @@ export class GroupSuggestionUserRatingComponent implements OnInit {
             this.groupSuggestionRating.lyricsRating,
             this.groupSuggestionRating.vocalsRating,
             this.groupSuggestionRating.instrumentalsRating,
-            this.groupSuggestionRating.compositionRating,
+            this.groupSuggestionRating.structureRating,
             this.groupSuggestionRating.comment,
             this.groupSuggestionRating.createdBy.username,
             this.groupSuggestionRating.createdBy.displayName,
