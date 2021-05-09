@@ -1,5 +1,5 @@
 <div class="group-suggestion-container" (click)="groupSuggestionClicked()">
-    <p class="group-suggestion-added-date">{{ groupSuggestion.createdOn | date: 'EEEE dd MMMM yyyy'}}</p>
+    <span class="group-suggestion-added-date"><p>{{ groupSuggestion.createdOn | date: 'EEEE dd MMMM yyyy'}}</p> <img class="random-icon" *ngIf="groupSuggestion.isRandom" src="assets/svg/random.svg"></span>
     <div class="group-suggestion-data-container">
         <div class="album-container">
             <div app-album-icon [album]="groupSuggestion.album" [disabled]="true"></div>

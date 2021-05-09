@@ -32,11 +32,23 @@ $group-suggestion-data-container-height: 185px;
     .group-suggestion-added-date {
         height: $date-header-height;
 
-        color: $tertiary-foreground-colour;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-        padding: $date-header-padding-top 0 0 $date-header-padding-left;
+        p {
+            color: $tertiary-foreground-colour;
 
-        font-size: 1.2em;
+            padding: $date-header-padding-top 0 0 $date-header-padding-left;
+
+            font-size: 1.2em;
+        }
+
+        .random-icon {
+            width: 25px;
+            
+            padding: $date-header-padding-top 0 0 $date-header-padding-left;
+        }
     }
 
     .group-suggestion-data-container {
