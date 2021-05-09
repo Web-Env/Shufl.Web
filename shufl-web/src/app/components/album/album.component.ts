@@ -159,4 +159,9 @@ export class AlbumComponent implements OnInit {
             }
         }
     }
+
+    public navigateToSearch(): void {
+        this.dialogRef.close();
+        this.router.navigate(['/search']);
+    }
 }
