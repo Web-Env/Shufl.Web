@@ -57,12 +57,12 @@
                 </div>
                 
                 <div class="form-group" 
-                    [ngClass]="{'active': compositionRatingActive, 'populated': compositionRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['compositionRating'].valid && rateGroupSuggestionForm.controls['compositionRating'].touched)}">
+                    [ngClass]="{'active': structureRatingActive, 'populated': structureRatingPopulated, 'has-error': (!rateGroupSuggestionForm.controls['structureRating'].valid && rateGroupSuggestionForm.controls['structureRating'].touched)}">
                     <div class="input-container">
-                        <label for="compositionRating">Composition</label>
-                        <input type="number" class="form-control" formControlName="compositionRating"
-                            (focus)="changeInputState('compositionRating', true)"
-                            (blur)="changeInputState('compositionRating', false)"
+                        <label for="structureRating">Structure</label>
+                        <input type="number" class="form-control" formControlName="structureRating"
+                            (focus)="changeInputState('structureRating', true)"
+                            (blur)="changeInputState('structureRating', false)"
                             (keypress)="validateRating($event)"
                             pattern="\d+(\.\d{1})?">
                     </div>
