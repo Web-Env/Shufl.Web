@@ -15,6 +15,7 @@ import { DataService } from "src/app/services/data.service";
 })
 export class AddToGroupComponent implements OnInit {
     isLoading: boolean = true;
+    isRandom: boolean = false;
     isQueueLoading: boolean = false;
     album!: AlbumDownloadModel;
     spotifyUsername!: string | null;
@@ -82,7 +83,7 @@ export class AddToGroupComponent implements OnInit {
             var newGroupSuggestion = new GroupSuggestionUploadModel(
                 groupIdentifier,
                 this.album.id,
-                false
+                this.isRandom
             );
 
             var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
