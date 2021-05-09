@@ -8,8 +8,8 @@ export class RatingDownloadModel {
     vocalsRatingsCount: number | undefined;
     instrumentalsRating!: number | null;
     instrumentalsRatingsCount: number | undefined;
-    compositionRating!: number | null;
-    compositionRatingsCount: number | undefined;
+    structureRating!: number | null;
+    structureRatingsCount: number | undefined;
     comment!: string;
     username!: string;
     displayName!: string;
@@ -21,7 +21,7 @@ export class RatingDownloadModel {
         lyricsRating: number | null,
         vocalsRating: number | null,
         instrumentalsRating: number | null,
-        compositionRating: number | null,
+        structureRating: number | null,
         comment: string,
         username: string,
         displayName: string,
@@ -32,7 +32,7 @@ export class RatingDownloadModel {
         this.lyricsRating = lyricsRating;
         this.vocalsRating = vocalsRating;
         this.instrumentalsRating = instrumentalsRating;
-        this.compositionRating = compositionRating;
+        this.structureRating = structureRating;
         this.comment = comment;
         this.username = username;
         this.displayName = displayName;

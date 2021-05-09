@@ -22,8 +22,8 @@ export class GroupSuggestionRatingComponent implements OnInit {
     instrumentalsRating!: string;
     instrumentalsRatingsCount!: string;
     
-    compositionRating!: string;
-    compositionRatingsCount!: string;
+    structureRating!: string;
+    structureRatingsCount!: string;
 
     constructor() { }
 
@@ -70,12 +70,12 @@ export class GroupSuggestionRatingComponent implements OnInit {
             this.instrumentalsRating = this.configureRatingString(rating.instrumentalsRating);
         }
         
-        if (rating.compositionRatingsCount != null) {
-            this.compositionRating = this.configureRatingCountString(rating.compositionRating, rating.compositionRatingsCount);
-            this.compositionRatingsCount = rating.compositionRatingsCount.toString();
+        if (rating.structureRatingsCount != null) {
+            this.structureRating = this.configureRatingCountString(rating.structureRating, rating.structureRatingsCount);
+            this.structureRatingsCount = rating.structureRatingsCount.toString();
         }
         else {
-            this.compositionRating = this.configureRatingString(rating.compositionRating);
+            this.structureRating = this.configureRatingString(rating.structureRating);
         }
     }
 

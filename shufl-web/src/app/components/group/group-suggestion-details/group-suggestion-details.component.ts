@@ -136,9 +136,9 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             var instrumentalsTotal = instrumentalsRatings.length > 0 ? instrumentalsRatings.reduce((sum, current) => sum + current) : null;
             var instrumentalsRating = instrumentalsTotal != null ? this.averageAndRoundToDecimal(instrumentalsTotal, instrumentalsRatings?.length) : null;
 
-            var compositionRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.compositionRating != null)?.map((gsr) => gsr.compositionRating as number);
-            var compositionTotal = compositionRatings.length > 0 ? compositionRatings.reduce((sum, current) => sum + current) : null;
-            var compositionRating = compositionTotal != null ? this.averageAndRoundToDecimal(compositionTotal, compositionRatings?.length) : null;
+            var structureRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.structureRating != null)?.map((gsr) => gsr.structureRating as number);
+            var structureTotal = structureRatings.length > 0 ? structureRatings.reduce((sum, current) => sum + current) : null;
+            var structureRating = structureTotal != null ? this.averageAndRoundToDecimal(structureTotal, structureRatings?.length) : null;
 
             let rating = new RatingDownloadModel(
                 "",
@@ -146,7 +146,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
                 lyricsRating,
                 vocalsRating,
                 instrumentalsRating,
-                compositionRating,
+                structureRating,
                 "",
                 "",
                 "",
@@ -157,7 +157,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             rating.lyricsRatingsCount = lyricsRatings.length;
             rating.vocalsRatingsCount = vocalsRatings.length;
             rating.instrumentalsRatingsCount = instrumentalsRatings.length;
-            rating.compositionRatingsCount = compositionRatings.length;
+            rating.structureRatingsCount = structureRatings.length;
 
             return rating;
         }
@@ -179,7 +179,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             rating.lyricsRatingsCount = 0;
             rating.vocalsRatingsCount = 0;
             rating.instrumentalsRatingsCount = 0;
-            rating.compositionRatingsCount = 0;
+            rating.structureRatingsCount = 0;
 
             return rating;
         }

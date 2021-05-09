@@ -28,8 +28,8 @@ export class GroupSuggestionRateComponent implements OnInit {
     instrumentalsRatingActive: boolean = false;
     instrumentalsRatingPopulated: boolean = false;
 
-    compositionRatingActive: boolean = false;
-    compositionRatingPopulated: boolean = false;
+    structureRatingActive: boolean = false;
+    structureRatingPopulated: boolean = false;
 
     commentActive: boolean = false;
 
@@ -51,7 +51,7 @@ export class GroupSuggestionRateComponent implements OnInit {
             lyricsRating: ['', [Validators.min(0), Validators.max(10)]],
             vocalsRating: ['', [Validators.min(0), Validators.max(10)]],
             instrumentalsRating: ['', [Validators.min(0), Validators.max(10)]],
-            compositionRating: ['', [Validators.min(0), Validators.max(10)]],
+            structureRating: ['', [Validators.min(0), Validators.max(10)]],
             comment: ['', [Validators.maxLength(1500)]]
         });
     }
@@ -63,7 +63,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                 lyricsRating: this.groupSuggestionRating.lyricsRating,
                 vocalsRating: this.groupSuggestionRating.vocalsRating,
                 instrumentalsRating: this.groupSuggestionRating.instrumentalsRating,
-                compositionRating: this.groupSuggestionRating.compositionRating,
+                structureRating: this.groupSuggestionRating.structureRating,
                 comment: this.groupSuggestionRating.comment,
             });
 
@@ -71,7 +71,7 @@ export class GroupSuggestionRateComponent implements OnInit {
             this.lyricsRatingPopulated = this.groupSuggestionRating.lyricsRating != null;
             this.vocalsRatingPopulated = this.groupSuggestionRating.vocalsRating != null;
             this.instrumentalsRatingPopulated = this.groupSuggestionRating.instrumentalsRating != null;
-            this.compositionRatingPopulated = this.groupSuggestionRating.compositionRating != null;
+            this.structureRatingPopulated = this.groupSuggestionRating.structureRating != null;
         }
     }
     
@@ -92,9 +92,9 @@ export class GroupSuggestionRateComponent implements OnInit {
             this.instrumentalsRatingActive = active;
             this.instrumentalsRatingPopulated = this.rateGroupSuggestionForm.controls[inputName].value !== '';
         }
-        else if (inputName === 'compositionRating') {
-            this.compositionRatingActive = active;
-            this.compositionRatingPopulated = this.rateGroupSuggestionForm.controls[inputName].value !== '';
+        else if (inputName === 'structureRating') {
+            this.structureRatingActive = active;
+            this.structureRatingPopulated = this.rateGroupSuggestionForm.controls[inputName].value !== '';
         }
         else if (inputName === 'comment') {
             this.commentActive = active;
@@ -121,7 +121,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                         createGroupFormData['lyricsRating'],
                         createGroupFormData['vocalsRating'],
                         createGroupFormData['instrumentalsRating'],
-                        createGroupFormData['compositionRating'],
+                        createGroupFormData['structureRating'],
                         createGroupFormData['comment']
                     );
         
@@ -139,7 +139,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                         createGroupFormData['lyricsRating'],
                         createGroupFormData['vocalsRating'],
                         createGroupFormData['instrumentalsRating'],
-                        createGroupFormData['compositionRating'],
+                        createGroupFormData['structureRating'],
                         createGroupFormData['comment']
                     );
                     updateGroupSuggestionRating.groupSuggestionRatingId = this.groupSuggestionRating.id;
