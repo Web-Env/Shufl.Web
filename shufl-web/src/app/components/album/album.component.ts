@@ -23,6 +23,7 @@ import { ArtistGenreDownloadModel } from "src/app/models/download-models/artist-
 export class AlbumComponent implements OnInit {
     isLoading: boolean = true;
     isLoggedIn: boolean = false;
+    isRandom: boolean = false;
     isModal: boolean = false;
     groupIdentifier!: string;
     VARIOUS_ARTISTS_CONST = ArtistConsts.variousArtistsConst;
@@ -51,6 +52,8 @@ export class AlbumComponent implements OnInit {
             var isRequestingAlbum = this.isRequestingAlbum(this.router.url);
 
             if (this.urlHelperService.isRouteParamObjectValid(routeParams) && (this.urlHelperService.isRouteParamValid(routeParams.albumId) || this.urlHelperService.isRouteParamValid(routeParams.trackId))) {
+                this.isRandom = false;
+                
                 if (isRequestingAlbum) {
                     this.fetchAsync(`Album/Album?albumId=${routeParams.albumId}`);
                 }
@@ -59,6 +62,8 @@ export class AlbumComponent implements OnInit {
                 }
             }
             else {
+                this.isRandom = true;
+
                 if (isRequestingAlbum) {
                     this.fetchAsync('Album/RandomAlbum');
                 }
@@ -68,6 +73,8 @@ export class AlbumComponent implements OnInit {
             }
         }
         else {
+            this.isRandom = true;
+
             this.fetchAsync('Album/RandomAlbum');
         }
     }
@@ -122,6 +129,7 @@ export class AlbumComponent implements OnInit {
         let dialogRef = this.dialog.open(AddToGroupComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
         instance.album = this.album;
+        instance.isRandom = this.isRandom;
     }
 
     public async addToGroupAsync(): Promise<void> {
