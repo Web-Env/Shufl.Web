@@ -19,6 +19,10 @@ import { GroupMembersComponent } from "../shared/group/dialogs/group-members/gro
 })
 export class GroupComponent implements OnInit {
     isLoading: boolean = true;
+    currentIndex: number = 0;
+    primaryButtonText: string = 'Add a New Album';
+    stageHeight!: number;
+    
     groupId!: string;
     group!: GroupDownloadModel;
 
@@ -53,6 +57,19 @@ export class GroupComponent implements OnInit {
         }
         finally {
             this.isLoading = false;
+        }
+    }
+
+    public tabClicked(index: number): void {
+        if (index === 0 && this.currentIndex !== 0) {
+            this.currentIndex = 0;
+            this.primaryButtonText = 'Add a New Album';
+            this.stageHeight = 1500;
+        }
+        else if (index === 1 && this.currentIndex !== 1) {
+            this.currentIndex = 1;
+            this.primaryButtonText = 'Add a Playlist';
+            this.stageHeight = 500;
         }
     }
 

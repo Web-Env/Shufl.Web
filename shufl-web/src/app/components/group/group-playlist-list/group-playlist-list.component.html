@@ -1,0 +1,16 @@
+<div class="group-playlist-list-container">
+    <div class="group-playlist-list" *ngIf="groupplaylists != null && groupplaylist.length > 0">
+        <div app-group-playlist
+            *ngFor="let groupPlaylist of groupPlaylists" 
+            [groupPlaylist]="groupPlaylist"></div>
+    </div>
+    <div class="no-group-playlists-message" *ngIf="!isLoading && groupPlaylists?.length === 0">
+        <p>No Group Playlists</p>
+    </div>
+    <div class="error-message" *ngIf="!isLoading && groupPlaylists == null">
+        <p>There has been an error processing your request, please try again</p>
+    </div>
+    <div class="loading-icon-container" *ngIf="isLoading">
+        <app-loading-icon [dimensions]="75"></app-loading-icon>
+    </div>
+</div>

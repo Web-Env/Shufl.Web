@@ -5,14 +5,34 @@
             <app-loading-icon [dimensions]="50" *ngIf="isLoading"></app-loading-icon>
             <div class="group-info" *ngIf="!isLoading && group != null">
                 <h1>{{ group.name }}</h1>
+
                 <a [routerLink]="['/user', group.createdBy.username]">{{ group.createdBy.displayName }}</a>
+
                 <a (click)="viewGroupMembers()">{{ group.members.length }} members</a>
+
                 <div class="action-button-container">
-                    <app-button [buttonText]="'Add a New Album'" (click)="addNewAlbumClicked()"></app-button>
+                    <app-button [buttonText]="primaryButtonText" (click)="addNewAlbumClicked()"></app-button>
                 </div>
+
+                <div class="tab-container">
+                    <div class="tab-tray">
+                        <div class="tab" [ngClass]="{'active': currentIndex === 0}" (click)="tabClicked(0)">Albums</div>
+                        <div class="tab" [ngClass]="{'active': currentIndex === 1}" (click)="tabClicked(1)">Playlists</div>
+                    </div>
+                    <div class="tab-marker" [ngClass]="{'left': currentIndex === 0, 'right': currentIndex === 1}"></div>
+                </div>
+
                 <div class="divider"></div>
             </div>
         </div>
-        <app-group-suggestion-list [groupId]="groupId" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+
+        <div class="group-lists-stage" [ngClass]="{'left': currentIndex === 0, 'right': currentIndex === 1}" [ngStyle]="{'height': stageHeight !== null ? stageHeight + 'px' : 'unset'}">
+            <div class="group-list group-suggestion-list" [ngClass]="{'active': currentIndex === 0}">
+                <app-group-suggestion-list [groupId]="groupId" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+            </div>
+            <div class="group-list group-playlist-list" [ngClass]="{'active': currentIndex === 1}">
+                <app-group-suggestion-list [groupId]="'RZW3BOVLCXN5Y9LDNJKZVYZA'" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+            </div>
+        </div>
     </div>
 </div>
