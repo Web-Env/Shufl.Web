@@ -41,7 +41,7 @@ export class GroupPlaylistListComponent implements OnInit, OnDestroy {
         }
     }
 
-    private async getGroupPlaylists(groupIdentifier: string): Promise<void> {
+    public async getGroupPlaylists(groupIdentifier: string): Promise<void> {
         try {
             this.isLoading = true;
 

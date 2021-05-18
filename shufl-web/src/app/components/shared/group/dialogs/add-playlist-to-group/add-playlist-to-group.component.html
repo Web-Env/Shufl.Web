@@ -1,0 +1,31 @@
+<div class="user-playlists-container" *ngIf="spotifyLinkChecked && spotifyLinked">
+    <p class="playlists-title">Your Playlists</p>
+    
+    <div class="divider"></div>
+
+    <div class="user-playlists-list-container">
+        <div class="user-playlists-list">
+            <div class="playlist" *ngFor="let playlist of playlists">
+                <p>{{ playlist.name }}</p>
+                <div class="button" (click)="addToGroupClickedAsync(playlist.id)">Add</div>
+            </div>
+        </div>
+
+        <div class="loading-container" *ngIf="!allPagesFetched">
+            <app-loading-icon [dimensions]="75" *ngIf="isLoading"></app-loading-icon>
+
+            <div class="load-more-button-container" *ngIf="!isLoading && !allPagesFetched">
+                <app-button [buttonText]="'Load More'" (click)="loadMoreClicked()"></app-button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="spotify-not-linked-message-container" *ngIf="spotifyLinkChecked && !spotifyLinked">
+    <p>You must link your spotify to be able to add playlists</p>
+    <div class="link-button-container">
+        <app-button [buttonText]="'Link Spotify'" (click)="linkSpotifyClicked()"></app-button>
+    </div>
+</div>
