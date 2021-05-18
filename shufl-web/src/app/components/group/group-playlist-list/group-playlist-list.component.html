@@ -1,5 +1,5 @@
-<div class="group-playlist-list-container">
-    <div class="group-playlist-list" *ngIf="groupplaylists != null && groupplaylist.length > 0">
+<div class="group-playlist-list-container" #playlistListContainer>
+    <div class="group-playlist-list" *ngIf="groupPlaylists != null && groupPlaylists.length > 0">
         <div app-group-playlist
             *ngFor="let groupPlaylist of groupPlaylists" 
             [groupPlaylist]="groupPlaylist"></div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -8,6 +8,8 @@ import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AlbumComponent } from "../album/album.component";
 import { GroupCreateInviteComponent } from "../shared/group/dialogs/group-create-invite/group-create-invite.component";
 import { GroupMembersComponent } from "../shared/group/dialogs/group-members/group-members.component";
+import { GroupPlaylistListComponent } from "./group-playlist-list/group-playlist-list.component";
+import { GroupSuggestionListComponent } from "./group-suggestion-list/group-suggestion-list.component";
 
 @Component({
     selector: 'app-group',
@@ -18,6 +20,11 @@ import { GroupMembersComponent } from "../shared/group/dialogs/group-members/gro
     ]
 })
 export class GroupComponent implements OnInit {
+    @ViewChild(GroupSuggestionListComponent)
+    private groupSuggestionListComponent!: GroupSuggestionListComponent;
+    @ViewChild(GroupPlaylistListComponent)
+    private groupPlaylistListComponent!: GroupPlaylistListComponent;
+    
     isLoading: boolean = true;
     currentIndex: number = 0;
     primaryButtonText: string = 'Add a New Album';
@@ -64,12 +71,21 @@ export class GroupComponent implements OnInit {
         if (index === 0 && this.currentIndex !== 0) {
             this.currentIndex = 0;
             this.primaryButtonText = 'Add a New Album';
-            this.stageHeight = 1500;
+            this.stageHeight = this.groupSuggestionListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
         }
         else if (index === 1 && this.currentIndex !== 1) {
             this.currentIndex = 1;
             this.primaryButtonText = 'Add a Playlist';
-            this.stageHeight = 500;
+            this.stageHeight = this.groupPlaylistListComponent.groupPlaylistListContainer.nativeElement.offsetHeight;
+        }
+    }
+
+    public listResized(index: number): void {
+        if (index === 0 && this.currentIndex === 0) {
+            this.stageHeight = this.groupSuggestionListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
+        }
+        else if (index === 1 && this.currentIndex === 1) {
+            this.stageHeight = this.groupPlaylistListComponent.groupPlaylistListContainer.nativeElement.offsetHeight;
         }
     }
 

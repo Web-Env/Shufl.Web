@@ -1,0 +1,110 @@
+@import "src/assets/scss/variables/colours";
+
+$group-playlist-container-padding: 0;
+
+$date-header-padding-left: 15px;
+$date-header-padding-top: 10px;
+$date-header-height: calc(22px + #{$date-header-padding-top});
+
+$group-playlist-data-container-height: 185px;
+
+.group-playlist-container {
+    padding: $group-playlist-container-padding;
+
+    border-bottom: 2px solid $tertiary-foreground-colour;
+
+    display: flex;
+    flex-direction: column;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-background-colour-hover;
+    }
+
+    .group-playlist-added-date {
+        height: $date-header-height;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        p {
+            color: $tertiary-foreground-colour;
+
+            padding: $date-header-padding-top 0 0 $date-header-padding-left;
+
+            font-size: 1.2em;
+        }
+
+        .random-icon {
+            width: 25px;
+
+            padding: $date-header-padding-top 0 0 $date-header-padding-left;
+        }
+    }
+
+    .group-playlist-data-container {
+        padding: 15px;
+
+        display: flex;
+        flex-direction: column;
+
+        .playlist-container,
+        .rating-container {
+            width: 100%;
+        }
+
+        .playlist-container {
+            display: flex;
+            flex-direction: row;
+
+            .playlist-icon {
+                width: 110px;
+                height: 110px;
+            }
+
+            .playlist-info-container {
+                margin-left: 25px;
+
+                overflow: hidden;
+
+                .playlist-name {
+                    color: $tertiary-foreground-colour;
+    
+                    font-size: 1.5em;
+    
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .created-by {
+                    margin-top: 20px;
+
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1367px) {
+    .group-playlist-container {
+        .group-playlist-data-container {
+            flex-direction: row;
+
+            .playlist-container,
+            .rating-container {
+                width: 50%;
+            }
+        }
+    }
+}

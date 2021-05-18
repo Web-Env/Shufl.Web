@@ -8,28 +8,6 @@ html {
     height: 100%;
 }
 
-::-webkit-scrollbar {
-    width: $scrollbar-width;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-track {
-    background: $primary-background-colour;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-thumb {
-    background: $scrollbar-thumb-colour;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: $scrollbar-thumb-hover-colour;
-}
-
 body {
     height: 100%;
 
@@ -130,6 +108,30 @@ body {
 
     mat-dialog-container {
         background-color: $primary-background-colour !important;
+    }
+}
+
+@media (min-width: 1500px) {
+    ::-webkit-scrollbar {
+        width: $scrollbar-width;
+    
+        border-radius: $scrollbar-border-radius;
+    }
+    
+    ::-webkit-scrollbar-track {
+        background: $primary-background-colour;
+    
+        border-radius: $scrollbar-border-radius;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: $scrollbar-thumb-colour;
+    
+        border-radius: $scrollbar-border-radius;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background: $scrollbar-thumb-hover-colour;
     }
 }
 

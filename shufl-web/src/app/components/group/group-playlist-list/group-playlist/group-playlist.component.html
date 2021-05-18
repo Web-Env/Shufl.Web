@@ -1,1 +1,15 @@
-<p>group-playlist works!</p>
+<div class="group-playlist-container" (click)="groupPlaylistClicked()">
+    <span class="group-playlist-added-date"><p>{{ groupPlaylist.createdOn | date: 'EEEE dd MMMM yyyy'}}</p></span>
+    <div class="group-playlist-data-container">
+        <div class="playlist-container">
+            <img class="playlist-icon" src="{{ groupPlaylist.playlist.playlistImages[0].uri }}">
+            <div class="playlist-info-container">
+                <p class="playlist-name">{{ groupPlaylist.playlist.name }}</p>
+                <a class="created-by" [routerLink]="['/user', groupPlaylist.createdBy.username]">{{ groupPlaylist.createdBy.displayName }}</a>
+            </div>
+        </div>
+        <div class="rating-container">
+            <app-group-playlist-rating [rating]="overallRating" *ngIf="overallRatingCalculated"></app-group-playlist-rating>
+        </div>
+    </div>
+</div>

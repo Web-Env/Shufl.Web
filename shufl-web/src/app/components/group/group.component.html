@@ -28,10 +28,10 @@
 
         <div class="group-lists-stage" [ngClass]="{'left': currentIndex === 0, 'right': currentIndex === 1}" [ngStyle]="{'height': stageHeight !== null ? stageHeight + 'px' : 'unset'}">
             <div class="group-list group-suggestion-list" [ngClass]="{'active': currentIndex === 0}">
-                <app-group-suggestion-list [groupId]="groupId" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+                <app-group-suggestion-list [groupId]="groupId" [isActive]="currentIndex === 0" (resized)="listResized(0)" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
             </div>
             <div class="group-list group-playlist-list" [ngClass]="{'active': currentIndex === 1}">
-                <app-group-suggestion-list [groupId]="'RZW3BOVLCXN5Y9LDNJKZVYZA'" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+                <app-group-playlist-list [groupId]="groupId" [isActive]="currentIndex === 1" (resized)="listResized(1)" *ngIf="!isLoading && groupId != null"></app-group-playlist-list>
             </div>
         </div>
     </div>

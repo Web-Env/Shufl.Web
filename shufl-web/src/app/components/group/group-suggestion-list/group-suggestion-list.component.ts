@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs";
 import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
 import { DataService } from "src/app/services/data.service";
@@ -14,6 +14,10 @@ import { ScrollBottomService } from "src/app/services/scroll-bottom.service";
 })
 export class GroupSuggestionListComponent implements OnInit, OnDestroy {
     @Input() groupId!: string;
+    @Input() isActive!: boolean;
+    @Output() resized: EventEmitter<null> = new EventEmitter();
+    
+    @ViewChild('groupSuggestionListContainer') groupSugggestionListContainer!: ElementRef;
     
     scrolledBottomSubscription!: Subscription; 
 
@@ -31,7 +35,7 @@ export class GroupSuggestionListComponent implements OnInit, OnDestroy {
             this.getGroupSuggestions(this.groupId);
 
             this.scrolledBottomSubscription = this.scrollBottomService.getScrolledBottomSubject().subscribe(() => {
-                if (!this.isLoading && !this.allPagesFetched) {
+                if (this.isActive && !this.allPagesFetched) {
                     this.page++;
 
                     this.getGroupSuggestions(this.groupId);
@@ -59,7 +63,13 @@ export class GroupSuggestionListComponent implements OnInit, OnDestroy {
             throw err;
         }
         finally {
-            this.isLoading = false;
+            if (this.allPagesFetched) {
+                this.isLoading = false;
+            }
+            
+            window.setTimeout(() => {
+                this.resized.emit();
+            }, 50);
         }
     }
 

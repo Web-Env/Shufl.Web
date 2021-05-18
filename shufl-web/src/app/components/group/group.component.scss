@@ -103,8 +103,6 @@
 
             position: relative;
 
-            // display: flex;
-            // flex-direction: row;
             display: -webkit-box;
 
             overflow-x: hidden;
@@ -113,6 +111,8 @@
                 width: 100%;
 
                 position: relative;
+
+                overflow-y: hidden;
 
                 -webkit-transition: left 0.25s ease-in-out;
                 -moz-transition: left 0.25s ease-in-out;
