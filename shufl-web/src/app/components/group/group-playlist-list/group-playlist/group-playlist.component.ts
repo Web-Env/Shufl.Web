@@ -17,7 +17,6 @@ export class GroupPlaylistComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.groupPlaylist != null) {
-            console.log(this.groupPlaylist)
             this.calculateOverallRating();
         }
     }

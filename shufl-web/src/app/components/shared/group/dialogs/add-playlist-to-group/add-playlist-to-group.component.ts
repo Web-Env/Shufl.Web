@@ -81,7 +81,6 @@ export class AddPlaylistToGroupComponent implements OnInit {
                 );
 
                 var newPlaylistId = await this.dataService.postWithStringResponseAsync('GroupPlaylist/Create', groupPlaylistUploadModel);
-                console.log (newPlaylistId);
 
                 this.dialogRef.close();
             }
