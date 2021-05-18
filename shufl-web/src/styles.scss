@@ -1,33 +1,11 @@
 @import "src/assets/scss/variables/colours";
 @import "src/assets/scss/variables/dimensions";
 @import "~@angular/material/theming";
-@import '~ngx-toastr/toastr';
+@import "~ngx-toastr/toastr";
 @include mat-core();
 
 html {
     height: 100%;
-}
-
-::-webkit-scrollbar {
-    width: $scrollbar-width;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-track {
-    background: $primary-background-colour;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-thumb {
-    background: $scrollbar-thumb-colour;
-
-    border-radius: $scrollbar-border-radius;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: $scrollbar-thumb-hover-colour;
 }
 
 body {
@@ -38,6 +16,10 @@ body {
     margin: 0;
 
     font-family: Arial, Helvetica, sans-serif;
+
+    div {
+        -webkit-tap-highlight-color: transparent;
+    }
 
     p {
         margin: 0;
@@ -126,6 +108,30 @@ body {
 
     mat-dialog-container {
         background-color: $primary-background-colour !important;
+    }
+}
+
+@media (min-width: 1500px) {
+    ::-webkit-scrollbar {
+        width: $scrollbar-width;
+
+        border-radius: $scrollbar-border-radius;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: $primary-background-colour;
+
+        border-radius: $scrollbar-border-radius;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: $scrollbar-thumb-colour;
+
+        border-radius: $scrollbar-border-radius;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: $scrollbar-thumb-hover-colour;
     }
 }
 

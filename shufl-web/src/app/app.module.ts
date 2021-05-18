@@ -66,6 +66,10 @@ import { ScrollBottomService } from "./services/scroll-bottom.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
 import { GroupMembersComponent } from './components/shared/group/dialogs/group-members/group-members.component';
 import { GroupMemberComponent } from './components/shared/group/dialogs/group-members/group-member/group-member.component';
+import { GroupPlaylistListComponent } from './components/group/group-playlist-list/group-playlist-list.component';
+import { GroupPlaylistComponent } from './components/group/group-playlist-list/group-playlist/group-playlist.component';
+import { GroupPlaylistRatingComponent } from './components/shared/group/group-playlist-rating/group-playlist-rating.component';
+import { AddPlaylistToGroupComponent } from './components/shared/group/dialogs/add-playlist-to-group/add-playlist-to-group.component';
 
 const rollbarEnvironment = environment.environmentUrl === 'shufl-qa.webenv.io' ? 'qa' : 'prod';
 
@@ -148,7 +152,15 @@ export function rollbarFactory() {
 
         GroupMembersComponent,
 
-        GroupMemberComponent
+        GroupMemberComponent,
+
+        GroupPlaylistListComponent,
+
+        GroupPlaylistComponent,
+
+        GroupPlaylistRatingComponent,
+
+        AddPlaylistToGroupComponent
     ],
     imports: [
         AppRoutingModule,

@@ -1,15 +1,15 @@
 @import "src/assets/scss/variables/colours";
 
-$group-suggestion-container-padding: 0;
+$group-playlist-container-padding: 0;
 
 $date-header-padding-left: 15px;
 $date-header-padding-top: 10px;
 $date-header-height: calc(22px + #{$date-header-padding-top});
 
-$group-suggestion-data-container-height: 185px;
+$group-playlist-data-container-height: 185px;
 
-.group-suggestion-container {
-    padding: $group-suggestion-container-padding;
+.group-playlist-container {
+    padding: $group-playlist-container-padding;
 
     border-bottom: 2px solid $tertiary-foreground-colour;
 
@@ -29,7 +29,7 @@ $group-suggestion-data-container-height: 185px;
         background-color: $primary-background-colour-hover;
     }
 
-    .group-suggestion-added-date {
+    .group-playlist-added-date {
         height: $date-header-height;
 
         display: flex;
@@ -51,23 +51,57 @@ $group-suggestion-data-container-height: 185px;
         }
     }
 
-    .group-suggestion-data-container {
+    .group-playlist-data-container {
+        padding: 15px;
+
         display: flex;
         flex-direction: column;
 
-        .album-container,
+        .playlist-container,
         .rating-container {
             width: 100%;
+        }
+
+        .playlist-container {
+            display: flex;
+            flex-direction: row;
+
+            .playlist-icon {
+                width: 110px;
+                height: 110px;
+            }
+
+            .playlist-info-container {
+                margin-left: 25px;
+
+                overflow: hidden;
+
+                .playlist-name {
+                    color: $tertiary-foreground-colour;
+
+                    font-size: 1.5em;
+
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .created-by {
+                    margin-top: 20px;
+
+                    display: block;
+                }
+            }
         }
     }
 }
 
 @media (min-width: 1367px) {
-    .group-suggestion-container {
-        .group-suggestion-data-container {
+    .group-playlist-container {
+        .group-playlist-data-container {
             flex-direction: row;
 
-            .album-container,
+            .playlist-container,
             .rating-container {
                 width: 50%;
             }

@@ -110,7 +110,6 @@ export class VerifyComponent implements OnInit {
                 this.verificationRequestSentSuccessfully = true;
             }
             catch (err) {
-                console.log(err);
                 if (err instanceof HttpErrorResponse && err.status === 400) {
                     this.formErrorMessage = err.error.errorMessage;
                 }
