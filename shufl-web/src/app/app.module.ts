@@ -70,6 +70,9 @@ import { GroupPlaylistListComponent } from './components/group/group-playlist-li
 import { GroupPlaylistComponent } from './components/group/group-playlist-list/group-playlist/group-playlist.component';
 import { GroupPlaylistRatingComponent } from './components/shared/group/group-playlist-rating/group-playlist-rating.component';
 import { AddPlaylistToGroupComponent } from './components/shared/group/dialogs/add-playlist-to-group/add-playlist-to-group.component';
+import { GroupPlaylistDetailsComponent } from './components/group/group-playlist-details/group-playlist-details.component';
+import { GroupPlaylistUserRatingListComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating-list.component';
+import { GroupPlaylistUserRatingComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating/group-playlist-user-rating.component';
 
 const rollbarEnvironment = environment.environmentUrl === 'shufl-qa.webenv.io' ? 'qa' : 'prod';
 
@@ -160,7 +163,13 @@ export function rollbarFactory() {
 
         GroupPlaylistRatingComponent,
 
-        AddPlaylistToGroupComponent
+        AddPlaylistToGroupComponent,
+
+        GroupPlaylistDetailsComponent,
+
+        GroupPlaylistUserRatingListComponent,
+
+        GroupPlaylistUserRatingComponent
     ],
     imports: [
         AppRoutingModule,

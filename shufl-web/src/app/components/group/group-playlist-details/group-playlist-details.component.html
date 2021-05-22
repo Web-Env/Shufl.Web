@@ -1,0 +1,36 @@
+<div class="card-container group-playlist-details-card-container">
+    <div class="card">
+        <app-card-nav-bar></app-card-nav-bar>
+        <div class="group-playlist-info-container" *ngIf="!isLoading && groupPlaylist.playlist != null">
+            <div class="playlist-container">
+                <div class="playlist-image-container">
+                    <img src="{{ groupPlaylist.playlist.playlistImages[0].uri }}">
+                </div>
+
+                <a class="playlist-name" href="https://open.spotify.com/playlist/{{ groupPlaylist.playlist.id }}" target="new">{{ groupPlaylist.playlist.name }}</a>
+
+                <a class="button" href="https://open.spotify.com/playlist/{{ groupPlaylist.playlist.id }}" target="new">
+                    <img src="assets/img/logos/spotify-logo.png">
+                    <p>Open</p>
+                </a>
+            </div>
+
+            <div class="overall-rating-container">
+                <app-group-playlist-rating [rating]="overallRating" *ngIf="overallRating != null"></app-group-playlist-rating>
+            </div>
+
+            <div class="rate-button-container">
+                <app-button [buttonText]="'Rate This'" (click)="rateButtonClicked()" *ngIf="!userHasRatedPlaylist"></app-button>
+            </div>
+        </div>
+        <div class="group-ratings-container">
+            <app-group-playlist-user-rating-list [groupPlaylistRatings]="groupPlaylist.groupPlaylistRatings" 
+                *ngIf="!isLoading && groupPlaylist != null && groupPlaylist.groupPlaylistRatings != null"></app-group-playlist-user-rating-list>
+
+            <div class="error-message"  *ngIf="!isLoading && groupPlaylist == null">
+                <p>There has been an error processing your request, please try again</p>
+            </div>
+        </div>
+    </div>
+    <app-loading-icon *ngIf="isLoading"></app-loading-icon>
+</div>

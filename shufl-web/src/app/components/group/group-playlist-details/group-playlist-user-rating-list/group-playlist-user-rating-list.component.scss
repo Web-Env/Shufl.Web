@@ -1,0 +1,37 @@
+@import "src/assets/scss/variables/colours";
+
+.group-playlist-user-rating-list-container {
+    display: flex;
+    flex-direction: column;
+
+    .ratings-left,
+    .ratings-right {
+        width: 100%;
+    }
+}
+
+.no-group-playlist-user-ratings-message {
+    width: 100%;
+    height: 355px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: $tertiary-foreground-colour;
+
+        font-size: 1.75em;
+    }
+}
+
+@media (min-width: 1920px) {
+    .group-playlist-user-rating-list-container {
+        flex-direction: row;
+
+        .ratings-left,
+        .ratings-right {
+            width: 50%;
+        }
+    }
+}

@@ -18,6 +18,7 @@ import { VerifyComponent } from "./components/shared/user/verify/verify.componen
 import { AuthGuardService } from "./services/auth/auth-guard.service";
 import { SearchComponent } from "./components/search/search.component";
 import { SpotifyCallbackComponent } from "./components/user/spotify-callback/spotify-callback.component";
+import { GroupPlaylistDetailsComponent } from "./components/group/group-playlist-details/group-playlist-details.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
     { path: 'group/:groupId/:groupSuggestionId', component: GroupSuggestionDetailsComponent, canActivate: [AuthGuardService]},
+    { path: 'group/:groupId/p/:groupPlaylistId', component: GroupPlaylistDetailsComponent, canActivate: [AuthGuardService]},
     { path: 'groups/join/:token', component: GroupInviteComponent, canActivate: [AuthGuardService]},
     { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},
     { path: 'register', component: RegisterComponent },

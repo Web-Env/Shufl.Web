@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from "@angular/router";
 import { GroupPlaylistDownloadModel } from "src/app/models/download-models/group-playlist.model";
 import { PlaylistRatingDownloadModel } from "src/app/models/download-models/playlist-rating.model";
 
@@ -13,7 +14,8 @@ export class GroupPlaylistComponent implements OnInit {
     overallRatingCalculated: boolean = false;
     overallRating!: PlaylistRatingDownloadModel;
 
-    constructor() { }
+    constructor(private router: Router,
+                private activatedRoute: ActivatedRoute) { }
 
     ngOnInit(): void {
         if (this.groupPlaylist != null) {
@@ -63,7 +65,8 @@ export class GroupPlaylistComponent implements OnInit {
     }
 
     public groupPlaylistClicked(): void {
-
+        this.router.navigate([`./p/${this.groupPlaylist.identifier}`],
+            { relativeTo: this.activatedRoute });
     }
 
 }
