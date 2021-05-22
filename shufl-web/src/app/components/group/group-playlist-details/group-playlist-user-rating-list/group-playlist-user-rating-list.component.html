@@ -1,0 +1,12 @@
+<div class="group-playlist-user-rating-list-container" *ngIf="groupPlaylistRatings != null && groupPlaylistRatings.length > 0">
+    <div class="ratings-left">
+        <app-group-playlist-user-rating *ngFor="let rating of ratingsLeft" [groupPlaylistRating]="rating" [position]="'left'"></app-group-playlist-user-rating>
+    </div>
+    <div class="ratings-right">
+        <app-group-playlist-user-rating *ngFor="let rating of ratingsRight" [groupPlaylistRating]="rating" [position]="'right'"></app-group-playlist-user-rating>
+    </div>
+</div>
+
+<div class="no-group-playlist-user-ratings-message" *ngIf="groupPlaylistRatings != null && groupPlaylistRatings.length === 0">
+    <p>No Ratings Yet</p>
+</div>
