@@ -1,0 +1,32 @@
+<div class="group-playlist-rate-modal">
+    <form [formGroup]="rateGroupPlaylistForm">
+        <div class="form-group" 
+            [ngClass]="{'active': overallRatingActive, 'populated': overallRatingPopulated, 'has-error': (!rateGroupPlaylistForm.controls['overallRating'].valid && rateGroupPlaylistForm.controls['overallRating'].touched)}">
+            <div class="input-container">
+                <label for="overallRating">Overall</label>
+                <input type="number" class="form-control" formControlName="overallRating"
+                    (focus)="changeInputState('overallRating', true)"
+                    (blur)="changeInputState('overallRating', false)"
+                    (keypress)="validateRating($event)"
+                    pattern="\d+(\.\d{1})?">
+            </div>
+            <small class="warning-label" [ngClass]="{'visible': (!rateGroupPlaylistForm.controls['overallRating'].valid && rateGroupPlaylistForm.controls['overallRating'].touched)}">
+                {{ 
+                    rateGroupPlaylistForm.controls['overallRating'].value?.length === 0 || rateGroupPlaylistForm.controls['overallRating'].value == null ? 'Rating cannot be blank' : 'Rating cannot be greater than 10' }}
+            </small>
+        </div>
+                
+        <div class="form-group populated" 
+            [ngClass]="{'active': commentActive, 'has-error': (!rateGroupPlaylistForm.controls['comment'].valid && rateGroupPlaylistForm.controls['comment'].touched)}">
+            <div class="input-container comment">
+                <label for="comment">Comment</label>
+                <textarea class="form-control" formControlName="comment" [maxLength]="1500"
+                    (focus)="changeInputState('comment', true)"
+                    (blur)="changeInputState('comment', false)"></textarea>
+            </div>
+        </div>
+
+        <app-loading-button [buttonText]="'Rate'" [isLoading]="isLoading" [isDisabled]="!rateGroupPlaylistForm.valid" (click)="rateGroupPlaylistAsync(rateGroupPlaylistForm.value)"></app-loading-button>
+    </form>
+    <p class="form-error" [ngClass]="{'visible': formErrorMessageVisible}">{{ formErrorMessage }}</p>
+</div>

@@ -64,7 +64,7 @@ export class GroupSuggestionRateComponent implements OnInit {
                 vocalsRating: this.groupSuggestionRating.vocalsRating,
                 instrumentalsRating: this.groupSuggestionRating.instrumentalsRating,
                 structureRating: this.groupSuggestionRating.structureRating,
-                comment: this.groupSuggestionRating.comment,
+                comment: this.groupSuggestionRating.comment
             });
 
             this.overallRatingPopulated = this.groupSuggestionRating.overallRating != null;
@@ -107,7 +107,7 @@ export class GroupSuggestionRateComponent implements OnInit {
         }
     }
     
-    public async rateGroupSuggestionAsync(createGroupFormData: any): Promise<void> {
+    public async rateGroupSuggestionAsync(rateGroupSuggestionFormData: any): Promise<void> {
         if (!this.isLoading && this.rateGroupSuggestionForm.valid) {
             try {
                 this.isLoading = true;
@@ -117,12 +117,12 @@ export class GroupSuggestionRateComponent implements OnInit {
                     var newGroupSuggestionRating = new GroupSuggestionRatingUploadModel(
                         this.groupId,
                         this.groupSuggestionId,
-                        createGroupFormData['overallRating'],
-                        createGroupFormData['lyricsRating'],
-                        createGroupFormData['vocalsRating'],
-                        createGroupFormData['instrumentalsRating'],
-                        createGroupFormData['structureRating'],
-                        createGroupFormData['comment']
+                        rateGroupSuggestionFormData['overallRating'],
+                        rateGroupSuggestionFormData['lyricsRating'],
+                        rateGroupSuggestionFormData['vocalsRating'],
+                        rateGroupSuggestionFormData['instrumentalsRating'],
+                        rateGroupSuggestionFormData['structureRating'],
+                        rateGroupSuggestionFormData['comment']
                     );
         
                     var createdGroupSuggestionRating = await this.dataService.postAsync<GroupSuggestionRatingDownloadModel>('GroupSuggestionRating/Create', newGroupSuggestionRating, GroupSuggestionRatingDownloadModel);
@@ -135,12 +135,12 @@ export class GroupSuggestionRateComponent implements OnInit {
                     var updateGroupSuggestionRating = new GroupSuggestionRatingUploadModel(
                         this.groupId,
                         this.groupSuggestionId,
-                        createGroupFormData['overallRating'],
-                        createGroupFormData['lyricsRating'],
-                        createGroupFormData['vocalsRating'],
-                        createGroupFormData['instrumentalsRating'],
-                        createGroupFormData['structureRating'],
-                        createGroupFormData['comment']
+                        rateGroupSuggestionFormData['overallRating'],
+                        rateGroupSuggestionFormData['lyricsRating'],
+                        rateGroupSuggestionFormData['vocalsRating'],
+                        rateGroupSuggestionFormData['instrumentalsRating'],
+                        rateGroupSuggestionFormData['structureRating'],
+                        rateGroupSuggestionFormData['comment']
                     );
                     updateGroupSuggestionRating.groupSuggestionRatingId = this.groupSuggestionRating.id;
         
