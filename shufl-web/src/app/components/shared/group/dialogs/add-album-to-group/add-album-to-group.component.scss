@@ -1,6 +1,6 @@
 @import "src/assets/scss/variables/colours";
 
-.add-to-group-modal {
+.add-album-to-group-modal {
     p {
         font-size: 1.5em;
     }
@@ -71,7 +71,7 @@
 }
 
 @media (min-width: 730px) {
-    .add-to-group-modal {
+    .add-album-to-group-modal {
         .queue-button-container {
             width: 60%;
         }
