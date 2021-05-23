@@ -1,9 +1,9 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class GroupSuggestionRatingUploadModel implements IUploadModel {
+export class GroupAlbumRatingUploadModel implements IUploadModel {
     groupIdentifier!: string;
-    groupSuggestionIdentifier!: string;
-    groupSuggestionRatingId!: string;
+    groupAlbumIdentifier!: string;
+    groupAlbumRatingId!: string;
     overallRating!: number;
     lyricsRating!: number;
     vocalsRating!: number;
@@ -13,7 +13,7 @@ export class GroupSuggestionRatingUploadModel implements IUploadModel {
 
     constructor(
         groupIdentifier: string,
-        groupSuggestionIdentifier: string,
+        groupAlbumIdentifier: string,
         overallRating: number,
         lyricsRating: number,
         vocalsRating: number,
@@ -22,7 +22,7 @@ export class GroupSuggestionRatingUploadModel implements IUploadModel {
         comment: string
     ) {
         this.groupIdentifier = groupIdentifier;
-        this.groupSuggestionIdentifier = groupSuggestionIdentifier;
+        this.groupAlbumIdentifier = groupAlbumIdentifier;
         this.overallRating = overallRating;
         this.lyricsRating = lyricsRating;
         this.vocalsRating = vocalsRating;

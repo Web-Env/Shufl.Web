@@ -4,32 +4,32 @@ import { Subscription } from "rxjs";
 import { ToastrService } from "ngx-toastr";
 
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
-import { GroupSuggestionRatingDownloadModel } from "src/app/models/download-models/group-suggestion-rating.model";
+import { GroupAlbumRatingDownloadModel } from "src/app/models/download-models/group-album-rating.model";
 import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
-import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
+import { GroupAlbumDownloadModel } from "src/app/models/download-models/group-album.model";
 import { DataService } from "src/app/services/data.service";
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { GroupSuggestionRateComponent } from "../../shared/group/dialogs/group-suggestion-rate/group-suggestion-rate.component";
-import { GroupSuggestionUserRatingListComponent } from "./group-suggestion-user-rating-list/group-suggestion-user-rating-list.component";
-import { GroupSuggestionRatingComponent } from "../../shared/group/group-suggestion-rating/group-suggestion-rating.component";
+import { GroupAlbumRateComponent } from "../../shared/group/dialogs/group-album-rate/group-album-rate.component";
+import { GroupAlbumUserRatingListComponent } from "./group-album-user-rating-list/group-album-user-rating-list.component";
+import { GroupAlbumRatingComponent } from "../../shared/group/group-album-rating/group-album-rating.component";
 import { GroupSuggestionRatingService } from "src/app/services/group-suggestion-rating.service";
 import { YesNoDialogComponent } from "../../shared/dialogs/yes-no-dialog/yes-no-dialog.component";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Component({
-    selector: 'app-group-suggestion-details',
-    templateUrl: './group-suggestion-details.component.html',
+    selector: 'app-group-album-details',
+    templateUrl: './group-album-details.component.html',
     styleUrls: [
-        './group-suggestion-details.component.scss',
+        './group-album-details.component.scss',
         '../../../../assets/scss/music-details.scss'
     ]
 })
-export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
-    @ViewChild(GroupSuggestionUserRatingListComponent)
-    private groupSuggestionUserRatingListComponent!: GroupSuggestionUserRatingListComponent;
-    @ViewChild(GroupSuggestionRatingComponent)
-    private groupSuggestionRatingComponent!: GroupSuggestionRatingComponent;
+export class GroupAlbumDetailsComponent implements OnInit, OnDestroy {
+    @ViewChild(GroupAlbumUserRatingListComponent)
+    private groupAlbumUserRatingListComponent!: GroupAlbumUserRatingListComponent;
+    @ViewChild(GroupAlbumRatingComponent)
+    private groupAlbumRatingComponent!: GroupAlbumRatingComponent;
 
     isLoading: boolean = true;
 
@@ -41,14 +41,14 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
 
     genres!: string[];
 
-    groupSuggestion!: GroupSuggestionDownloadModel;
+    groupAlbum!: GroupAlbumDownloadModel;
 
     groupId!: string;
-    groupSuggestionId!: string;
+    groupAlbumId!: string;
 
-    userHasRatedSuggestion: boolean = false;
+    userHasRatedAlbum: boolean = false;
 
-    groupSuggestionRatingSubscription!: Subscription;
+    groupAlbumRatingSubscription!: Subscription;
 
     dialogOpen: boolean = false;
 
@@ -69,13 +69,13 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             this.urlHelperService.isRouteParamValid(routeParams.groupId)) {
             this.groupId = routeParams.groupId;
 
-            if (this.urlHelperService.isRouteParamValid(routeParams.groupSuggestionId)) {
-                this.groupSuggestionId = routeParams.groupSuggestionId;
+            if (this.urlHelperService.isRouteParamValid(routeParams.groupAlbumId)) {
+                this.groupAlbumId = routeParams.groupAlbumId;
 
-                this.getGroupSuggestionAsync(this.groupId, this.groupSuggestionId);
-                this.groupSuggestionRatingSubscription = this.groupSuggestionRatingService.getRatingSubject().subscribe((data) => {
+                this.getGroupAlbumAsync(this.groupId, this.groupAlbumId);
+                this.groupAlbumRatingSubscription = this.groupSuggestionRatingService.getRatingSubject().subscribe((data) => {
                     if (data != null) {
-                        if (data.data != null && data.data instanceof GroupSuggestionRatingDownloadModel) {
+                        if (data.data != null && data.data instanceof GroupAlbumRatingDownloadModel) {
                             if (data.isDelete) {
                                 this.deleteRating(data.data);
                             }
@@ -95,20 +95,20 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
         }
     }
 
-    private async getGroupSuggestionAsync(groupIdentifier: string, groupSuggestionIdentifier: string): Promise<void> {
+    private async getGroupAlbumAsync(groupIdentifier: string, groupAlbumIdentifier: string): Promise<void> {
         try {
-            this.groupSuggestion = await this.dataService.getAsync<GroupSuggestionDownloadModel>(
-                `GroupSuggestion/Get?groupIdentifier=${groupIdentifier}&groupSuggestionIdentifier=${groupSuggestionIdentifier}`, GroupSuggestionDownloadModel);
+            this.groupAlbum = await this.dataService.getAsync<GroupAlbumDownloadModel>(
+                `GroupAlbum/Get?groupIdentifier=${groupIdentifier}&groupAlbumIdentifier=${groupAlbumIdentifier}`, GroupAlbumDownloadModel);
 
-            this.groupSuggestion.groupSuggestionRatings = this.dataService.mapJsonArrayToObjectArray<GroupSuggestionRatingDownloadModel>(
-                this.groupSuggestion.groupSuggestionRatings, GroupSuggestionRatingDownloadModel
+            this.groupAlbum.groupAlbumRatings = this.dataService.mapJsonArrayToObjectArray<GroupAlbumRatingDownloadModel>(
+                this.groupAlbum.groupAlbumRatings, GroupAlbumRatingDownloadModel
             );
 
-            this.album = this.groupSuggestion.album;
+            this.album = this.groupAlbum.album;
             this.overallRating = this.calculateOverallRating();
 
             var username = localStorage.getItem('Username');
-            this.userHasRatedSuggestion = this.groupSuggestion.groupSuggestionRatings.find((gsr) => gsr.createdBy.username === username) != null;
+            this.userHasRatedAlbum = this.groupAlbum.groupAlbumRatings.find((gar) => gar.createdBy.username === username) != null;
         }
         catch (err) {
             throw err;
@@ -119,24 +119,24 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
     }
     
     private calculateOverallRating(): RatingDownloadModel {
-        if (this.groupSuggestion.groupSuggestionRatings != null && this.groupSuggestion.groupSuggestionRatings.length !== 0) {
-            var overallRatings = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.overallRating);
+        if (this.groupAlbum.groupAlbumRatings != null && this.groupAlbum.groupAlbumRatings.length !== 0) {
+            var overallRatings = this.groupAlbum.groupAlbumRatings.map((gar) => gar.overallRating);
             var overallTotal = overallRatings.reduce((sum, current) => sum + current);
             var overAllRating = this.averageAndRoundToDecimal(overallTotal, overallRatings.length);
 
-            var lyricsRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.lyricsRating != null)?.map((gsr) => gsr.lyricsRating as number);
+            var lyricsRatings = this.groupAlbum.groupAlbumRatings.filter((gar) => gar.lyricsRating != null)?.map((gar) => gar.lyricsRating as number);
             var lyricsTotal = lyricsRatings.length > 0 ? lyricsRatings.reduce((sum, current) => sum + current) : null;
             var lyricsRating = lyricsTotal != null ? this.averageAndRoundToDecimal(lyricsTotal, lyricsRatings.length) : null;
 
-            var vocalsRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.vocalsRating != null)?.map((gsr) => gsr.vocalsRating as number);
+            var vocalsRatings = this.groupAlbum.groupAlbumRatings.filter((gar) => gar.vocalsRating != null)?.map((gar) => gar.vocalsRating as number);
             var vocalsTotal = vocalsRatings.length > 0 ? vocalsRatings.reduce((sum, current) => sum + current) : null;
             var vocalsRating = vocalsTotal != null ? this.averageAndRoundToDecimal(vocalsTotal, vocalsRatings.length) : null;
 
-            var instrumentalsRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.instrumentalsRating != null)?.map((gsr) => gsr.instrumentalsRating as number);
+            var instrumentalsRatings = this.groupAlbum.groupAlbumRatings.filter((gar) => gar.instrumentalsRating != null)?.map((gar) => gar.instrumentalsRating as number);
             var instrumentalsTotal = instrumentalsRatings.length > 0 ? instrumentalsRatings.reduce((sum, current) => sum + current) : null;
             var instrumentalsRating = instrumentalsTotal != null ? this.averageAndRoundToDecimal(instrumentalsTotal, instrumentalsRatings?.length) : null;
 
-            var structureRatings = this.groupSuggestion.groupSuggestionRatings.filter((gsr) => gsr.structureRating != null)?.map((gsr) => gsr.structureRating as number);
+            var structureRatings = this.groupAlbum.groupAlbumRatings.filter((gar) => gar.structureRating != null)?.map((gar) => gar.structureRating as number);
             var structureTotal = structureRatings.length > 0 ? structureRatings.reduce((sum, current) => sum + current) : null;
             var structureRating = structureTotal != null ? this.averageAndRoundToDecimal(structureTotal, structureRatings?.length) : null;
 
@@ -193,7 +193,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
         this.addOrUpdateRating(null);
     }
 
-    public addOrUpdateRating(existingGroupSuggestionRating: GroupSuggestionRatingDownloadModel | null): void {
+    public addOrUpdateRating(existingGroupAlbumRating: GroupAlbumRatingDownloadModel | null): void {
         if (!this.dialogOpen) {
             const dialogConfig = new MatDialogConfig();
 
@@ -204,37 +204,37 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             dialogConfig.height = 'fit-content';
             dialogConfig.closeOnNavigation = true;
     
-            let instance = this.dialog.open(GroupSuggestionRateComponent, dialogConfig);
+            let instance = this.dialog.open(GroupAlbumRateComponent, dialogConfig);
             this.dialogOpen = true;
     
-            if (existingGroupSuggestionRating == null) {
+            if (existingGroupAlbumRating == null) {
                 instance.componentInstance.groupId = this.groupId;
-                instance.componentInstance.groupSuggestionId = this.groupSuggestionId;
+                instance.componentInstance.groupAlbumId = this.groupAlbumId;
             }
             else {
-                instance.componentInstance.groupSuggestionRating = existingGroupSuggestionRating;
+                instance.componentInstance.groupAlbumRating = existingGroupAlbumRating;
             }
     
             instance.afterClosed().subscribe((data) => {
                 if (data != null) {
-                    var groupSuggestionRating = data.data;
+                    var groupAlbumRating = data.data;
                 
-                    if (groupSuggestionRating != null && groupSuggestionRating instanceof GroupSuggestionRatingDownloadModel) {
-                        if (existingGroupSuggestionRating == null) {
-                            this.groupSuggestion.groupSuggestionRatings.push(groupSuggestionRating);
+                    if (groupAlbumRating != null && groupAlbumRating instanceof GroupAlbumRatingDownloadModel) {
+                        if (existingGroupAlbumRating == null) {
+                            this.groupAlbum.groupAlbumRatings.push(groupAlbumRating);
     
-                            this.groupSuggestionUserRatingListComponent.addNewRating(groupSuggestionRating);
-                            this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+                            this.groupAlbumUserRatingListComponent.addNewRating(groupAlbumRating);
+                            this.groupAlbumRatingComponent.updateRating(this.calculateOverallRating());
     
-                            this.userHasRatedSuggestion = true;
+                            this.userHasRatedAlbum = true;
                         }
                         else {
-                            var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
+                            var existingIndex = this.groupAlbum.groupAlbumRatings.map((gar) => gar.id).indexOf(groupAlbumRating.id);
     
-                            this.groupSuggestion.groupSuggestionRatings[existingIndex] = groupSuggestionRating;
-                            this.groupSuggestionUserRatingListComponent.updateRating(groupSuggestionRating);
+                            this.groupAlbum.groupAlbumRatings[existingIndex] = groupAlbumRating;
+                            this.groupAlbumUserRatingListComponent.updateRating(groupAlbumRating);
     
-                            this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
+                            this.groupAlbumRatingComponent.updateRating(this.calculateOverallRating());
                         }
                     }
                 }
@@ -244,7 +244,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
         }
     }
 
-    public deleteRating(groupSuggestionRating: GroupSuggestionRatingDownloadModel): void {
+    public deleteRating(groupAlbumRating: GroupAlbumRatingDownloadModel): void {
         if (!this.dialogOpen) {
             const dialogConfig = new MatDialogConfig();
 
@@ -263,15 +263,15 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
             instance.afterClosed().subscribe(async (data) => {
                 if (data != null && data.isPositive != null) {
                     if (data.isPositive) {
-                        await this.removeRatingAsync(groupSuggestionRating.id);
+                        await this.removeRatingAsync(groupAlbumRating.id);
 
-                        var existingIndex = this.groupSuggestion.groupSuggestionRatings.map((gsr) => gsr.id).indexOf(groupSuggestionRating.id);
+                        var existingIndex = this.groupAlbum.groupAlbumRatings.map((gar) => gar.id).indexOf(groupAlbumRating.id);
 
-                        this.groupSuggestion.groupSuggestionRatings.splice(existingIndex, 1);
-                        this.groupSuggestionUserRatingListComponent.removeRating(groupSuggestionRating.id);
+                        this.groupAlbum.groupAlbumRatings.splice(existingIndex, 1);
+                        this.groupAlbumUserRatingListComponent.removeRating(groupAlbumRating.id);
 
-                        this.groupSuggestionRatingComponent.updateRating(this.calculateOverallRating());
-                        this.userHasRatedSuggestion = false;
+                        this.groupAlbumRatingComponent.updateRating(this.calculateOverallRating());
+                        this.userHasRatedAlbum = false;
                     }
                 }
 
@@ -280,8 +280,8 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
         }
     }
 
-    public async removeRatingAsync(groupSuggestionRatingId: string): Promise<void> {
-        await this.dataService.deleteAsync(`GroupSuggestionRating/Delete?groupSuggestionRatingId=${groupSuggestionRatingId}`);
+    public async removeRatingAsync(groupAlbumRatingId: string): Promise<void> {
+        await this.dataService.deleteAsync(`GroupAlbumRating/Delete?groupAlbumRatingId=${groupAlbumRatingId}`);
     }
     
     public async queueAlbumAsync(): Promise<void> {
@@ -314,7 +314,7 @@ export class GroupSuggestionDetailsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.groupSuggestionRatingSubscription.unsubscribe();
+        this.groupAlbumRatingSubscription.unsubscribe();
     }
 
 }

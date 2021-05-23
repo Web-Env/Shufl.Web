@@ -1,6 +1,6 @@
 import { UserDownloadModel } from "./user.model";
 
-export class GroupSuggestionRatingDownloadModel {
+export class GroupAlbumRatingDownloadModel {
     id!: string;
     overallRating!: number;
     lyricsRating!: number | null;

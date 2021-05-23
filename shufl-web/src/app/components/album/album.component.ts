@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArtistConsts } from 'src/app/consts/artist.consts';
 
 import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
-import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
+import { GroupAlbumUploadModel } from "src/app/models/upload-models/group-album.model";
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
 import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
@@ -137,16 +137,16 @@ export class AlbumComponent implements OnInit {
             try {
                 this.addingAlbumToGroup = true;
 
-                var newGroupSuggestion = new GroupSuggestionUploadModel(
+                var newGroupAlbum = new GroupAlbumUploadModel(
                     this.groupIdentifier,
                     this.album.id,
                     true
                 );
 
-                var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
+                var groupAlbumIdentifier = await this.dataService.postWithStringResponseAsync('GroupAlbum/Create', newGroupAlbum);
 
                 this.dialogRef.close();
-                this.router.navigate([`/group/${this.groupIdentifier}/${groupSuggestionIdentifier}`]);
+                this.router.navigate([`/group/${this.groupIdentifier}/a/${groupAlbumIdentifier}`]);
 
                 this.addedAlbumToGroupSuccessfully = true;
             }

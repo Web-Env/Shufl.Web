@@ -6,7 +6,7 @@ import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { GroupComponent } from "./components/group/group.component";
 import { GroupInviteComponent } from "./components/shared/group/group-invite/group-invite.component";
-import { GroupSuggestionDetailsComponent } from "./components/group/group-suggestion-details/group-suggestion-details.component";
+import { GroupAlbumDetailsComponent } from "./components/group/group-album-details/group-album-details.component";
 import { GroupsListComponent } from "./components/groups-list/groups-list.component";
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from "./components/shared/user/login/login.component";
@@ -34,7 +34,7 @@ const routes: Routes = [
     { path: 'callback', component: SpotifyCallbackComponent, canActivate: [AuthGuardService] },
     { path: 'login', component: LoginComponent },
     { path: 'group/:groupId', component: GroupComponent, canActivate: [AuthGuardService]},
-    { path: 'group/:groupId/:groupSuggestionId', component: GroupSuggestionDetailsComponent, canActivate: [AuthGuardService]},
+    { path: 'group/:groupId/a/:groupAlbumId', component: GroupAlbumDetailsComponent, canActivate: [AuthGuardService]},
     { path: 'group/:groupId/p/:groupPlaylistId', component: GroupPlaylistDetailsComponent, canActivate: [AuthGuardService]},
     { path: 'groups/join/:token', component: GroupInviteComponent, canActivate: [AuthGuardService]},
     { path: 'groups', component: GroupsListComponent, canActivate: [AuthGuardService]},

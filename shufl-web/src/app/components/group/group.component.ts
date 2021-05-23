@@ -11,7 +11,7 @@ import { AddPlaylistToGroupComponent } from "../shared/group/dialogs/add-playlis
 import { GroupCreateInviteComponent } from "../shared/group/dialogs/group-create-invite/group-create-invite.component";
 import { GroupMembersComponent } from "../shared/group/dialogs/group-members/group-members.component";
 import { GroupPlaylistListComponent } from "./group-playlist-list/group-playlist-list.component";
-import { GroupSuggestionListComponent } from "./group-suggestion-list/group-suggestion-list.component";
+import { GroupAlbumListComponent } from "./group-album-list/group-album-list.component";
 
 @Component({
     selector: 'app-group',
@@ -22,8 +22,8 @@ import { GroupSuggestionListComponent } from "./group-suggestion-list/group-sugg
     ]
 })
 export class GroupComponent implements OnInit {
-    @ViewChild(GroupSuggestionListComponent)
-    private groupSuggestionListComponent!: GroupSuggestionListComponent;
+    @ViewChild(GroupAlbumListComponent)
+    private groupAlbumListComponent!: GroupAlbumListComponent;
     @ViewChild(GroupPlaylistListComponent)
     private groupPlaylistListComponent!: GroupPlaylistListComponent;
     
@@ -73,7 +73,7 @@ export class GroupComponent implements OnInit {
         if (index === 0 && this.currentIndex !== 0) {
             this.currentIndex = 0;
             this.primaryButtonText = 'Add a New Album';
-            this.stageHeight = this.groupSuggestionListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
+            this.stageHeight = this.groupAlbumListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
         }
         else if (index === 1 && this.currentIndex !== 1) {
             this.currentIndex = 1;
@@ -84,7 +84,7 @@ export class GroupComponent implements OnInit {
 
     public listResized(index: number): void {
         if (index === 0 && this.currentIndex === 0) {
-            this.stageHeight = this.groupSuggestionListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
+            this.stageHeight = this.groupAlbumListComponent.groupSugggestionListContainer.nativeElement.offsetHeight;
         }
         else if (index === 1 && this.currentIndex === 1) {
             this.stageHeight = this.groupPlaylistListComponent.groupPlaylistListContainer.nativeElement.offsetHeight;

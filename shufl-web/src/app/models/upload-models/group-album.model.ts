@@ -1,6 +1,6 @@
 import { IUploadModel } from "./upload-model.interface";
 
-export class GroupSuggestionUploadModel implements IUploadModel {
+export class GroupAlbumUploadModel implements IUploadModel {
     groupIdentifier!: string;
     albumIdentifier!: string;
     isRandom!: boolean;

@@ -4,7 +4,7 @@
     .card {
         min-height: 500px;
 
-        .group-suggestion-info-container {
+        .group-album-info-container {
             border-bottom: 2px solid $tertiary-foreground-colour;
 
             .overall-rating-container {
@@ -23,7 +23,7 @@
 @media (min-width: 1024px) {
     .card-container {
         .card {
-            .group-suggestion-info-container {
+            .group-album-info-container {
                 .overall-rating-container {
                     width: 80%;
                 }
@@ -33,12 +33,12 @@
 }
 
 @media (min-width: 1920px) {
-    .card-container.group-suggestion-details-card-container {
+    .card-container.group-album-details-card-container {
         left: 20%;
         right: 20%;
 
         .card {
-            .group-suggestion-info-container {
+            .group-album-info-container {
                 .overall-rating-container {
                     width: 50%;
                 }

@@ -1,0 +1,27 @@
+<div class="card-container group-album-details-card-container">
+    <div class="card">
+        <app-card-nav-bar [queueVisible]="spotifyUsername != null" (queueClicked)="queueAlbumAsync()"></app-card-nav-bar>
+        <div class="group-album-info-container" *ngIf="!isLoading && album != null">
+            <div class="album-container">
+                <app-album-info [album]="album" [linkDisabled]="false"></app-album-info>
+            </div>
+
+            <div class="overall-rating-container">
+                <app-group-album-rating [rating]="overallRating" *ngIf="overallRating != null"></app-group-album-rating>
+            </div>
+
+            <div class="rate-button-container">
+                <app-button [buttonText]="'Rate This'" (click)="rateButtonClicked()" *ngIf="!userHasRatedAlbum"></app-button>
+            </div>
+        </div>
+        <div class="group-ratings-container">
+            <app-group-album-user-rating-list [groupAlbumRatings]="groupAlbum.groupAlbumRatings" 
+                *ngIf="!isLoading && groupAlbum != null && groupAlbum.groupAlbumRatings != null"></app-group-album-user-rating-list>
+
+            <div class="error-message"  *ngIf="!isLoading && groupAlbum == null">
+                <p>There has been an error processing your request, please try again</p>
+            </div>
+        </div>
+    </div>
+    <app-loading-icon *ngIf="isLoading"></app-loading-icon>
+</div>

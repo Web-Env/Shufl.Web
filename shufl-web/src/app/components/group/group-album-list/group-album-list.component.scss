@@ -1,19 +1,19 @@
 @import "src/assets/scss/variables/colours";
 
-.group-suggestion-list-container {
+.group-album-list-container {
     min-height: 355px;
 
     position: relative;
 
-    .group-suggestion-list {
+    .group-album-list {
         :last-child {
-            ::ng-deep .group-suggestion-container {
+            ::ng-deep .group-album-container {
                 border-bottom: none;
             }
         }
     }
 
-    .no-group-suggestions-message {
+    .no-group-albums-message {
         width: 100%;
         height: 355px;
 

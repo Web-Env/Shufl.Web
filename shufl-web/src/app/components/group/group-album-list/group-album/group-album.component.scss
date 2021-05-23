@@ -1,15 +1,15 @@
 @import "src/assets/scss/variables/colours";
 
-$group-suggestion-container-padding: 0;
+$group-album-container-padding: 0;
 
 $date-header-padding-left: 15px;
 $date-header-padding-top: 10px;
 $date-header-height: calc(22px + #{$date-header-padding-top});
 
-$group-suggestion-data-container-height: 185px;
+$group-album-data-container-height: 185px;
 
-.group-suggestion-container {
-    padding: $group-suggestion-container-padding;
+.group-album-container {
+    padding: $group-album-container-padding;
 
     border-bottom: 2px solid $tertiary-foreground-colour;
 
@@ -29,7 +29,7 @@ $group-suggestion-data-container-height: 185px;
         background-color: $primary-background-colour-hover;
     }
 
-    .group-suggestion-added-date {
+    .group-album-added-date {
         height: $date-header-height;
 
         display: flex;
@@ -51,7 +51,7 @@ $group-suggestion-data-container-height: 185px;
         }
     }
 
-    .group-suggestion-data-container {
+    .group-album-data-container {
         display: flex;
         flex-direction: column;
 
@@ -63,8 +63,8 @@ $group-suggestion-data-container-height: 185px;
 }
 
 @media (min-width: 1367px) {
-    .group-suggestion-container {
-        .group-suggestion-data-container {
+    .group-album-container {
+        .group-album-data-container {
             flex-direction: row;
 
             .album-container,

@@ -1,5 +1,5 @@
-<div class="group-suggestion-user-rating-container {{ position }}">
-    <app-group-suggestion-rating [rating]="rating" [embedded]="true" *ngIf="rating != null"></app-group-suggestion-rating>
+<div class="group-album-user-rating-container {{ position }}">
+    <app-group-album-rating [rating]="rating" [embedded]="true" *ngIf="rating != null"></app-group-album-rating>
     <p class="rating-comment">{{ rating.comment }}</p>
     <p class="created-on">{{ rating.createdOn | date: 'dd/MM/yyyy'}}</p>
     <div class="links-container">

@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 import { GroupDownloadModel } from "src/app/models/download-models/group.model";
-import { GroupSuggestionUploadModel } from "src/app/models/upload-models/group-suggestion.model";
+import { GroupAlbumUploadModel } from "src/app/models/upload-models/group-album.model";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -80,17 +80,17 @@ export class AddToGroupComponent implements OnInit {
         try {
             this.isLoading = true;
 
-            var newGroupSuggestion = new GroupSuggestionUploadModel(
+            var newGroupAlbum = new GroupAlbumUploadModel(
                 groupIdentifier,
                 this.album.id,
                 this.isRandom
             );
 
-            var groupSuggestionIdentifier = await this.dataService.postWithStringResponseAsync('GroupSuggestion/Create', newGroupSuggestion);
+            var groupAlbumIdentifier = await this.dataService.postWithStringResponseAsync('GroupAlbum/Create', newGroupAlbum);
 
-            if (groupSuggestionIdentifier != null && groupSuggestionIdentifier !== '') {
+            if (groupAlbumIdentifier != null && groupAlbumIdentifier !== '') {
                 this.dialogRef.close();
-                this.router.navigate([`/group/${groupIdentifier}/${groupSuggestionIdentifier}`]);
+                this.router.navigate([`/group/${groupIdentifier}/a/${groupAlbumIdentifier}`]);
             }
         }
         catch (err) {

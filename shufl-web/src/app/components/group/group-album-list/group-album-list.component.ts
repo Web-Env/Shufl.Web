@@ -1,27 +1,27 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs";
-import { GroupSuggestionDownloadModel } from "src/app/models/download-models/group-suggestion.model";
+import { GroupAlbumDownloadModel } from "src/app/models/download-models/group-album.model";
 import { DataService } from "src/app/services/data.service";
 import { ScrollBottomService } from "src/app/services/scroll-bottom.service";
 
 @Component({
-    selector: 'app-group-suggestion-list',
-    templateUrl: './group-suggestion-list.component.html',
+    selector: 'app-group-album-list',
+    templateUrl: './group-album-list.component.html',
     styleUrls: [
-        './group-suggestion-list.component.scss',
+        './group-album-list.component.scss',
         '../../../../assets/scss/wide-container.scss'
     ]
 })
-export class GroupSuggestionListComponent implements OnInit, OnDestroy {
+export class GroupAlbumListComponent implements OnInit, OnDestroy {
     @Input() groupId!: string;
     @Input() isActive!: boolean;
     @Output() resized: EventEmitter<null> = new EventEmitter();
     
-    @ViewChild('groupSuggestionListContainer') groupSugggestionListContainer!: ElementRef;
+    @ViewChild('groupAlbumListContainer') groupSugggestionListContainer!: ElementRef;
     
     scrolledBottomSubscription!: Subscription; 
 
-    groupSuggestions!: Array<GroupSuggestionDownloadModel>;
+    groupAlbums!: Array<GroupAlbumDownloadModel>;
     page: number = 0;
     pageSize: number = 20;
     allPagesFetched = true;
@@ -32,32 +32,32 @@ export class GroupSuggestionListComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         if (this.groupId != null) {
-            this.getGroupSuggestions(this.groupId);
+            this.getGroupAlbums(this.groupId);
 
             this.scrolledBottomSubscription = this.scrollBottomService.getScrolledBottomSubject().subscribe(() => {
                 if (this.isActive && !this.allPagesFetched) {
                     this.page++;
 
-                    this.getGroupSuggestions(this.groupId);
+                    this.getGroupAlbums(this.groupId);
                 }
             });
         }
     }
 
-    private async getGroupSuggestions(groupIdentifier: string): Promise<void> {
+    private async getGroupAlbums(groupIdentifier: string): Promise<void> {
         try {
             this.isLoading = true;
 
-            let fetchedSuggestions = await this.dataService
-                .getArrayAsync<GroupSuggestionDownloadModel>(`GroupSuggestion/GetAll?groupIdentifier=${groupIdentifier}&page=${this.page}&pageSize=${this.pageSize}`, GroupSuggestionDownloadModel);
+            let fetchedAlbums = await this.dataService
+                .getArrayAsync<GroupAlbumDownloadModel>(`GroupAlbum/GetAll?groupIdentifier=${groupIdentifier}&page=${this.page}&pageSize=${this.pageSize}`, GroupAlbumDownloadModel);
 
-            this.allPagesFetched = fetchedSuggestions.length < this.pageSize;
+            this.allPagesFetched = fetchedAlbums.length < this.pageSize;
 
-            if (this.groupSuggestions == null) {
-                this.groupSuggestions = new Array<GroupSuggestionDownloadModel>();
+            if (this.groupAlbums == null) {
+                this.groupAlbums = new Array<GroupAlbumDownloadModel>();
             }
 
-            this.groupSuggestions.push.apply(this.groupSuggestions, fetchedSuggestions);
+            this.groupAlbums.push.apply(this.groupAlbums, fetchedAlbums);
         }
         catch (err) {
             throw err;

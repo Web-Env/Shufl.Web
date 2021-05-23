@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RatingDownloadModel } from "src/app/models/download-models/rating.model";
 
 @Component({
-    selector: 'app-group-suggestion-rating',
-    templateUrl: './group-suggestion-rating.component.html',
-    styleUrls: ['./group-suggestion-rating.component.scss']
+    selector: 'app-group-album-rating',
+    templateUrl: './group-album-rating.component.html',
+    styleUrls: ['./group-album-rating.component.scss']
 })
-export class GroupSuggestionRatingComponent implements OnInit {
+export class GroupAlbumRatingComponent implements OnInit {
     @Input() rating!: RatingDownloadModel;
     @Input() embedded: boolean = false;
 

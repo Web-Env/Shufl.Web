@@ -1,12 +1,12 @@
 import { AlbumDownloadModel } from "./album.model";
-import { GroupSuggestionRatingDownloadModel } from "./group-suggestion-rating.model";
+import { GroupAlbumRatingDownloadModel } from "./group-album-rating.model";
 import { UserDownloadModel } from "./user.model";
 
-export class GroupSuggestionDownloadModel {
+export class GroupAlbumDownloadModel {
     identifier!: string;
     isRandom!: boolean;
     album!: AlbumDownloadModel;
-    groupSuggestionRatings!: Array<GroupSuggestionRatingDownloadModel>;
+    groupAlbumRatings!: Array<GroupAlbumRatingDownloadModel>;
     createdBy!: UserDownloadModel;
     createdOn!: string;
 

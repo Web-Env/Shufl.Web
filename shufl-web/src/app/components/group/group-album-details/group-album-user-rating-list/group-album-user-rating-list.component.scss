@@ -1,6 +1,6 @@
 @import "src/assets/scss/variables/colours";
 
-.group-suggestion-user-rating-list-container {
+.group-album-user-rating-list-container {
     display: flex;
     flex-direction: column;
 
@@ -10,7 +10,7 @@
     }
 }
 
-.no-group-suggestion-user-ratings-message {
+.no-group-album-user-ratings-message {
     width: 100%;
     height: 355px;
 
@@ -26,7 +26,7 @@
 }
 
 @media (min-width: 1920px) {
-    .group-suggestion-user-rating-list-container {
+    .group-album-user-rating-list-container {
         flex-direction: row;
 
         .ratings-left,

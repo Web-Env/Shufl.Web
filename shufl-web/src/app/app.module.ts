@@ -29,13 +29,13 @@ import { GroupCreateInviteComponent } from './components/shared/group/dialogs/gr
 import { GroupInviteComponent } from './components/shared/group/group-invite/group-invite.component';
 import { GroupsListComponent } from './components/groups-list/groups-list.component';
 import { GroupsListItemComponent } from './components/groups-list/groups-list-item/groups-list-item.component';
-import { GroupSuggestionComponent } from './components/group/group-suggestion-list/group-suggestion/group-suggestion.component';
-import { GroupSuggestionDetailsComponent } from './components/group/group-suggestion-details/group-suggestion-details.component';
-import { GroupSuggestionListComponent } from './components/group/group-suggestion-list/group-suggestion-list.component';
-import { GroupSuggestionRateComponent } from './components/shared/group/dialogs/group-suggestion-rate/group-suggestion-rate.component';
-import { GroupSuggestionRatingComponent } from './components/shared/group/group-suggestion-rating/group-suggestion-rating.component';
-import { GroupSuggestionUserRatingComponent } from './components/group/group-suggestion-details/group-suggestion-user-rating-list/group-suggestion-user-rating/group-suggestion-user-rating.component';
-import { GroupSuggestionUserRatingListComponent } from './components/group/group-suggestion-details/group-suggestion-user-rating-list/group-suggestion-user-rating-list.component';
+import { GroupAlbumComponent } from './components/group/group-album-list/group-album/group-album.component';
+import { GroupAlbumDetailsComponent } from './components/group/group-album-details/group-album-details.component';
+import { GroupAlbumListComponent } from './components/group/group-album-list/group-album-list.component';
+import { GroupAlbumRateComponent } from './components/shared/group/dialogs/group-album-rate/group-album-rate.component';
+import { GroupAlbumRatingComponent } from './components/shared/group/group-album-rating/group-album-rating.component';
+import { GroupAlbumUserRatingComponent } from './components/group/group-album-details/group-album-user-rating-list/group-album-user-rating/group-album-user-rating.component';
+import { GroupAlbumUserRatingListComponent } from './components/group/group-album-details/group-album-user-rating-list/group-album-user-rating-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { IconButtonComponent } from './components/shared/buttons/icon-button/icon-button.component';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
@@ -123,13 +123,13 @@ export function rollbarFactory() {
         GroupCreateComponent,
         GroupCreateInviteComponent,
         GroupInviteComponent,
-        GroupSuggestionComponent,
-        GroupSuggestionDetailsComponent,
-        GroupSuggestionListComponent,
-        GroupSuggestionRateComponent,
-        GroupSuggestionRatingComponent,
-        GroupSuggestionUserRatingComponent,
-        GroupSuggestionUserRatingListComponent,
+        GroupAlbumComponent,
+        GroupAlbumDetailsComponent,
+        GroupAlbumListComponent,
+        GroupAlbumRateComponent,
+        GroupAlbumRatingComponent,
+        GroupAlbumUserRatingComponent,
+        GroupAlbumUserRatingListComponent,
         GroupsListComponent,
         GroupsListItemComponent,
         HomeComponent,
@@ -205,7 +205,7 @@ export function rollbarFactory() {
     entryComponents: [
         AddToGroupComponent,
         GroupCreateInviteComponent,
-        GroupSuggestionRateComponent
+        GroupAlbumRateComponent
     ]
 })
 export class AppModule { }
