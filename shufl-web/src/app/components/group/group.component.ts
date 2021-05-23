@@ -167,12 +167,6 @@ export class GroupComponent implements OnInit {
         let dialogRef = this.dialog.open(AddPlaylistToGroupComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
         instance.groupIdentifier = this.groupId;
-
-        dialogRef.afterClosed().subscribe((result) => {
-            this.groupPlaylistListComponent.groupPlaylists = new Array<GroupPlaylistDownloadModel>();
-            this.groupPlaylistListComponent.page = 0;
-            this.groupPlaylistListComponent.getGroupPlaylists(this.groupPlaylistListComponent.groupId);
-        });
     }
 
 }
