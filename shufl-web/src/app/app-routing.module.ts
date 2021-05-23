@@ -5,20 +5,20 @@ import { AccountComponent } from "./components/user/account/account.component";
 import { AlbumComponent } from './components/album/album.component';
 import { ArtistComponent } from './components/artist/artist.component';
 import { GroupComponent } from "./components/group/group.component";
-import { GroupInviteComponent } from "./components/shared/group/group-invite/group-invite.component";
 import { GroupAlbumDetailsComponent } from "./components/group/group-album-details/group-album-details.component";
+import { GroupInviteComponent } from "./components/shared/group/group-invite/group-invite.component";
 import { GroupsListComponent } from "./components/groups-list/groups-list.component";
+import { GroupPlaylistDetailsComponent } from "./components/group/group-playlist-details/group-playlist-details.component";
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from "./components/shared/user/login/login.component";
 import { NotFoundComponent } from './components/shared/not-found/not-found.component';
 import { PasswordResetComponent } from "./components/shared/user/password-reset/password-reset.component";
 import { RegisterComponent } from "./components/shared/user/register/register.component";
+import { SearchComponent } from "./components/search/search.component";
+import { SpotifyCallbackComponent } from "./components/user/spotify-callback/spotify-callback.component";
 import { VerifyComponent } from "./components/shared/user/verify/verify.component";
 
 import { AuthGuardService } from "./services/auth/auth-guard.service";
-import { SearchComponent } from "./components/search/search.component";
-import { SpotifyCallbackComponent } from "./components/user/spotify-callback/spotify-callback.component";
-import { GroupPlaylistDetailsComponent } from "./components/group/group-playlist-details/group-playlist-details.component";
 
 const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },

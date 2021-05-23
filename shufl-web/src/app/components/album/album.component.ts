@@ -8,7 +8,7 @@ import { AlbumDownloadModel } from 'src/app/models/download-models/album.model';
 import { GroupAlbumUploadModel } from "src/app/models/upload-models/group-album.model";
 import { DataService } from 'src/app/services/data.service';
 import { UrlHelperService } from "src/app/services/helpers/url-helper.service";
-import { AddToGroupComponent } from "../shared/group/dialogs/add-to-group/add-to-group.component";
+import { AddAlbumToGroupComponent } from "../shared/group/dialogs/add-album-to-group/add-album-to-group.component";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { ArtistGenreDownloadModel } from "src/app/models/download-models/artist-genre.model";
 
@@ -126,7 +126,7 @@ export class AlbumComponent implements OnInit {
         dialogConfig.closeOnNavigation = true;
         
 
-        let dialogRef = this.dialog.open(AddToGroupComponent, dialogConfig);
+        let dialogRef = this.dialog.open(AddAlbumToGroupComponent, dialogConfig);
         let instance = dialogRef.componentInstance;
         instance.album = this.album;
         instance.isRandom = this.isRandom;

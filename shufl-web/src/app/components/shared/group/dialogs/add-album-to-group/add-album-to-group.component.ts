@@ -9,11 +9,11 @@ import { GroupAlbumUploadModel } from "src/app/models/upload-models/group-album.
 import { DataService } from "src/app/services/data.service";
 
 @Component({
-    selector: 'app-add-to-group',
-    templateUrl: './add-to-group.component.html',
-    styleUrls: ['./add-to-group.component.scss']
+    selector: 'app-add-album-to-group',
+    templateUrl: './add-album-to-group.component.html',
+    styleUrls: ['./add-album-to-group.component.scss']
 })
-export class AddToGroupComponent implements OnInit {
+export class AddAlbumToGroupComponent implements OnInit {
     isLoading: boolean = true;
     isRandom: boolean = false;
     isQueueLoading: boolean = false;
@@ -21,7 +21,7 @@ export class AddToGroupComponent implements OnInit {
     spotifyUsername!: string | null;
     groups!: Array<GroupDownloadModel>;
 
-    constructor(private dialogRef: MatDialogRef<AddToGroupComponent>,
+    constructor(private dialogRef: MatDialogRef<AddAlbumToGroupComponent>,
                 private router: Router,
                 private toastr: ToastrService,
                 private dataService: DataService) { }

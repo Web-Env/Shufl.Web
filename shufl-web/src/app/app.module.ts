@@ -12,7 +12,8 @@ import * as Rollbar from 'rollbar';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AccountComponent } from './components/user/account/account.component';
-import { AddToGroupComponent } from './components/shared/group/dialogs/add-to-group/add-to-group.component';
+import { AddAlbumToGroupComponent } from './components/shared/group/dialogs/add-album-to-group/add-album-to-group.component';
+import { AddPlaylistToGroupComponent } from './components/shared/group/dialogs/add-playlist-to-group/add-playlist-to-group.component';
 import { AlbumComponent } from './components/album/album.component';
 import { AlbumIconComponent } from './components/shared/album-icon/album-icon.component';
 import { AlbumInfoComponent } from './components/shared/album-info/album-info.component';
@@ -36,6 +37,15 @@ import { GroupAlbumRateComponent } from './components/shared/group/dialogs/group
 import { GroupAlbumRatingComponent } from './components/shared/group/group-album-rating/group-album-rating.component';
 import { GroupAlbumUserRatingComponent } from './components/group/group-album-details/group-album-user-rating-list/group-album-user-rating/group-album-user-rating.component';
 import { GroupAlbumUserRatingListComponent } from './components/group/group-album-details/group-album-user-rating-list/group-album-user-rating-list.component';
+import { GroupMemberComponent } from './components/shared/group/dialogs/group-members/group-member/group-member.component';
+import { GroupMembersComponent } from './components/shared/group/dialogs/group-members/group-members.component';
+import { GroupPlaylistComponent } from './components/group/group-playlist-list/group-playlist/group-playlist.component';
+import { GroupPlaylistDetailsComponent } from './components/group/group-playlist-details/group-playlist-details.component';
+import { GroupPlaylistListComponent } from './components/group/group-playlist-list/group-playlist-list.component';
+import { GroupPlaylistRateComponent } from './components/shared/group/dialogs/group-playlist-rate/group-playlist-rate.component';
+import { GroupPlaylistRatingComponent } from './components/shared/group/group-playlist-rating/group-playlist-rating.component';
+import { GroupPlaylistUserRatingListComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating-list.component';
+import { GroupPlaylistUserRatingComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating/group-playlist-user-rating.component';
 import { HomeComponent } from './components/home/home.component';
 import { IconButtonComponent } from './components/shared/buttons/icon-button/icon-button.component';
 import { InlineArtistsTickerComponent } from './components/shared/inline-artists-ticker/inline-artists-ticker.component';
@@ -64,16 +74,6 @@ import { AuthService } from "./services/auth/auth.service";
 import { GroupSuggestionRatingService } from "./services/group-suggestion-rating.service";
 import { ScrollBottomService } from "./services/scroll-bottom.service";
 import { UrlHelperService } from "./services/helpers/url-helper.service";
-import { GroupMembersComponent } from './components/shared/group/dialogs/group-members/group-members.component';
-import { GroupMemberComponent } from './components/shared/group/dialogs/group-members/group-member/group-member.component';
-import { GroupPlaylistListComponent } from './components/group/group-playlist-list/group-playlist-list.component';
-import { GroupPlaylistComponent } from './components/group/group-playlist-list/group-playlist/group-playlist.component';
-import { GroupPlaylistRatingComponent } from './components/shared/group/group-playlist-rating/group-playlist-rating.component';
-import { AddPlaylistToGroupComponent } from './components/shared/group/dialogs/add-playlist-to-group/add-playlist-to-group.component';
-import { GroupPlaylistDetailsComponent } from './components/group/group-playlist-details/group-playlist-details.component';
-import { GroupPlaylistUserRatingListComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating-list.component';
-import { GroupPlaylistUserRatingComponent } from './components/group/group-playlist-details/group-playlist-user-rating-list/group-playlist-user-rating/group-playlist-user-rating.component';
-import { GroupPlaylistRateComponent } from './components/shared/group/dialogs/group-playlist-rate/group-playlist-rate.component';
 
 const rollbarEnvironment = environment.environmentUrl === 'shufl-qa.webenv.io' ? 'qa' : 'prod';
 
@@ -108,7 +108,8 @@ export function rollbarFactory() {
 @NgModule({
     declarations: [
         AccountComponent,
-        AddToGroupComponent,
+        AddAlbumToGroupComponent,
+        AddPlaylistToGroupComponent,
         AlbumComponent,
         AlbumIconComponent,
         AlbumInfoComponent,
@@ -132,6 +133,15 @@ export function rollbarFactory() {
         GroupAlbumUserRatingListComponent,
         GroupsListComponent,
         GroupsListItemComponent,
+        GroupMemberComponent,
+        GroupMembersComponent,
+        GroupPlaylistComponent,
+        GroupPlaylistDetailsComponent,
+        GroupPlaylistListComponent,
+        GroupPlaylistRatingComponent,
+        GroupPlaylistRateComponent,
+        GroupPlaylistUserRatingComponent,
+        GroupPlaylistUserRatingListComponent,
         HomeComponent,
         IconButtonComponent,
         InlineArtistsTickerComponent,
@@ -152,27 +162,7 @@ export function rollbarFactory() {
         VerifyComponent,
         YesNoDialogComponent,
 
-        genreFormatter,
-
-        GroupMembersComponent,
-
-        GroupMemberComponent,
-
-        GroupPlaylistListComponent,
-
-        GroupPlaylistComponent,
-
-        GroupPlaylistRatingComponent,
-
-        AddPlaylistToGroupComponent,
-
-        GroupPlaylistDetailsComponent,
-
-        GroupPlaylistUserRatingListComponent,
-
-        GroupPlaylistUserRatingComponent,
-
-        GroupPlaylistRateComponent
+        genreFormatter
     ],
     imports: [
         AppRoutingModule,
@@ -203,7 +193,7 @@ export function rollbarFactory() {
     ],
     bootstrap: [AppComponent],
     entryComponents: [
-        AddToGroupComponent,
+        AddAlbumToGroupComponent,
         GroupCreateInviteComponent,
         GroupAlbumRateComponent
     ]
