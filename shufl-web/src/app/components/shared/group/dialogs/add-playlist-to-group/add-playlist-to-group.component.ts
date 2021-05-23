@@ -30,8 +30,8 @@ export class AddPlaylistToGroupComponent implements OnInit {
 
     ngOnInit(): void {
         var spotifyUsername = localStorage.getItem('SpotifyUsername');
-
-        this.spotifyLinked = spotifyUsername != null;
+        
+        this.spotifyLinked = spotifyUsername != null && spotifyUsername !== 'null';
         this.spotifyLinkChecked = true;
 
         if (this.spotifyLinked) {
