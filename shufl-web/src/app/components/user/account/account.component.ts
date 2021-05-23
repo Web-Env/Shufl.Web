@@ -50,7 +50,7 @@ export class AccountComponent implements OnInit {
     }
 
     public linkSpotify(): void {
-        let spotifyUrl = `https://accounts.spotify.com/en/authorize?client_id=d4eaa206a29d46f19de7ae1f6a386823&response_type=code&redirect_uri=https:%2F%2F${environment.environmentUrl}%2Fcallback&scope=playlist-modify-private%20playlist-modify-public%20playlist-read-private%20user-read-playback-state%20user-modify-playback-state%20user-read-private&state=34fFs29kd09`;
+        let spotifyUrl = `https://accounts.spotify.com/en/authorize?client_id=d4eaa206a29d46f19de7ae1f6a386823&response_type=code&redirect_uri=https:%2F%2F${environment.environmentUrl}%2Fcallback&scope=playlist-modify-private%20playlist-modify-public%20playlist-read-private%20playlist-read-collaborative%20user-read-playback-state%20user-modify-playback-state%20user-read-private&state=34fFs29kd09`;
         window.location.href = spotifyUrl;
     }
 
