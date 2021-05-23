@@ -4,7 +4,7 @@ import { PlaylistRatingDownloadModel } from "src/app/models/download-models/play
 @Component({
     selector: 'app-group-playlist-rating',
     templateUrl: './group-playlist-rating.component.html',
-    styleUrls: ['../group-suggestion-rating/group-suggestion-rating.component.scss']
+    styleUrls: ['../group-album-rating/group-album-rating.component.scss']
 })
 export class GroupPlaylistRatingComponent implements OnInit {
     @Input() rating!: PlaylistRatingDownloadModel;

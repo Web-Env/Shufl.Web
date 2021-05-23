@@ -27,8 +27,8 @@
         </div>
 
         <div class="group-lists-stage" [ngClass]="{'left': currentIndex === 0, 'right': currentIndex === 1}" [ngStyle]="{'height': stageHeight !== null ? stageHeight + 'px' : 'unset'}">
-            <div class="group-list group-suggestion-list" [ngClass]="{'active': currentIndex === 0}">
-                <app-group-suggestion-list [groupId]="groupId" [isActive]="currentIndex === 0" (resized)="listResized(0)" *ngIf="!isLoading && groupId != null"></app-group-suggestion-list>
+            <div class="group-list group-album-list" [ngClass]="{'active': currentIndex === 0}">
+                <app-group-album-list [groupId]="groupId" [isActive]="currentIndex === 0" (resized)="listResized(0)" *ngIf="!isLoading && groupId != null"></app-group-album-list>
             </div>
             <div class="group-list group-playlist-list" [ngClass]="{'active': currentIndex === 1}">
                 <app-group-playlist-list [groupId]="groupId" [isActive]="currentIndex === 1" (resized)="listResized(1)" *ngIf="!isLoading && groupId != null"></app-group-playlist-list>

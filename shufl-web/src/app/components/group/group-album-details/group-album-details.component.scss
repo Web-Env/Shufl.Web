@@ -1,0 +1,52 @@
+@import "src/assets/scss/variables/colours";
+
+.card-container {
+    .card {
+        min-height: 500px;
+
+        .group-album-info-container {
+            border-bottom: 2px solid $tertiary-foreground-colour;
+
+            .overall-rating-container {
+                margin: auto;
+            }
+
+            .rate-button-container {
+                width: 100%;
+
+                margin: auto;
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-container {
+        .card {
+            .group-album-info-container {
+                .overall-rating-container {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    .card-container.group-album-details-card-container {
+        left: 20%;
+        right: 20%;
+
+        .card {
+            .group-album-info-container {
+                .overall-rating-container {
+                    width: 50%;
+                }
+
+                .rate-button-container {
+                    width: 70%;
+                }
+            }
+        }
+    }
+}

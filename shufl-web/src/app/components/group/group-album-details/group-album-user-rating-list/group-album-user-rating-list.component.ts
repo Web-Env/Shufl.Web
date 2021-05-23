@@ -1,24 +1,24 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GroupPlaylistRatingDownloadModel } from "src/app/models/download-models/group-playlist-rating.model";
+import { GroupAlbumRatingDownloadModel } from "src/app/models/download-models/group-album-rating.model";
 
 @Component({
-    selector: 'app-group-playlist-user-rating-list',
-    templateUrl: './group-playlist-user-rating-list.component.html',
-    styleUrls: ['./group-playlist-user-rating-list.component.scss']
+    selector: 'app-group-album-user-rating-list',
+    templateUrl: './group-album-user-rating-list.component.html',
+    styleUrls: ['./group-album-user-rating-list.component.scss']
 })
-export class GroupPlaylistUserRatingListComponent implements OnInit {
-    ratingsLeft: GroupPlaylistRatingDownloadModel[] = [];
-    ratingsRight: GroupPlaylistRatingDownloadModel[] = [];
+export class GroupAlbumUserRatingListComponent implements OnInit {
+    ratingsLeft: GroupAlbumRatingDownloadModel[] = [];
+    ratingsRight: GroupAlbumRatingDownloadModel[] = [];
 
-    @Input() groupPlaylistRatings!: GroupPlaylistRatingDownloadModel[];
+    @Input() groupAlbumRatings!: GroupAlbumRatingDownloadModel[];
 
     constructor() { }
 
     ngOnInit(): void {
-        this.splitRatings(this.groupPlaylistRatings);
+        this.splitRatings(this.groupAlbumRatings);
     }
 
-    private splitRatings(ratings: GroupPlaylistRatingDownloadModel[]): void {
+    private splitRatings(ratings: GroupAlbumRatingDownloadModel[]): void {
         let userAgent = navigator.userAgent;
         
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(userAgent)) {
@@ -33,7 +33,7 @@ export class GroupPlaylistUserRatingListComponent implements OnInit {
         }
     }
 
-    public addNewRating(rating: GroupPlaylistRatingDownloadModel): void {
+    public addNewRating(rating: GroupAlbumRatingDownloadModel): void {
         if (this.ratingsLeft.length < this.ratingsRight.length) {
             this.ratingsLeft.push(rating);
         }
@@ -45,7 +45,7 @@ export class GroupPlaylistUserRatingListComponent implements OnInit {
         }
     }
 
-    public updateRating(rating: GroupPlaylistRatingDownloadModel): void {
+    public updateRating(rating: GroupAlbumRatingDownloadModel): void {
         var ratingsLeftRatingIndex = this.ratingsLeft.map((gar) => gar.id).indexOf(rating.id);
 
         if (ratingsLeftRatingIndex > -1) {
@@ -81,5 +81,4 @@ export class GroupPlaylistUserRatingListComponent implements OnInit {
             this.ratingsRight.splice(this.ratingsRight.length - 1, 1);
         }
     }
-
 }

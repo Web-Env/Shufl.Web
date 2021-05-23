@@ -1,0 +1,11 @@
+<div class="group-album-container" (click)="groupAlbumClicked()">
+    <span class="group-album-added-date"><p>{{ groupAlbum.createdOn | date: 'EEEE dd MMMM yyyy'}}</p> <img class="random-icon" *ngIf="groupAlbum.isRandom" src="assets/svg/random.svg"></span>
+    <div class="group-album-data-container">
+        <div class="album-container">
+            <div app-album-icon [album]="groupAlbum.album" [disabled]="true"></div>
+        </div>
+        <div class="rating-container">
+            <app-group-album-rating [rating]="overallRating" *ngIf="overallRatingCalculated"></app-group-album-rating>
+        </div>
+    </div>
+</div>
