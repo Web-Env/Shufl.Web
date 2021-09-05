@@ -15,6 +15,10 @@
             </div>
             <p class="release-date">{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
             <p *ngIf="isModal">{{ album.tracks.length }} Tracks</p>
+            <div class="related-album-container" *ngIf="isModal && album.relatedGroupAlbum != null">
+                <p class="related-album">Related: {{ album.relatedGroupAlbum.album.name }}</p>
+                <img class="random-icon" *ngIf="album.relatedGroupAlbum.isRandom" src="assets/svg/random.svg">
+            </div>
             <a class="button" href="https://open.spotify.com/album/{{ album.id }}" target="new" *ngIf="!isModal">
                 <img src="assets/img/logos/spotify-logo.png">
                 <p>Open</p>
@@ -22,7 +26,7 @@
         </div>
         <div class="action-buttons-container" [ngClass]="{'visible': !isLoading && album != null}" *ngIf="isModal">
             <app-loading-button [buttonText]="'Add'" [isLoading]="addingAlbumToGroup" (click)="addToGroupAsync()"></app-loading-button>
-            <app-loading-button [buttonText]="'New Suggestion'" [isLoading]="isLoading" (click)="fetchAsync('Album/RandomAlbum')"></app-loading-button>
+            <app-loading-button [buttonText]="'New Suggestion'" [isLoading]="isLoading" (click)="fetchAsync('Album/RandomGroupAlbum?groupIdentifier=' + this.groupIdentifier)"></app-loading-button>
             <app-button [buttonText]="'Search'" (click)="navigateToSearch()"></app-button>
             <p class="form-error" *ngIf="errorVisible && !isLoading && !addingAlbumToGroup && !addedAlbumToGroupSuccessfully">There was an error adding this album to the group</p>
         </div>

@@ -61,6 +61,23 @@
     .release-date {
         margin: 5px 0 10px 0;
     }
+    
+    .related-album-container {
+        max-width: 100%;
+
+        color: $tertiary-foreground-colour;
+
+        margin: 10px 0 5px 0;
+
+        display: flex;
+        justify-content: center;
+
+        .random-icon {
+            width: 20px;
+
+            margin-left: 5px;
+        }
+    }
 
     .button {
         width: 60%;
