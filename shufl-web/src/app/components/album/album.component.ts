@@ -75,7 +75,7 @@ export class AlbumComponent implements OnInit {
         else {
             this.isRandom = true;
 
-            this.fetchAsync('Album/RandomGroupAlbum');
+            this.fetchAsync(`Album/RandomGroupAlbum?groupIdentifier=${this.groupIdentifier}`);
         }
     }
 
