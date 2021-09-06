@@ -33,7 +33,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     public processScrollChange = () => {
         var scrollHeight = this.stage.nativeElement.scrollHeight - this.stage.nativeElement.offsetHeight;
 
-        if (this.stage.nativeElement.scrollTop >= scrollHeight) {
+        if (this.stage.nativeElement.scrollTop >= scrollHeight - 50) {
             if (!this.scrolledToBottom) {
                 this.scrollBottomService.sendScrolledBottom();
 
