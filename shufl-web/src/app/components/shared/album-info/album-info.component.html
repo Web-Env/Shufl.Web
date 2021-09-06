@@ -11,6 +11,10 @@
         <p *ngFor="let genre of genres" class="genre-label">{{ genre | genreFormatter }}</p>
     </div>
     <p class="release-date">{{ album.releaseDate | date: 'MMMM yyyy' }}</p>
+    <div class="related-album-container" *ngIf="relatedGroupAlbum != null">
+        <p class="related-album">Related: <a [routerLink]="['../', relatedGroupAlbum.identifier]">{{ relatedGroupAlbum.album.name }}</a></p>
+        <img class="random-icon" *ngIf="relatedGroupAlbum.isRandom" src="assets/svg/random.svg">
+    </div>
     <a class="button" href="https://open.spotify.com/album/{{ album.id }}" target="new"><img src="assets/img/logos/spotify-logo.png">
         <p>Open</p>
     </a>

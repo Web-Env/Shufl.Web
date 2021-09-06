@@ -8,6 +8,7 @@ export class GroupAlbumDownloadModel {
     isRandom!: boolean;
     album!: AlbumDownloadModel;
     groupAlbumRatings!: Array<GroupAlbumRatingDownloadModel>;
+    relatedGroupAlbum!: GroupAlbumDownloadModel;
     createdBy!: UserDownloadModel;
     createdOn!: string;
 
