@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
@@ -21,7 +21,7 @@ import { GroupPlaylistUserRatingListComponent } from "./group-playlist-user-rati
         '../../../../assets/scss/music-details.scss'
     ]
 })
-export class GroupPlaylistDetailsComponent implements OnInit {
+export class GroupPlaylistDetailsComponent implements OnDestroy, OnInit {
     @ViewChild(GroupPlaylistUserRatingListComponent)
     private groupPlaylistUserRatingListComponent!: GroupPlaylistUserRatingListComponent;
     @ViewChild(GroupPlaylistRatingComponent)
@@ -236,6 +236,10 @@ export class GroupPlaylistDetailsComponent implements OnInit {
 
     public async removeRatingAsync(groupPlaylistRatingId: string): Promise<void> {
         await this.dataService.deleteAsync(`GroupPlaylistRating/Delete?groupPlaylistRatingId=${groupPlaylistRatingId}`);
+    }
+
+    ngOnDestroy(): void {
+        this.groupPlaylistRatingSubscription.unsubscribe();
     }
 
 }

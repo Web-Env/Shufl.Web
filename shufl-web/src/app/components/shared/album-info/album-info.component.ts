@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ArtistConsts } from "src/app/consts/artist.consts";
 import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
+import { GroupAlbumDownloadModel } from "src/app/models/download-models/group-album.model";
 
 @Component({
     selector: 'app-album-info',
@@ -12,6 +13,7 @@ import { AlbumDownloadModel } from "src/app/models/download-models/album.model";
 })
 export class AlbumInfoComponent implements OnInit {
     @Input() album!: AlbumDownloadModel;
+    @Input() relatedGroupAlbum!: GroupAlbumDownloadModel;
     @Input() linkDisabled!: boolean;
     
     genres!: string[];

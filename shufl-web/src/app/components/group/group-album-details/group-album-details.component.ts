@@ -58,7 +58,11 @@ export class GroupAlbumDetailsComponent implements OnInit, OnDestroy {
                 private toastr: ToastrService,
                 private dataService: DataService,
                 private urlHelperService: UrlHelperService,
-                private groupSuggestionRatingService: GroupSuggestionRatingService) { }
+                private groupSuggestionRatingService: GroupSuggestionRatingService) {
+                    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+                        return false;
+                    };
+    }
 
     ngOnInit(): void {
         this.spotifyUsername = localStorage.getItem('SpotifyUsername');
