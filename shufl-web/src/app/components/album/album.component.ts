@@ -143,6 +143,10 @@ export class AlbumComponent implements OnInit {
                     true
                 );
 
+                if (this.isModal && this.album?.relatedGroupAlbum?.id != null) {
+                    newGroupAlbum.relatedGroupAlbumId = this.album.relatedGroupAlbum.id;
+                }
+
                 var groupAlbumIdentifier = await this.dataService.postWithStringResponseAsync('GroupAlbum/Create', newGroupAlbum);
 
                 this.dialogRef.close();

@@ -3,6 +3,7 @@ import { GroupAlbumRatingDownloadModel } from "./group-album-rating.model";
 import { UserDownloadModel } from "./user.model";
 
 export class GroupAlbumDownloadModel {
+    id!: string;
     identifier!: string;
     isRandom!: boolean;
     album!: AlbumDownloadModel;
